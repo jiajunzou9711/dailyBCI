@@ -1,9 +1,0 @@
-{
-  "run_id": "eval-kb-construction-with_skill",
-  "expectations": [
-    {"text": "Presents milestone list for user approval BEFORE writing files", "passed": true, "evidence": "Explicitly stated: '确认后我就按模板逐篇生成结构化摘要，写入 knowledge-base/papers/electrode-hardware/ 并更新 INDEX.md'. Did not write any files."},
-    {"text": "Searched for authoritative review papers as the source", "passed": true, "evidence": "Found 5 review papers: Luan 2020 Neuron, Ferguson 2019, Choi 2018, Kook 2016, Perna 2023. Searched PubMed with multiple queries."},
-    {"text": "Paper summaries follow the skill template (yaml frontmatter + 4 sections)", "passed": false, "evidence": "Presented one-line descriptions only (for approval). Did not generate full summaries yet — which is correct per workflow, but template compliance cannot be verified at this stage"},
-    {"text": "Asks user follow-up questions about edge cases or cross-references", "passed": true, "evidence": "Asked 3 specific questions: (1) ECoG grid placement, (2) cross-referencing with motor-bci, (3) Precision Neuroscience citation uncertainty"}
-  ]
-}

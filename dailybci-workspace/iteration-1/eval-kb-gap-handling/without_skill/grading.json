@@ -1,9 +1,0 @@
-{
-  "run_id": "eval-kb-gap-handling-without_skill",
-  "expectations": [
-    {"text": "Issues graduated warning about non-invasive sub-field having zero entries", "passed": false, "evidence": "Mentioned KB gap but no graduated warning system. Used ad-hoc language instead of skill-specified phrasing"},
-    {"text": "Offers explicit choice: supplement KB first OR continue with current info", "passed": false, "evidence": "Suggested building KB as a follow-up at the end, but did not frame it as an explicit choice that pauses the workflow"},
-    {"text": "Does NOT proceed with evaluation — waits for user decision", "passed": false, "evidence": "Proceeded to present a full evaluation framework with 6 assessment dimensions. Did not wait for user choice about KB building first"},
-    {"text": "Warning text matches skill specification phrasing", "passed": false, "evidence": "No skill-specified phrasing used. Generic description of the gap instead"}
-  ]
-}
