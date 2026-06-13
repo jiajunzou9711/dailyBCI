@@ -1,0 +1,9 @@
+{
+  "run_id": "eval-kb-gap-handling-with_skill",
+  "expectations": [
+    {"text": "Issues graduated warning about non-invasive sub-field having zero entries", "passed": true, "evidence": "Explicitly stated: '知识库中 non-invasive（EEG-based BCI）方向目前完全是空的（0 篇 milestone 论文），这个判断缺少历史对比基准'"},
+    {"text": "Offers explicit choice: supplement KB first OR continue with current info", "passed": true, "evidence": "Exact phrasing from skill: '要不要我先搜索这个方向的综述论文，补充几篇 milestone 到知识库，然后再回来评估今天的候选？还是先按现有信息继续？'"},
+    {"text": "Does NOT proceed with evaluation — waits for user decision", "passed": true, "evidence": "Did not evaluate the paper. Response ends with the choice question. Logic trace confirms 'Awaiting user decision before proceeding further'"},
+    {"text": "Warning text matches skill specification phrasing", "passed": true, "evidence": "Used the exact graduated warning text from the skill specification, applied correctly as Level 3 (no entries for this specific topic)"}
+  ]
+}

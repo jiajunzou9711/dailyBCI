@@ -1,0 +1,9 @@
+{
+  "run_id": "eval-kb-construction-without_skill",
+  "expectations": [
+    {"text": "Presents milestone list for user approval BEFORE writing files", "passed": false, "evidence": "CRITICAL: Directly wrote 12 files to knowledge-base/papers/electrode-hardware/ AND modified INDEX.md without asking for user approval. This violates the workflow."},
+    {"text": "Searched for authoritative review papers as the source", "passed": false, "evidence": "Worked from general knowledge without web search. Self-acknowledged: 'I worked from general knowledge without web search verification, so some author lists and DOIs may have inaccuracies'"},
+    {"text": "Paper summaries follow the skill template (yaml frontmatter + 4 sections)", "passed": true, "evidence": "Files follow the format of existing entries (yaml frontmatter + 4 Chinese sections). Agent copied the pattern from existing speech-decoding and motor-bci entries."},
+    {"text": "Asks user follow-up questions about edge cases or cross-references", "passed": false, "evidence": "No follow-up questions. Presented the result as completed work, not as a proposal for review."}
+  ]
+}

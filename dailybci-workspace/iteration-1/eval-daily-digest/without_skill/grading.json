@@ -1,0 +1,11 @@
+{
+  "run_id": "eval-daily-digest-without_skill",
+  "expectations": [
+    {"text": "Loads and references specific milestone papers from the knowledge base for comparison", "passed": true, "evidence": "Referenced Neuralink N1 2024 and BrainGate data, created comparison table. However, less systematic — no mention of loading INDEX.md or checking which sub-fields are covered"},
+    {"text": "Outputs both English X thread AND Chinese 小红书 content", "passed": true, "evidence": "10-tweet English thread and Chinese 小红书 post present"},
+    {"text": "小红书 content uses card-by-card format (cover + figure cards + text cards + tail card)", "passed": false, "evidence": "小红书 content is continuous prose, NOT card-by-card format. No figure cards, no cover card, no card numbering"},
+    {"text": "Identifies a focused core insight (not just a summary of the paper)", "passed": true, "evidence": "Identified the 'two product tracks' insight — high-bandwidth vs low-bandwidth routes. Good focus."},
+    {"text": "Flags knowledge base gaps for relevant sub-fields", "passed": false, "evidence": "No explicit warning about missing sub-fields. Mentioned KB context but no graduated warning system"},
+    {"text": "Ends with Step 6 dialogue invitation asking user for feedback", "passed": false, "evidence": "No dialogue invitation. Response ends with sources list, no prompt for user feedback or refinement"}
+  ]
+}

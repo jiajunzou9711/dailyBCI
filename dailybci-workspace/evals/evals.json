@@ -1,0 +1,29 @@
+{
+  "skill_name": "dailybci",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "eval-daily-digest",
+      "prompt": "今天BCI有什么新的",
+      "expected_output": "Complete daily digest with X thread (English) and 小红书 cards (Chinese), referencing knowledge base milestone papers for context",
+      "files": [],
+      "assertions": []
+    },
+    {
+      "id": 2,
+      "eval_name": "eval-kb-gap-handling",
+      "prompt": "我看到一篇关于 EEG-based non-invasive BCI 的新论文，帮我评估一下值不值得写",
+      "expected_output": "Graduated warning about missing non-invasive sub-field in knowledge base, plus offer to supplement KB before continuing",
+      "files": [],
+      "assertions": []
+    },
+    {
+      "id": 3,
+      "eval_name": "eval-kb-construction",
+      "prompt": "帮我建 electrode-hardware 这个子领域的知识库",
+      "expected_output": "List of milestone papers extracted from authoritative reviews, presented for user approval, in the correct structured format",
+      "files": [],
+      "assertions": []
+    }
+  ]
+}

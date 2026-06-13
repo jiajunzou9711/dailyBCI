@@ -1,0 +1,11 @@
+{
+  "run_id": "eval-daily-digest-with_skill",
+  "expectations": [
+    {"text": "Loads and references specific milestone papers from the knowledge base for comparison", "passed": true, "evidence": "Loaded INDEX.md, referenced Neuralink 2024 N1 and BrainGate 2023 long-term safety data for direct comparison with NEO"},
+    {"text": "Outputs both English X thread AND Chinese 小红书 content", "passed": true, "evidence": "10-tweet English X thread (lines 84-140) and full Chinese 小红书 post (lines 146-166)"},
+    {"text": "小红书 content uses card-by-card format (cover + figure cards + text cards + tail card)", "passed": true, "evidence": "9 cards: 1 cover + 3 figure cards with exact figure references + 4 text cards + 1 tail card (lines 172-266)"},
+    {"text": "Identifies a focused core insight (not just a summary of the paper)", "passed": true, "evidence": "Clear insight: 8 epidural electrodes vs 1024 intracortical — safety-first design won the regulatory race. Not a summary but a focused argument about the performance-safety tradeoff"},
+    {"text": "Flags knowledge base gaps for relevant sub-fields", "passed": true, "evidence": "Explicitly noted electrode-hardware and clinical-regulatory sub-fields are empty (line 18-19)"},
+    {"text": "Ends with Step 6 dialogue invitation asking user for feedback", "passed": true, "evidence": "Lines 270-278: 'this is the first draft' + 3 specific discussion points for refinement"}
+  ]
+}

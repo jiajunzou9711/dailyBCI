@@ -1,0 +1,13 @@
+{
+  "eval_id": 1,
+  "eval_name": "eval-daily-digest",
+  "prompt": "今天BCI有什么新的",
+  "assertions": [
+    {"text": "Loads and references specific milestone papers from the knowledge base for comparison", "type": "qualitative"},
+    {"text": "Outputs both English X thread AND Chinese 小红书 content", "type": "binary"},
+    {"text": "小红书 content uses card-by-card format (cover + figure cards + text cards + tail card)", "type": "binary"},
+    {"text": "Identifies a focused core insight (not just a summary of the paper)", "type": "qualitative"},
+    {"text": "Flags knowledge base gaps for relevant sub-fields", "type": "binary"},
+    {"text": "Ends with Step 6 dialogue invitation asking user for feedback", "type": "binary"}
+  ]
+}
