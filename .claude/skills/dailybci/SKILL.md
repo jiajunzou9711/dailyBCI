@@ -89,7 +89,21 @@ Trigger: "今天BCI有什么新的", "run the daily", "BCI日报", or any reques
 
 ### Step 1: Search for candidates
 
-Search for BCI-related papers and news from the past 48 hours. Run at least 3 different searches to cast a wide net.
+Find BCI-related papers and news from the past 48 hours. **Browser-first, search-as-supplement.** This is the same browser-first principle as Step 3, and it matters even more here: timeliness is the whole point of a *daily* digest, and the two failure modes that kill freshness both bite at this step.
+
+**Why browser-first (do not skip this reasoning):**
+- **Search-engine indexing lags days behind.** `WebSearch` rides a search index, and brand-new preprints (exactly the past-48h items we want) often aren't indexed yet — so search systematically returns work that's weeks old and *looks* recent. If you lead with `WebSearch`, you will quietly miss today's papers.
+- **bioRxiv/medRxiv are Cloudflare-gated.** `WebFetch`/`curl` on their listing and abstract pages return 403, so you can't even read the fresh items search *does* point you to. A connected browser reads the rendered page and gets past this.
+
+**Default path — connected browser (interactive runs).** First check for a connected browser (`list_connected_browsers`; `select_browser` if present). If one is connected, open the time-sorted listing pages directly and read them with `get_page_text`:
+- **bioRxiv neuroscience, newest first** (clinical/preprint BCI lands here): the search-results page sorted by publication date descending, e.g. `biorxiv.org/search/brain-computer+interface numresults:30 sort:publication-date direction:descending` (URL-encode the spaces). Also worth a pass: `neural+decoding`, `speech+BCI`, `intracortical`.
+- **arXiv recent** (computational/ML-for-neuro): `arxiv.org/list/q-bio.NC/recent` and `arxiv.org/list/eess.SP/recent`. Note arXiv doesn't post on weekends — on Sat/Sun the freshest batch is Friday's.
+- **Company/regulatory & researcher social** — open the source pages directly (Neuralink/Synchron/Paradromics/Precision blogs, FDA, X/Twitter of domain researchers).
+- Then use `WebSearch` to **supplement** — fill in journal (Nature/Science/NEJM) coverage, news framing, and to cross-check anything the listings surfaced. Search is the second pass, not the first.
+
+**Fallback path — no browser (headless / cron / `claude -p`).** Run at least 3 different `WebSearch` queries to cast a wide net, and pull preprint text via open APIs (e.g. NCBI BioC) rather than `curl` on the gated sites. Be explicit with the user that without a browser the freshest 48h may be under-covered due to index lag.
+
+**Honesty about the window:** the field does not produce a landmark every day. If the strict past-48h window is genuinely thin (common on weekends), say so in one line and present the most significant *recent* (this-week) work instead — degrade gracefully, never skip a day, never pad the freshness column.
 
 Source priority:
 1. **Academic preprints & journals** — arXiv (q-bio.NC, cs.AI+neuro), bioRxiv, medRxiv, Nature, Science, NEJM
