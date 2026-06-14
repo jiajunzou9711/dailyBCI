@@ -334,12 +334,21 @@ Generate cards with the reusable script at `.claude/skills/dailybci/scripts/card
 import sys; sys.path.insert(0, ".claude/skills/dailybci/scripts")
 from card_generator import CardGenerator
 gen = CardGenerator(date="2026.06.07")
-gen.cover_card("标题第一行", "标题第二行", "一句话核心发现。", "output/2026-06-07-slug/01-cover.png")
-gen.figure_card("papers/[slug]-fig1.jpg", "Fig. 1", ["评注段落..."], "output/2026-06-07-slug/02-figure.png")
+gen.cover_card("标题第一行", "标题第二行", "一句话核心发现。", "output/2026-06-07-slug/01-cover.png",
+               source="2026年6月·bioRxiv 预印本《标题》。团队/机构,通讯作者 XXX(机构,一句为什么权威)。方法:一句话。")
+gen.figure_card("papers/[slug]-fig1c.jpg", "Fig. 1c", ["如上图,红柱…(评注必须指认图里的元素)"], "output/2026-06-07-slug/02-figure.png")
 gen.text_card("小标题", ["段落1...", "段落2..."], "output/2026-06-07-slug/03-text.png")
 gen.tail_card(["¹ Ref 1...", "² Ref 2..."], "output/2026-06-07-slug/05-tail.png")
 ```
 Card sequence: 封面卡 → 图卡（1-3，用 Step 3 抓到的论文原图 + 1-2 句中文评注）→ 文字卡（每张一个要点，字大留白）→ 尾卡（简评 + 参考来源）. The script handles dual-font mixing (Latin + STHeiti SC), line wrapping, consistent header/footer, and superscript fallback.
+
+**Three hard rules for the cards (established by user review — apply them yourself, do not make the user re-request them each round):**
+
+1. **封面必须交代"在解读哪一篇"——这是开篇身份。** Don't open with a colloquial method gloss ("用'让十个解码器投票'的办法"). The cover's `source` block must state, plainly: **何时 · 什么平台/期刊 · 题为《…》的论文 · 用什么方法**. If the authors/lab are notable, **add who & where + a one-line why-credible** (e.g. "通讯作者 Francis Willett,Stanford 神经假体实验室——2023 年 62 词/分语音 BCI 的一作"). The reader should know exactly what work they're reading an explanation *of* before anything else. The punchy "与我有关" hook still goes in the title lines; provenance goes in `source`.
+
+2. **图卡裁到关键面板——清楚 > 全面,而且你自己先决策,别来回问。** A dense multi-panel paper figure shrunk whole makes every sub-panel unreadable. If **one** panel carries this card's insight, **crop the figure to that panel** before passing it in (PIL crop → `papers/[slug]-figNx.jpg`) so it renders large and legible. Decide crop-vs-keep-whole **up front, yourself**, at figure-prep time — making the user iterate "here's the figure → want me to crop? → ok now decide again" wastes their time. Only keep the full figure when the card genuinely needs multiple panels together. Helping the reader *see it clearly* always beats showing more.
+
+3. **图文必须对版——评注要指认图里的东西.** The point of putting a figure on a card is that the text alone couldn't show it. So the annotation must **explicitly reference what's in the figure** — "如上图,红柱(完整集成)、紫柱(伪集成)都明显低于灰柱(基线)…" — not text that talks past the image. Figure and words describe the same thing; the figure is evidence the words point at, never decoration with self-contained text beside it.
 
 **Present the thread text and the card images together** for review.
 

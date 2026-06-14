@@ -242,7 +242,7 @@ class CardGenerator:
 
     # ---- Card types ----
 
-    def cover_card(self, title_line1, title_line2, subtitle, output_path):
+    def cover_card(self, title_line1, title_line2, subtitle, output_path, source=None):
         """
         Generate a cover card.
         Args:
@@ -250,17 +250,30 @@ class CardGenerator:
             title_line2: Second line of title (Chinese)
             subtitle: One-sentence core finding
             output_path: Where to save the PNG
+            source: Provenance block — which paper is being explained: date,
+                platform/journal, title, method, and (if notable) authors/institution.
+                Rendered as a muted "解读" block under the subtitle. Strongly
+                recommended on every cover (see SKILL.md Step 7 cover rule).
         """
         img, d = self._new_card()
         self._draw_header(d)
 
-        y = 420
+        y = 330
         self.draw_mixed(d, (MARGIN, y), title_line1, SIZE_TITLE_LG, COLOR_TITLE, bold=True)
-        y += 90
+        y += 92
         self.draw_mixed(d, (MARGIN, y), title_line2, SIZE_TITLE_LG, COLOR_TITLE, bold=True)
-        y += 130
-        self.draw_mixed_wrap(d, MARGIN, y, subtitle, SIZE_SUBTITLE - 2,
-                             COLOR_SUBTITLE, W - 2 * MARGIN)
+        y += 140
+        y = self.draw_mixed_wrap(d, MARGIN, y, subtitle, SIZE_SUBTITLE - 2,
+                                 COLOR_SUBTITLE, W - 2 * MARGIN)
+
+        if source:
+            y += 55
+            self._draw_separator(d, y)
+            y += 34
+            self.draw_mixed(d, (MARGIN, y), "解读", SIZE_CAPTION, COLOR_MUTED, bold=True)
+            y += 44
+            self.draw_mixed_wrap(d, MARGIN, y, source, SIZE_CAPTION,
+                                 COLOR_CAPTION, W - 2 * MARGIN, line_spacing=1.55)
 
         self._draw_footer(d)
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -268,7 +281,7 @@ class CardGenerator:
         return output_path
 
     def figure_card(self, figure_path_or_image, caption_label, annotation_paragraphs,
-                    output_path, figure_height=480):
+                    output_path, figure_height=560):
         """
         Generate a figure + annotation card.
         Args:
@@ -289,17 +302,24 @@ class CardGenerator:
 
         # Scale to fit within (available width x figure_height) WITHOUT
         # distorting: figure_height acts as a max height, aspect ratio preserved.
-        fig_w_max = W - 2 * MARGIN
+        # Figures use a smaller side inset than text so cropped key-panels render
+        # large ("图满铺"), with a thin frame for definition ("加框").
+        FIG_INSET = 64
+        fig_w_max = W - 2 * FIG_INSET
         fig_h_max = figure_height
         ow, oh = fig.size
         scale = min(fig_w_max / ow, fig_h_max / oh)
         new_w, new_h = max(1, int(round(ow * scale))), max(1, int(round(oh * scale)))
         fig = fig.resize((new_w, new_h), Image.LANCZOS)
-        paste_x = MARGIN + (fig_w_max - new_w) // 2  # center horizontally
-        img.paste(fig, (paste_x, 130))
+        paste_x = FIG_INSET + (fig_w_max - new_w) // 2  # center horizontally
+        paste_y = 140
+        img.paste(fig, (paste_x, paste_y))
+        # thin frame around the figure
+        d.rectangle([paste_x - 1, paste_y - 1, paste_x + new_w, paste_y + new_h],
+                    outline=COLOR_LINE, width=1)
 
         # Separator under figure
-        sep_y = 130 + new_h + 20
+        sep_y = paste_y + new_h + 24
         self._draw_separator(d, sep_y)
 
         # Caption label
