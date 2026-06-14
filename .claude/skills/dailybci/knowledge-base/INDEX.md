@@ -1,9 +1,9 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-13
-Total papers: 125
+Last updated: 2026-06-14
+Total papers: 126
 
-## speech-decoding (14 papers)
+## speech-decoding (15 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
 - [Leuthardt 2011](papers/speech-decoding/leuthardt-2011-ecog-speech-bci.md) — 首个ECoG语音信号BCI控制，开创用说话意图控制BCI的ECoG路线
 - [Bouchard 2013](papers/speech-decoding/bouchard-2013-sensorimotor-speech-organization.md) — 发现语音运动皮层编码发音动作（非声学特征），奠定articulatory decoding基础
@@ -18,6 +18,7 @@ Total papers: 125
 - [Silva 2024](papers/speech-decoding/silva-2024-bilingual-speech-neuroprosthesis.md) — 首个双语speech BCI，发现跨语言共享articulatory表征
 - [Wairagkar 2025](papers/speech-decoding/wairagkar-2025-instantaneous-voice-synthesis.md) — 80ms延迟流式语音合成，个性化声音，接近自然对话节奏
 - [Kunz 2025](papers/speech-decoding/kunz-2025-imagined-speech-decoding.md) — 首次实时解码imagined speech，打破"内心语言不可解码"假设
+- [Yoon 2026](papers/speech-decoding/yoon-2026-deep-neural-ensembles.md) — 深度集成首次实时闭环验证(WER 33.7%→26.0%)；提出伪集成单解码器降算力，把优化轴从精度扩到可部署性
 
 ## motor-bci (20 papers)
 - [Georgopoulos 1986](papers/motor-bci/georgopoulos-1986-population-vector.md) — Population vector理论，证明运动方向可从神经群体活动数学读出
