@@ -49,9 +49,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - **Step 3 浏览器优先、下载兜底**:连浏览器读全文 + 抓原图;curl/PDF 仅用于无头 / 付费墙 / 超清图(bioRxiv/PMC 的 curl 会被 Cloudflare/JS 门挡)。
 - **Step 5–8 内容先行**:内容草稿(prose,对话框)→ 事实核查 → 生产(thread + 配图卡)→ 对话打磨。最贵的做卡 / 配图推到事实锁定之后。
 - **Content Standards**:标物种、数字回溯原文、慎用"首次/都/all"、术语分层、双语各自独立写 + 信息对等、中文源核实公司名。
-- **知识库 125 篇 / 13 子领域**,最新增 `population-dynamics`(神经流形约束学习线:Sadtler 2014 → Busch 2026)。
-
-**待磨细节**:IM/WMP/OMP 概念卡措辞可更顺;图卡可裁 Panel B 放大。
+- **知识库 126 篇 / 13 子领域**,`population-dynamics` 为最新子领域(神经流形约束学习线:Sadtler 2014 → Busch 2026)。
 
 ---
 
