@@ -187,10 +187,14 @@ If a browser is connected (Claude in Chrome), use it as the default:
 1. **Open the paper's page** — prefer the OA full-text HTML: bioRxiv/medRxiv `.../vN.full`, PMC full-text, or the publisher's OA page.
 2. **Read the full text in-page** for deep reading (Step 4) and fact verification (Step 6): use `get_page_text`, or `javascript_tool` to pull the abstract, results paragraphs, and figure captions.
    - Note: the browser's content filter blocks returns containing URL/query-string-like tokens (`http`, `?`, `=`, `&`, `.jpg`). Strip or encode those before returning text (e.g. replace `=` and slashes), and fetch long sections in chunks (the full page can exceed the 50k char limit).
-3. **Grab the 1-3 key figures as image files** into `papers/`:
-   - Find each figure's full-size image URL (e.g. bioRxiv `.../FN.large.jpg`), open it in the tab, and either screenshot it (`save_to_disk: true`) or `fetch(location.href, {credentials:'include'})` it **in the page's own credentialed context** and write the bytes to `papers/[slug]-figN.jpg`.
-   - **Do not read or base64 the browser's session cookies** to feed an external download — that is blocked as credential exfiltration. Fetch inside the page instead.
-   - These files feed the cards in Step 7. In the common case this is enough — **no PDF needed.**
+3. **Grab the 1-3 key figures as images** so they can be shown in Step 4 and used on the cards in Step 7. This is fiddly on bioRxiv — here is the recipe that actually works, learned the hard way (use it instead of rediscovering the gotchas):
+   - **Gotcha A — the content filter eats URLs.** `javascript_tool` return values containing URL/query-string-like tokens (`http`, `?`, `=`, `&`, `.jpg`, long base64, even mangled URLs) get blocked as "Cookie/query string data". So **never try to read the image URL back out** — keep URLs *inside* the page and act on them there. Long `get_page_text` (>50k chars) also errors; slice via `javascript_tool` and strip URL tokens (replace `=`/`/`).
+   - **Gotcha B — inline `<img>` are lazy-loaded placeholders** (0×0, broken icon). Don't screenshot them and don't trust their `src`. Fetch the real bytes instead.
+   - **Gotcha C — the highres path.** On bioRxiv the working full-size URL is the **`/early/` path**, not the article-DOI path: `‹origin›/content/biorxiv/early/<YYYY>/<MM>/<DD>/<numeric-doi>/F‹N›.large.jpg` returns 200 (~100-130 KB). The `/content/<doi>vN/F‹N›.large.jpg` form 403s, and `.large.gif` 404s. Confirm the date/numeric-doi from the abstract page first, then probe a few patterns with `fetch(...).then(r=>r.status)` and keep the one that returns 200.
+   - **To display a figure to the user (Step 4):** in one `browser_batch` — `javascript_tool` that does `fetch(largeUrl,{credentials:'include'}) → blob → URL.createObjectURL`, wipes the body, and overlays a single `<img style="max-width:100%;max-height:100vh;object-fit:contain">`; then `computer` `screenshot` with **`save_to_disk:true`** (that attaches the image into the chat so the user actually sees it). One figure per screenshot.
+   - **To save a figure to `papers/` for the cards (Step 7):** once you know the working `/early/` URL, `curl -L -A "Mozilla/5.0" -o papers/[slug]-figN.jpg "<url>"` usually succeeds for the image CDN even though it fails for the HTML pages; if Cloudflare blocks it, fetch the blob in-page and save via the screenshot/download path.
+   - **Do not read or base64 the browser's session cookies** to feed an external download — blocked as credential exfiltration. Fetch inside the page's own credentialed context instead.
+   - In the common case this is enough — **no PDF needed.**
 
 #### Fallback path — download (any one trigger is enough)
 
@@ -248,7 +252,8 @@ A good test: if you removed your explanation of this one point, would a reader m
 - **我认为这篇最该讲的核心 insight 是 X**（一两句话讲清那"一件事"）。
 - **为什么是它（理由，不能省）**：这是把它从"标准操作"里拣出来的依据——相对知识库里的前作/里程碑，这一点为什么是真正新的、最值得讲的。一两句话，可引知识库具体条目。
 - **打算从哪个角度展开**：机制？关键数据？患者故事？监管逻辑？说清你倾向哪个切入口。
-- **直接在对话框里贴出打算用的那 1-3 张论文原图**（Step 3 已抓到 `papers/`），让用户**亲眼看到图本身**，而不是只读一句"这张图画了什么"的文字描述。配上一句话说明每张图为什么支撑这个 insight。这是源图、不是生成的卡片，不违反下面"确认前不做卡"的规则。
+- **必须在对话框里贴出打算用的那 1-3 张论文原图，让用户边看图边对照你的 insight 判断——这是硬性要求，不是可选项。** 用户是看着图本身（不是看你"这张图画了什么"的文字转述）才更有感觉、才能真正参与到 insight 的判断里。具体做法见 Step 3 的"display a figure"配方：浏览器里 fetch 原图 blob → 覆盖整页 → `screenshot` 带 `save_to_disk:true` 把图贴进对话。每张图配一句话说明它为什么支撑这个 insight。这是源图、不是生成的卡片，不违反下面"确认前不做卡"的规则。
+  - **抓图费劲不构成跳过的理由。** 如果第一种方法没抓到（懒加载占位符、URL 路径不对、内容过滤拦截等，全是已知坑，见 Step 3），换方法继续抓，直到图真的出现在对话里；不允许因为"抓不到"就只用文字描述带过。唯一例外是确无浏览器的无头运行（cron/`claude -p`），那种情况要明确告诉用户"本次无法贴图、只能文字描述"，而不是默默跳过。
 
 然后把判断权交回用户："我倾向这个角度——你觉得对吗？还是该换一个？"
 
