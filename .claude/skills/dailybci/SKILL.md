@@ -95,7 +95,7 @@ This skill runs as a Claude Code project. Anchor all paths to these locations (w
 
 - **Skill + resources:** `.claude/skills/dailybci/` — contains `SKILL.md`, `scripts/card_generator.py`, `fonts/`, and `knowledge-base/`.
 - **Knowledge base:** `.claude/skills/dailybci/knowledge-base/` (`INDEX.md` + `papers/<subfield>/`). Wherever the text below writes `knowledge-base/...`, read it as `.claude/skills/dailybci/knowledge-base/...`.
-- **Working data (per-run):** `papers/` at project root — downloaded PDFs and extracted figure PNGs.
+- **Working data (per-run):** `papers/` at project root — downloaded full-text PDF/`<slug>-fulltext.txt`, figure images, and PIL crops. **Gitignored scratch:** not version-controlled (figures are baked into the committed `output/` cards), so it's regenerable and deleted at Step 10.
 - **Output:** `output/<date>-<slug>/` at project root — generated card PNGs.
 
 To import the card generator from project root:
@@ -219,9 +219,8 @@ After the user confirms their topic choice, get the full paper. **Browser-first,
 If a browser is connected (Claude in Chrome), use it as the default:
 
 1. **Open the paper's page** — prefer the OA full-text HTML: bioRxiv/medRxiv `.../vN.full`, PMC full-text, or the publisher's OA page.
-2. **Read the full text in-page** for deep reading (Step 4) and fact verification (Step 6): use `get_page_text`, or `javascript_tool` to pull the abstract, results paragraphs, and figure captions.
-   - Note: the browser's content filter blocks returns containing URL/query-string-like tokens (`http`, `?`, `=`, `&`, `.jpg`). Strip or encode those before returning text (e.g. replace `=` and slashes), and fetch long sections in chunks (the full page can exceed the 50k char limit).
-3. **Grab the 1-3 key figures as images** so they can be shown in Step 4 and used on the cards in Step 7. This is fiddly on bioRxiv — here is the recipe that actually works, learned the hard way (use it instead of rediscovering the gotchas):
+2. **Get the full text from the downloaded PDF** (一次性扒全 above) for deep reading (Step 4) and fact verification (Step 6) — `fitz` → `papers/<slug>-fulltext.txt`, then grep locally. **Don't scrape the rendered page text into context.** (If you ever must pull a snippet in-page, note the content filter blocks returns containing URL/symbol tokens `http`/`?`/`=`/`&`/`.jpg` — strip/replace them and slice under the 50k char limit — but PDF-first avoids all of this.)
+3. **Download ALL figures + the full-text PDF** (per 一次性扒全 above — F1 probed to 404, plus `<slug>.pdf`) so every later step reads local files. This is fiddly on bioRxiv — here is the recipe that actually works, learned the hard way (use it instead of rediscovering the gotchas):
    - **Gotcha A — the content filter eats URLs.** `javascript_tool` return values containing URL/query-string-like tokens (`http`, `?`, `=`, `&`, `.jpg`, long base64, even mangled URLs) get blocked as "Cookie/query string data". So **never try to read the image URL back out** — keep URLs *inside* the page and act on them there. Long `get_page_text` (>50k chars) also errors; slice via `javascript_tool` and strip URL tokens (replace `=`/`/`).
    - **Gotcha B — inline `<img>` are lazy-loaded placeholders** (0×0, broken icon). Don't screenshot them and don't trust their `src`. Fetch the real bytes instead.
    - **Gotcha C — the highres path.** On bioRxiv the working full-size URL is the **`/early/` path**, not the article-DOI path: `‹origin›/content/biorxiv/early/<YYYY>/<MM>/<DD>/<numeric-doi>/F‹N›.large.jpg` returns 200 (~100-130 KB). The `/content/<doi>vN/F‹N›.large.jpg` form 403s, and `.large.gif` 404s. Confirm the date/numeric-doi from the abstract page first, then probe a few patterns with `fetch(...).then(r=>r.status)` and keep the one that returns 200.
@@ -229,7 +228,7 @@ If a browser is connected (Claude in Chrome), use it as the default:
    - **To display any figure to the user:** do NOT use browser `screenshot` (that image only enters the model context, not reliably the user's chat). Per Content Standards → *Figures Are Always Shown Inline*: the figure is already a local file in `papers/`, so just **`Read` that file** — Read renders it inline in the user's chat. To show one panel, `PIL Image.crop()` it to a new file, then `Read`. Reliable recipe: put explanation text first and the `Read` as the last line of the message.
    - **If the download is blocked by a browser permission, STOP and ask the user to click "Allow" — do not build a workaround.** Chrome blocks *multiple automatic downloads* per page after the first: the 1st figure lands, the rest are silently blocked behind an "Allow / Block" chip the user may not even notice. The correct move is a one-line prompt: *"Chrome is blocking multiple downloads — please click 'Allow' on the download prompt (top-right of the address bar), then I'll continue."* A workaround that worked this-session-only: trigger **one** download per fresh page-load (re-`navigate` the tab between each), since the per-load block resets. **Do NOT** stand up a local HTTP server to receive POSTed bytes — it dead-ends on Private Network Access preflight + extension network sandboxing, and the repeated DOM-wiping freezes the tab. This is a specific instance of a general rule: **when a blocker is one user click away (download/permission/auth popups), take the shortest path — prompt the user immediately and explicitly (say where to click and what to click); only reach for technical workarounds when the user genuinely cannot intervene (headless/cron).** See memory `shortest-path-on-user-resolvable-blockers`.
    - **Do not read or base64 the browser's session cookies** to feed an external download — blocked as credential exfiltration. Fetch inside the page's own credentialed context instead.
-   - In the common case this is enough — **no PDF needed.**
+   - **The PDF is the full-text source (首选):** download it via the same in-page `fetch` blob → `<a download>` route (curl gets Cloudflare-blocked), then `fitz` to `papers/<slug>-fulltext.txt`. Don't scrape the rendered page text into context — it burns tokens and trips the content filter. See 一次性扒全 above.
 
 #### Fallback path — download (any one trigger is enough)
 
@@ -355,7 +354,7 @@ Only after every ✗ and ⚠ is resolved (fixed in the draft, softened/dropped, 
 
 ### Step 7: Production — X thread + 小红书 cards with figures
 
-Run this **only after the fact-check gate (Step 6) is clear.** Now turn the verified content into the two published forms. Write each language **independently** from the shared verified content — do not translate one from the other. Keep information parity: the same points in the same order.
+Run this **only after the fact-check gate (Step 6) is clear.** The copy for both languages was already drafted in Step 5 and verified in Step 6; Step 7 turns it into the two **published forms** — finalize the thread and render the 小红书 cards. (When revising, keep each language written independently from the shared outline — never translate one from the other. They share the outline and load-bearing facts, but the two media may differ in depth: thread = self-contained in text; 小红书 = deeper via figure+text. See Content Standards → Bilingual Content Workflow.)
 
 **English — X/Twitter thread:**
 - Hook tweet naming the core finding, then numbered 1/, 2/, 3/ … (typically 6-10 tweets)
@@ -376,7 +375,7 @@ gen.figure_card("papers/[slug]-fig1c.jpg", "Fig. 1c", ["如上图,红柱…(评�
 gen.text_card("小标题", ["段落1...", "段落2..."], "output/2026-06-07-slug/03-text.png")
 gen.tail_card(["¹ Ref 1...", "² Ref 2..."], "output/2026-06-07-slug/05-tail.png")
 ```
-Card sequence: 封面卡 → 图卡（1-3，用 Step 3 抓到的论文原图 + 1-2 句中文评注）→ 文字卡（每张一个要点，字大留白）→ 尾卡（简评 + 参考来源）. The script handles dual-font mixing (Latin + STHeiti SC), line wrapping, consistent header/footer, and superscript fallback.
+Card sequence: 封面卡 → 图卡（按内容需要,通常 2-5 张,用 Step 3 下到本地的论文原图/裁图 + 三段式中文评注）→ 文字卡（每张一个要点,字大留白）→ 尾卡（简评 + 参考来源,含核心论文链接）. 图卡数量服从逻辑链,别硬凑或硬砍。The script handles dual-font mixing (Latin + STHeiti SC), line wrapping, consistent header/footer, and superscript fallback.
 
 **Four hard rules for the cards (established by user review — apply them yourself, do not make the user re-request them each round):**
 
