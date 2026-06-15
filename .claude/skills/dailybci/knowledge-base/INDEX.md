@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
 Last updated: 2026-06-15
-Total papers: 135
+Total papers: 136
 
 ## speech-decoding (15 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -157,7 +157,7 @@ Total papers: 135
 - [Azabou 2025](papers/ai-neural-modeling/azabou-2025-poyo-plus.md) — POYO+多session多任务foundation model，Allen Institute全量数据，ICLR 2025
 - [Defossez 2023](papers/ai-neural-modeling/defossez-2023-meta-meg-speech.md) — Meta FAIR对比学习将MEG映射到wav2vec表征空间，非侵入语音解码新范式
 
-## population-dynamics (7 papers)
+## population-dynamics (8 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature
 - [Gallego 2017](papers/population-dynamics/gallego-2017-neural-manifolds-movement.md) — 定义性框架综述，确立neural manifold/neural modes作为群体运动控制的统一语言，Neuron
 - [Golub 2018](papers/population-dynamics/golub-2018-learning-neural-reassociation.md) — 流形内学习机制=neural reassociation（重配已有模式而非生成新模式），Nat Neurosci
@@ -165,3 +165,4 @@ Total papers: 135
 - [Gallego 2020](papers/population-dynamics/gallego-2020-long-term-stability-dynamics.md) — 低维潜在动力学跨~2年稳定（单神经元在换），BCI长期免校准的群体动力学基础，Nat Neurosci
 - [Gallego 2018](papers/population-dynamics/gallego-2018-preserved-manifold-multiple-behaviors.md) — 多种运动行为共享同一被保留流形，证明流形是通用低维底座，Nat Commun
 - [Busch 2026](papers/population-dynamics/busch-2026-human-noninvasive-manifold-bci.md) — 首次在人类无创(fMRI)验证流形约束学习：流形内ΔBrainControl +49.3/+16.4可学、流形外−0.4学不会(N=18)，Nat Neurosci
+- [de Vicente 2026](papers/population-dynamics/devicente-2026-circuit-specific-volitional-learning.md) — 首次把流形-BCI学习搬出运动皮层、进海马CA3并与M1对比：两区学得一样好(p=0.453 n.s.)但动力学分叉(M1流过/CA3折返)，RNN证差异源于环路架构→principled degeneracy，bioRxiv
