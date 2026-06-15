@@ -54,7 +54,10 @@ Terms fall into two tiers:
 
 2. **Write each language independently from the outline.** Do not translate one from the other. The English version should read like native English written for an X/Twitter audience. The Chinese version should read like native Chinese written for 小红书 readers — not like translated English.
 
-3. **Information parity.** The two versions must contain the same information points in the same order. Wording and sentence structure will naturally differ. But if a fact, comparison, or caveat appears in one version, it must appear in the other. This ensures the user can review the logic once and trust both versions match.
+3. **Shared outline — but the two media may differ in depth.** Both versions follow the *same* outline: same logical spine, same order, same load-bearing facts. They need **not** be word-for-word information-equivalent. The two media have different affordances:
+   - **X thread = text only.** It must say everything in words — no figures to lean on — so it stays tight and self-contained. Include only what text alone can make clear.
+   - **小红书 = text + figures.** Because each card pairs words with a figure, it can go **deeper**: weave figure-reading into the narrative, elaborate where a figure earns it.
+   What must stay consistent is the outline and the load-bearing claims; the 小红书 version may carry more detail. Neither version may contain a load-bearing claim the other contradicts.
 
 ### Information Sources
 
@@ -206,8 +209,8 @@ After the user confirms their topic choice, get the full paper. **Browser-first,
 **选题一确定,就把这篇的全文 + 全部图一次性落到本地,后面所有步骤只读本地文件,不再回访浏览器。** 这是为了避免反复访问网页 / 重复下载(实测会触发浏览器卡死、Cloudflare 拦截、多次下载被拦),也让 Step 4 理解、裁子图、Step 6 事实核查、Step 7 配图全程快而稳。
 
 落选题后**马上**做两件事:
-1. **全文存本地:** 把渲染好的全文(摘要 + 所有 results 段落 + 全部 figure caption)抓下来,写进 `papers/<slug>-fulltext.md`(或下 PDF 用 PyMuPDF 抽全文)。之后深读和事实核查都读这个文件,不再 `get_page_text`。
-2. **全图先下:** 不要只下"打算用的那几张"——**把 F1 起逐张 `fetch(...).then(r=>r.status)` 探到 404 为止,把所有返回 200 的图全部下载存进 `papers/`**(`donato-fig1.jpg`…`fig6.jpg`)。哪几张进卡片是 Step 4/7 才定,但全下成本极低、且省掉来回跑。遇到 Chrome 多下载拦截就按下面 Gotcha 处理(提示用户点 Allow,或每次 re-navigate 后下一张)。
+1. **下全文 PDF(首选):** 通过浏览器(Chrome 连接)把这篇的全文 PDF 下到 `papers/<slug>.pdf`,再用 PyMuPDF 在本地抽出全文存 `papers/<slug>-fulltext.txt`。**优先走 PDF,不要把渲染网页的全文整篇拉进上下文**——那样既烧 token、又得过浏览器内容过滤器(URL/符号被拦)反复切片净化,既慢又易丢内容。bioRxiv 的 PDF 用 `curl` 会被 Cloudflare 拦,所以走浏览器下载(和下图同套路:页面内 `fetch` blob → `<a download>` → `mv` 进 `papers/`)。之后深读、事实核查、图的裁取全部读本地文件 / 本地图,**一律不再回访网页**。
+2. **全图先下:** 不要只下"打算用的那几张"——**把 F1 起逐张 `fetch(...).then(r=>r.status)` 探到 404 为止,把所有返回 200 的图全部下载存进 `papers/`**(`donato-fig1.jpg`…`fig6.jpg`)。哪几张进卡片是 Step 4/7 才定,但全下成本极低、且省掉来回跑。遇到 Chrome 多下载拦截就按下面 Gotcha 处理(提示用户点 Allow,或每次 re-navigate 后下一张)。**已下好的本地图别再 `curl` 覆盖**(会被 403 HTML 冲掉)。
 
 下面的浏览器/下载细节是**实现这两件事**的手册。
 
@@ -284,7 +287,7 @@ A good test: if you removed your explanation of this one point, would a reader m
 - **我认为这篇最该讲的核心 insight 是 X**（一两句话讲清那"一件事"）。
 - **为什么是它（理由，不能省）**：这是把它从"标准操作"里拣出来的依据——相对知识库里的前作/里程碑，这一点为什么是真正新的、最值得讲的。一两句话，可引知识库具体条目。
 - **打算从哪个角度展开**：机制？关键数据？患者故事？监管逻辑？说清你倾向哪个切入口。
-- **必须在对话框里贴出打算用的那 1-3 张论文原图，让用户边看图边对照你的 insight 判断——这是硬性要求，不是可选项。** 用户是看着图本身（不是看你"这张图画了什么"的文字转述）才更有感觉、才能真正参与到 insight 的判断里。具体做法见 Step 3 的"display a figure"配方：浏览器里 fetch 原图 blob → 覆盖整页 → `screenshot` 带 `save_to_disk:true` 把图贴进对话。每张图配一句话说明它为什么支撑这个 insight。这是源图、不是生成的卡片，不违反下面"确认前不做卡"的规则。
+- **必须在对话框里贴出打算用的那 1-3 张论文原图，让用户边看图边对照你的 insight 判断——这是硬性要求，不是可选项。** 用户是看着图本身（不是看你"这张图画了什么"的文字转述）才更有感觉、才能真正参与到 insight 的判断里。具体做法见 Content Standards → *Figures Are Always Shown Inline*：图已在 Step 3 下载到 `papers/`，**直接 `Read` 该文件即内联渲染**（要看某个 panel 就 PIL crop 成新文件再 Read）；文字写在前、`Read` 放消息最后一行。**不要用浏览器 `screenshot`**——那种截图只进模型上下文、用户界面里看不到。每张图配一句话说明它为什么支撑这个 insight。这是源图、不是生成的卡片，不违反下面"确认前不做卡"的规则。
   - **抓图费劲不构成跳过的理由。** 如果第一种方法没抓到（懒加载占位符、URL 路径不对、内容过滤拦截等，全是已知坑，见 Step 3），换方法继续抓，直到图真的出现在对话里；不允许因为"抓不到"就只用文字描述带过。唯一例外是确无浏览器的无头运行（cron/`claude -p`），那种情况要明确告诉用户"本次无法贴图、只能文字描述"，而不是默默跳过。
 
 然后把判断权交回用户："我倾向这个角度——你觉得对吗？还是该换一个？"
@@ -296,11 +299,11 @@ A good test: if you removed your explanation of this one point, would a reader m
 
 **在用户确认 insight 之前，不要生成任何 thread 文字或卡片图片。** 这些都是算力密集的操作，方向不对就全部白费。
 
-### Step 5: Content draft (unified prose, in chat)
+### Step 5: First draft — thread copy + 小红书 copy with rough figures, in chat
 
-Write a **single continuous draft of the core insight** and present it in the chat dialog. At this stage: **no tweet-splitting, no cards, no figures.** This is the content layer — the logic, the numbers, the comparisons — written once so it can be cheaply revised and fact-checked **before** any expensive production. The reason for the ordering: splitting into tweets, generating cards, and compositing figures are the most compute- and figure-heavy steps; if a core number turns out wrong, all of that is wasted. Facts first, production later.
+Right after the insight is confirmed, produce the **first full version** and present it in chat: **both** the English X-thread copy **and** the 小红书 card-by-card copy, with **each figure card's figure shown inline (a rough crop is fine)** so the user sees text+figure paired from the very first version. This is the content layer — logic, numbers, comparisons, and the text–figure pairing — produced cheaply so it can be revised and fact-checked **before** the expensive final card rendering. (Rationale: rendering polished cards is the heavy step; if a core number is wrong, that work is wasted. Facts first, polished production later. But rough crops of already-downloaded figures are cheap, so pair them in from the start — don't make the user imagine the layout.)
 
-Write it as the **shared content outline expressed as readable prose** — this single draft is the source both the English thread and the Chinese cards will later be written from (independently), which keeps them information-equivalent. Cover, in order:
+Both versions are written from the **shared outline** (see Content Standards → Bilingual Content Workflow) and cover, in order:
 - Enough context to understand the problem (2-3 sentences, no more)
 - What exactly they did differently — the mechanism, the principle, the technical specifics
 - Why this approach works where previous ones didn't — cite specific comparisons to milestone papers from the knowledge base
@@ -308,10 +311,11 @@ Write it as the **shared content outline expressed as readable prose** — this 
 - A 1-2 sentence understated closing comment (the "10%")
 
 Practical notes:
-- **One language is fine here** — default to Chinese, since the dialogue is in Chinese. Both published versions are generated from this verified content in Step 7.
-- Rough formatting (short headers/paragraphs) for readability in chat. **Do not generate any images.**
+- **X thread** = self-contained in text (no figures to lean on, keep it tight, respect the per-tweet char limit — see Step 7). **小红书** = conclusion→read-figure→transition per card (see Step 7 card rule 4).
+- **Figures here may be rough** — quick PIL crops of the figures already downloaded in Step 3, shown via `Read` (save + Read; never browser `screenshot`). **Do NOT run `card_generator.py` or polish yet** — cleanup and rendering happen at Step 7/8.
+- Label species and sample sizes; keep every number traceable for the fact-check that follows.
 
-**Then proceed directly to Step 6 — do not wait for the user to approve the draft's wording.** Facts get checked first.
+**Then proceed directly to Step 6 — do not wait for the user to approve the wording.** Facts get checked first; the expensive rendering waits until after.
 
 ### Step 6: Fact verification
 
@@ -356,7 +360,8 @@ Run this **only after the fact-check gate (Step 6) is clear.** Now turn the veri
 **English — X/Twitter thread:**
 - Hook tweet naming the core finding, then numbered 1/, 2/, 3/ … (typically 6-10 tweets)
 - ~90% deep explanation of the core insight, ~10% understated closing comment
-- Subscript references ¹ ² ³ in a final tweet, native English for an X audience
+- **Respect X's 280-character per-tweet limit — every tweet (hook, each numbered tweet, and the reference tweet) must independently fit within 280 characters.** Count the characters of each tweet and split or trim anything over; never assume a long tweet will post. (A URL counts as ~23 chars on X regardless of length.)
+- **End with a references tweet** (native English, subscript ¹ ² ³ style) and **include a link to the core/primary paper** (DOI or preprint URL). The reference tweet is **also** bound by 280 chars: keep each ref terse (Author Year · venue). If the primary-paper link + refs don't all fit, put the link + top refs in the last tweet and spill the remainder into one additional tweet rather than overflowing any single one.
 
 **Chinese — 小红书 cards (with the figures grabbed in Step 3):**
 
@@ -373,13 +378,15 @@ gen.tail_card(["¹ Ref 1...", "² Ref 2..."], "output/2026-06-07-slug/05-tail.pn
 ```
 Card sequence: 封面卡 → 图卡（1-3，用 Step 3 抓到的论文原图 + 1-2 句中文评注）→ 文字卡（每张一个要点，字大留白）→ 尾卡（简评 + 参考来源）. The script handles dual-font mixing (Latin + STHeiti SC), line wrapping, consistent header/footer, and superscript fallback.
 
-**Three hard rules for the cards (established by user review — apply them yourself, do not make the user re-request them each round):**
+**Four hard rules for the cards (established by user review — apply them yourself, do not make the user re-request them each round):**
 
 1. **封面必须交代"在解读哪一篇"——这是开篇身份。** Don't open with a colloquial method gloss ("用'让十个解码器投票'的办法"). The cover's `source` block must state, plainly: **何时 · 什么平台/期刊 · 题为《…》的论文 · 用什么方法**. If the authors/lab are notable, **add who & where + a one-line why-credible** (e.g. "通讯作者 Francis Willett,Stanford 神经假体实验室——2023 年 62 词/分语音 BCI 的一作"). The reader should know exactly what work they're reading an explanation *of* before anything else. The punchy "与我有关" hook still goes in the title lines; provenance goes in `source`.
 
 2. **图卡裁到关键面板——清楚 > 全面,而且你自己先决策,别来回问。** A dense multi-panel paper figure shrunk whole makes every sub-panel unreadable. If **one** panel carries this card's insight, **crop the figure to that panel** before passing it in (PIL crop → `papers/[slug]-figNx.jpg`) so it renders large and legible. Decide crop-vs-keep-whole **up front, yourself**, at figure-prep time — making the user iterate "here's the figure → want me to crop? → ok now decide again" wastes their time. Only keep the full figure when the card genuinely needs multiple panels together. Helping the reader *see it clearly* always beats showing more.
 
 3. **图文必须对版——评注要指认图里的东西.** The point of putting a figure on a card is that the text alone couldn't show it. So the annotation must **explicitly reference what's in the figure** — "如上图,红柱(完整集成)、紫柱(伪集成)都明显低于灰柱(基线)…" — not text that talks past the image. Figure and words describe the same thing; the figure is evidence the words point at, never decoration with self-contained text beside it.
+
+4. **每张图卡是"结论开头 → 读图 → 转场"的三段式,卡与卡咬成一条逻辑链.** 整套卡不是孤立要点的堆叠。每张图卡的评注分三拍:**(1) 第一句直接给该卡的结论/承上**(接住上一张的转场);**(2) 中间一两句读图**——指认图里的线/形状/坐标/颜色(规则 3),但**不要纯描述像素**;**(3) 最后一句收束并转场到下一张**("好,我们已经知道了 X,但接下来还需要 Y")。把握"读图"的度:既部分解读了图,又把大逻辑串顺——不脱离图、也不就图论图。前一张的转场要接得住后一张的开头,让封面→各图卡→尾卡顺成一条承前启后的链。这是 2026-06-15 用户定稿的规矩。
 
 **Present the thread text and the card images together** for review.
 
@@ -398,6 +405,7 @@ This dialogue is the core of the product. The user learns through conversation; 
 Once content is locked, produce the **final publishing-ready version**:
 - **English thread** — each tweet clearly separated and numbered, copy-paste ready
 - **Chinese cards** — re-generate at production quality: **mobile-optimized 1080×1440px**, text readable without zooming, higher-resolution figures if the draft figures were too rough (re-grab from the browser at larger size, or extract from PDF). Save to `output/[date]-[slug]/` as numbered PNGs (`01-cover.png`, `02-figure1.png`, … `06-tail.png`).
+- **图的裁切要多轮重审、裁到干干净净为止——图的清晰好看很重要。** 粗裁常常带进隔壁 panel 的残块(箱线、图例)、切掉坐标轴/标签、或把曲线截断。**每渲染一版就把卡片本身 `Read` 出来看**——只有看渲染后的卡才看得出残留和截断;一旦发现图不干净(邻 panel 杂块、缺轴、断线),就重裁、重渲染,**该几轮就几轮**,直到这张图只剩它自己、坐标曲线完整。别把脏裁图发出去当最终版。
 
 **The "最终版 / final version" is always the actually-rendered cards, shown inline — never text-only copy.** When the user asks for the final/最终版, that means: run `card_generator.py`, produce the PNGs (figure cards composited with the real paper images), and **display the rendered card images in chat so the user can browse the actual 图卡** — image and text together as they will publish. Do not stop at a text description of the cards and make the user imagine the layout. Rough text copy belongs to the *draft* stage (Steps 5/7); the final stage owes the user browsable cards. The only exception is a headless run with no way to surface images — then say so explicitly.
 
