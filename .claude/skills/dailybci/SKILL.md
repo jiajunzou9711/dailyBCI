@@ -418,6 +418,17 @@ After publishing, assess whether today's paper is significant enough to become a
 - Suggest adding it: "今天这篇关于 [topic] 的工作值得加入知识库吗？"
 - If the user confirms, write it to `knowledge-base/papers/` and update `INDEX.md`
 
+### Step 10: Clean up local scratch (disk)
+
+发布完、知识库也更新后,`papers/` 里这一期的工作文件就用不上了——**主动提醒用户清理**(用户本机磁盘有限)。`papers/` 是 scratch 且已 gitignore(下载的论文图、PIL 裁的子图、全文 `<slug>.pdf` / `<slug>-fulltext.txt` 都不进版本库);真正的成品是 `output/<date>-<slug>/` 的卡片 PNG——**图已烤进卡片,源图删了不影响成品**。
+
+给用户一个带清单 + 大小的提示,**等用户确认再删**:
+> 今天这期发完了。`papers/` 下这期的工作文件(下载原图 N 张、裁图 M 张、PDF/全文 ≈ X MB)已经用不上了——成品卡在 `output/<slug>/`、图已烤进卡。要我清掉吗?
+
+- 用户同意 → `rm` 掉这一期的 `papers/<slug>*`(图 + PDF + 全文)。
+- **绝不碰 `output/`(成品)、`.claude/`(技能/知识库)、或别期的工作文件。** 删前再扫一眼清单确认范围。
+- 删除是不可逆操作:**必须用户明确同意才删**,不要默认替用户清。无头运行(cron/`claude -p`)不要自动删,留着等人工确认。
+
 ---
 
 ## Mode B: Knowledge Base Construction

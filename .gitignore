@@ -1,1 +1,15 @@
 *.epub
+.DS_Store
+
+# DailyBCI working scratch — downloaded paper figures, PIL crops, full-text
+# PDFs/txt. The committed artifact is the rendered deck under output/ (figures
+# are baked into the card PNGs). papers/ is regenerable and fully deletable.
+papers/*.jpg
+papers/*.jpeg
+papers/*.png
+papers/*.pdf
+papers/*.txt
+
+# Python build artifacts
+__pycache__/
+*.pyc
