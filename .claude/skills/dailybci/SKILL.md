@@ -201,6 +201,16 @@ This step requires the knowledge base. Load it before making judgments.
 
 After the user confirms their topic choice, get the full paper. **Browser-first, download-fallback.** A connected browser reads the rendered page directly and gets past the Cloudflare / JS / soft-paywall gates that block `curl` — so it usually retrieves both the full text and the figures in one go. Reserve PDF download for the cases the browser can't cover.
 
+#### 一次性扒全 — 强制,选题确认后立即做(在进 Step 4 之前)
+
+**选题一确定,就把这篇的全文 + 全部图一次性落到本地,后面所有步骤只读本地文件,不再回访浏览器。** 这是为了避免反复访问网页 / 重复下载(实测会触发浏览器卡死、Cloudflare 拦截、多次下载被拦),也让 Step 4 理解、裁子图、Step 6 事实核查、Step 7 配图全程快而稳。
+
+落选题后**马上**做两件事:
+1. **全文存本地:** 把渲染好的全文(摘要 + 所有 results 段落 + 全部 figure caption)抓下来,写进 `papers/<slug>-fulltext.md`(或下 PDF 用 PyMuPDF 抽全文)。之后深读和事实核查都读这个文件,不再 `get_page_text`。
+2. **全图先下:** 不要只下"打算用的那几张"——**把 F1 起逐张 `fetch(...).then(r=>r.status)` 探到 404 为止,把所有返回 200 的图全部下载存进 `papers/`**(`donato-fig1.jpg`…`fig6.jpg`)。哪几张进卡片是 Step 4/7 才定,但全下成本极低、且省掉来回跑。遇到 Chrome 多下载拦截就按下面 Gotcha 处理(提示用户点 Allow,或每次 re-navigate 后下一张)。
+
+下面的浏览器/下载细节是**实现这两件事**的手册。
+
 #### Default path — connected browser (interactive runs)
 
 If a browser is connected (Claude in Chrome), use it as the default:
@@ -212,8 +222,8 @@ If a browser is connected (Claude in Chrome), use it as the default:
    - **Gotcha A — the content filter eats URLs.** `javascript_tool` return values containing URL/query-string-like tokens (`http`, `?`, `=`, `&`, `.jpg`, long base64, even mangled URLs) get blocked as "Cookie/query string data". So **never try to read the image URL back out** — keep URLs *inside* the page and act on them there. Long `get_page_text` (>50k chars) also errors; slice via `javascript_tool` and strip URL tokens (replace `=`/`/`).
    - **Gotcha B — inline `<img>` are lazy-loaded placeholders** (0×0, broken icon). Don't screenshot them and don't trust their `src`. Fetch the real bytes instead.
    - **Gotcha C — the highres path.** On bioRxiv the working full-size URL is the **`/early/` path**, not the article-DOI path: `‹origin›/content/biorxiv/early/<YYYY>/<MM>/<DD>/<numeric-doi>/F‹N›.large.jpg` returns 200 (~100-130 KB). The `/content/<doi>vN/F‹N›.large.jpg` form 403s, and `.large.gif` 404s. Confirm the date/numeric-doi from the abstract page first, then probe a few patterns with `fetch(...).then(r=>r.status)` and keep the one that returns 200.
-   - **To display a figure to the user (Step 4):** in one `browser_batch` — `javascript_tool` that does `fetch(largeUrl,{credentials:'include'}) → blob → URL.createObjectURL`, wipes the body, and overlays a single `<img style="max-width:100%;max-height:100vh;object-fit:contain">`; then `computer` `screenshot` with **`save_to_disk:true`** (that attaches the image into the chat so the user actually sees it). One figure per screenshot.
-   - **To save a figure to `papers/` for the cards (Step 7):** fetch the blob in-page (`fetch(earlyUrl,{credentials:'include'})`) and trigger a download via a temporary `<a download>` click. (`curl` on the image CDN usually returns the Cloudflare HTML challenge, not the JPEG — don't rely on it.)
+   - **Download a figure to `papers/`:** fetch the blob in-page (`fetch(earlyUrl,{credentials:'include'})`) and trigger a download via a temporary `<a download>` click, then `mv ~/Downloads/<name> papers/`. (`curl` on the image CDN usually returns the Cloudflare HTML challenge, not the JPEG — don't rely on it. **Don't `curl` over a good local file** — it'll clobber it with the 403 HTML page.)
+   - **To display any figure to the user:** do NOT use browser `screenshot` (that image only enters the model context, not reliably the user's chat). Per Content Standards → *Figures Are Always Shown Inline*: the figure is already a local file in `papers/`, so just **`Read` that file** — Read renders it inline in the user's chat. To show one panel, `PIL Image.crop()` it to a new file, then `Read`. Reliable recipe: put explanation text first and the `Read` as the last line of the message.
    - **If the download is blocked by a browser permission, STOP and ask the user to click "Allow" — do not build a workaround.** Chrome blocks *multiple automatic downloads* per page after the first: the 1st figure lands, the rest are silently blocked behind an "Allow / Block" chip the user may not even notice. The correct move is a one-line prompt: *"Chrome is blocking multiple downloads — please click 'Allow' on the download prompt (top-right of the address bar), then I'll continue."* A workaround that worked this-session-only: trigger **one** download per fresh page-load (re-`navigate` the tab between each), since the per-load block resets. **Do NOT** stand up a local HTTP server to receive POSTed bytes — it dead-ends on Private Network Access preflight + extension network sandboxing, and the repeated DOM-wiping freezes the tab. This is a specific instance of a general rule: **when a blocker is one user click away (download/permission/auth popups), take the shortest path — prompt the user immediately and explicitly (say where to click and what to click); only reach for technical workarounds when the user genuinely cannot intervene (headless/cron).** See memory `shortest-path-on-user-resolvable-blockers`.
    - **Do not read or base64 the browser's session cookies** to feed an external download — blocked as credential exfiltration. Fetch inside the page's own credentialed context instead.
    - In the common case this is enough — **no PDF needed.**
