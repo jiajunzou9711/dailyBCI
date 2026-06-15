@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-14
-Total papers: 126
+Last updated: 2026-06-15
+Total papers: 135
 
 ## speech-decoding (15 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -72,7 +72,7 @@ Total papers: 126
 - [Metzger 2023](papers/signal-processing/metzger-2023-multimodal-speech-avatar-decoder.md) — 多模态speech/avatar decoder，把神经解码从文本扩展到声音与表情控制
 - [Card 2024](papers/signal-processing/card-2024-rapid-calibration-speech.md) — 快速校准speech decoder + online adaptation，推进临床可用的高准确率通信
 
-## non-invasive (9 papers)
+## non-invasive (18 papers)
 - [Farwell 1988](papers/non-invasive/farwell-1988-p300-speller.md) — P300 speller范式，6×6矩阵，定义非侵入BCI通信范式
 - [Wolpaw 1991](papers/non-invasive/wolpaw-1991-mu-rhythm-cursor.md) — 首个mu节律EEG光标控制，确立SMR-BCI路线
 - [Pfurtscheller 1997](papers/non-invasive/pfurtscheller-1997-motor-imagery-erd.md) — Motor imagery ERD/ERS，建立运动想象BCI神经生理学基础
@@ -82,6 +82,17 @@ Total papers: 126
 - [Chen 2015](papers/non-invasive/chen-2015-high-speed-ssvep-speller.md) — SSVEP speller 5.32 bits/sec，60字符/分钟，非侵入BCI速度纪录，PNAS
 - [Lawhern 2018](papers/non-invasive/lawhern-2018-eegnet.md) — EEGNet跨范式通用CNN，成为EEG深度学习标准基线
 - [Defossez 2023](papers/non-invasive/defossez-2023-meta-meg-speech-decoding.md) — Meta FAIR用MEG解码语音，72.5% top-10准确率，非侵入语音BCI探索
+
+### 听觉注意解码 / neuro-steered hearing (AAD line)
+- [Mesgarani & Chang 2012](papers/non-invasive/mesgarani-2012-attended-speaker-cortical.md) — 人类ECoG首证听觉皮层选择性重建被注意说话者，AAD的神经科学地基
+- [Ding & Simon 2012](papers/non-invasive/ding-2012-auditory-object-encoding.md) — MEG显示皮层包络追踪把被注意语音编码为"auditory object"，非侵入证据
+- [O'Sullivan 2015](papers/non-invasive/osullivan-2015-single-trial-eeg-aad.md) — 首次单试次头皮EEG解码听觉注意（包络重建），整条EEG-AAD路线的奠基石
+- [Van Eyndhoven 2017](papers/non-invasive/vaneyndhoven-2017-eeg-informed-speaker-extraction.md) — 首次AAD+被注意说话者提取耦合，跑通神经导向助听假体流水线
+- [Han 2019](papers/non-invasive/han-2019-speaker-independent-aad.md) — 说话者无关AAD，无需干净源，DNN分离+皮层匹配泛化到未见说话者（人类iEEG）
+- [Vandecappelle 2021](papers/non-invasive/vandecappelle-2021-cnn-locus-attention.md) — CNN短窗(1-2s)直接解码注意方位，从慢速包络重建转向快速空间解码
+- [Debener 2015](papers/non-invasive/debener-2015-around-ear-eeg.md) — 耳周柔性印刷电极(cEEGrid)+手机，可穿戴/微型化EEG记录的奠基
+- [Geirnaert 2021](papers/non-invasive/geirnaert-2021-aad-review-benchmark.md) — AAD定义性综述+统一基准，提出MESD性能指标，本线milestone抽取来源
+- [Geirnaert 2022](papers/non-invasive/geirnaert-2022-unsupervised-time-adaptive-aad.md) — 无监督+时间自适应AAD，免逐人标注，走向实际部署的实用性milestone
 
 ## invasive-recording (9 papers)
 - [Kennedy 1998](papers/invasive-recording/kennedy-1998-first-human-intracortical-bci.md) — 首次人类慢性intracortical记录用于BCI，Neurotrophic Electrode
