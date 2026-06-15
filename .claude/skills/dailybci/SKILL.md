@@ -64,6 +64,16 @@ Terms fall into two tiers:
 
 - **Company, institution, and product names in Chinese:** Always confirm against Chinese sources. Do not transliterate from English — the official Chinese name may differ entirely (e.g., Neuracle Technology → 博睿康, not 神络医疗).
 
+### Figures Are Always Shown Inline (贯穿全流程)
+
+**只要某一步涉及图——论文原图或生成的卡片——默认就要把图本身真正贴进对话框内联呈现,绝不停在"这张图画了什么"的文字转述。** 这是贯穿全流程的硬性要求,不依赖各 step 各自重申。用户是看着图本身才能真正参与判断(对照 insight、检查图文对版、确认成品),文字描述替代不了。
+
+适用全流程,典型两处:
+- **源图(Step 4):** 呈现 insight 时,贴出打算用的那 1-3 张论文原图(浏览器 fetch 原图 blob → 覆盖整页 → `screenshot` 带 `save_to_disk:true`;或 fetch blob 触发下载存进 `papers/` 后用 Read 渲染)。
+- **成品卡(Step 7/8):** "最终版"是真正渲染出来、内联展示的图卡(`card_generator.py` 产出 PNG 后贴进对话),不是纯文字 copy。
+
+**抓图/渲染费劲不构成跳过的理由**——已知坑(懒加载占位符、URL 路径、内容过滤)见 Step 3,换方法继续直到图真的出现在对话里。**唯一例外**是确无浏览器、无法把图贴进对话的无头运行(cron/`claude -p`):那种情况要明确告诉用户"本次无法贴图、只能文字描述",而不是默默跳过。
+
 ---
 
 ## Project layout & paths (Claude Code)
