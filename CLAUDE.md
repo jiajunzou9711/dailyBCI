@@ -13,7 +13,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 │   └── skills/
 │       └── dailybci/
 │           ├── SKILL.md           ← 技能主文件(调试主要改这里)
-│           ├── knowledge-base/    ← INDEX.md + papers/<子领域>/(当前 136 篇,13 个子领域)
+│           ├── knowledge-base/    ← INDEX.md + papers/<子领域>/(13 个子领域,篇数见 INDEX.md)
 │           ├── scripts/
 │           │   └── card_generator.py   ← 小红书卡片生成器(Pillow)
 │           └── fonts/             ← CJK 字体(STHeiti / Hiragino)
@@ -49,7 +49,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - **Step 3 选题即"一次性扒全"**:经浏览器把**全文 PDF**(PyMuPDF 抽文)+ **全部图**(F1 探到 404)一次性下到本地,之后深读/核查/裁图全读本地、不再回访网页。curl 抓 bioRxiv/PMC 会被 Cloudflare/JS 拦,故走浏览器。
 - **Step 5–8 内容先行**:第一版即给**双语文字稿 + 粗裁图(内联)**→ 自动事实核查 → 生产(渲染卡片)→ 打磨(图多轮裁干净)。最贵的渲染推到事实锁定之后。
 - **Content Standards**:标物种、数字回溯原文、慎用"首次/都/all"、术语分层、中文源核实公司名;**双语大纲一致但内容可不同**(thread 纯文字自洽 / 小红书图文更深、用"结论→读图→转场"链);**图永远内联呈现 = 存盘 + Read**(不用浏览器 screenshot)。
-- **知识库 136 篇 / 13 子领域**,`population-dynamics` 线延伸到 de Vicente 2026(Sadtler 2014 → Busch 2026 → de Vicente 2026);`non-invasive` 新增 AAD(听觉注意解码)子线。
+- **知识库 13 子领域(篇数见 INDEX.md)**,`population-dynamics` 线延伸到 de Vicente 2026(Sadtler 2014 → Busch 2026 → de Vicente 2026);`non-invasive` 新增 AAD(听觉注意解码)子线。
 
 ---
 
