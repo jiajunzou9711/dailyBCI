@@ -27,11 +27,21 @@ These standards apply to all output — X threads, 小红书 cards, knowledge ba
 
 1. **Label species for every cited study.** BCI results in macaques, rodents, and humans carry very different weight. Always specify: "Chestek et al. (2011) measured in rhesus macaques…", "In a human patient with C4 SCI…". Never leave the reader guessing whether a result comes from an animal model or a clinical trial.
 
-2. **Every quantitative claim must trace back to the original paper.** Do not paraphrase from memory or round loosely. If you write "100% success rate within 10 seconds," be ready to point to the exact figure, table, or sentence in the source. If you cannot verify a number, say "the paper reports X" rather than asserting X as fact.
+2. **Always specify the electrode/recording modality — at the very start, every time it comes up.** 脑机接口领域里"用什么电极"几乎决定了一项工作的性质、风险和可比对象,所以**一旦涉及电极,开篇第一时间就要讲清它的类型**,绝不含糊带过。按这棵分类树明确归位:
+   - **侵入式 (invasive)** — 进一步说清是哪一种:
+     - **皮层内 / intracortical(穿刺式微电极阵列,如 Utah array)** — 电极扎进皮层、记录单神经元动作电位 + LFP;
+     - **皮层表面 / ECoG**(含**硬膜下 subdural** 与 **硬膜外 epidural/eECoG**)— 电极贴在皮层表面,不穿刺;
+     - **深部电极 / depth(sEEG)**;
+     - **DBS** — 深部脑刺激电极(多为治疗性刺激,非记录主导)。
+   - **非侵入式 (non-invasive)** — 说清是 **EEG / MEG / fNIRS / 耳周或皮下 EEG** 等具体技术。
+   - **血管内 / endovascular(如 Stentrode)** — 经血管放置、不开颅,单列一类。
+   要点:植入位置(哪块脑区)、记录的信号层级(单神经元 / LFP / 表面场电位)、有线还是无线,这些都属于"电极说明"的一部分,能讲清就讲清。读者看完应当立刻知道"这是扎进脑子里的、还是贴在表面的、还是戴在头皮上的"。
 
-3. **Avoid universal claims unless individually verified.** Words like "all", "every", "no other", "the first ever", and "都" are strong assertions that require exhaustive checking. Prefer bounded language: "the main prior approaches included…" instead of "all previous work relied on…"; "among the earliest" instead of "the first." Use "首次" or "first" only when verified against the knowledge base.
+3. **Every quantitative claim must trace back to the original paper.** Do not paraphrase from memory or round loosely. If you write "100% success rate within 10 seconds," be ready to point to the exact figure, table, or sentence in the source. If you cannot verify a number, say "the paper reports X" rather than asserting X as fact.
 
-4. **Fact verification step.** After completing a draft, run the three-layer verification defined in Step 6 (trace back to source → cross-source check → assertion audit with knowledge base + web search). Present the verification table to the user before any discussion of wording. Facts must be confirmed before polish begins. See Step 6 for the full procedure.
+4. **Avoid universal claims unless individually verified.** Words like "all", "every", "no other", "the first ever", and "都" are strong assertions that require exhaustive checking. Prefer bounded language: "the main prior approaches included…" instead of "all previous work relied on…"; "among the earliest" instead of "the first." Use "首次" or "first" only when verified against the knowledge base.
+
+5. **Fact verification step.** After completing a draft, run the three-layer verification defined in Step 6 (trace back to source → cross-source check → assertion audit with knowledge base + web search). Present the verification table to the user before any discussion of wording. Facts must be confirmed before polish begins. See Step 6 for the full procedure.
 
 ### Technical Term Usage
 
@@ -203,6 +213,13 @@ This step requires the knowledge base. Load it before making judgments.
 ### Step 3: Obtain the paper's full text + key figures
 
 After the user confirms their topic choice, get the full paper. **Browser-first, download-fallback.** A connected browser reads the rendered page directly and gets past the Cloudflare / JS / soft-paywall gates that block `curl` — so it usually retrieves both the full text and the figures in one go. Reserve PDF download for the cases the browser can't cover.
+
+#### 正刊优先,付费墙挡住时回退到 OA 预印本(2026-06-16 定)
+
+期刊正刊是 version of record,**优先用正刊**。但顶刊(Nature Medicine、Nature、NEJM 等)常**不开放获取**——全文和高清原图都在付费墙后,浏览器/curl 都拿不到完整 PDF 与图。这种情况下:
+1. **回退到该论文的 OA 预印本**(bioRxiv/medRxiv,同一篇)拿全文 + 全部图——这是允许的现实回退,不是偷懒。
+2. **预印本"未经同行评审",定稿可能与正刊有个别数字/图的微调**,所以走预印本时,承重数字要在 Step 6 **额外与正刊摘要 / 官方新闻稿交叉核对一次**。
+3. **溯源(封面 source / 尾卡 / thread refs)以正刊为准**,并注明图取自预印本,例如"Nature Medicine 正刊《…》(图取自 bioRxiv 预印本 <doi>)"。
 
 #### 一次性扒全 — 强制,选题确认后立即做(在进 Step 4 之前)
 
@@ -385,7 +402,7 @@ Card sequence: 封面卡 → 图卡（按内容需要,通常 2-5 张,用 Step 3 
 
 3. **图文必须对版——评注要指认图里的东西.** The point of putting a figure on a card is that the text alone couldn't show it. So the annotation must **explicitly reference what's in the figure** — "如上图,红柱(完整集成)、紫柱(伪集成)都明显低于灰柱(基线)…" — not text that talks past the image. Figure and words describe the same thing; the figure is evidence the words point at, never decoration with self-contained text beside it.
 
-4. **每张图卡是"结论开头 → 读图 → 转场"的三段式,卡与卡咬成一条逻辑链.** 整套卡不是孤立要点的堆叠。每张图卡的评注分三拍:**(1) 第一句直接给该卡的结论/承上**(接住上一张的转场);**(2) 中间一两句读图**——指认图里的线/形状/坐标/颜色(规则 3),但**不要纯描述像素**;**(3) 最后一句收束并转场到下一张**("好,我们已经知道了 X,但接下来还需要 Y")。把握"读图"的度:既部分解读了图,又把大逻辑串顺——不脱离图、也不就图论图。前一张的转场要接得住后一张的开头,让封面→各图卡→尾卡顺成一条承前启后的链。这是 2026-06-15 用户定稿的规矩。
+4. **每张卡(图卡与纯文字卡同理)都是"结论开头 → 主体 → 转场"的三段式,卡与卡咬成一条逻辑链.** 整套卡不是孤立要点的堆叠。每张卡分三拍:**(1) 第一句直接给该卡的结论/承上**(接住上一张的转场);**(2) 中间主体**——图卡是"读图"(指认图里的线/形状/坐标/颜色,见规则 3,但不要纯描述像素),纯文字卡是把该结论讲透的展开;**(3) 最后一句收束并转场到下一张**("好,我们已经知道了 X,但接下来还需要 Y")。**这个三段式对纯文字卡一样强制**——文字卡也必须有承上的开头结论和引出下一张的转场,不能只甩一段孤立内容(2026-06-16 用户明确:文字卡曾漏掉首尾两拍,需补回)。把握"读图"的度:既部分解读了图,又把大逻辑串顺——不脱离图、也不就图论图。前一张的转场要接得住后一张的开头,让封面→各卡→尾卡顺成一条承前启后的链。这是 2026-06-15 用户定稿、2026-06-16 推广到全部卡的规矩。
 
 **Present the thread text and the card images together** for review.
 
@@ -404,7 +421,8 @@ This dialogue is the core of the product. The user learns through conversation; 
 Once content is locked, produce the **final publishing-ready version**:
 - **English thread** — each tweet clearly separated and numbered, copy-paste ready
 - **Chinese cards** — re-generate at production quality: **mobile-optimized 1080×1440px**, text readable without zooming, higher-resolution figures if the draft figures were too rough (re-grab from the browser at larger size, or extract from PDF). Save to `output/[date]-[slug]/` as numbered PNGs (`01-cover.png`, `02-figure1.png`, … `06-tail.png`).
-- **图的裁切要多轮重审、裁到干干净净为止——图的清晰好看很重要。** 粗裁常常带进隔壁 panel 的残块(箱线、图例)、切掉坐标轴/标签、或把曲线截断。**每渲染一版就把卡片本身 `Read` 出来看**——只有看渲染后的卡才看得出残留和截断;一旦发现图不干净(邻 panel 杂块、缺轴、断线),就重裁、重渲染,**该几轮就几轮**,直到这张图只剩它自己、坐标曲线完整。别把脏裁图发出去当最终版。
+- **裁子图先用"留白投影"定位 panel 边界,不要肉眼猜像素坐标。** 反复目测 `crop()` 坐标既慢又总切不准(切掉时间序列右端、漏掉图例、把高出量程的误差棒截顶)。正确做法是让图自己告诉你边界:把整图转灰度→`ink = (pixels < 235)`→对**列**求和找出"基本无墨的列区间"(=左右 panel 之间的竖直留白沟),对**行**求和找出横向留白沟;panel 的真实包围盒就在相邻留白沟之间。多 panel 共用一行/一列时(如左列多子图紧贴、右列上方还压着别的 panel),要**只在目标列区间内**再投影一次行、或只在目标行区间内再投影一次列,才能把目标 panel 从邻居里分离干净。关键教训:**panel 的数据/坐标轴常比你以为的延伸得更远**(本期 Fig 2A 的时间序列一直画到 x≈1028,肉眼以为到 805 就完了,结果右端 1/4 被切),所以一定要用投影量出真实右/下边界,再加一点点统一边距。
+- **图的裁切要多轮重审、裁到干干净净为止——图的清晰好看很重要。** 即便用了投影定位,仍要**每裁一版就 `Read` 裁出的子图、再 `Read` 渲染后的卡**——只有看渲染后的卡才看得出残留和截断;一旦发现图不干净(邻 panel 杂块、缺轴、断线、图例被切),就调整投影边界重裁、重渲染,**该几轮就几轮**,直到这张图只剩它自己、坐标曲线完整、图例齐全。别把脏裁图发出去当最终版。
 
 **The "最终版 / final version" is always the actually-rendered cards, shown inline — never text-only copy.** When the user asks for the final/最终版, that means: run `card_generator.py`, produce the PNGs (figure cards composited with the real paper images), and **display the rendered card images in chat so the user can browse the actual 图卡** — image and text together as they will publish. Do not stop at a text description of the cards and make the user imagine the layout. Rough text copy belongs to the *draft* stage (Steps 5/7); the final stage owes the user browsable cards. The only exception is a headless run with no way to surface images — then say so explicitly.
 
@@ -560,6 +578,7 @@ Total papers: [count]
 - **Honest about uncertainty** — "the paper reports X; if this replicates, it would mean Y" is good
 - **标注参考来源** — 所有关键数据（数字、百分比、对比结论）必须加角标引用。X thread 在末尾 tweet 列出参考链接；小红书在尾卡列出参考文献。角标格式：上标数字 ¹ ² ³，对应尾部编号列表。
 - **避免"不是...而是..."句式** — 中文写作中不要使用"不是 X，而是 Y"这种对立表达。改用直接陈述：直接说 Y 是什么，如果需要对比，用"相比 X，Y 更..."或直接并列呈现让读者自己判断。
+- **中文里指代论文子图用"图 A / 图 D"，不要说"面板 A / 面板 D"** —— "面板(panel)"是英文 figure panel 的直译，在中文语境里很生硬。卡片评注、对话讲解里一律说"图 A""图 2D""上图左"等自然说法。（2026-06-16 用户指出）
 
 ## Visual Design (小红书卡片)
 
