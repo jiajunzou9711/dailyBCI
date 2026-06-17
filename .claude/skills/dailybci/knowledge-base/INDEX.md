@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-16
-Total papers: 137
+Last updated: 2026-06-17
+Total papers: 142
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -73,7 +73,7 @@ Total papers: 137
 - [Metzger 2023](papers/signal-processing/metzger-2023-multimodal-speech-avatar-decoder.md) — 多模态speech/avatar decoder，把神经解码从文本扩展到声音与表情控制
 - [Card 2024](papers/signal-processing/card-2024-rapid-calibration-speech.md) — 快速校准speech decoder + online adaptation，推进临床可用的高准确率通信
 
-## non-invasive (18 papers)
+## non-invasive (19 papers)
 - [Farwell 1988](papers/non-invasive/farwell-1988-p300-speller.md) — P300 speller范式，6×6矩阵，定义非侵入BCI通信范式
 - [Wolpaw 1991](papers/non-invasive/wolpaw-1991-mu-rhythm-cursor.md) — 首个mu节律EEG光标控制，确立SMR-BCI路线
 - [Pfurtscheller 1997](papers/non-invasive/pfurtscheller-1997-motor-imagery-erd.md) — Motor imagery ERD/ERS，建立运动想象BCI神经生理学基础
@@ -94,6 +94,7 @@ Total papers: 137
 - [Debener 2015](papers/non-invasive/debener-2015-around-ear-eeg.md) — 耳周柔性印刷电极(cEEGrid)+手机，可穿戴/微型化EEG记录的奠基
 - [Geirnaert 2021](papers/non-invasive/geirnaert-2021-aad-review-benchmark.md) — AAD定义性综述+统一基准，提出MESD性能指标，本线milestone抽取来源
 - [Geirnaert 2022](papers/non-invasive/geirnaert-2022-unsupervised-time-adaptive-aad.md) — 无监督+时间自适应AAD，免逐人标注，走向实际部署的实用性milestone
+- [Jayaram & Barachant 2018](papers/non-invasive/jayaram-2018-moabb-benchmarking.md) — MOABB：首个聚合多公开EEG数据集+统一评估框架，暴露EEG领域可重复性危机，EEGDash的直接前驱
 
 ## invasive-recording (9 papers)
 - [Kennedy 1998](papers/invasive-recording/kennedy-1998-first-human-intracortical-bci.md) — 首次人类慢性intracortical记录用于BCI，Neurotrophic Electrode
@@ -150,13 +151,17 @@ Total papers: 137
 - [Precision 2025](papers/clinical-regulatory/precision-2025-layer7-510k.md) — 首个BCI通过FDA 510(k)获批，开创快速监管通道
 - [Neuracle/NEO 2026](papers/clinical-regulatory/neuracle-2026-neo-nmpa-approval.md) — 中国NMPA颁发全球首张侵入式BCI注册证（三类），首个商业获批并接入医保的半侵入BCI，36例临床全部抓握改善（2026-03-13）
 
-## ai-neural-modeling (6 papers)
+## ai-neural-modeling (10 papers)
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
 - [Ye 2021](papers/ai-neural-modeling/ye-2021-neural-data-transformer.md) — NDT首次将Transformer应用于神经spike数据，推理速度比RNN快6倍
 - [Ye 2023](papers/ai-neural-modeling/ye-2023-ndt2-multi-context.md) — NDT-2跨session预训练，证明预训练+微调范式在神经数据上有效，NeurIPS 2023
 - [Azabou 2024](papers/ai-neural-modeling/azabou-2024-mtm-universal-translator.md) — MtM三维度掩码自监督，跨脑区跨细胞类型联合建模，NeurIPS 2024
 - [Azabou 2025](papers/ai-neural-modeling/azabou-2025-poyo-plus.md) — POYO+多session多任务foundation model，Allen Institute全量数据，ICLR 2025
 - [Defossez 2023](papers/ai-neural-modeling/defossez-2023-meta-meg-speech.md) — Meta FAIR对比学习将MEG映射到wav2vec表征空间，非侵入语音解码新范式
+- [Yang 2023](papers/ai-neural-modeling/yang-2023-biot-biosignal-transformer.md) — BIOT：首个跨数据集生物信号基础模型(EEG+ECG+体动)，patch tokenization+masked自监督，NeurIPS 2023
+- [Jiang 2024](papers/ai-neural-modeling/jiang-2024-labram-large-brain-model.md) — LaBraM：首个大规模EEG基础模型，2500h/20数据集VQ频谱预训练，跨任务微调全超SOTA，ICLR 2024 Spotlight
+- [Liu 2026](papers/ai-neural-modeling/liu-2026-eeg-fm-benchmark.md) — EEG-FM首次系统评测：12个开源FM×13数据集×9范式；larger≠better，专家模型仍有竞争力，指明数据瓶颈
+- [Aristimunha 2026](papers/ai-neural-modeling/aristimunha-2026-eegdash-open-data-platform.md) — EEGDash：791公开数据集/五模态/86k小时做成零代码可训练；审计揭示"合规≠可用"(ρ=−0.05)，脑电基础模型缺的数据基础设施一环
 
 ## population-dynamics (8 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature
