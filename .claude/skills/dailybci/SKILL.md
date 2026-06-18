@@ -57,6 +57,7 @@ Terms fall into two tiers:
 - **No motivational commentary.** Don't editorialize about how this will "change lives" or "open new doors." The 10% comment at the end should be a concrete observation — what open question this raises, what would need to happen next — not a grand narrative.
 - **Understated confidence.** "The paper reports X; if this holds across more patients, it would suggest Y" is better than "X proves Y."
 - **Prefer concrete scenarios over abstract scores.** "患者写出了自己的名字" > "ARAT评分提高16分". Functional outcomes that a reader can visualize are more powerful and more honest than context-free numbers.
+- **少用比喻，优先用人话直说。** 严肃科学领域里比喻太多会失真。当一个专业指标/术语难用一句话讲清时，优先用**朴素、准确的人话**把它讲明白，而不是堆叠比喻。比喻只在**确实非常贴切、且不引入误导**时才用——非到万不得已不用，能直说就直说。（2026-06-18 用户指出）
 
 ### Bilingual Content Workflow
 
@@ -579,6 +580,7 @@ Total papers: [count]
 - **标注参考来源** — 所有关键数据（数字、百分比、对比结论）必须加角标引用。X thread 在末尾 tweet 列出参考链接；小红书在尾卡列出参考文献。角标格式：上标数字 ¹ ² ³，对应尾部编号列表。
 - **避免"不是...而是..."句式** — 中文写作中不要使用"不是 X，而是 Y"这种对立表达。改用直接陈述：直接说 Y 是什么，如果需要对比，用"相比 X，Y 更..."或直接并列呈现让读者自己判断。
 - **中文里指代论文子图用"图 A / 图 D"，不要说"面板 A / 面板 D"** —— "面板(panel)"是英文 figure panel 的直译，在中文语境里很生硬。卡片评注、对话讲解里一律说"图 A""图 2D""上图左"等自然说法。（2026-06-16 用户指出）
+- **中文里 spike 一律写"动作电位"，不要用"脉冲"或直接写"spike"** —— 中文神经科学语境下"动作电位"更标准、更对味；"脉冲"偏工程信号味。spike train → 动作电位序列。（2026-06-18 用户指出）
 
 ## Visual Design (小红书卡片)
 

@@ -109,6 +109,7 @@ def is_cjk(char):
     cp = ord(char)
     return (
         0x4E00 <= cp <= 0x9FFF or    # CJK Unified Ideographs
+        0x2460 <= cp <= 0x24FF or    # Enclosed Alphanumerics (①②③… — in STHeiti, not Arial)
         0x3400 <= cp <= 0x4DBF or    # CJK Extension A
         0x2E80 <= cp <= 0x2EFF or    # CJK Radicals Supplement
         0x3000 <= cp <= 0x303F or    # CJK Symbols and Punctuation

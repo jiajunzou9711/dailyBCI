@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-17
-Total papers: 142
+Last updated: 2026-06-18
+Total papers: 151
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -151,7 +151,7 @@ Total papers: 142
 - [Precision 2025](papers/clinical-regulatory/precision-2025-layer7-510k.md) — 首个BCI通过FDA 510(k)获批，开创快速监管通道
 - [Neuracle/NEO 2026](papers/clinical-regulatory/neuracle-2026-neo-nmpa-approval.md) — 中国NMPA颁发全球首张侵入式BCI注册证（三类），首个商业获批并接入医保的半侵入BCI，36例临床全部抓握改善（2026-03-13）
 
-## ai-neural-modeling (10 papers)
+## ai-neural-modeling (19 papers)
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
 - [Ye 2021](papers/ai-neural-modeling/ye-2021-neural-data-transformer.md) — NDT首次将Transformer应用于神经spike数据，推理速度比RNN快6倍
 - [Ye 2023](papers/ai-neural-modeling/ye-2023-ndt2-multi-context.md) — NDT-2跨session预训练，证明预训练+微调范式在神经数据上有效，NeurIPS 2023
@@ -162,6 +162,17 @@ Total papers: 142
 - [Jiang 2024](papers/ai-neural-modeling/jiang-2024-labram-large-brain-model.md) — LaBraM：首个大规模EEG基础模型，2500h/20数据集VQ频谱预训练，跨任务微调全超SOTA，ICLR 2024 Spotlight
 - [Liu 2026](papers/ai-neural-modeling/liu-2026-eeg-fm-benchmark.md) — EEG-FM首次系统评测：12个开源FM×13数据集×9范式；larger≠better，专家模型仍有竞争力，指明数据瓶颈
 - [Aristimunha 2026](papers/ai-neural-modeling/aristimunha-2026-eegdash-open-data-platform.md) — EEGDash：791公开数据集/五模态/86k小时做成零代码可训练；审计揭示"合规≠可用"(ρ=−0.05)，脑电基础模型缺的数据基础设施一环
+
+### 神经解码→图像/语言重建 (visual & language reconstruction line)
+- [Miyawaki 2008](papers/ai-neural-modeling/miyawaki-2008-visual-image-reconstruction.md) — 首次从fMRI重建所见图像本身(多尺度局部解码器拼10×10对比图案)，开"看图重建"先河(人类)
+- [Horikawa 2017](papers/ai-neural-modeling/horikawa-2017-generic-decoding-dnn-features.md) — generic decoding：解码层级DNN特征泛化到训练外类别，看到的与想象的都可解；"神经→预训练网络特征空间"范式祖先(人类fMRI)
+- [Shen 2019](papers/ai-neural-modeling/shen-2019-deep-image-reconstruction.md) — 端到端深度图像重建：优化图像逼近解码DNN特征+自然图像生成先验，确立"神经→特征→生成"三段式(人类fMRI)
+- [Ozcelik 2023](papers/ai-neural-modeling/ozcelik-2023-latent-diffusion-scene-reconstruction.md) — 潜在扩散做自然场景重建，"低层潜在+CLIP语义"双路条件，NSD基准(人类fMRI)
+- [Takagi 2023](papers/ai-neural-modeling/takagi-2023-stable-diffusion-reconstruction.md) — 仅线性映射+现成Stable Diffusion做高分辨率重建，扩散era标志性极简路线(人类fMRI)
+- [Scotti 2023 (MindEye)](papers/ai-neural-modeling/scotti-2023-mindeye-fmri-to-image.md) — 对比学习+扩散先验把fMRI对齐CLIP，刷新fMRI-to-image SOTA；"对齐"为核心训练目标(人类fMRI)
+- [Tang 2023 (Huth)](papers/ai-neural-modeling/tang-2023-semantic-language-reconstruction.md) — 首次非侵入(fMRI)语义重建连续语言(gist非逐字)，神经→语言祖先，提出mental privacy(人类fMRI)
+- [Ferrante 2023 (Brain Captioning)](papers/ai-neural-modeling/ferrante-2023-brain-captioning.md) — 把脑活动解码成图像+文本caption，NEURRATOR"自然语言旁白"最直接祖先(人类fMRI；与候选2 Toschi同线)
+- [Marin-Llobet 2026 (NEURRATOR)](papers/ai-neural-modeling/marin-llobet-2026-neurrator-single-cell-narration.md) — 首次把"神经活动→自由文本旁白"推到单神经元级(小鼠Neuropixels)：动作电位→冻结CLIP→冻结LLaVA零语言端训练；同一画面PV/SST讲车、VIP讲光影，把细胞类型从分类目标变成可用语言查询的功能探针(76%认型)
 
 ## population-dynamics (8 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature
