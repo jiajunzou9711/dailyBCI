@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-18
-Total papers: 151
+Last updated: 2026-06-19
+Total papers: 153
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -73,7 +73,7 @@ Total papers: 151
 - [Metzger 2023](papers/signal-processing/metzger-2023-multimodal-speech-avatar-decoder.md) — 多模态speech/avatar decoder，把神经解码从文本扩展到声音与表情控制
 - [Card 2024](papers/signal-processing/card-2024-rapid-calibration-speech.md) — 快速校准speech decoder + online adaptation，推进临床可用的高准确率通信
 
-## non-invasive (19 papers)
+## non-invasive (21 papers)
 - [Farwell 1988](papers/non-invasive/farwell-1988-p300-speller.md) — P300 speller范式，6×6矩阵，定义非侵入BCI通信范式
 - [Wolpaw 1991](papers/non-invasive/wolpaw-1991-mu-rhythm-cursor.md) — 首个mu节律EEG光标控制，确立SMR-BCI路线
 - [Pfurtscheller 1997](papers/non-invasive/pfurtscheller-1997-motor-imagery-erd.md) — Motor imagery ERD/ERS，建立运动想象BCI神经生理学基础
@@ -83,6 +83,8 @@ Total papers: 151
 - [Chen 2015](papers/non-invasive/chen-2015-high-speed-ssvep-speller.md) — SSVEP speller 5.32 bits/sec，60字符/分钟，非侵入BCI速度纪录，PNAS
 - [Lawhern 2018](papers/non-invasive/lawhern-2018-eegnet.md) — EEGNet跨范式通用CNN，成为EEG深度学习标准基线
 - [Defossez 2023](papers/non-invasive/defossez-2023-meta-meg-speech-decoding.md) — Meta FAIR用MEG解码语音，72.5% top-10准确率，非侵入语音BCI探索
+- [Ding 2025](papers/non-invasive/ding-2025-finger-mi-healthy.md) — 首次用头皮EEG实时控制individual-finger级机械手(健康熟练者，2指80.6%/3指60.6%)：把"逐指"从皮层内推到非侵入，He组非侵入逐指线起点
+- [Ding 2026](papers/non-invasive/ding-2026-finger-mi-stroke.md) — 首次在零经验中风患者用头皮EEG实现实时逐指机械手控制：2指83.5%/3指61.4%(随机50%/33%)、患侧≈健侧(d=0.18/0.42)、低频delta是信号；中风把精细运动编码重组成双侧/分散/低频，EEGNet跟住(He组，naïve中风≈其2025 Nat Commun健康熟练者)
 
 ### 听觉注意解码 / neuro-steered hearing (AAD line)
 - [Mesgarani & Chang 2012](papers/non-invasive/mesgarani-2012-attended-speaker-cortical.md) — 人类ECoG首证听觉皮层选择性重建被注意说话者，AAD的神经科学地基

@@ -375,17 +375,28 @@ class CardGenerator:
         img.save(output_path, quality=95)
         return output_path
 
-    def tail_card(self, references, output_path):
+    def tail_card(self, references, output_path, lead_paragraphs=None):
         """
         Generate a tail card with references and prominent signature.
         Args:
             references: List of reference strings (each prefixed with ¹, ², etc.)
             output_path: Where to save
+            lead_paragraphs: Optional list of body paragraphs rendered ABOVE the
+                "参考文献" heading — use when the tail card opens with closing
+                commentary (the "10%") that answers the prior card, keeping it
+                visually separate from the reference list below.
         """
         img, d = self._new_card()
         self._draw_header(d)
 
-        y = 180
+        y = 160
+        if lead_paragraphs:
+            for para in lead_paragraphs:
+                y = self.draw_mixed_wrap(d, MARGIN, y, para, SIZE_BODY,
+                                         COLOR_BODY, W - 2 * MARGIN, line_spacing=1.6)
+                y += 20
+            y += 36
+
         self.draw_mixed(d, (MARGIN, y), "参考文献", SIZE_SUBTITLE,
                         COLOR_TITLE, bold=True)
         y += 70
