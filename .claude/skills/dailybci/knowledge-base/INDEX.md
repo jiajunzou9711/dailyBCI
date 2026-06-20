@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-19
-Total papers: 153
+Last updated: 2026-06-20
+Total papers: 154
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -153,7 +153,7 @@ Total papers: 153
 - [Precision 2025](papers/clinical-regulatory/precision-2025-layer7-510k.md) — 首个BCI通过FDA 510(k)获批，开创快速监管通道
 - [Neuracle/NEO 2026](papers/clinical-regulatory/neuracle-2026-neo-nmpa-approval.md) — 中国NMPA颁发全球首张侵入式BCI注册证（三类），首个商业获批并接入医保的半侵入BCI，36例临床全部抓握改善（2026-03-13）
 
-## ai-neural-modeling (19 papers)
+## ai-neural-modeling (20 papers)
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
 - [Ye 2021](papers/ai-neural-modeling/ye-2021-neural-data-transformer.md) — NDT首次将Transformer应用于神经spike数据，推理速度比RNN快6倍
 - [Ye 2023](papers/ai-neural-modeling/ye-2023-ndt2-multi-context.md) — NDT-2跨session预训练，证明预训练+微调范式在神经数据上有效，NeurIPS 2023
@@ -175,6 +175,7 @@ Total papers: 153
 - [Tang 2023 (Huth)](papers/ai-neural-modeling/tang-2023-semantic-language-reconstruction.md) — 首次非侵入(fMRI)语义重建连续语言(gist非逐字)，神经→语言祖先，提出mental privacy(人类fMRI)
 - [Ferrante 2023 (Brain Captioning)](papers/ai-neural-modeling/ferrante-2023-brain-captioning.md) — 把脑活动解码成图像+文本caption，NEURRATOR"自然语言旁白"最直接祖先(人类fMRI；与候选2 Toschi同线)
 - [Marin-Llobet 2026 (NEURRATOR)](papers/ai-neural-modeling/marin-llobet-2026-neurrator-single-cell-narration.md) — 首次把"神经活动→自由文本旁白"推到单神经元级(小鼠Neuropixels)：动作电位→冻结CLIP→冻结LLaVA零语言端训练；同一画面PV/SST讲车、VIP讲光影，把细胞类型从分类目标变成可用语言查询的功能探针(76%认型)
+- [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
 
 ## population-dynamics (8 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature

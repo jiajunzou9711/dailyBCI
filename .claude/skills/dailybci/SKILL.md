@@ -57,7 +57,7 @@ Terms fall into two tiers:
 - **No motivational commentary.** Don't editorialize about how this will "change lives" or "open new doors." The 10% comment at the end should be a concrete observation — what open question this raises, what would need to happen next — not a grand narrative.
 - **Understated confidence.** "The paper reports X; if this holds across more patients, it would suggest Y" is better than "X proves Y."
 - **Prefer concrete scenarios over abstract scores.** "患者写出了自己的名字" > "ARAT评分提高16分". Functional outcomes that a reader can visualize are more powerful and more honest than context-free numbers.
-- **少用比喻，优先用人话直说。** 严肃科学领域里比喻太多会失真。当一个专业指标/术语难用一句话讲清时，优先用**朴素、准确的人话**把它讲明白，而不是堆叠比喻。比喻只在**确实非常贴切、且不引入误导**时才用——非到万不得已不用，能直说就直说。（2026-06-18 用户指出）
+- **能不用比喻就不用比喻（硬规则，非"少用"）。** 这是相对数学/数据分析的学科，比喻很多时候会失真、反而让读者更摸不到头脑。**默认用朴素、准确、直接的人话**把术语/逻辑讲明白；比喻只在**确实非常贴切、且绝不引入误导**时，万不得已才用。能直说就直说。（2026-06-18 提出，2026-06-20 用户强烈重申并要求写死，理由：数学/数据学科里比喻易失真。）反面教材（2026-06-20 被点名为"让人困惑"）：把"两个超参数维度"说成"旋钮"、把"训练目标 vs 评测指标"说成"训练的尺/考试的尺"——这类比喻要么弃用、要么务必先把字面意思讲清。（"旋钮"因后文已大量使用，本期经用户同意暂留为例外，新内容默认不再引入新比喻。）
 
 ### Bilingual Content Workflow
 
@@ -407,7 +407,7 @@ Card sequence: 封面卡 → 图卡（按内容需要,通常 2-5 张,用 Step 3 
 
 3. **图文必须对版——评注要指认图里的东西.** The point of putting a figure on a card is that the text alone couldn't show it. So the annotation must **explicitly reference what's in the figure** — "如上图,红柱(完整集成)、紫柱(伪集成)都明显低于灰柱(基线)…" — not text that talks past the image. Figure and words describe the same thing; the figure is evidence the words point at, never decoration with self-contained text beside it.
 
-4. **每张卡(图卡与纯文字卡同理)都是"结论开头 → 主体 → 转场"的三段式,卡与卡咬成一条逻辑链.** 整套卡不是孤立要点的堆叠。每张卡分三拍:**(1) 第一句直接给该卡的结论/承上**(接住上一张的转场);**(2) 中间主体**——图卡是"读图"(指认图里的线/形状/坐标/颜色,见规则 3,但不要纯描述像素),纯文字卡是把该结论讲透的展开;**(3) 最后一句收束并转场到下一张**("好,我们已经知道了 X,但接下来还需要 Y")。**这个三段式对纯文字卡一样强制**——文字卡也必须有承上的开头结论和引出下一张的转场,不能只甩一段孤立内容(2026-06-16 用户明确:文字卡曾漏掉首尾两拍,需补回)。把握"读图"的度:既部分解读了图,又把大逻辑串顺——不脱离图、也不就图论图。前一张的转场要接得住后一张的开头,让封面→各卡→尾卡顺成一条承前启后的链。这是 2026-06-15 用户定稿、2026-06-16 推广到全部卡的规矩。
+4. **每张卡(图卡与纯文字卡同理)都是"结论开头 → 主体 → 转场"的三段式,卡与卡咬成一条逻辑链.** 整套卡不是孤立要点的堆叠。每张卡分三拍:**(1) 第一句直接给该卡的结论/承上**(接住上一张的转场);**(2) 中间主体**——图卡是"读图"(指认图里的线/形状/坐标/颜色,见规则 3,但不要纯描述像素),纯文字卡是把该结论讲透的展开;**(3) 最后一句收束并转场到下一张**("好,我们已经知道了 X,但接下来还需要 Y")。**这个三段式对纯文字卡一样强制**——文字卡也必须有承上的开头结论和引出下一张的转场,不能只甩一段孤立内容(2026-06-16 用户明确:文字卡曾漏掉首尾两拍,需补回)。把握"读图"的度:既部分解读了图,又把大逻辑串顺——不脱离图、也不就图论图。前一张的转场要接得住后一张的开头,让封面→各卡→尾卡顺成一条承前启后的链。这是 2026-06-15 用户定稿、2026-06-16 推广到全部卡的规矩。**（2026-06-20 用户再次强调并要求写死：承上开头 + 转出转场必须出现在每一张卡，且必须真正落到最终渲染的卡片文字里——草稿里写了三段式、渲染时却把首尾两拍删掉，是会被立刻发现的错误，禁止为省版面而砍掉转场。此"断言开头→细节主体→引出下一张"的逻辑与具体选题/论文无关，恒定不变，任何一期都照此办理。）**
 
 **Present the thread text and the card images together** for review.
 
@@ -427,7 +427,13 @@ Once content is locked, produce the **final publishing-ready version**:
 - **English thread** — each tweet clearly separated and numbered, copy-paste ready
 - **Chinese cards** — re-generate at production quality: **mobile-optimized 1080×1440px**, text readable without zooming, higher-resolution figures if the draft figures were too rough (re-grab from the browser at larger size, or extract from PDF). Save to `output/[date]-[slug]/` as numbered PNGs (`01-cover.png`, `02-figure1.png`, … `06-tail.png`).
 - **裁子图先用"留白投影"定位 panel 边界,不要肉眼猜像素坐标。** 反复目测 `crop()` 坐标既慢又总切不准(切掉时间序列右端、漏掉图例、把高出量程的误差棒截顶)。正确做法是让图自己告诉你边界:把整图转灰度→`ink = (pixels < 235)`→对**列**求和找出"基本无墨的列区间"(=左右 panel 之间的竖直留白沟),对**行**求和找出横向留白沟;panel 的真实包围盒就在相邻留白沟之间。多 panel 共用一行/一列时(如左列多子图紧贴、右列上方还压着别的 panel),要**只在目标列区间内**再投影一次行、或只在目标行区间内再投影一次列,才能把目标 panel 从邻居里分离干净。关键教训:**panel 的数据/坐标轴常比你以为的延伸得更远**(本期 Fig 2A 的时间序列一直画到 x≈1028,肉眼以为到 805 就完了,结果右端 1/4 被切),所以一定要用投影量出真实右/下边界,再加一点点统一边距。
-- **图的裁切要多轮重审、裁到干干净净为止——图的清晰好看很重要。** 即便用了投影定位,仍要**每裁一版就 `Read` 裁出的子图、再 `Read` 渲染后的卡**——只有看渲染后的卡才看得出残留和截断;一旦发现图不干净(邻 panel 杂块、缺轴、断线、图例被切),就调整投影边界重裁、重渲染,**该几轮就几轮**,直到这张图只剩它自己、坐标曲线完整、图例齐全。别把脏裁图发出去当最终版。
+- **裁图边界判据:"相关的全进、无关的全出"(2026-06-20 用户要求精进)。** 一张图的"相关内容"不只是数据区,而是**让这张图自洽所需的全部构件**:图例(legend)、子图标题(NSD/HUTH/…)、坐标轴+刻度标签、颜色条(colorbar)、显著性星号/方括号、单位。这些常**散落在数据墨迹主带之外**(图例浮在顶部、colorbar 在右侧、标题在上方),纯靠"投影找主带"会把它们漏在框外——本期 Figure 3 的图例上沿就是这么被切掉一线的。"无关内容"= 论文的**散文图注**(`Figure N: …` 那段)、邻图、页眉页脚,必须全部排除。
+- **改进的裁图流程(按此顺序,别再只靠肉眼或单次投影):**
+  1. 用投影(`ink=pixels<235`,行/列求和找留白沟)定出**数据区**包围盒;
+  2. **向四周扩张**把所有 chrome 收进来——上(图例/标题)、下(x 轴刻度)、左(y 轴标签)、右(colorbar);判断"散文图注从哪行开始"用**全宽散文检测**(图注是整页宽的文本,数据/图例不是:找最左和最右同时有墨、且呈密集文本的行),把裁切下界设在它**之前**;
+  3. 加一圈**统一小边距**(各边等宽),不要某边贴死、某边留一大片白;
+  4. `Read` 裁出图**逐边自检**:图例完整?标题在?四角坐标轴和刻度齐?colorbar 全?星号没被截?散文图注没混进来?任一不满足就回到第 2 步调边界。
+- **多轮重审、裁到干干净净为止——图的清晰好看很重要。** 即便用了投影定位,仍要**每裁一版就 `Read` 裁出的子图、再 `Read` 渲染后的卡**——只有看渲染后的卡才看得出残留和截断;一旦发现图不干净(邻 panel 杂块、缺轴、断线、图例被切、图注混入),就调整边界重裁、重渲染,**该几轮就几轮**,直到这张图只剩它自己、构件齐全、四边留白均匀。别把脏裁图发出去当最终版。
 
 **The "最终版 / final version" is always the actually-rendered cards, shown inline — never text-only copy.** When the user asks for the final/最终版, that means: run `card_generator.py`, produce the PNGs (figure cards composited with the real paper images), and **display the rendered card images in chat so the user can browse the actual 图卡** — image and text together as they will publish. Do not stop at a text description of the cards and make the user imagine the layout. Rough text copy belongs to the *draft* stage (Steps 5/7); the final stage owes the user browsable cards. The only exception is a headless run with no way to surface images — then say so explicitly.
 
