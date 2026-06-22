@@ -5,7 +5,8 @@ Reusable template for generating 小红书 card images.
 
 Style: Academic minimal (Nature Briefing inspired)
 Renderer: HTML/CSS templates screenshotted by Chromium via `npx playwright`.
-Fonts: system Latin (Helvetica/Arial) + bundled Heiti SC (CJK, extracted ttf).
+Fonts: system Latin (Helvetica/Arial) + bundled Heiti SC (CJK, subsetted ttf
+       — GB2312 + knowledge-base glyphs, ~6MB).
 Attribution: 小邹 × Claude (小红书) / xiaozou × Claude (X thread)
 
 The public API is UNCHANGED from the previous Pillow implementation — same four
@@ -66,7 +67,7 @@ SIZE_BRAND = 22
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 _SKILL_DIR = os.path.dirname(_SCRIPT_DIR)            # .claude/skills/dailybci/
 _FONTS_DIR = os.path.join(_SKILL_DIR, "fonts")
-_CJK_FONT = os.path.join(_FONTS_DIR, "HeitiSC-Medium.ttf")
+_CJK_FONT = os.path.join(_FONTS_DIR, "HeitiSC-Subset.ttf")
 
 
 def _file_url(path):

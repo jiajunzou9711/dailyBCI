@@ -16,7 +16,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 │           ├── knowledge-base/    ← INDEX.md + papers/<子领域>/(13 个子领域,篇数见 INDEX.md)
 │           ├── scripts/
 │           │   └── card_generator.py   ← 小红书卡片生成器(Pillow)
-│           └── fonts/             ← CJK 字体(HeitiSC-Medium.ttf,@font-face 引用)
+│           └── fonts/             ← CJK 字体(HeitiSC-Subset.ttf,@font-face 引用)
 ├── papers/                        ← 每日运行的 scratch 工作区(已 gitignore):下载的论文图 + 全文 PDF/txt;每期发完可整目录删,成品在 output/
 ├── output/                        ← 生成的卡片 PNG,按 <日期>-<slug>/ 分目录
 └── PRODUCT_BLUEPRINT.md           ← 产品蓝图(背景资料)
@@ -33,7 +33,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
    - **Python**(抽图 + 可选 PIL 图输入):`pip install pillow pymupdf --break-system-packages`
    - **卡片渲染**:卡片走 HTML/CSS 模板 + Chromium 截图(`card_generator.py` 调 `npx playwright screenshot`)。需 Node + 一次性 `npx playwright install chromium`。**无 Chromium 出不了卡**(cron/无头同理,机器上必须装)。
 3. **字体**:
-   - CJK 自带 `fonts/HeitiSC-Medium.ttf`(从 STHeiti 抽出的简体黑体面),`@font-face` 引用,无需额外安装。
+   - CJK 自带 `fonts/HeitiSC-Subset.ttf`(从 STHeiti 抽出简体黑体面、再按 GB2312+知识库用字子集化到 ~6MB),`@font-face` 引用,无需额外安装。若日后某生僻字渲成方块,重跑子集化(保留集见提交历史)把该字补进即可。
    - Latin 由 CSS 回退到系统 Helvetica/Arial(macOS 自带);上标 ¹²³⁴ 由 Latin 字体原生渲染。
 4. **联网 / 浏览器**:Step 3 经浏览器下全文 PDF + 抓全图到本地;无浏览器时才退回 `curl`/API(curl macOS 自带)。另需 Claude 联网搜索查候选 / 核实事实。
 5. **git 已初始化**——技能、知识库、输出都在版本管理下,改坏用 `git checkout -- <文件>` 回滚。
@@ -82,4 +82,4 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 ## 6. 已知待留意项(首次在本机跑时)
 
 - **抓论文全文+图(Step 3)**:选题即经浏览器一次性下全文 PDF + 全部图到本地(PyMuPDF 抽全文/抽图),之后全程读本地(实测 curl 抓 bioRxiv/PMC 会被 Cloudflare/JS 拦,故走浏览器)。无浏览器时(如 cron / `claude -p`)才退回 curl + BioC API,需先确认 `pip install pymupdf` 成功。
-- **卡片渲染(Step 7/8)**:渲染靠 `npx playwright screenshot` 起 Chromium。首次跑前先 `npx playwright install chromium`;报"找不到浏览器"就是没装。CJK 字形由自带 `fonts/HeitiSC-Medium.ttf`(简体黑体)经 `@font-face` 锁定,不再依赖系统字体 / 字体集合 index,字形稳定。
+- **卡片渲染(Step 7/8)**:渲染靠 `npx playwright screenshot` 起 Chromium。首次跑前先 `npx playwright install chromium`;报"找不到浏览器"就是没装。CJK 字形由自带 `fonts/HeitiSC-Subset.ttf`(简体黑体子集 ~6MB)经 `@font-face` 锁定,不再依赖系统字体 / 字体集合 index,字形稳定。
