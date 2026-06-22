@@ -18,7 +18,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 │           │   └── card_generator.py   ← 小红书卡片生成器(Pillow)
 │           └── fonts/             ← CJK 字体(HeitiSC-Subset.ttf,@font-face 引用)
 ├── papers/                        ← 每日运行的 scratch 工作区(已 gitignore):下载的论文图 + 全文 PDF/txt;每期发完可整目录删,成品在 output/
-├── output/                        ← 生成的卡片 PNG,按 <日期>-<slug>/ 分目录
+├── output/                        ← 生成的卡片 PNG。日报按 <日期>-<slug>/ 分目录;「专题」长文按 series-<slug>/(见 §4)
 └── PRODUCT_BLUEPRINT.md           ← 产品蓝图(背景资料)
 ```
 
@@ -60,6 +60,8 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - 直接说 **「今天BCI有什么新的」** / **「run the daily」** / **「BCI日报」** → 触发 Mode A 全流程。
 - **「建知识库 [子领域]」** / **「add to knowledge base」** → 触发 Mode B 补库。
 - 技能会按 SKILL.md 在每个关卡停下等你确认——这是设计如此,日报的核心价值就在这几轮对话里。
+
+- **「专题」深度长文(常青,独立于日报)** → 不走 Mode A 的关卡;轻量流程 = 提纲→确认→双语文案→出图,piece-by-piece。成品进 `output/series-<slug>/`,出图复用 `card_generator.py` + 自制 SVG 示意图。已出:犹他阵列 lineage、电极绝缘材料(Parylene-C vs Polyimide)。细节见记忆 `dailybci-series-deep-dive-track`。
 
 **定时运行**:想每天自动出初稿,可用 cron 调用 Claude Code 的无头模式(`claude -p "run the daily"` 之类),让它跑到第一个确认关卡或产出草稿,你早上来审。具体命令见 docs.claude.com 的 Claude Code headless / print 模式。
 
