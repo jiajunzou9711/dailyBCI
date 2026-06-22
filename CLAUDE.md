@@ -16,7 +16,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 │           ├── knowledge-base/    ← INDEX.md + papers/<子领域>/(13 个子领域,篇数见 INDEX.md)
 │           ├── scripts/
 │           │   └── card_generator.py   ← 小红书卡片生成器(Pillow)
-│           └── fonts/             ← CJK 字体(STHeiti / Hiragino)
+│           └── fonts/             ← CJK 字体(HeitiSC-Medium.ttf,@font-face 引用)
 ├── papers/                        ← 每日运行的 scratch 工作区(已 gitignore):下载的论文图 + 全文 PDF/txt;每期发完可整目录删,成品在 output/
 ├── output/                        ← 生成的卡片 PNG,按 <日期>-<slug>/ 分目录
 └── PRODUCT_BLUEPRINT.md           ← 产品蓝图(背景资料)
@@ -29,13 +29,12 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 ## 2. 一次性环境准备
 
 1. **安装 Claude Code**(若未装):见 https://docs.claude.com → Claude Code。通常 `npm install -g @anthropic-ai/claude-code`,然后在本文件夹运行 `claude`。
-2. **Python 依赖**(卡片生成 + 抽图):
-   ```bash
-   pip install pillow pymupdf --break-system-packages
-   ```
+2. **依赖**:
+   - **Python**(抽图 + 可选 PIL 图输入):`pip install pillow pymupdf --break-system-packages`
+   - **卡片渲染**:卡片走 HTML/CSS 模板 + Chromium 截图(`card_generator.py` 调 `npx playwright screenshot`)。需 Node + 一次性 `npx playwright install chromium`。**无 Chromium 出不了卡**(cron/无头同理,机器上必须装)。
 3. **字体**:
-   - CJK 已随包携带(`.claude/skills/dailybci/fonts/`),无需额外安装。
-   - Latin 字体 `card_generator.py` 会自动回退到系统 Arial/Helvetica(macOS 自带),无需装 Lato。若想要原版 Lato 观感,可自行安装。
+   - CJK 自带 `fonts/HeitiSC-Medium.ttf`(从 STHeiti 抽出的简体黑体面),`@font-face` 引用,无需额外安装。
+   - Latin 由 CSS 回退到系统 Helvetica/Arial(macOS 自带);上标 ¹²³⁴ 由 Latin 字体原生渲染。
 4. **联网 / 浏览器**:Step 3 经浏览器下全文 PDF + 抓全图到本地;无浏览器时才退回 `curl`/API(curl macOS 自带)。另需 Claude 联网搜索查候选 / 核实事实。
 5. **git 已初始化**——技能、知识库、输出都在版本管理下,改坏用 `git checkout -- <文件>` 回滚。
 
@@ -48,6 +47,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - **Mode A 10 步**(末步 Step 10 收尾清理 papers/ scratch),三个强制确认关卡:**Step 2 选题**(表格候选 + 知识库对照 + 推荐;无对照基准弹缺位提示问是否补库)、**Step 4 insight**(先给带理由的主张 + **直接贴论文原图**,用户确认才走)、**Step 6 事实核查**(草稿后自动三层核查出表,⚠/✗ 按"承重×严重度"分流,全 ✓ 才进生产)。
 - **Step 3 选题即"一次性扒全"**:经浏览器把**全文 PDF**(PyMuPDF 抽文)+ **全部图**(F1 探到 404)一次性下到本地,之后深读/核查/裁图全读本地、不再回访网页。curl 抓 bioRxiv/PMC 会被 Cloudflare/JS 拦,故走浏览器。
 - **Step 5–8 内容先行**:第一版即给**双语文字稿 + 粗裁图(内联)**→ 自动事实核查 → 生产(渲染卡片)→ 打磨(图多轮裁干净)。最贵的渲染推到事实锁定之后。
+- **卡片渲染内核 = HTML/CSS + Chromium**(2026-06-22 从 Pillow 迁移):`card_generator.py` 四个方法签名不变(`cover/figure/text/tail_card`),内核改填 HTML 模板再经 `npx playwright screenshot` 截图。收益:自动流式排版(不再手算坐标/静默溢出)、`**关键词**` 句中高亮、上标原生;代价:多一个 Chromium 依赖。调版式改 CSS,可直接浏览器预览。
 - **Content Standards**:标物种、数字回溯原文、慎用"首次/都/all"、术语分层、中文源核实公司名;**双语大纲一致但内容可不同**(thread 纯文字自洽 / 小红书图文更深、用"结论→读图→转场"链);**图永远内联呈现 = 存盘 + Read**(不用浏览器 screenshot)。
 - **知识库 13 子领域(篇数见 INDEX.md)**,`population-dynamics` 线延伸到 de Vicente 2026(Sadtler 2014 → Busch 2026 → de Vicente 2026);`non-invasive` 新增 AAD(听觉注意解码)子线。
 
@@ -82,4 +82,4 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 ## 6. 已知待留意项(首次在本机跑时)
 
 - **抓论文全文+图(Step 3)**:选题即经浏览器一次性下全文 PDF + 全部图到本地(PyMuPDF 抽全文/抽图),之后全程读本地(实测 curl 抓 bioRxiv/PMC 会被 Cloudflare/JS 拦,故走浏览器)。无浏览器时(如 cron / `claude -p`)才退回 curl + BioC API,需先确认 `pip install pymupdf` 成功。
-- **CJK 字形**:若用系统 PingFang/Noto 而非自带 STHeiti,简体字形不对就把 `card_generator.py` 里 `CJK_IDX` 从 1 试成 0。
+- **卡片渲染(Step 7/8)**:渲染靠 `npx playwright screenshot` 起 Chromium。首次跑前先 `npx playwright install chromium`;报"找不到浏览器"就是没装。CJK 字形由自带 `fonts/HeitiSC-Medium.ttf`(简体黑体)经 `@font-face` 锁定,不再依赖系统字体 / 字体集合 index,字形稳定。

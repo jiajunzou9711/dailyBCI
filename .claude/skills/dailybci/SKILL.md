@@ -397,7 +397,9 @@ gen.tail_card(["¹ Ref 1...", "² Ref 2..."], "output/2026-06-07-slug/05-tail.pn
 # 尾卡里「参考文献」标题/列表绝不能排在收尾评论之上——那样很奇怪(用户 2026-06-19)。
 # 收尾评论在上、参考文献在下。lead_paragraphs= 是实现方式之一,排版可灵活,守住这个先后即可。
 ```
-Card sequence: 封面卡 → 图卡（按内容需要,通常 2-5 张,用 Step 3 下到本地的论文原图/裁图 + 三段式中文评注）→ 文字卡（每张一个要点,字大留白）→ 尾卡（简评 + 参考来源,含核心论文链接）. 图卡数量服从逻辑链,别硬凑或硬砍。The script handles dual-font mixing (Latin + STHeiti SC), line wrapping, consistent header/footer, and superscript fallback.
+Card sequence: 封面卡 → 图卡（按内容需要,通常 2-5 张,用 Step 3 下到本地的论文原图/裁图 + 三段式中文评注）→ 文字卡（每张一个要点,字大留白）→ 尾卡（简评 + 参考来源,含核心论文链接）. 图卡数量服从逻辑链,别硬凑或硬砍。
+
+**渲染内核 = HTML/CSS 模板 + Chromium 截图**(经 `npx playwright screenshot`,需一次性 `npx playwright install chromium`;无 Chromium 则出不了图)。脚本自动处理中英混排(系统 Latin + 自带 Heiti SC)、自动换行、统一页眉页脚、上标(¹²³⁴ 由 Latin 字体原生渲染)。**句中高亮**:在任意文字串里用 `**关键词**` 包住关键术语/数字,即渲染成克制的学术蓝加粗(如 `样本为 **2 名** 参与者`);不加 `**` 的纯文字照常显示。克制使用——一张卡只点几个真正承重的数/词,别整句变蓝。
 
 **Four hard rules for the cards (established by user review — apply them yourself, do not make the user re-request them each round):**
 
@@ -587,7 +589,11 @@ Total papers: [count]
 - **Never press-release** — no "groundbreaking", no "scientists are excited", no "gives hope to millions"
 - **Never exhaustive** — find THE insight, not list every contribution
 - **Honest about uncertainty** — "the paper reports X; if this replicates, it would mean Y" is good
-- **标注参考来源** — 所有关键数据（数字、百分比、对比结论）必须加角标引用。X thread 在末尾 tweet 列出参考链接；小红书在尾卡列出参考文献。角标格式：上标数字 ¹ ² ³，对应尾部编号列表。
+- **标注参考来源（硬规则，从文章生成内容、引用他篇时一律遵守）** — 三条缺一不可：
+  1. **正文就地标角标**：每一处关键数据/最高级/对比结论,在它**出现的那张卡/那条 tweet 当场**挂上上标角标 ¹ ² ³（不能只在尾部列、正文不标）。
+  2. **尾部统一汇总且格式一致**：小红书在尾卡、X thread 在末尾 tweet(refs 超长就拆成多条,每条仍 ≤280 字符)汇总全部参考。**所有条目用同一个模板**：`作者 年份. 期刊 卷(期):页码.`(或 bioRxiv/medRxiv DOI、官方数据库编号)。不要英文 author-year 与中文描述式标签混排;不要 DOI/PMCID/期刊缩写各写各的。
+  3. **每个角标都要有对应正文出处、每条正文引用都要进尾部列表**（不留"孤儿引用",不留"未标记的承重数据"）。**非同行评议的史实/监管/商业事实**（公司沿革、FDA 记录、新闻）与学术论文**分层标注**,单列一行说明来源层级,不要混进学术引用里冒充论文。
+  4. **参考文献本身要准确**：作者、年份、期刊要查实(必要时查 PubMed/期刊页),不要凭记忆写错刊名或年份。（2026-06-21 用户定稿:参考文献的"就地标注 + 尾部统一格式 + 本身准确"是本 schema 的通用要求。）
 - **避免"不是...而是..."句式** — 中文写作中不要使用"不是 X，而是 Y"这种对立表达。改用直接陈述：直接说 Y 是什么，如果需要对比，用"相比 X，Y 更..."或直接并列呈现让读者自己判断。
 - **中文里指代论文子图用"图 A / 图 D"，不要说"面板 A / 面板 D"** —— "面板(panel)"是英文 figure panel 的直译，在中文语境里很生硬。卡片评注、对话讲解里一律说"图 A""图 2D""上图左"等自然说法。（2026-06-16 用户指出）
 - **中文里 spike 一律写"动作电位"，不要用"脉冲"或直接写"spike"** —— 中文神经科学语境下"动作电位"更标准、更对味；"脉冲"偏工程信号味。spike train → 动作电位序列。（2026-06-18 用户指出）

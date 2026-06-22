@@ -1,33 +1,48 @@
 """
-DailyBCI Card Generator
-=======================
+DailyBCI Card Generator (HTML + Playwright renderer)
+====================================================
 Reusable template for generating 小红书 card images.
 
 Style: Academic minimal (Nature Briefing inspired)
-Fonts: Lato (Latin) + STHeiti SC (CJK)
+Renderer: HTML/CSS templates screenshotted by Chromium via `npx playwright`.
+Fonts: system Latin (Helvetica/Arial) + bundled Heiti SC (CJK, extracted ttf).
 Attribution: 小邹 × Claude (小红书) / xiaozou × Claude (X thread)
 
-Usage:
+The public API is UNCHANGED from the previous Pillow implementation — same four
+methods with the same signatures — so the daily-run workflow does not change:
+
     from card_generator import CardGenerator
     gen = CardGenerator(date="2026.06.07")
-    gen.cover_card("标题第一行", "标题第二行", "一句话核心发现。", "output/01-cover.png")
-    gen.figure_card(figure_path, "Fig. 1", "评注文字...", "output/02-figure.png")
-    gen.text_card("小标题", ["段落1...", "段落2..."], "output/03-text.png")
-    gen.tail_card(["¹ Ref 1...", "² Ref 2..."], "output/05-tail.png")
+    gen.cover_card("标题第一行", "标题第二行", "一句话核心发现。", "output/01-cover.png", source="解读块…")
+    gen.figure_card("papers/fig1.png", "Fig. 1", ["评注…"], "output/02-figure.png")
+    gen.text_card("小标题", ["段落1…", "段落2…"], "output/03-text.png")
+    gen.tail_card(["¹ Ref 1…", "² Ref 2…"], "output/05-tail.png")
+
+Inline emphasis: wrap a key term/number in **double asterisks** inside any text
+string to render it in the accent colour + bold (e.g. "样本为 **2 名** 参与者").
+Plain strings without ** render exactly as before. Superscripts ¹²³⁴⁵ render
+natively via the Latin font (no substitution table needed).
+
+Requirements (one-time):
+    npm install -g playwright   (or rely on `npx playwright`)
+    npx playwright install chromium
 """
 
 import os
-from PIL import Image, ImageDraw, ImageFont
+import re
+import html
+import tempfile
+import subprocess
 
 # =============================================================================
 # Constants
 # =============================================================================
 
 W, H = 1080, 1440          # 小红书 standard portrait ratio
-MARGIN = 100                # generous margins
-BG_COLOR = '#FAFAFA'        # near-white background
+MARGIN = 100               # generous side margins (px)
+BG_COLOR = '#FAFAFA'       # near-white background
 
-# Color palette (grayscale hierarchy)
+# Color palette (grayscale hierarchy + one restrained academic accent)
 COLOR_TITLE = '#1A1A1A'     # darkest — titles
 COLOR_BODY = '#444444'      # body text
 COLOR_SUBTITLE = '#666666'  # subtitles / secondary text
@@ -35,103 +50,105 @@ COLOR_CAPTION = '#888888'   # figure captions, references
 COLOR_MUTED = '#999999'     # tertiary text
 COLOR_BRAND = '#BBBBBB'     # brand, date, signature
 COLOR_LINE = '#E0E0E0'      # separator lines
+COLOR_ACCENT = '#2F6DB5'    # single accent — used only for **highlighted** terms
 
-# Font sizes
+# Font sizes (px) — mirror the previous Pillow hierarchy
 SIZE_TITLE_LG = 64
 SIZE_TITLE_MD = 52
-SIZE_SUBTITLE = 36
+SIZE_SUBTITLE = 34
 SIZE_BODY = 32
 SIZE_ANNOTATION = 30
 SIZE_CAPTION = 26
 SIZE_SMALL = 24
 SIZE_BRAND = 22
 
-# Font resolution — cross-platform with fallbacks.
-# scripts/ and fonts/ are siblings under .claude/skills/dailybci/, so the bundled
-# CJK font resolves relative to this script regardless of cwd or OS.
+# Bundled CJK font (Heiti SC, simplified). scripts/ and fonts/ are siblings.
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-_SKILL_DIR = os.path.dirname(_SCRIPT_DIR)          # .claude/skills/dailybci/
-_BUNDLED_FONTS = os.path.join(_SKILL_DIR, "fonts")
+_SKILL_DIR = os.path.dirname(_SCRIPT_DIR)            # .claude/skills/dailybci/
+_FONTS_DIR = os.path.join(_SKILL_DIR, "fonts")
+_CJK_FONT = os.path.join(_FONTS_DIR, "HeitiSC-Medium.ttf")
 
 
-def _first_existing(paths, default=None):
-    for p in paths:
-        if p and os.path.exists(p):
-            return p
-    return default
+def _file_url(path):
+    """Absolute file:// URL for a local asset (font / figure)."""
+    return "file://" + os.path.abspath(path)
 
-
-# Latin: try Lato (Linux), then common macOS/Windows sans, then PIL default.
-LATIN_REG = _first_existing([
-    "/usr/share/fonts/truetype/lato/Lato-Regular.ttf",      # Linux (apt fonts-lato)
-    "/Library/Fonts/Lato-Regular.ttf",
-    "/System/Library/Fonts/Supplemental/Arial.ttf",         # macOS
-    "/System/Library/Fonts/Helvetica.ttc",                  # macOS
-    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",      # Linux fallback
-    "C:/Windows/Fonts/arial.ttf",                           # Windows
-])
-LATIN_BOLD = _first_existing([
-    "/usr/share/fonts/truetype/lato/Lato-Bold.ttf",
-    "/Library/Fonts/Lato-Bold.ttf",
-    "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
-    "C:/Windows/Fonts/arialbd.ttf",
-], default=LATIN_REG)
-
-# CJK: prefer bundled STHeiti, else macOS system STHeiti/Hiragino/PingFang, else Noto.
-CJK_PATH = _first_existing([
-    os.path.join(_BUNDLED_FONTS, "STHeiti Medium.ttc"),     # bundled
-    os.path.join(_BUNDLED_FONTS, "Hiragino Sans GB.ttc"),   # bundled alt
-    "/System/Library/Fonts/STHeiti Medium.ttc",             # macOS system
-    "/System/Library/Fonts/PingFang.ttc",                   # macOS system
-    "/usr/share/fonts/opentype/noto/NotoSansCJK-Medium.ttc",# Linux (apt fonts-noto-cjk)
-    "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
-])
-CJK_IDX = 1  # index=1 = Heiti SC (simplified Chinese); PingFang/Noto: try 0 if glyphs look wrong
-
-# Superscript fallback map: characters STHeiti doesn't support
-SUPERSCRIPT_MAP = {
-    '⁴': '4',   # ⁴
-    '⁵': '5',   # ⁵
-    '⁶': '6',   # ⁶
-    '⁷': '7',   # ⁷
-    '⁸': '8',   # ⁸
-    '⁹': '9',   # ⁹
-    '⁰': '0',   # ⁰
-}
 
 # =============================================================================
-# Unicode detection
+# Shared CSS
 # =============================================================================
 
-def is_cjk(char):
-    """Return True if char should use the CJK font."""
-    cp = ord(char)
-    return (
-        0x4E00 <= cp <= 0x9FFF or    # CJK Unified Ideographs
-        0x2460 <= cp <= 0x24FF or    # Enclosed Alphanumerics (①②③… — in STHeiti, not Arial)
-        0x3400 <= cp <= 0x4DBF or    # CJK Extension A
-        0x2E80 <= cp <= 0x2EFF or    # CJK Radicals Supplement
-        0x3000 <= cp <= 0x303F or    # CJK Symbols and Punctuation
-        0xFF00 <= cp <= 0xFFEF or    # Fullwidth Forms
-        0xF900 <= cp <= 0xFAFF or    # CJK Compatibility Ideographs
-        0xFE30 <= cp <= 0xFE4F or    # CJK Compatibility Forms
-        0x20000 <= cp <= 0x2A6DF or  # CJK Extension B
-        0x3040 <= cp <= 0x309F or    # Hiragana
-        0x30A0 <= cp <= 0x30FF or    # Katakana
-        # Smart quotes and special punctuation — render with CJK font
-        cp in (0x2018, 0x2019, 0x201C, 0x201D,  # ''""
-               0x2014, 0x2013,                    # — –
-               0x00B7,                             # ·
-               0x00B9, 0x00B2, 0x00B3)             # ¹²³
-    )
+def _base_css():
+    return f"""
+    @font-face {{
+        font-family: "HeitiSC";
+        src: url("{_file_url(_CJK_FONT)}");
+    }}
+    * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+    :root {{
+        --title: {COLOR_TITLE}; --body: {COLOR_BODY}; --subtitle: {COLOR_SUBTITLE};
+        --caption: {COLOR_CAPTION}; --muted: {COLOR_MUTED}; --brand: {COLOR_BRAND};
+        --line: {COLOR_LINE}; --accent: {COLOR_ACCENT};
+    }}
+    body {{ width: {W}px; height: {H}px; overflow: hidden; }}
+    .card {{
+        position: relative; width: {W}px; height: {H}px; background: {BG_COLOR};
+        font-family: "Helvetica Neue", "Arial", "HeitiSC", sans-serif;
+        padding: 70px {MARGIN}px; color: var(--title);
+    }}
+    b {{ color: var(--accent); font-weight: 700; }}
+    .brand {{ font-size: {SIZE_BRAND}px; font-weight: 700; letter-spacing: 1px; color: var(--brand); }}
+    .footer {{
+        position: absolute; left: {MARGIN}px; right: {MARGIN}px; bottom: 70px;
+        display: flex; justify-content: space-between;
+        font-size: {SIZE_BRAND}px; color: var(--brand);
+    }}
+    .sep {{ height: 1px; background: var(--line); }}
+
+    /* cover */
+    .title {{ margin-top: 200px; font-size: {SIZE_TITLE_LG}px; font-weight: 800;
+              line-height: 1.45; letter-spacing: 1px; color: var(--title); }}
+    .subtitle {{ margin-top: 56px; font-size: {SIZE_SUBTITLE}px; font-weight: 400;
+                 line-height: 1.6; color: var(--subtitle); }}
+    .read-label {{ margin-top: 30px; font-size: {SIZE_CAPTION}px; font-weight: 700;
+                   letter-spacing: 2px; color: var(--muted); }}
+    .read-body {{ margin-top: 14px; font-size: {SIZE_CAPTION}px; line-height: 1.55; color: var(--caption); }}
+    .cover-sep {{ margin-top: 46px; }}
+
+    /* figure */
+    .figwrap {{ margin: 60px -36px 0; border: 1px solid var(--line); background: #fff;
+                display: flex; align-items: center; justify-content: center; overflow: hidden; }}
+    .figwrap img {{ max-width: 100%; width: auto; height: auto; display: block; }}
+    .fig-sep {{ margin-top: 28px; }}
+    .figlabel {{ margin-top: 24px; font-size: {SIZE_CAPTION}px; font-weight: 700;
+                 letter-spacing: 1px; color: var(--muted); }}
+    .annot {{ margin-top: 22px; font-size: {SIZE_ANNOTATION}px; line-height: 1.62; color: var(--body); }}
+
+    /* text */
+    .heading {{ margin-top: 90px; font-size: {SIZE_TITLE_MD}px; font-weight: 800;
+                line-height: 1.4; color: var(--title); }}
+    .para {{ margin-top: 26px; font-size: {SIZE_BODY}px; line-height: 1.65; color: var(--body); }}
+    .heading + .para {{ margin-top: 36px; }}
+
+    /* tail */
+    .lead {{ margin-top: 90px; font-size: {SIZE_BODY}px; line-height: 1.6; color: var(--body); }}
+    .lead + .lead {{ margin-top: 20px; }}
+    .refs-heading {{ margin-top: 56px; font-size: {SIZE_SUBTITLE}px; font-weight: 800; color: var(--title); }}
+    .ref {{ margin-top: 16px; font-size: {SIZE_SMALL}px; line-height: 1.45; color: var(--caption); }}
+    .ref.spacer {{ margin-top: 8px; }}
+    .sigblock {{ position: absolute; left: {MARGIN}px; right: {MARGIN}px; bottom: 150px; }}
+    .sigblock .sig-sep {{ margin-bottom: 36px; }}
+    .signame {{ font-size: {SIZE_BODY}px; font-weight: 700; color: var(--body); }}
+    .sigtag {{ margin-top: 14px; font-size: {SIZE_SMALL}px; color: var(--muted); }}
+    """
+
 
 # =============================================================================
-# CardGenerator class
+# CardGenerator
 # =============================================================================
 
 class CardGenerator:
-    """Generate DailyBCI 小红书 card images."""
+    """Generate DailyBCI 小红书 card images via HTML templates + Chromium."""
 
     def __init__(self, date="", platform="xiaohongshu"):
         """
@@ -141,287 +158,131 @@ class CardGenerator:
         """
         self.date = date
         self.signature = "小邹 × Claude" if platform == "xiaohongshu" else "xiaozou × Claude"
-        self._font_cache = {}
 
-    def _get_font(self, size, bold=False, force_latin=False):
-        """Get font with caching."""
-        key = (size, bold, force_latin)
-        if key not in self._font_cache:
-            if force_latin:
-                self._font_cache[key] = ImageFont.truetype(
-                    LATIN_BOLD if bold else LATIN_REG, size
-                )
-            else:
-                # Returns (latin, cjk) tuple
-                latin = ImageFont.truetype(LATIN_BOLD if bold else LATIN_REG, size)
-                cjk = ImageFont.truetype(CJK_PATH, size, index=CJK_IDX)
-                self._font_cache[key] = (latin, cjk)
-        return self._font_cache[key]
+    # ---- text helpers ----
 
-    def _pick_font(self, char, size, bold=False):
-        """Pick the right font for a character."""
-        latin, cjk = self._get_font(size, bold)
-        return cjk if is_cjk(char) else latin
+    def _fmt(self, text):
+        """HTML-escape a string, then turn **emphasis** into accent <b>, \\n into <br>."""
+        s = html.escape(str(text))
+        s = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', s)
+        s = s.replace('\n', '<br>')
+        return s
 
-    def _handle_superscript(self, char):
-        """Convert unsupported superscript chars to supported form."""
-        return SUPERSCRIPT_MAP.get(char, char)
+    def _page(self, body_html):
+        """Wrap a card body in the shared page shell (brand + body + footer)."""
+        return (
+            "<!DOCTYPE html><html><head><meta charset='utf-8'>"
+            f"<style>{_base_css()}</style></head><body>"
+            "<div class='card'>"
+            "<div class='brand'>DailyBCI</div>"
+            f"{body_html}"
+            f"<div class='footer'><span>{html.escape(self.date)}</span>"
+            f"<span>{html.escape(self.signature)}</span></div>"
+            "</div></body></html>"
+        )
 
-    # ---- Drawing primitives ----
+    def _render(self, html_str, output_path):
+        """Write HTML to a temp file and screenshot it to output_path at 1080×1440."""
+        out_dir = os.path.dirname(output_path) or "."
+        os.makedirs(out_dir, exist_ok=True)
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8")
+        try:
+            tmp.write(html_str)
+            tmp.close()
+            subprocess.run(
+                ["npx", "playwright", "screenshot", _file_url(tmp.name), output_path,
+                 f"--viewport-size={W},{H}", "--wait-for-timeout=700"],
+                check=True, capture_output=True, text=True,
+            )
+        except subprocess.CalledProcessError as e:
+            raise RuntimeError(
+                f"playwright screenshot failed for {output_path}:\n{e.stderr}"
+            ) from e
+        finally:
+            os.unlink(tmp.name)
+        return output_path
 
-    def draw_mixed(self, d, pos, text, size, fill, bold=False):
-        """Draw mixed Latin+CJK text at a fixed position. Returns end x."""
-        x, y = pos
-        for char in text:
-            char = self._handle_superscript(char)
-            font = self._pick_font(char, size, bold)
-            bbox = d.textbbox((0, 0), char, font=font)
-            cw = bbox[2] - bbox[0]
-            d.text((x, y), char, font=font, fill=fill)
-            x += cw + 1
-        return x
-
-    def draw_mixed_wrap(self, d, x_start, y_start, text, size, fill,
-                        max_width, line_spacing=1.6, bold=False):
-        """Draw mixed text with automatic line wrapping. Returns y after last line."""
-        x = x_start
-        y = y_start
-        line_h = int(size * line_spacing)
-
-        for char in text:
-            char = self._handle_superscript(char)
-            if char == '\n':
-                x = x_start
-                y += line_h
-                continue
-
-            font = self._pick_font(char, size, bold)
-            bbox = d.textbbox((0, 0), char, font=font)
-            cw = bbox[2] - bbox[0]
-
-            if x + cw > x_start + max_width:
-                x = x_start
-                y += line_h
-
-            d.text((x, y), char, font=font, fill=fill)
-            x += cw + 1
-
-        return y + line_h
-
-    # ---- Shared card elements ----
-
-    def _new_card(self):
-        """Create a blank card with standard background."""
-        img = Image.new('RGB', (W, H), BG_COLOR)
-        d = ImageDraw.Draw(img)
-        return img, d
-
-    def _draw_header(self, d):
-        """Draw 'DailyBCI' brand in top-left."""
-        font = self._get_font(SIZE_BRAND, force_latin=True)
-        d.text((MARGIN, 70), "DailyBCI", font=font, fill=COLOR_BRAND)
-
-    def _draw_footer(self, d):
-        """Draw date (left) and signature (right) at bottom."""
-        font_latin = self._get_font(SIZE_BRAND, force_latin=True)
-        d.text((MARGIN, H - 100), self.date, font=font_latin, fill=COLOR_BRAND)
-
-        # Right-align signature
-        sig_chars = list(self.signature)
-        latin, cjk = self._get_font(SIZE_BRAND)
-        total_w = 0
-        for char in sig_chars:
-            font = cjk if is_cjk(char) else latin
-            bbox = d.textbbox((0, 0), char, font=font)
-            total_w += (bbox[2] - bbox[0]) + 1
-        self.draw_mixed(d, (W - MARGIN - total_w, H - 100),
-                        self.signature, SIZE_BRAND, COLOR_BRAND)
-
-    def _draw_separator(self, d, y):
-        """Draw a thin horizontal separator line."""
-        d.line([(MARGIN, y), (W - MARGIN, y)], fill=COLOR_LINE, width=1)
-
-    # ---- Card types ----
+    # ---- card types ----
 
     def cover_card(self, title_line1, title_line2, subtitle, output_path, source=None):
-        """
-        Generate a cover card.
-        Args:
-            title_line1: First line of title (Chinese)
-            title_line2: Second line of title (Chinese)
-            subtitle: One-sentence core finding
-            output_path: Where to save the PNG
-            source: Provenance block — which paper is being explained: date,
-                platform/journal, title, method, and (if notable) authors/institution.
-                Rendered as a muted "解读" block under the subtitle. Strongly
-                recommended on every cover (see SKILL.md Step 7 cover rule).
-        """
-        img, d = self._new_card()
-        self._draw_header(d)
-
-        y = 330
-        self.draw_mixed(d, (MARGIN, y), title_line1, SIZE_TITLE_LG, COLOR_TITLE, bold=True)
-        y += 92
-        self.draw_mixed(d, (MARGIN, y), title_line2, SIZE_TITLE_LG, COLOR_TITLE, bold=True)
-        y += 140
-        y = self.draw_mixed_wrap(d, MARGIN, y, subtitle, SIZE_SUBTITLE - 2,
-                                 COLOR_SUBTITLE, W - 2 * MARGIN)
-
+        """Cover card: two-line Chinese title, one-sentence finding, optional 解读 block."""
+        body = (
+            f"<div class='title'>{self._fmt(title_line1)}<br>{self._fmt(title_line2)}</div>"
+            f"<div class='subtitle'>{self._fmt(subtitle)}</div>"
+        )
         if source:
-            y += 55
-            self._draw_separator(d, y)
-            y += 34
-            self.draw_mixed(d, (MARGIN, y), "解读", SIZE_CAPTION, COLOR_MUTED, bold=True)
-            y += 44
-            self.draw_mixed_wrap(d, MARGIN, y, source, SIZE_CAPTION,
-                                 COLOR_CAPTION, W - 2 * MARGIN, line_spacing=1.55)
-
-        self._draw_footer(d)
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        img.save(output_path, quality=95)
-        return output_path
+            body += (
+                "<div class='sep cover-sep'></div>"
+                "<div class='read-label'>解读</div>"
+                f"<div class='read-body'>{self._fmt(source)}</div>"
+            )
+        return self._render(self._page(body), output_path)
 
     def figure_card(self, figure_path_or_image, caption_label, annotation_paragraphs,
                     output_path, figure_height=560):
+        """Figure card: a REAL paper figure (image) on top, caption label, annotations.
+
+        figure_path_or_image may be a path str or a PIL.Image (saved to a temp PNG).
+        Figures are embedded verbatim via <img> — never AI-generated.
         """
-        Generate a figure + annotation card.
-        Args:
-            figure_path_or_image: Path to figure PNG, or PIL Image object
-            caption_label: e.g. "Fig. 1"
-            annotation_paragraphs: List of annotation strings
-            output_path: Where to save
-            figure_height: Height to resize the figure to (width fills card)
-        """
-        img, d = self._new_card()
-        self._draw_header(d)
+        fig_path = figure_path_or_image
+        tmp_fig = None
+        if not isinstance(figure_path_or_image, str):
+            from PIL import Image  # lazy: only needed when a PIL image is passed
+            tmp_fig = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
+            tmp_fig.close()
+            img = figure_path_or_image
+            if not isinstance(img, Image.Image):
+                raise TypeError("figure_path_or_image must be a path or PIL.Image")
+            img.save(tmp_fig.name)
+            fig_path = tmp_fig.name
 
-        # Load and resize figure
-        if isinstance(figure_path_or_image, str):
-            fig = Image.open(figure_path_or_image)
-        else:
-            fig = figure_path_or_image
-
-        # Scale to fit within (available width x figure_height) WITHOUT
-        # distorting: figure_height acts as a max height, aspect ratio preserved.
-        # Figures use a smaller side inset than text so cropped key-panels render
-        # large ("图满铺"), with a thin frame for definition ("加框").
-        FIG_INSET = 64
-        fig_w_max = W - 2 * FIG_INSET
-        fig_h_max = figure_height
-        ow, oh = fig.size
-        scale = min(fig_w_max / ow, fig_h_max / oh)
-        new_w, new_h = max(1, int(round(ow * scale))), max(1, int(round(oh * scale)))
-        fig = fig.resize((new_w, new_h), Image.LANCZOS)
-        paste_x = FIG_INSET + (fig_w_max - new_w) // 2  # center horizontally
-        paste_y = 140
-        img.paste(fig, (paste_x, paste_y))
-        # thin frame around the figure
-        d.rectangle([paste_x - 1, paste_y - 1, paste_x + new_w, paste_y + new_h],
-                    outline=COLOR_LINE, width=1)
-
-        # Separator under figure
-        sep_y = paste_y + new_h + 24
-        self._draw_separator(d, sep_y)
-
-        # Caption label
-        y = sep_y + 25
-        self.draw_mixed(d, (MARGIN, y), caption_label, SIZE_CAPTION,
-                        COLOR_MUTED, bold=True)
-        y += 40
-
-        # Annotation paragraphs
-        for para in annotation_paragraphs:
-            y = self.draw_mixed_wrap(d, MARGIN, y, para, SIZE_ANNOTATION,
-                                     COLOR_BODY, W - 2 * MARGIN, line_spacing=1.6)
-            y += 20
-
-        self._draw_footer(d)
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        img.save(output_path, quality=95)
-        return output_path
+        try:
+            annots = "".join(
+                f"<div class='annot'>{self._fmt(p)}</div>" for p in annotation_paragraphs
+            )
+            body = (
+                f"<div class='figwrap' style='max-height:{figure_height}px'>"
+                f"<img src='{_file_url(fig_path)}' style='max-height:{figure_height}px'>"
+                "</div>"
+                "<div class='sep fig-sep'></div>"
+                f"<div class='figlabel'>{self._fmt(caption_label)}</div>"
+                f"{annots}"
+            )
+            return self._render(self._page(body), output_path)
+        finally:
+            if tmp_fig is not None:
+                os.unlink(tmp_fig.name)
 
     def text_card(self, heading, paragraphs, output_path, heading_lines=None):
-        """
-        Generate a pure text card.
-        Args:
-            heading: Card heading (can be short, displayed large)
-            paragraphs: List of paragraph strings
-            output_path: Where to save
-            heading_lines: If heading is multi-line, pass as list of strings
-        """
-        img, d = self._new_card()
-        self._draw_header(d)
-
-        y = 160
+        """Pure-text card: a heading (single or multi-line) + body paragraphs."""
         if heading_lines:
-            for line in heading_lines:
-                self.draw_mixed(d, (MARGIN, y), line, SIZE_TITLE_MD,
-                                COLOR_TITLE, bold=True)
-                y += 75
+            head_html = "<br>".join(self._fmt(line) for line in heading_lines)
         else:
-            self.draw_mixed(d, (MARGIN, y), heading, SIZE_TITLE_MD,
-                            COLOR_TITLE, bold=True)
-            y += 75
-
-        y += 25  # space between heading and body
-
-        for para in paragraphs:
-            y = self.draw_mixed_wrap(d, MARGIN, y, para, SIZE_BODY,
-                                     COLOR_BODY, W - 2 * MARGIN, line_spacing=1.65)
-            y += 20
-
-        self._draw_footer(d)
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        img.save(output_path, quality=95)
-        return output_path
+            head_html = self._fmt(heading)
+        paras = "".join(f"<div class='para'>{self._fmt(p)}</div>" for p in paragraphs)
+        body = f"<div class='heading'>{head_html}</div>{paras}"
+        return self._render(self._page(body), output_path)
 
     def tail_card(self, references, output_path, lead_paragraphs=None):
-        """
-        Generate a tail card with references and prominent signature.
-        Args:
-            references: List of reference strings (each prefixed with ¹, ², etc.)
-            output_path: Where to save
-            lead_paragraphs: Optional list of body paragraphs rendered ABOVE the
-                "参考文献" heading — use when the tail card opens with closing
-                commentary (the "10%") that answers the prior card, keeping it
-                visually separate from the reference list below.
-        """
-        img, d = self._new_card()
-        self._draw_header(d)
-
-        y = 160
+        """Tail card: optional closing commentary, a reference list, and a signature block."""
+        body = ""
         if lead_paragraphs:
-            for para in lead_paragraphs:
-                y = self.draw_mixed_wrap(d, MARGIN, y, para, SIZE_BODY,
-                                         COLOR_BODY, W - 2 * MARGIN, line_spacing=1.6)
-                y += 20
-            y += 36
-
-        self.draw_mixed(d, (MARGIN, y), "参考文献", SIZE_SUBTITLE,
-                        COLOR_TITLE, bold=True)
-        y += 70
-
+            body += "".join(f"<div class='lead'>{self._fmt(p)}</div>" for p in lead_paragraphs)
+        body += "<div class='refs-heading'>参考文献</div>"
         for ref in references:
             if ref == "":
-                y += 12
-                continue
-            self.draw_mixed(d, (MARGIN, y), ref, SIZE_SMALL, COLOR_CAPTION)
-            y += 36
-
-        # Signature block
-        sig_y = H - 220
-        self._draw_separator(d, sig_y)
-        sig_y += 40
-        self.draw_mixed(d, (MARGIN, sig_y), self.signature, SIZE_BODY,
-                        COLOR_BODY, bold=True)
-        sig_y += 50
-        self.draw_mixed(d, (MARGIN, sig_y), "DailyBCI · 每日脑机接口学术速递",
-                        SIZE_SMALL, COLOR_MUTED)
-
-        self._draw_footer(d)
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        img.save(output_path, quality=95)
-        return output_path
+                body += "<div class='ref spacer'></div>"
+            else:
+                body += f"<div class='ref'>{self._fmt(ref)}</div>"
+        body += (
+            "<div class='sigblock'>"
+            "<div class='sep sig-sep'></div>"
+            f"<div class='signame'>{html.escape(self.signature)}</div>"
+            "<div class='sigtag'>DailyBCI · 每日脑机接口学术速递</div>"
+            "</div>"
+        )
+        return self._render(self._page(body), output_path)
 
 
 # =============================================================================
@@ -429,34 +290,36 @@ class CardGenerator:
 # =============================================================================
 
 if __name__ == "__main__":
+    _PROJECT_DIR = os.path.abspath(os.path.join(_SKILL_DIR, "..", "..", ".."))
     gen = CardGenerator(date="2026.06.07")
     outdir = os.path.join(_PROJECT_DIR, "output", "template-test")
 
     gen.cover_card(
         "血管内脑机接口",
         "走进 FDA 关键性试验",
-        "Synchron 的 Stentrode 成为首个进入 FDA 关键性临床试验的血管内脑机接口。",
-        os.path.join(outdir, "01-cover.png")
+        "Synchron 的 Stentrode 成为**首个**进入 FDA 关键性临床试验的血管内脑机接口¹。",
+        os.path.join(outdir, "01-cover.png"),
+        source="2026 · Synchron COMMAND 试验 · 血管内支架电极(16 通道,经颈静脉植入运动皮层附近),无需开颅。",
     )
 
     gen.text_card(
         "16 通道够用吗？",
         [
-            "这是所有人看到 Stentrode 参数时的第一反应。Neuralink 的 N1 有 1,024 个通道，Stentrode 只有 16 个，差了将近两个数量级\xb3。",
+            "这是所有人看到 Stentrode 参数时的第一反应。Neuralink 的 N1 有 **1,024** 个通道，Stentrode 只有 **16** 个，差了将近两个数量级³。",
             "但 Synchron 的逻辑是：对于 ALS 患者最迫切的需求——用意念点击、发消息、控制智能家居——16 个通道捕获的运动皮层信号已经够用了⁴。",
         ],
-        os.path.join(outdir, "02-text.png")
+        os.path.join(outdir, "02-text.png"),
     )
 
     gen.tail_card(
         [
-            "\xb9 Synchron COMMAND Trial, FDA IDE approval, 2025",
+            "¹ Synchron COMMAND Trial, FDA IDE approval, 2025",
             "",
-            "\xb2 Oxley et al., J NeuroIntervent Surg, 2021",
+            "² Oxley et al., J NeuroIntervent Surg, 2021",
             "",
-            "\xb3 Musk & Neuralink, J Med Internet Res, 2019",
+            "³ Musk & Neuralink, J Med Internet Res, 2019",
         ],
-        os.path.join(outdir, "03-tail.png")
+        os.path.join(outdir, "03-tail.png"),
     )
 
     print(f"Test cards saved to {outdir}/")
