@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-20
-Total papers: 154
+Last updated: 2026-06-23
+Total papers: 162
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -186,3 +186,14 @@ Total papers: 154
 - [Gallego 2018](papers/population-dynamics/gallego-2018-preserved-manifold-multiple-behaviors.md) — 多种运动行为共享同一被保留流形，证明流形是通用低维底座，Nat Commun
 - [Busch 2026](papers/population-dynamics/busch-2026-human-noninvasive-manifold-bci.md) — 首次在人类无创(fMRI)验证流形约束学习：流形内ΔBrainControl +49.3/+16.4可学、流形外−0.4学不会(N=18)，Nat Neurosci
 - [de Vicente 2026](papers/population-dynamics/devicente-2026-circuit-specific-volitional-learning.md) — 首次把流形-BCI学习搬出运动皮层、进海马CA3并与M1对比：两区学得一样好(p=0.453 n.s.)但动力学分叉(M1流过/CA3折返)，RNN证差异源于环路架构→principled degeneracy，bioRxiv
+
+## performance-variability (8 papers)
+BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-注意因素)与皮层内(信号非平稳-神经状态)两支。
+- [Vidaurre & Blankertz 2010](papers/performance-variability/vidaurre-2010-bci-illiteracy.md) — "BCI illiteracy"影响约15–30%使用者；提出协同自适应+在线自校准从机器侧解inefficiency，无需离线校准，把"用不了"重定义为"机器可适应"(EEG/SMR)
+- [Grosse-Wentrup & Schölkopf 2013](papers/performance-variability/grosse-wentrup-2013-smr-bci-performance-variations.md) — SMR-BCI性能变异综述，把γ频段注意网络活动指认为同一被试内表现波动的关键神经相关物，将"注意"落到可测神经生理量
+- [Perge 2013](papers/performance-variability/perge-2013-intraday-signal-instabilities.md) — 皮层内日内信号不稳定的奠基实证(人类3名四肢瘫，BrainGate)：84%单元日内放电率显著变化、85%为生理性、不稳定致56%评估出现方向性解码偏置
+- [Jeunet 2015](papers/performance-variability/jeunet-2015-predicting-mi-bci-performance.md) — 首次系统证明用户稳定特质(空间能力+人格/动机)可预测MI-BCI表现，把性能变异从"随机噪声"推向"可测个体差异"(EEG)
+- [Downey 2018](papers/performance-variability/downey-2018-intracortical-recording-stability.md) — 人类皮层内记录稳定性(2名长期使用者，Pitt/Chase·Collinger)：动作电位单元日内可变、波形特征可预测稳定性，把放电率漂移与神经状态变化关联(今日候选方法学前身)
+- [Dunlap 2020](papers/performance-variability/dunlap-2020-intracortical-signal-disruptions-review.md) — 皮层内BMI信号中断的定义性综述：按影响时长×可补偿性提出四类框架(瞬时/可逆/不可逆可补偿/不可逆不可补偿)+各类补偿策略
+- [Niu 2025](papers/performance-variability/niu-2025-cognitive-state-eeg-bci-review.md) — 最新定义性系统综述(PRISMA，25项)：年龄/认知/注意/心理状态对EEG-BCI有效性的影响；P300/SSVEP更鲁棒、MI对认知与年龄更敏感
+- [Canario 2026](papers/performance-variability/canario-2026-attentional-load-ibci.md) — 极少数在人类皮层内BCI主动操纵注意负荷(双任务N-Back)的工作：负荷经EEG/准确率/自评确证抬高,但光标控制基本不掉、运动意图信号保住;最差(植入约8年的P2)成功率跌<10% vs EEG-BCI约20%;脆弱性跟信号质量/植入年限走而非分心本身(匹兹堡Chase·Collinger组,2名四肢瘫,Utah阵列)

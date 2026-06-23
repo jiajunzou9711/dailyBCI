@@ -436,6 +436,9 @@ Once content is locked, produce the **final publishing-ready version**:
   3. 加一圈**统一小边距**(各边等宽),不要某边贴死、某边留一大片白;
   4. `Read` 裁出图**逐边自检**:图例完整?标题在?四角坐标轴和刻度齐?colorbar 全?星号没被截?散文图注没混进来?任一不满足就回到第 2 步调边界。
 - **多轮重审、裁到干干净净为止——图的清晰好看很重要。** 即便用了投影定位,仍要**每裁一版就 `Read` 裁出的子图、再 `Read` 渲染后的卡**——只有看渲染后的卡才看得出残留和截断;一旦发现图不干净(邻 panel 杂块、缺轴、断线、图例被切、图注混入),就调整边界重裁、重渲染,**该几轮就几轮**,直到这张图只剩它自己、构件齐全、四边留白均匀。别把脏裁图发出去当最终版。
+- **图卡黄金标准(2026-06-23 用户确认的成功案例,以后所有图卡一律照此办)= ①截干净 + ②图要大。** 这两条是图卡质量的硬指标:
+  - **① 截干净(投影 + 逐版自检)**:用墨迹投影(灰度 `<235`、行/列求和找留白沟)量出真实包围盒再裁;**每裁一版必 `Read` 自检四边构件齐不齐**(图例 / 子图标题 / 坐标轴刻度 / 显著性 * / 单位全进,散文图注 / 邻图全出),不齐就调边界重裁,**确认无漏截、无错截之后才把图呈现给用户**——绝不把没自检过的裁图发出去。
+  - **② 图在整张卡里要占大比例、放大看清**:图卡的价值就在图本身,别让它缩成一小条。两个反复踩的坑:(a) **论文图的实际内容常只占画面中央,四周是大片白边**——必须裁到"内容真实包围盒",把无意义白边全去掉(本期 Fig 1C 的环形任务流程只在中间约 1/3,裁掉空白后宽高比从 7.9:1 收到 2.25:1,在卡里放大约 3.5×、四步全清晰;Fig 5 把被切掉的顶部图例补回后含全部面板);(b) `figure_card(..., figure_height=…)` 默认 560,**宽-扁图可调大到 700–720** 给足竖向空间。判据:裁紧 → 宽高比更接近方形 → 在卡宽内铺满 → 读者一眼看清每个面板/标注。脏的、或缩成细条的图,都不算合格成品。
 
 **The "最终版 / final version" is always the actually-rendered cards, shown inline — never text-only copy.** When the user asks for the final/最终版, that means: run `card_generator.py`, produce the PNGs (figure cards composited with the real paper images), and **display the rendered card images in chat so the user can browse the actual 图卡** — image and text together as they will publish. Do not stop at a text description of the cards and make the user imagine the layout. Rough text copy belongs to the *draft* stage (Steps 5/7); the final stage owes the user browsable cards. The only exception is a headless run with no way to surface images — then say so explicitly.
 
