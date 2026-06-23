@@ -317,6 +317,16 @@ A good test: if you removed your explanation of this one point, would a reader m
 
 **在用户确认 insight 之前，不要生成任何 thread 文字或卡片图片。** 这些都是算力密集的操作，方向不对就全部白费。
 
+#### 横纵对比小分析（每期固定动作，2026-06-23 用户定）
+
+**这是日报的核心价值锚点：我们有一个持续扩充的知识库,能"博通古今"地把今天这篇放进坐标系里看。所以每期在 insight 确认后(相关里程碑已加载好时),都要顺手做一份简短的横纵对比小分析——首先是给用户的学习增量,其次是日报潜在的信息增量。** 不是可选项,每期都做(KB 覆盖不足时按下方降级)。
+
+- **纵轴(历时 / longitudinal)**:这条问题/技术线从早到今天怎么演进的——从 KB 拉关键几篇里程碑串成一条链,说清这篇站在谁的肩膀上、把哪一格往前推了(如 `perge-2013 → downey-2018 →（本篇）` 从"被动观察状态相关漂移"到"主动操纵注意负荷")。
+- **横轴(共时 / cross-sectional)**:同期(同年前后)其他组在做同一问题 / 相似问题的工作——相似技术或不同技术路线都要看;从 KB 拉 1-3 篇,对比各自的路线选择、取舍与结果差异(如非侵入 EEG-BCI 侧的注意效应 vs 本篇皮层内侧)。
+- **产出形态**:一份简短的对比小报告(几句话 + 必要时一个小表),在 Step 4 insight 确认之后、进 Step 5 初稿之前呈现给用户。**目的首先是用户的学习过程**,不必每条都进日报。
+- **升格规则**:若某条横/纵对比特别精彩、构成"超出单篇解读的信息增量",就把它编进当天日报——thread 加 1 条对比 tweet,或小红书加 1 张对比卡(对比卡同样守三段式 + 图文对版)。普通的对比留在小分析里即可。
+- **硬约束(承接 §Factual Accuracy 与 Step 2 缺位处理)**:对比**必须基于 KB 真实条目或当场核实的来源**,绝不凭记忆编造"同期某组也做了 X"。KB 在该方向覆盖不足时,如实标"此方向 KB 尚薄、横向对比有限",并可顺势提议补库(Mode B),**不硬凑一个看似博学的对比**。
+
 ### Step 5: First draft — thread copy + 小红书 copy with rough figures, in chat
 
 Right after the insight is confirmed, produce the **first full version** and present it in chat: **both** the English X-thread copy **and** the 小红书 card-by-card copy, with **each figure card's figure shown inline (a rough crop is fine)** so the user sees text+figure paired from the very first version. This is the content layer — logic, numbers, comparisons, and the text–figure pairing — produced cheaply so it can be revised and fact-checked **before** the expensive final card rendering. (Rationale: rendering polished cards is the heavy step; if a core number is wrong, that work is wasted. Facts first, polished production later. But rough crops of already-downloaded figures are cheap, so pair them in from the start — don't make the user imagine the layout.)
