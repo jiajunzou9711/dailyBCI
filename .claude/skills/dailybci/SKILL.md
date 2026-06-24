@@ -409,6 +409,8 @@ gen.tail_card(["¹ Ref 1...", "² Ref 2..."], "output/2026-06-07-slug/05-tail.pn
 ```
 Card sequence: 封面卡 → 图卡（按内容需要,通常 2-5 张,用 Step 3 下到本地的论文原图/裁图 + 三段式中文评注）→ 文字卡（每张一个要点,字大留白）→ 尾卡（简评 + 参考来源,含核心论文链接）. 图卡数量服从逻辑链,别硬凑或硬砍。
 
+**【出卡前强制检查 · 正文就地标角标】(2026-06-24 写死,本次因漏标被点名):** 生成各卡正文时,**每一处承重数据/最高级/对比结论都要在该卡当场挂上标 ¹²³**(unicode 上标直接写进 `card_generator` 文字串,与 `**高亮**` 共存),并与尾卡参考列表一一对应——封面核心句、图卡评注里的数字、文字卡里的判断都不例外。**渲染完逐卡 `Read` 时,顺带核一遍"这张卡的承重点有没有角标"**;只在尾卡列编号、正文裸奔=不合格,要重渲染。完整规则见 Tone and Voice → 标注参考来源 第 1 条。
+
 **渲染内核 = HTML/CSS 模板 + Chromium 截图**(经 `npx playwright screenshot`,需一次性 `npx playwright install chromium`;无 Chromium 则出不了图)。脚本自动处理中英混排(系统 Latin + 自带 Heiti SC)、自动换行、统一页眉页脚、上标(¹²³⁴ 由 Latin 字体原生渲染)。**句中高亮**:在任意文字串里用 `**关键词**` 包住关键术语/数字,即渲染成克制的学术蓝加粗(如 `样本为 **2 名** 参与者`);不加 `**` 的纯文字照常显示。克制使用——一张卡只点几个真正承重的数/词,别整句变蓝。
 
 **Four hard rules for the cards (established by user review — apply them yourself, do not make the user re-request them each round):**
@@ -448,7 +450,9 @@ Once content is locked, produce the **final publishing-ready version**:
 - **多轮重审、裁到干干净净为止——图的清晰好看很重要。** 即便用了投影定位,仍要**每裁一版就 `Read` 裁出的子图、再 `Read` 渲染后的卡**——只有看渲染后的卡才看得出残留和截断;一旦发现图不干净(邻 panel 杂块、缺轴、断线、图例被切、图注混入),就调整边界重裁、重渲染,**该几轮就几轮**,直到这张图只剩它自己、构件齐全、四边留白均匀。别把脏裁图发出去当最终版。
 - **图卡黄金标准(2026-06-23 用户确认的成功案例,以后所有图卡一律照此办)= ①截干净 + ②图要大。** 这两条是图卡质量的硬指标:
   - **① 截干净(投影 + 逐版自检)**:用墨迹投影(灰度 `<235`、行/列求和找留白沟)量出真实包围盒再裁;**每裁一版必 `Read` 自检四边构件齐不齐**(图例 / 子图标题 / 坐标轴刻度 / 显著性 * / 单位全进,散文图注 / 邻图全出),不齐就调边界重裁,**确认无漏截、无错截之后才把图呈现给用户**——绝不把没自检过的裁图发出去。
-  - **② 图在整张卡里要占大比例、放大看清**:图卡的价值就在图本身,别让它缩成一小条。两个反复踩的坑:(a) **论文图的实际内容常只占画面中央,四周是大片白边**——必须裁到"内容真实包围盒",把无意义白边全去掉(本期 Fig 1C 的环形任务流程只在中间约 1/3,裁掉空白后宽高比从 7.9:1 收到 2.25:1,在卡里放大约 3.5×、四步全清晰;Fig 5 把被切掉的顶部图例补回后含全部面板);(b) `figure_card(..., figure_height=…)` 默认 560,**宽-扁图可调大到 700–720** 给足竖向空间。判据:裁紧 → 宽高比更接近方形 → 在卡宽内铺满 → 读者一眼看清每个面板/标注。脏的、或缩成细条的图,都不算合格成品。
+  - **② 图在整张卡里要占大比例、放大看清**:图卡的价值就在图本身,别让它缩成一小条。三个反复踩的坑:(a) **论文图的实际内容常只占画面中央,四周是大片白边**——必须裁到"内容真实包围盒",把无意义白边全去掉(本期 Fig 1C 的环形任务流程只在中间约 1/3,裁掉空白后宽高比从 7.9:1 收到 2.25:1,在卡里放大约 3.5×、四步全清晰;Fig 5 把被切掉的顶部图例补回后含全部面板);(b) `figure_card(..., figure_height=…)` 默认 560,**宽-扁图可调大到 700–720** 给足竖向空间。判据:裁紧 → 宽高比更接近方形 → 在卡宽内铺满 → 读者一眼看清每个面板/标注。脏的、或缩成细条的图,都不算合格成品。
+    - (c) **宽-扁的"多 panel 一字排开"图,必须重新拼版,不能整条塞进去(2026-06-24 用户强烈要求写死)。** 关键认知:`figure_card` 的图按"宽度铺满卡宽 + 高度上限=figure_height"渲染,所以**对一条 6:1 的横排图,把 figure_height 调大根本没用**——图是宽度受限的,高度恒等于"卡宽÷宽高比"(6:1 → 只有约 147px 高),再大的 figure_height 只是给它上下补白,图本身不会变大。**唯一解法是把每个子 panel 用投影干净切出来、重新拼成接近方形(目标宽高比≈卡的图区比例,约 1.2:1)的复合图**,这样宽度铺满时高度也铺满、每个 panel 才放得大。本期 Fig 3 E–G 原是 6 个子图一字排开(6:1、塞进去每格仅约 147px、还截到邻图),改成 **3 列(20/40/60 µA)×2 行(气泡最大时刻 / 刺激后渗漏)** 的网格(≈1.5:1)后,每格放大到约 285px、四角干净;K/L/M 也从一字排开收紧成紧贴的一行(去掉 panel 间大白沟),panel 尺寸翻倍。**做法**:对原图做列/行亮度投影(2P 黑底图用"找白色留白沟 `亮度>240`"分割,比找墨迹更准)定位每个子 panel 的真实边界 → 各自 `crop` → `PIL` 贴到白底画布上重排 → `Read` 复合图逐格自检(无邻图杂块、标签/坐标/图例齐)。重排只是把论文自己的子图重新平铺,不改像素、不算篡改;但要保留可追溯的标签(µA / panel 字母 / 图例)。
+    - **首选用 `scripts/figcrop.py`,别再手填裁切坐标(2026-06-24 新增,起因:手填 x 把 K 截掉一截)。** 关键教训:**手敲坐标=凭眼估=必然截到或截掉**;让图自己报边界更快更准。该 helper 的 `figure_box(gray, y_band=(Y0,Y1))` 自动做三件事——① **裁掉页边距**(干掉 bioRxiv 侧栏水印),② **切在散文图注之上**(用行留白沟找 panel 块/图注分界),③ 用"内容包围盒(任何 `gray<235` 的非白像素,含 panel 字母/图例/colorbar/黑底 2P 图)"框出真实边界。`split_panels(gray, box)` 再按白沟切分,**每个 panel 扩到相邻留白沟的中线(绝不在沟内缘切)**,所以不会截掉字母/图例。用法:`fitz` 把页面 `get_pixmap(dpi=300)` 存 PNG → `figure_box` 拿框 → `crop` → `Read` 逐边自检 → 要拼版就 `split_panels`(注意它会把 panel 字母切成单独一格,拼版时与其图归并)。Y0/Y1 从全文里 `Figure N.` 那行的位置估个**宽松**区间即可,精确边界交给 `figure_box`。
 
 **The "最终版 / final version" is always the actually-rendered cards, shown inline — never text-only copy.** When the user asks for the final/最终版, that means: run `card_generator.py`, produce the PNGs (figure cards composited with the real paper images), and **display the rendered card images in chat so the user can browse the actual 图卡** — image and text together as they will publish. Do not stop at a text description of the cards and make the user imagine the layout. Rough text copy belongs to the *draft* stage (Steps 5/7); the final stage owes the user browsable cards. The only exception is a headless run with no way to surface images — then say so explicitly.
 
@@ -603,7 +607,7 @@ Total papers: [count]
 - **Never exhaustive** — find THE insight, not list every contribution
 - **Honest about uncertainty** — "the paper reports X; if this replicates, it would mean Y" is good
 - **标注参考来源（硬规则，从文章生成内容、引用他篇时一律遵守）** — 三条缺一不可：
-  1. **正文就地标角标**：每一处关键数据/最高级/对比结论,在它**出现的那张卡/那条 tweet 当场**挂上上标角标 ¹ ² ³（不能只在尾部列、正文不标）。
+  1. **正文就地标角标（最易漏，务必落到渲染出的卡片文字里；2026-06-24 用户因这次漏标而要求写死）**：每一处关键数据/最高级/对比结论,在它**出现的那张卡/那条 tweet 当场**挂上上标角标 ¹ ² ³（不能只在尾部列、正文不标）。具体到小红书:**封面的核心发现句、每张图卡评注里的承重数字（如 60 µA、约二次方）、文字卡里的承重论断（如 Shannon/McCreery 判据、铂 vs 金退化）都要在该卡正文当场带 ¹²³**,与尾卡参考列表一一对应;`card_generator` 的正文串里直接写 unicode 上标 ¹²³⁴(由 Latin 字体原生渲染,和句中 `**高亮**` 可共存)。**只在尾卡列编号、正文裸奔=不合格**,出卡前逐卡核一遍每个承重点是否都挂了角标。
   2. **尾部统一汇总且格式一致**：小红书在尾卡、X thread 在末尾 tweet(refs 超长就拆成多条,每条仍 ≤280 字符)汇总全部参考。**所有条目用同一个模板**：`作者 年份. 期刊 卷(期):页码.`(或 bioRxiv/medRxiv DOI、官方数据库编号)。不要英文 author-year 与中文描述式标签混排;不要 DOI/PMCID/期刊缩写各写各的。
   3. **每个角标都要有对应正文出处、每条正文引用都要进尾部列表**（不留"孤儿引用",不留"未标记的承重数据"）。**非同行评议的史实/监管/商业事实**（公司沿革、FDA 记录、新闻）与学术论文**分层标注**,单列一行说明来源层级,不要混进学术引用里冒充论文。
   4. **参考文献本身要准确**：作者、年份、期刊要查实(必要时查 PubMed/期刊页),不要凭记忆写错刊名或年份。（2026-06-21 用户定稿:参考文献的"就地标注 + 尾部统一格式 + 本身准确"是本 schema 的通用要求。）

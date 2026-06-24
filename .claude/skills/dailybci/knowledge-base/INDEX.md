@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-23
-Total papers: 162
+Last updated: 2026-06-24
+Total papers: 169
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -109,7 +109,7 @@ Total papers: 162
 - [NEO 2024](papers/invasive-recording/neo-2024-epidural-minimally-invasive-bci.md) — 首个无线无电池硬膜外人体BCI，eECoG作"第四类模态"，C4完全SCI患者9个月家用信号不降反升，驱动脑-脊髓康复（清华×博睿康）
 - [NEO 2025](papers/invasive-recording/neo-2025-fine-grained-2d-cursor.md) — 硬膜外微创BCI实现精细二维光标控制，发现双侧/多效应器表征，ITR 36.7 bpm、记录稳定>18个月
 
-## sensory-feedback (7 papers)
+## sensory-feedback (14 papers)
 - [Romo 1998](papers/sensory-feedback/romo-1998-icms-tactile-discrimination.md) — 首次ICMS产生与自然触觉不可区分的人工触觉感知
 - [Dhillon 2005](papers/sensory-feedback/dhillon-2005-peripheral-nerve-sensory-feedback.md) — 首次周围神经接口提供截肢者触觉和本体感觉反馈
 - [Tabot 2013](papers/sensory-feedback/tabot-2013-biomimetic-icms-touch.md) — 仿生ICMS模式恢复接近自然水平的触觉辨别，确立"仿生刺激"原则
@@ -117,6 +117,16 @@ Total papers: 162
 - [Tan 2014](papers/sensory-feedback/tan-2014-long-term-stable-touch.md) — 周围神经接口提供>1年稳定自然触觉感知，解决长期稳定性瓶颈
 - [Flesher 2016](papers/sensory-feedback/flesher-2016-first-human-icms-s1.md) — 首次人类S1皮层ICMS恢复触觉，感觉自然、按体感觉排列、稳定数月
 - [Hughes 2021](papers/sensory-feedback/hughes-2021-icms-object-identification.md) — 首次证明人类可仅通过ICMS触觉反馈识别物体，从感觉诱发到信息传递
+
+### 刺激安全与电荷注入限值 (stimulation safety & charge-injection limits)
+这条线服务 ICMS(感觉反馈/双向 BCI),同样支撑 neuromodulation 的 DBS/SCS。
+- [McCreery 1990](papers/sensory-feedback/mccreery-1990-charge-density-charge-per-phase.md) — 实证奠基:电荷密度×每相电荷协同决定刺激损伤阈值(猫皮层),Shannon判据的数据基础
+- [Shannon 1992](papers/sensory-feedback/shannon-1992-safe-levels-model.md) — Shannon方程 k=log(D)+log(Q),k=1.85安全/损伤分界,最广引用的刺激安全判据(宏电极)
+- [Merrill 2005](papers/sensory-feedback/merrill-2005-electrical-stimulation-protocols.md) — 定义性电化学教程:可逆/不可逆法拉第反应、water window、电荷平衡双相波形设计
+- [Cogan 2008](papers/sensory-feedback/cogan-2008-stimulation-recording-electrodes.md) — 电极材料电荷注入容量(TiN/Pt/IrOx)定义性综述,把安全限值落到具体材料
+- [McCreery 2010](papers/sensory-feedback/mccreery-2010-chronic-icms-neuronal-loss.md) — ICMS专属慢性损伤实证:微电极长时刺激致尖端≥150µm神经元丢失(猫),把宏电极判据推到微电极
+- [Cogan 2016](papers/sensory-feedback/cogan-2016-tissue-damage-thresholds.md) — 重审Shannon判据:源于宏电极、未必适用微电极,当代微刺激安全再评估起点
+- [Iliasov 2026](papers/sensory-feedback/iliasov-2026-microbubble-icms-safety.md) — 子簇首篇"在体实时血管成像看ICMS损伤":清醒小鼠双光子,气泡面积随电流~二次方增长、≥60µA急转BBB破裂;把电解微气泡从被动标志重定位为主动致损机制,给柔性电极ICMS机制性安全窗(何飞组·光机所×复旦华山)
 
 ## neuromodulation (7 papers)
 - [Benabid 1991](papers/neuromodulation/benabid-1991-dbs-tremor-suppression.md) — 开创现代DBS疗法，高频VIM刺激长期抑制帕金森震颤，可逆可调

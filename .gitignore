@@ -2,13 +2,12 @@
 .DS_Store
 
 # DailyBCI working scratch — downloaded paper figures, PIL crops, full-text
-# PDFs/txt. The committed artifact is the rendered deck under output/ (figures
-# are baked into the card PNGs). papers/ is regenerable and fully deletable.
-papers/*.jpg
-papers/*.jpeg
-papers/*.png
-papers/*.pdf
-papers/*.txt
+# PDFs/txt, page renders. The committed artifact is the rendered deck under
+# output/ (figures are baked into the card PNGs). papers/ is regenerable and
+# fully deletable, so ignore the whole dir (catch stray scripts/HTML too).
+# Anchored with leading slash so it ONLY matches the root scratch dir, NOT
+# the tracked knowledge-base/papers/ milestone library.
+/papers/
 
 # Python build artifacts
 __pycache__/

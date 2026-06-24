@@ -15,7 +15,9 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 │           ├── SKILL.md           ← 技能主文件(调试主要改这里)
 │           ├── knowledge-base/    ← INDEX.md + papers/<子领域>/(14 个子领域,篇数见 INDEX.md)
 │           ├── scripts/
-│           │   └── card_generator.py   ← 小红书卡片生成器(Pillow)
+│           │   ├── card_generator.py   ← 小红书卡片生成器(HTML/CSS+Chromium)
+│           │   ├── figcrop.py          ← 论文图自动裁切(亮度投影找真实边界,见 SKILL Step 8)
+│           │   └── series/             ← 「专题」长文出图脚本(犹他阵列/电极材料)
 │           └── fonts/             ← CJK 字体(HeitiSC-Subset.ttf,@font-face 引用)
 ├── papers/                        ← 每日运行的 scratch 工作区(已 gitignore):下载的论文图 + 全文 PDF/txt;每期发完可整目录删,成品在 output/
 ├── output/                        ← 生成的卡片 PNG。日报按 <日期>-<slug>/ 分目录;「专题」长文按 series-<slug>/(见 §4)
