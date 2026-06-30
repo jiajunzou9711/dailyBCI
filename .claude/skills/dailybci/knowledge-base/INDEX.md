@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-29
-Total papers: 184
+Last updated: 2026-06-30
+Total papers: 191
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -74,7 +74,7 @@ Total papers: 184
 - [Metzger 2023](papers/signal-processing/metzger-2023-multimodal-speech-avatar-decoder.md) — 多模态speech/avatar decoder，把神经解码从文本扩展到声音与表情控制
 - [Card 2024](papers/signal-processing/card-2024-rapid-calibration-speech.md) — 快速校准speech decoder + online adaptation，推进临床可用的高准确率通信
 
-## non-invasive (21 papers)
+## non-invasive (22 papers)
 - [Farwell 1988](papers/non-invasive/farwell-1988-p300-speller.md) — P300 speller范式，6×6矩阵，定义非侵入BCI通信范式
 - [Wolpaw 1991](papers/non-invasive/wolpaw-1991-mu-rhythm-cursor.md) — 首个mu节律EEG光标控制，确立SMR-BCI路线
 - [Pfurtscheller 1997](papers/non-invasive/pfurtscheller-1997-motor-imagery-erd.md) — Motor imagery ERD/ERS，建立运动想象BCI神经生理学基础
@@ -84,6 +84,7 @@ Total papers: 184
 - [Chen 2015](papers/non-invasive/chen-2015-high-speed-ssvep-speller.md) — SSVEP speller 5.32 bits/sec，60字符/分钟，非侵入BCI速度纪录，PNAS
 - [Lawhern 2018](papers/non-invasive/lawhern-2018-eegnet.md) — EEGNet跨范式通用CNN，成为EEG深度学习标准基线
 - [Defossez 2023](papers/non-invasive/defossez-2023-meta-meg-speech-decoding.md) — Meta FAIR用MEG解码语音，72.5% top-10准确率，非侵入语音BCI探索
+- [Brain2Qwerty 2026](papers/non-invasive/brain2qwerty-2026-meg-typing-decoding.md) — Meta FAIR用MEG解码"打字时脑活动"逐句成文：v1(Nat Neurosci,同步,CER 32%)→v2(preprint,异步,WER 39%≈61%词准确率)；CTC去掉按键时刻依赖(同步→异步/离线→在线)、三层+微调LLM、准确率随数据对数线性(r=−0.99)未见顶；接Defossez同组MEG(感知→产出)，局限:MEG大扫描仪+健康人真打字、迁移未证
 - [Ding 2025](papers/non-invasive/ding-2025-finger-mi-healthy.md) — 首次用头皮EEG实时控制individual-finger级机械手(健康熟练者，2指80.6%/3指60.6%)：把"逐指"从皮层内推到非侵入，He组非侵入逐指线起点
 - [Ding 2026](papers/non-invasive/ding-2026-finger-mi-stroke.md) — 首次在零经验中风患者用头皮EEG实现实时逐指机械手控制：2指83.5%/3指61.4%(随机50%/33%)、患侧≈健侧(d=0.18/0.42)、低频delta是信号；中风把精细运动编码重组成双侧/分散/低频，EEGNet跟住(He组，naïve中风≈其2025 Nat Commun健康熟练者)
 
@@ -129,7 +130,7 @@ Total papers: 184
 - [Cogan 2016](papers/sensory-feedback/cogan-2016-tissue-damage-thresholds.md) — 重审Shannon判据:源于宏电极、未必适用微电极,当代微刺激安全再评估起点
 - [Iliasov 2026](papers/sensory-feedback/iliasov-2026-microbubble-icms-safety.md) — 子簇首篇"在体实时血管成像看ICMS损伤":清醒小鼠双光子,气泡面积随电流~二次方增长、≥60µA急转BBB破裂;把电解微气泡从被动标志重定位为主动致损机制,给柔性电极ICMS机制性安全窗(何飞组·光机所×复旦华山)
 
-## neuromodulation (7 papers)
+## neuromodulation (13 papers)
 - [Benabid 1991](papers/neuromodulation/benabid-1991-dbs-tremor-suppression.md) — 开创现代DBS疗法，高频VIM刺激长期抑制帕金森震颤，可逆可调
 - [Limousin 1998](papers/neuromodulation/limousin-1998-stn-dbs-parkinson.md) — 确立STN-DBS作为晚期帕金森标准治疗，UPDRS运动评分改善~50%
 - [Morrell 2011](papers/neuromodulation/morrell-2011-rns-closed-loop-epilepsy.md) — 首个闭环脑刺激RCT（RNS），191名癫痫患者，2013年FDA批准
@@ -137,6 +138,15 @@ Total papers: 184
 - [Little 2013](papers/neuromodulation/little-2013-adaptive-dbs-human.md) — 首次人类闭环自适应DBS，用beta振荡作为生物标志物，刺激量减半
 - [Scangos 2021](papers/neuromodulation/scangos-2021-closed-loop-depression.md) — 首次个性化闭环神经调控治疗难治性抑郁症
 - [Shirvalkar 2023](papers/neuromodulation/shirvalkar-2023-chronic-pain-biomarker.md) — 首次从颅内慢性记录预测慢性疼痛状态，OFC为关键生物标志物
+
+### 刺激空间选择性 / 电流聚焦 (current steering & field shaping)
+"用电流几何/时空结构而非移动电极来控制激活区"这条母题，服务 SCS / DBS / 外周刺激；为本期 ACM(焦点式深部刺激)的纵向前作与横向对照。milestone 抽取自 Liang et al. 2023 (Neuromodulation) 的 SCS 计算模型系统综述。
+- [Rattay 1986](papers/neuromodulation/rattay-1986-activating-function.md) — "激活函数"(∂²Ve/∂x²)：从胞外电场预测哪段轴突被激活的数学地基，所有刺激空间选择性建模的理论源头
+- [Coburn 1980](papers/neuromodulation/coburn-1980-2d-scs-fem.md) — 首个 SCS 有限元模型(2D)，奠定"背柱 vs 背根谁先被激活"建模问题，SCS 建模线起点
+- [Struijk & Holsheimer 1996](papers/neuromodulation/struijk-holsheimer-1996-transverse-tripole.md) — 横向三极双通道：靠多触点电流配比把激活区横向 steering，临床 current-steering 奠基理论
+- [Capogrosso 2013](papers/neuromodulation/capogrosso-2013-epidural-stim-model.md) — 首个真实 3D 硬膜外 SCS 模型，证明优先募集背根 afferent，靶向时空刺激(Wagner/Lorach)的建模引擎
+- [Rowald 2022](papers/neuromodulation/rowald-2022-spatiotemporal-epidural.md) — MRI 个体化 + 软件电流 steering 靶向躯干/腿运动池，完全 SCI 患者 1 天内恢复站立行走，临床级 current-steering 标杆(人体)
+- [Grossman 2017](papers/neuromodulation/grossman-2017-temporal-interference.md) — 时间干涉(TI)：两路高频场深部干涉出低频包络，表面电极聚焦激活深部、放过浅层，ACM"深部聚焦"概念近亲(小鼠)
 
 ## locomotion (6 papers)
 - [Harkema 2011](papers/locomotion/harkema-2011-epidural-stimulation-standing.md) — 首次硬膜外脊髓刺激恢复完全瘫痪者站立和步进，颠覆不可恢复教条
