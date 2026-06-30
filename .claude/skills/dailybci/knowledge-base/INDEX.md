@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-25
-Total papers: 170
+Last updated: 2026-06-29
+Total papers: 184
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -164,7 +164,7 @@ Total papers: 170
 - [Precision 2025](papers/clinical-regulatory/precision-2025-layer7-510k.md) — 首个BCI通过FDA 510(k)获批，开创快速监管通道
 - [Neuracle/NEO 2026](papers/clinical-regulatory/neuracle-2026-neo-nmpa-approval.md) — 中国NMPA颁发全球首张侵入式BCI注册证（三类），首个商业获批并接入医保的半侵入BCI，36例临床全部抓握改善（2026-03-13）
 
-## ai-neural-modeling (20 papers)
+## ai-neural-modeling (21 papers)
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
 - [Ye 2021](papers/ai-neural-modeling/ye-2021-neural-data-transformer.md) — NDT首次将Transformer应用于神经spike数据，推理速度比RNN快6倍
 - [Ye 2023](papers/ai-neural-modeling/ye-2023-ndt2-multi-context.md) — NDT-2跨session预训练，证明预训练+微调范式在神经数据上有效，NeurIPS 2023
@@ -187,6 +187,7 @@ Total papers: 170
 - [Ferrante 2023 (Brain Captioning)](papers/ai-neural-modeling/ferrante-2023-brain-captioning.md) — 把脑活动解码成图像+文本caption，NEURRATOR"自然语言旁白"最直接祖先(人类fMRI；与候选2 Toschi同线)
 - [Marin-Llobet 2026 (NEURRATOR)](papers/ai-neural-modeling/marin-llobet-2026-neurrator-single-cell-narration.md) — 首次把"神经活动→自由文本旁白"推到单神经元级(小鼠Neuropixels)：动作电位→冻结CLIP→冻结LLaVA零语言端训练；同一画面PV/SST讲车、VIP讲光影，把细胞类型从分类目标变成可用语言查询的功能探针(76%认型)
 - [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
+- [Ismail 2026 (naturalistic word meaning)](papers/ai-neural-modeling/ismail-2026-naturalistic-word-meaning.md) — 首次从**被动录的日常自然语音**(21患者/871h/527万词)估计**人类单神经元**对词义的编码：Behnke-Fried 微丝深部电极，全自动转录+区分说话人+检动作电位，无人工标注/分选；编码全患者显著、10类语义解码20.9%(随机10%)；自己说>环境语音2.42×(注意力)、自动化≈人工精标；把神经→语义从受控刺激推到零控制日常语音+百万词级(Baylor·Hayden/Sheth/Provenza，bioRxiv)
 
 ## population-dynamics (8 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature
@@ -208,3 +209,22 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Dunlap 2020](papers/performance-variability/dunlap-2020-intracortical-signal-disruptions-review.md) — 皮层内BMI信号中断的定义性综述：按影响时长×可补偿性提出四类框架(瞬时/可逆/不可逆可补偿/不可逆不可补偿)+各类补偿策略
 - [Niu 2025](papers/performance-variability/niu-2025-cognitive-state-eeg-bci-review.md) — 最新定义性系统综述(PRISMA，25项)：年龄/认知/注意/心理状态对EEG-BCI有效性的影响；P300/SSVEP更鲁棒、MI对认知与年龄更敏感
 - [Canario 2026](papers/performance-variability/canario-2026-attentional-load-ibci.md) — 极少数在人类皮层内BCI主动操纵注意负荷(双任务N-Back)的工作：负荷经EEG/准确率/自评确证抬高,但光标控制基本不掉、运动意图信号保住;最差(植入约8年的P2)成功率跌<10% vs EEG-BCI约20%;脆弱性跟信号质量/植入年限走而非分心本身(匹兹堡Chase·Collinger组,2名四肢瘫,Utah阵列)
+
+## affective-bci (7 papers)
+情感脑机接口 / EEG 情绪解码(aBCI)。多为 passive BCI——检测而非主动控制情感状态。主线：理论原点→神经生理地基→benchmark 数据集→特征/深度学习→跨被试·跨数据集泛化。
+- [Picard 1997](papers/affective-bci/picard-1997-affective-computing.md) — 专著《Affective Computing》提出"情感计算"概念与研究纲领，确立维度情绪模型(valence/arousal)+生理信号优先，整个领域理论原点
+- [Davidson 1992](papers/affective-bci/davidson-1992-frontal-asymmetry-emotion.md) — 额叶 EEG alpha 不对称↔趋近/回避动机，把情绪落到可由 EEG 测量的神经生理量，EEG-情绪解码的神经生理地基
+- [Mühl 2014](papers/affective-bci/muhl-2014-affective-bci-survey.md) — 定义 aBCI 的奠基综述(本子领域 milestone 抽取源)，框定问题结构与"个体差异+EEG非平稳"核心障碍
+- [Koelstra 2012](papers/affective-bci/koelstra-2012-deap-dataset.md) — DEAP：经典多模态(EEG+外周)情绪 benchmark 数据集，32被试，valence/arousal/dominance/liking 标注
+- [Zheng & Lu 2015](papers/affective-bci/zheng-2015-seed-differential-entropy.md) — SEED 数据集 + 微分熵(DE)特征，发现 gamma 频段与情绪最相关；与 DEAP 并列两大基准
+- [Zheng & Lu 2016](papers/affective-bci/zheng-2016-transfer-learning-affective.md) — 首次把迁移学习/跨被试域适应引入 EEG 情绪识别(TPT)，开启跨被试·跨数据集泛化线(今日候选直接前驱)
+- [Song 2018](papers/affective-bci/song-2018-dgcnn-eeg-emotion.md) — DGCNN 动态图卷积，可训练邻接矩阵建模 EEG 通道间关系，EEG 情绪深度学习地标
+
+## emg-motor-unit (6 papers)
+外周肌电 / 运动单位解码→神经驱动。非脑接口，但与 BCI 主线在"神经接口/假肢控制"端相接。主线：共同驱动概念→盲源分解技术→神经驱动框架→人机接口应用。
+- [De Luca & Erim 1994](papers/emg-motor-unit/deluca-1994-common-drive.md) — 提出"共同驱动/共同突触输入"概念，运动神经元协同放电的理论原点，整条线的理论基石
+- [Holobar & Zazula 2007](papers/emg-motor-unit/holobar-2007-convolution-kernel-compensation.md) — 卷积核补偿(CKC)盲源分解，让 HD-sEMG 无创读出单运动单位放电序列的核心引擎
+- [Farina, Merletti & Enoka 2014](papers/emg-motor-unit/farina-2014-neural-strategies-surface-emg.md) — 定义性框架：厘清表面肌电能/不能读出的神经信息，确立运动单位放电→神经驱动的正确用法与解释边界
+- [Farina & Negro 2015](papers/emg-motor-unit/farina-negro-2015-common-synaptic-input.md) — 把共同驱动形式化为可计算的神经驱动框架(共同低频成分经肌肉低通传为力)，"放电序列→共同成分→力/控制"因果链
+- [Negro 2016](papers/emg-motor-unit/negro-2016-convolutive-bss-decomposition.md) — 通用卷积盲源分解，把 CKC 推成可验证·社区标准方法(openhdemg 算法核心)，今日候选工具链源头
+- [Farina 2017](papers/emg-motor-unit/farina-2017-manmachine-interface-motor-neurons.md) — 用脊髓运动神经元放电时序作控制命令驱动假肢(6名TMR截肢者，离线)，把运动单位解码推向真正的神经接口，本线最 BCI-relevant 地标
