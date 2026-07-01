@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-06-30
-Total papers: 191
+Last updated: 2026-07-01
+Total papers: 199
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -229,6 +229,17 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Zheng & Lu 2015](papers/affective-bci/zheng-2015-seed-differential-entropy.md) — SEED 数据集 + 微分熵(DE)特征，发现 gamma 频段与情绪最相关；与 DEAP 并列两大基准
 - [Zheng & Lu 2016](papers/affective-bci/zheng-2016-transfer-learning-affective.md) — 首次把迁移学习/跨被试域适应引入 EEG 情绪识别(TPT)，开启跨被试·跨数据集泛化线(今日候选直接前驱)
 - [Song 2018](papers/affective-bci/song-2018-dgcnn-eeg-emotion.md) — DGCNN 动态图卷积，可训练邻接矩阵建模 EEG 通道间关系，EEG 情绪深度学习地标
+
+## shared-autonomy-bci (8 papers)
+共享自主/共享控制:把神经解码指令与自主辅助(视觉引导、导航、AI副驾驶)按置信度融合,而非单纯提升解码精度。理论(策略混合/POMDP/深度RL)与BCI应用(皮层内/EEG)两条并行主线。milestone 抽取自 Farhadi et al. 2025 综述(arXiv 2506.16044)引用。
+- [Dragan 2013](papers/shared-autonomy-bci/dragan-2013-policy-blending.md) — 策略混合形式化,把辅助表示为用户策略与预测自主策略的融合,共享控制理论基石,IJRR
+- [Muelling 2017](papers/shared-autonomy-bci/muelling-2017-autonomy-infused-teleoperation-bci.md) — 首批皮层内人类BCI+共享自主实证(匹兹堡,2名被试7自由度机械臂),把纯BCI"做不到"的日常任务变可行
+- [Downey 2016](papers/shared-autonomy-bci/downey-2016-blending-bmi-vision-guided.md) — 同源团队:BMI到达+视觉引导抓取分工,紧邻物体抓取准确率92%,证明收益来自"分工"而非整体提升解码
+- [Javdani 2018](papers/shared-autonomy-bci/javdani-2018-hindsight-optimization.md) — 事后优化近似求解POMDP形式化的共享自主,与策略混合并列两大理论范式,IJRR(原RSS 2015)
+- [Reddy 2018](papers/shared-autonomy-bci/reddy-2018-deep-rl-shared-autonomy.md) — 深度强化学习端到端学习共享自主,方法论从手工设计转向数据驱动,RSS
+- [Ghasemi 2022](papers/shared-autonomy-bci/ghasemi-2022-shared-autonomy-eeg-bci.md) — 共享自主扩展到非侵入EEG-BCI机械臂操作,理论+实验,Science Robotics
+- [Beraldo 2022](papers/shared-autonomy-bci/beraldo-2022-shared-intelligence-teleoperation-bmi.md) — EEG-BMI"共享智能"遥操作远程呈现机器人,机器人自主处理低层执行,IEEE THMS
+- [Saussus 2026](papers/shared-autonomy-bci/saussus-2026-confidence-modulated-navigation.md) — 首次机制性刻画共享控制"何时失灵":置信度调制AI副驾驶把执行失败率37%→4%,但目标中途突变(Respawn)时反而80%→67%,离线回放+先验重置证明失灵是算法性的而非解码问题(2只恒河猴,bioRxiv)
 
 ## emg-motor-unit (6 papers)
 外周肌电 / 运动单位解码→神经驱动。非脑接口，但与 BCI 主线在"神经接口/假肢控制"端相接。主线：共同驱动概念→盲源分解技术→神经驱动框架→人机接口应用。
