@@ -109,7 +109,7 @@ This skill runs as a Claude Code project. Anchor all paths to these locations (w
 
 - **Skill + resources:** `.claude/skills/dailybci/` — contains `SKILL.md`, `scripts/card_generator.py`, `fonts/`, and `knowledge-base/`.
 - **Knowledge base:** `.claude/skills/dailybci/knowledge-base/` (`INDEX.md` + `papers/<subfield>/`). Wherever the text below writes `knowledge-base/...`, read it as `.claude/skills/dailybci/knowledge-base/...`.
-- **Working data (per-run):** `papers/` at project root — downloaded full-text PDF/`<slug>-fulltext.txt`, figure images, and PIL crops. **Gitignored scratch:** not version-controlled (figures are baked into the committed `output/` cards), so it's regenerable and deleted at Step 10.
+- **Working data (per-run):** `papers/` at project root — downloaded full-text PDF/`<slug>-fulltext.txt`, figure images, and PIL crops. **Gitignored scratch:** not version-controlled (figures are baked into the committed `output/` cards), so it's regenerable and deleted at Step 9.
 - **Output:** `output/<date>-<slug>/` at project root — generated card PNGs.
 
 To import the card generator from project root:
@@ -463,32 +463,22 @@ Once content is locked, produce the **final publishing-ready version**:
 
 Present all final cards for last confirmation before posting.
 
-### Step 9: Knowledge base update (automatic)
+### Step 9: Close out(用户对最终版图卡+thread明确确认后,一次性走完)
 
-After publishing, assess whether today's paper is significant enough to become a milestone entry. If yes:
-- Generate a structured summary in the knowledge base format (see Mode B)
-- Suggest adding it: "今天这篇关于 [topic] 的工作值得加入知识库吗？"
-- If the user confirms, write it to `knowledge-base/papers/` and update `INDEX.md`
+**这是一个单一的收尾步骤,不是四个独立环节**——用户在 Step 8 给出最终确认后,以下 a→d 顺序执行、中途不再逐项停下来问,除非某一步本身要求用户表态(知识库入库的判断、删除前的确认):
 
-### Step 10: Clean up local scratch (disk)
+**a. 知识库更新** — 评估今天这篇是否够格进知识库(是否milestone、还是只是确证性/补充性条目)。给出你的判断和理由,问用户"今天这篇关于 [topic] 的工作值得加入知识库吗?"。用户确认要加 → 按 Mode B 格式生成结构化摘要,写入 `knowledge-base/papers/[subfield]/`,更新 `INDEX.md`(含子领域计数、总篇数)。
 
-发布完、知识库也更新后,`papers/` 里这一期的工作文件就用不上了——**主动提醒用户清理**(用户本机磁盘有限)。`papers/` 是 scratch 且已 gitignore(下载的论文图、PIL 裁的子图、全文 `<slug>.pdf` / `<slug>-fulltext.txt` 都不进版本库);真正的成品是 `output/<date>-<slug>/` 的卡片 PNG——**图已烤进卡片,源图删了不影响成品**。
-
-给用户一个带清单 + 大小的提示,**等用户确认再删**:
+**b. 清理本地 scratch** — `papers/` 里这一期的工作文件(下载原图、裁图、全文PDF/txt)已经用不上了,图已烤进 `output/<date>-<slug>/` 的成品卡。给用户一个带清单+大小的提示:
 > 今天这期发完了。`papers/` 下这期的工作文件(下载原图 N 张、裁图 M 张、PDF/全文 ≈ X MB)已经用不上了——成品卡在 `output/<slug>/`、图已烤进卡。要我清掉吗?
 
-- 用户同意 → `rm` 掉这一期的 `papers/<slug>*`(图 + PDF + 全文)。
-- **绝不碰 `output/`(成品)、`.claude/`(技能/知识库)、或别期的工作文件。** 删前再扫一眼清单确认范围。
-- 删除是不可逆操作:**必须用户明确同意才删**,不要默认替用户清。无头运行(cron/`claude -p`)不要自动删,留着等人工确认。
+用户同意 → `rm` 掉这一期的 `papers/<slug>*`。**绝不碰 `output/`(成品)、`.claude/`(技能/知识库)、或别期的工作文件**,删前再扫一眼清单确认范围。删除不可逆,必须用户明确同意才删。
 
-### Step 11: Sync docs + commit(收尾,用户对最终版图卡+thread明确确认后触发)
+**c. 跑 `/neat-freak`** — 审查这期会话有没有让 `CLAUDE.md`、本 `SKILL.md`、知识库 `INDEX.md`、记忆系统之间出现漂移(常见的:知识库加了条目但 `INDEX.md` 的子领域/总篇数计数没跟着改;某篇论文改名/改年份后,`CLAUDE.md` 里旧的引用没同步)。发现漂移就地修正。
 
-Step 9/10 做完后,做最后一步收尾——把本期改动同步进项目文档并提交:
+**d. `git commit`**(单人项目,默认直接 commit + push master,不开 PR,见 §5)——把 a-c 的全部产出(知识库新条目、`INDEX.md` 更新、`output/<date>-<slug>/` 卡片、neat-freak 修正的文档)一并提交、推送。
 
-1. **跑 `/neat-freak`**:审查这期会话有没有让 `CLAUDE.md`、本 `SKILL.md`、知识库 `INDEX.md`、记忆系统之间出现漂移(常见的:知识库加了条目但 `INDEX.md` 的子领域计数没跟着改;某篇论文改名/改年份后,`CLAUDE.md` 里旧的引用没同步)。发现漂移就地修正。
-2. **`git commit`**(单人项目,默认直接 commit + push master,不开 PR,见 §5):把本期产出——知识库新条目、`INDEX.md` 更新、`output/<date>-<slug>/` 卡片、以及 neat-freak 修正的文档——一并提交。
-
-无头运行(cron/`claude -p`)同样不自动跳过——但涉及 push 的动作仍遵循"先在聊天里说明、拿到确认"的默认规则,不要在无人值守时静默推送。
+无头运行(cron/`claude -p`)不自动做 b 的删除,但涉及 push 的动作仍遵循"先在聊天里说明、拿到确认"的默认规则,不要在无人值守时静默推送。
 
 ---
 
