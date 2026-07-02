@@ -1,30 +1,31 @@
 ---
-title: "China NMPA grants world-first registration certificate to NEO invasive/epidural BCI (Neuracle × Tsinghua)"
+title: "China NMPA approval of Neuracle NEO epidural BCI hand motor function compensation system"
 authors: Neuracle Technology (博睿康) × Tsinghua University (Hong Bo group)
 year: 2026
 venue: NMPA regulatory approval (Class III medical device registration certificate)
-url: https://www.technologyreview.com/2026/06/01/1138133/china-world-first-brain-chip/
+url: https://kjj.changzhou.gov.cn/content/suitable/show?id=49504&catid=4918
 subfield: clinical-regulatory
 tags: [regulatory, NMPA, China, commercial-approval, epidural, semi-invasive, NEO, Neuracle, SCI, reimbursement]
+secondary_url: https://www.technologyreview.com/2026/06/01/1138133/china-world-first-brain-chip/
+verification_note: "2026-07-02 audit: government/authoritative Chinese sources support NMPA approval and the broad 'world-first approved implanted BCI class III device' framing, but the NMPA registration certificate number and exact reimbursement scope still need primary-record confirmation."
 ---
 
 ## 解决了什么问题
 
-在 NEO 之前，全球没有任何侵入类 BCI 拿到国家级监管机构的**商业上市批准**——所有植入都在研究协议或扩展使用项目下进行。本事件回答的问题是：一条半侵入（硬膜外、不穿透脑组织）的 BCI 路线，能否凭其更低的手术风险，率先跨过监管门槛、进入常规临床销售与医保支付。
+在 NEO 之前，侵入/半侵入 BCI 的人体植入主要停留在研究协议、可行性试验或监管试验阶段；商业上市和常规临床使用的边界并不清楚。本事件回答的问题是：一条硬膜外、不穿透脑组织的半侵入 BCI 路线，能否先跨过医疗器械上市监管门槛，进入真实临床应用。
 
 ## 核心方法（监管路径）
 
-中国 NMPA 于 **2026 年 3 月 13 日**向 NEO 颁发"全球首张"侵入式 BCI 注册证，按**三类医疗器械**（中国最高监管分类）批准。设备由 Neuracle Technology（博睿康）与清华大学（洪波团队）联合开发，适应症为 **18–60 岁颈髓损伤致部分瘫痪**患者。注册基于硬膜外 NEO 系统的临床试验数据（见 [[neo-2024-epidural-minimally-invasive-bci]]）。批准后 NEO 被纳入国家医保体系，对符合条件患者提供部分报销。其"传感器置于硬脑膜、不穿透皮层"的设计是比 Neuralink N1（穿透皮层）更快过审的关键。
+中文政府/权威媒体来源称，国家药品监督管理局批准博睿康医疗科技（上海）有限公司研发的植入式脑机接口手部运动功能代偿系统（NEO 系统）上市，并称其为全球首个获批上市的植入式脑机接口三类医疗器械。设备由 Neuracle Technology（博睿康）与清华大学洪波团队相关路线发展而来，注册依据应与硬膜外 NEO 系统的临床试验数据有关（见 [[neo-2024-epidural-minimally-invasive-bci]]）。其核心监管优势是硬膜外、不穿透皮层的半侵入设计。
 
 ## 关键数据
 
-- 批准时间：**2026-03-13**（NMPA 注册证；2026 年 6 月一轮再传播为"全球首个商业 BCI"头条）。
-- 监管分类：三类医疗器械注册证（中国最高风险等级）。
-- 临床试验规模：**36 名**参与者，全部显示抓握能力改善。
-- 适应症人群：18–60 岁、颈髓损伤致部分瘫痪。
-- 已接入国家医保，提供部分报销。
-- ⚠ 待核查项：英文报道一度将公司误作 "NeuraMatrix"，正确为 Neuracle / 博睿康；"首个商业化"的精确边界需对照 Precision 510(k)（[[precision-2025-layer7-510k]]）与 Synchron IDE（[[synchron-2024-command-feasibility]]）界定——后两者属不同监管路径/阶段。
+- 中文来源称国家药监局已正式批准 NEO 系统上市，并称其为全球首个获批上市的植入式脑机接口三类医疗器械。
+- 常州市科技局 2026-05-08 页面称 NEO 已完成 **36 例**临床手术，包括 **4 例**可行性临床和 **32 例**多中心确证性临床。
+- 公开报道中的批准日期常写为 **2026-03-13**，但仍需 NMPA 注册库记录确认注册证编号和精确日期。
+- 医保/报销信息需继续核查具体地区、目录类别和支付范围，不能在 KB 中直接泛化为"国家医保全覆盖"。
+- ⚠ 待核查项：NMPA 注册证编号、注册证适应症原文、医保纳入范围；"首个商业化"的精确边界需对照 Precision 510(k)（[[precision-2025-layer7-510k]]）与 Synchron IDE（[[synchron-2024-command-feasibility]]）界定。
 
 ## 为什么是 milestone
 
-首个由国家药监机构正式商业批准、并接入医保支付的侵入/半侵入 BCI，把行业从"研究阶段"推进到"可向患者销售"。对照 KB 中其他监管里程碑——[[precision-2025-layer7-510k]]（FDA 510(k) 清关）、[[synchron-2024-command-feasibility]]（FDA IDE 永久植入研究）、[[oxley-2023-switch-trial-safety]]（血管内 BCI 安全数据）——NEO 是首个走完"商业获批 + 医保覆盖"全链路的案例，也使中国成为该赛道首个商业化落地的国家。它标记了 BCI 监管-商业化的一个时间拐点。
+在现有公开资料能支持的范围内，NEO 是侵入/半侵入 BCI 从科研试验走向上市医疗器械的关键监管节点。对照 KB 中其他监管里程碑——[[precision-2025-layer7-510k]]（FDA 510(k) 清关，短期皮层电极/组件边界）、[[synchron-2024-command-feasibility]]（FDA IDE 永久植入研究）、[[oxley-2023-switch-trial-safety]]（血管内 BCI 安全数据）——NEO 的位置应表述为"中国 NMPA 批准上市的硬膜外 BCI 手部运动功能代偿系统"，而不是未经注册证原文支持地扩展成所有侵入式 BCI 的全球商业化终局。

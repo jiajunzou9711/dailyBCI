@@ -20,4 +20,4 @@ tags: [non-invasive, EEG, motor-imagery, finger-decoding, EEGNet, robotic-hand, 
 - 证明 naturalistic、多手指级别的非侵入机械手控制可行。
 
 ## 为什么是 milestone
-**首次证明非侵入头皮 EEG 可实时驱动 individual-finger 级机械手控制**,把"逐指"从皮层内电极的专属推进到非侵入路线,松动了"头皮 EEG 解不出单指"的长期共识。它是 He 组非侵入逐指线的起点,直接催生了 2026 年向 BCI-naïve 中风患者的推广(ding-2026-finger-mi-stroke,以同一范式得到 83.5%/61.4%,与本篇健康熟练者基本持平)。与皮层内逐指/手写解码线(willett-2021-handwriting-bci、willett-2024-finger-click-bci)形成"侵入 vs 非侵入"的对照锚点。
+**首次证明非侵入头皮 EEG 可实时驱动 individual-finger 级机械手控制**,把"逐指"从皮层内电极的专属推进到非侵入路线,松动了"头皮 EEG 解不出单指"的长期共识。它是 He 组非侵入逐指线的起点,直接催生了 2026 年向 BCI-naïve 中风患者的推广(ding-2026-finger-mi-stroke,以同一范式得到 83.5%/61.4%,与本篇健康熟练者基本持平)。与已核实的皮层内精细运动/手写解码线(willett-2021-handwriting-bci 等)形成"侵入 vs 非侵入"的对照锚点；原 `willett-2024-finger-click-bci` 条目已被隔离,不再作为对照基准。

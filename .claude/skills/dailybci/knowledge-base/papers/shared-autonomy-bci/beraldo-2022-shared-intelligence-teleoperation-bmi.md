@@ -3,7 +3,7 @@ title: "Shared Intelligence for Robot Teleoperation via BMI"
 authors: Beraldo, Tonin, Millán, Menegatti
 year: 2022
 venue: IEEE Transactions on Human-Machine Systems, 52(3):400-409
-url: https://doi.org/10.1109/THMS.2022.3155716
+url: https://doi.org/10.1109/THMS.2021.3137035
 subfield: shared-autonomy-bci
 tags: [non-invasive-BCI, EEG, shared-control, telepresence, robot-teleoperation]
 ---
@@ -18,4 +18,4 @@ EEG-BMI遥操作移动机器人/远程呈现机器人时,用户发出的指令�
 在机器人远程呈现/遥操作任务上验证,证明该框架下用户仅需发出稀疏、低带宽的高层指令,机器人即可完成原本需要连续精细控制的导航任务。
 
 ## 为什么是 milestone
-是EEG-BMI遥操作方向"共享智能"路线的代表作,与 [[ghasemi-2022-shared-autonomy-eeg-bci]] 一起构成非侵入式BCI共享自主的两条并行工作,补齐了皮层内BCI(Muelling/Downey路线)之外的非侵入式对照案例。
+是EEG-BMI遥操作方向"共享智能"路线的代表作,补齐了皮层内BCI(Muelling/Downey路线)之外的非侵入式对照案例。原 [[ghasemi-2022-shared-autonomy-eeg-bci]] 条目目前未能核实,不应再作为并列 milestone 使用。

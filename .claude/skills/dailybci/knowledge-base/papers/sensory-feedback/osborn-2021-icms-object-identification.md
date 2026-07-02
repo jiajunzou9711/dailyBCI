@@ -1,11 +1,11 @@
 ---
 title: "Intracortical microstimulation of somatosensory cortex enables object identification through perceived sensations"
-authors: Hughes, Flesher, Bhatt, Benyamini, Downey, Boninger, Collinger, Gaunt
+authors: Osborn, Christie, McMullen, Nickl, Thompson et al.
 year: 2021
-venue: medRxiv / Conference proceedings
-url: https://doi.org/10.1101/2021.04.07.21255023
+venue: IEEE EMBC 2021
+url: https://doi.org/10.1109/EMBC46164.2021.9630450
 subfield: sensory-feedback
-tags: [ICMS, object-identification, functional-task, human, no-vision, S1, Gaunt]
+tags: [ICMS, object-identification, functional-task, human, no-vision, S1, EMBC]
 source_review: "Khan et al. 2025 scoping review (PMC12026362, ICMS functional applications context)"
 ---
 
@@ -23,4 +23,4 @@ Flesher 2016证明人类S1 ICMS可以产生触觉感知，但这些感知能否�
 - 实时闭环反馈
 
 ## 为什么是 milestone
-将人类S1 ICMS从"诱发感觉"推进到"传递功能性信息"。Flesher 2016证明了ICMS可以让人"感觉到什么"，Hughes 2021证明了这些感觉可以让人"知道什么"——这是从感觉恢复到信息通信的质变。对未来双向BCI的实用性有重大意义：不仅要让用户感受到假肢接触了物体，还要让他们通过触觉反馈判断物体属性。
+将人类S1 ICMS从"诱发感觉"推进到"传递功能性信息"。Flesher 2016证明了ICMS可以让人"感觉到什么"，Osborn 2021证明了这些感觉可以让人"知道什么"——这是从感觉恢复到信息通信的质变。对未来双向BCI的实用性有重大意义：不仅要让用户感受到假肢接触了物体，还要让他们通过触觉反馈判断物体属性。

@@ -2,7 +2,7 @@
 title: "Shared Autonomy via Deep Reinforcement Learning"
 authors: Reddy, Dragan, Levine
 year: 2018
-venue: Robotics: Science and Systems (RSS 2018)
+venue: "Robotics: Science and Systems (RSS 2018)"
 url: https://arxiv.org/abs/1802.01744
 subfield: shared-autonomy-bci
 tags: [shared-control, deep-reinforcement-learning, end-to-end]

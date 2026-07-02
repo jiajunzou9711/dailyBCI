@@ -2,7 +2,7 @@
 title: "EEG Emotion Recognition Using Dynamical Graph Convolutional Neural Networks"
 authors: Song, T., Zheng, W., Song, P., Cui, Z.
 year: 2018
-venue: IEEE Transactions on Affective Computing 11(3):532-541
+venue: IEEE Transactions on Affective Computing 11(3):532-541 (online 2018; issue 2020)
 url: https://doi.org/10.1109/TAFFC.2018.2817622
 subfield: affective-bci
 tags: [DGCNN, graph-neural-network, deep-learning, channel-relationship, EEG]

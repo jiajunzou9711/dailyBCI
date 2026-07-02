@@ -481,6 +481,15 @@ After publishing, assess whether today's paper is significant enough to become a
 - **绝不碰 `output/`(成品)、`.claude/`(技能/知识库)、或别期的工作文件。** 删前再扫一眼清单确认范围。
 - 删除是不可逆操作:**必须用户明确同意才删**,不要默认替用户清。无头运行(cron/`claude -p`)不要自动删,留着等人工确认。
 
+### Step 11: Sync docs + commit(收尾,用户对最终版图卡+thread明确确认后触发)
+
+Step 9/10 做完后,做最后一步收尾——把本期改动同步进项目文档并提交:
+
+1. **跑 `/neat-freak`**:审查这期会话有没有让 `CLAUDE.md`、本 `SKILL.md`、知识库 `INDEX.md`、记忆系统之间出现漂移(常见的:知识库加了条目但 `INDEX.md` 的子领域计数没跟着改;某篇论文改名/改年份后,`CLAUDE.md` 里旧的引用没同步)。发现漂移就地修正。
+2. **`git commit`**(单人项目,默认直接 commit + push master,不开 PR,见 §5):把本期产出——知识库新条目、`INDEX.md` 更新、`output/<date>-<slug>/` 卡片、以及 neat-freak 修正的文档——一并提交。
+
+无头运行(cron/`claude -p`)同样不自动跳过——但涉及 push 的动作仍遵循"先在聊天里说明、拿到确认"的默认规则,不要在无人值守时静默推送。
+
 ---
 
 ## Mode B: Knowledge Base Construction

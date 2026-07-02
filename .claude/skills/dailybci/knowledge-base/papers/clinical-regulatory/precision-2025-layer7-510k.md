@@ -3,25 +3,26 @@ title: "FDA 510(k) Clearance for Layer 7-T Cortical Interface (K242618)"
 authors: Precision Neuroscience
 year: 2025
 venue: FDA 510(k) Clearance
-url: https://www.globenewswire.com/news-release/2025/04/17/3063418/0/en/
+url: https://api.fda.gov/device/510k.json?search=k_number:K242618
 subfield: clinical-regulatory
 tags: [Precision-Neuroscience, Layer-7, 510k, FDA-clearance, cortical-interface, minimally-invasive, regulatory-first]
+secondary_url: https://www.globenewswire.com/news-release/2025/04/17/3063418/0/en/precision-neuroscience-receives-fda-clearance-for-high-resolution-cortical-electrode-array.html
 ---
 
 ## 解决了什么问题
 BCI 设备能否通过 FDA 510(k) 途径获得上市许可？这条路径比 PMA 快得多，但需要证明与已有合法上市设备的"实质等效性"。
 
 ## 核心方法
-Precision Neuroscience 的 Layer 7-T 皮层界面以现有皮层电极为对比设备，通过 510(k) 途径申请。该设备为 1,024 电极高密度皮层表面阵列，通过微创 slit craniotomy（切口开颅）放置，设计用于 ≤30 天的皮层活动测量和刺激。
+Precision Neuroscience 的 Layer 7-T 以 FDA 传统 510(k) 路径申请，openFDA 记录显示产品代码为 GYC（cortical electrode）、Class II，判定为 substantially equivalent。公司公告称该设备为 1,024 电极高密度皮层表面阵列，设计用于在脑表面短期记录、监测和刺激皮层活动。
 
 ## 关键数据
-- 2025年3月30日获 FDA 510(k) 许可（K242618）
+- FDA decision date：2025-03-30；K number：K242618；decision：Substantially Equivalent；clearance type：Traditional。
 - 1,024 电极，皮层表面放置
-- Class II 医疗器械分类
-- 30 天植入时限（短期使用）
-- 首个通过 510(k) 而非 IDE/PMA 途径获批的 BCI 设备
+- Class II；product code GYC；regulation number 882.1310
+- 公司公告称可在皮层表面临时放置最长 30 天
+- 注意边界：这是 Layer 7-T cortical electrode/interface 的 510(k) clearance，不等同于永久植入 BCI 系统的 PMA 批准
 
 ## 为什么是 milestone
-开创了 BCI 的"快速监管通道"——510(k) 途径意味着不需要昂贵的大规模临床试验，大幅降低了 BCI 公司的上市门槛。虽然 30 天时限限制了它作为永久植入设备的使用，但作为诊断和短期研究工具可以立即商业化。这一先例可能改变整个 BCI 行业的监管策略：先通过 510(k) 建立商业存在，再通过 PMA 扩展到永久植入。
+它是 BCI 相关高密度皮层电极走 510(k) 通道获得 FDA clearance 的重要监管案例，说明部分 BCI 组件可以先作为短期皮层记录/刺激工具进入临床使用，而不是一开始就按永久植入通信系统走 PMA。这个 milestone 的精确边界应写成"BCI 组件/皮层电极的 510(k) clearance"，不要泛化为"永久植入 BCI 已获批"。
 
 注：Layer 7 电极技术见 [hettick-2025-layer7-cortical-interface](../electrode-hardware/hettick-2025-layer7-cortical-interface.md)。

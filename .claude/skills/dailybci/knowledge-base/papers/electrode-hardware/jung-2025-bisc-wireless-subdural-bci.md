@@ -1,5 +1,5 @@
 ---
-title: "A wireless and battery-less 65,536-electrode subdural brain-computer interface"
+title: "A wireless subdural-contained brain-computer interface with 65,536 electrodes and 1,024 channels"
 authors: Jung, Kim, Park, Choi, Lee, Seo, Jeong, BISC Collaboration
 year: 2025
 venue: Nature Electronics

@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-01
-Total papers: 199
+Last updated: 2026-07-02
+Total papers: 200
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -17,11 +17,11 @@ Total papers: 199
 - [Card 2024](papers/speech-decoding/card-2024-accurate-rapidly-calibrating.md) — 97.5%准确率，125k词汇，<30分钟校准，8个月稳定，NEJM
 - [Silva 2024](papers/speech-decoding/silva-2024-bilingual-speech-neuroprosthesis.md) — 首个双语speech BCI，发现跨语言共享articulatory表征
 - [Wairagkar 2025](papers/speech-decoding/wairagkar-2025-instantaneous-voice-synthesis.md) — 80ms延迟流式语音合成，个性化声音，接近自然对话节奏
-- [Kunz 2025](papers/speech-decoding/kunz-2025-imagined-speech-decoding.md) — 首次实时解码imagined speech，打破"内心语言不可解码"假设
+- [Kunz 2025](papers/speech-decoding/kunz-2025-imagined-speech-decoding.md) — Cell：motor cortex inner speech表征+实时self-paced inner-speech BCI proof of concept（4名参与者表征分析，3名实时解码；50词WER 14-33%，125k词WER 26-54%）
 - [Yoon 2026](papers/speech-decoding/yoon-2026-deep-neural-ensembles.md) — 深度集成首次实时闭环验证(WER 33.7%→26.0%)；提出伪集成单解码器降算力，把优化轴从精度扩到可部署性
 - [Card 2026](papers/speech-decoding/card-2026-longterm-independent-bci.md) — 皮层内语音+光标BCI首次家庭自主长期使用：ALS患者19个月/3801小时/18.3万句、研究员不在场、保住全职工作；transformer达99.2%词准确率，信号18个月余弦相似度>0.6(同一患者T15，Nature Medicine)
 
-## motor-bci (20 papers)
+## motor-bci (21 papers)
 - [Georgopoulos 1986](papers/motor-bci/georgopoulos-1986-population-vector.md) — Population vector理论，证明运动方向可从神经群体活动数学读出
 - [Chapin 1999](papers/motor-bci/chapin-1999-real-time-robot-control.md) — 首个实时BMI，大鼠用神经信号控制机械臂，开启闭环控制时代
 - [Wessberg 2000](papers/motor-bci/wessberg-2000-real-time-trajectory-prediction.md) — 首次灵长类3D手运动轨迹实时解码+远程机器人控制
@@ -39,9 +39,10 @@ Total papers: 199
 - [Ajiboye 2017](papers/motor-bci/ajiboye-2017-reach-grasp-fes.md) — BCI+FES恢复完整上肢reach-and-grasp，患者自主进食饮水
 - [Willett 2021](papers/motor-bci/willett-2021-handwriting-bci.md) — 手写解码BCI，90字符/分钟，开辟精细运动意图解码新范式
 - [Flesher 2021](papers/motor-bci/flesher-2021-bidirectional-bci.md) — 首个双向BCI：运动解码+触觉反馈，抓取任务时间减半
-- [Willett 2024](papers/motor-bci/willett-2024-finger-click-bci.md) — 手指点击解码，实现网页浏览等日常数字任务，BCI走向实用
+- [⚠ Unverified Willett 2024](papers/motor-bci/willett-2024-finger-click-bci.md) — 已隔离：当前DOI/PubMed/arXiv均未能核实，不作为motor-bci milestone使用
 - [Neuralink 2024](papers/motor-bci/neuralink-2024-prime-n1-first-human.md) — 首个全植入无线1024通道BCI人体试验，患者日常使用>10h
 - [BrainGate 2023](papers/motor-bci/braingate-2023-long-term-safety.md) — 17年14名参与者长期安全数据，信号仅下降7%，支撑临床扩展
+- [Conlan 2026](papers/motor-bci/conlan-2026-ifg-grasp-decoding.md) — 首次在人类额下回(IFG，猕猴F5同源区)皮层内记录中用析因设计拆分抓法/物体/交互三因素：抓法解码显著主导(41.1-41.8% vs 33.3%随机)，物体贡献弱且更早、movement期已不显著；补上"非M1皮层内电极靶点"这条此前空白的线(与Ajiboye 2017对照，同组·bioRxiv)
 
 ## electrode-hardware (16 papers)
 - [Wise 1970](papers/electrode-hardware/wise-1970-silicon-microprobe.md) — 首次用IC工艺制造多位点神经探针，开启微加工电极时代
@@ -58,7 +59,7 @@ Total papers: 199
 - [Obaid 2020](papers/electrode-hardware/obaid-2020-cmos-microwire-arrays.md) — 微线阵列直接集成CMOS芯片，展示大规模穿透式记录的片上读出路线
 - [Simeral 2021](papers/electrode-hardware/simeral-2021-braingate-wireless.md) — 首次intracortical BCI家庭无线化使用，24小时连续运行
 - [Hettick 2025](papers/electrode-hardware/hettick-2025-layer7-cortical-interface.md) — Layer 7高密度皮层表面阵列，推动微创、可逆的临床ECoG路线
-- [Jung 2025](papers/electrode-hardware/jung-2025-bisc-wireless-subdural-bci.md) — BISC无线无电池65536电极subdural BCI，探索超大规模皮层表面接口
+- [Jung 2025](papers/electrode-hardware/jung-2025-bisc-wireless-subdural-bci.md) — BISC无线无电池subdural interface：65,536电极、1,024通道，探索超大规模皮层表面接口
 - [Bourhis 2026](papers/electrode-hardware/bourhis-2026-tft-backplane.md) — 显示式有源矩阵TFT背板(a-IGZO直接长在聚酰亚胺)：256通道(16×16)柔性皮层表面阵列，布线O(n)→O(√n)、温升<2°C、封装投影寿命>38年、大鼠30天稳定；确立"柔性有源(非转印硅)"一格(Dayeh组·UCSD)
 
 ## signal-processing (11 papers)
@@ -118,7 +119,7 @@ Total papers: 199
 - [Raspopovic 2014](papers/sensory-feedback/raspopovic-2014-bidirectional-sensory-prosthesis.md) — 首个实时双向感觉假肢，截肢者无视觉辨别物体硬度和形状
 - [Tan 2014](papers/sensory-feedback/tan-2014-long-term-stable-touch.md) — 周围神经接口提供>1年稳定自然触觉感知，解决长期稳定性瓶颈
 - [Flesher 2016](papers/sensory-feedback/flesher-2016-first-human-icms-s1.md) — 首次人类S1皮层ICMS恢复触觉，感觉自然、按体感觉排列、稳定数月
-- [Hughes 2021](papers/sensory-feedback/hughes-2021-icms-object-identification.md) — 首次证明人类可仅通过ICMS触觉反馈识别物体，从感觉诱发到信息传递
+- [Osborn 2021](papers/sensory-feedback/osborn-2021-icms-object-identification.md) — IEEE EMBC：人类S1 ICMS触觉反馈支持无视觉物体识别，从感觉诱发推进到信息传递
 
 ### 刺激安全与电荷注入限值 (stimulation safety & charge-injection limits)
 这条线服务 ICMS(感觉反馈/双向 BCI),同样支撑 neuromodulation 的 DBS/SCS。
@@ -171,8 +172,8 @@ Total papers: 199
 - [Oxley 2023](papers/clinical-regulatory/oxley-2023-switch-trial-safety.md) — Synchron SWITCH试验：首个血管内BCI人体安全数据，JAMA Neurology
 - [Rubin 2023](papers/clinical-regulatory/rubin-2023-braingate-safety-profile.md) — BrainGate 14人×17年安全数据，安全性与已批准DBS相当，Neurology
 - [Synchron 2024](papers/clinical-regulatory/synchron-2024-command-feasibility.md) — COMMAND：首个FDA IDE永久植入BCI研究，6/6安全终点达标
-- [Precision 2025](papers/clinical-regulatory/precision-2025-layer7-510k.md) — 首个BCI通过FDA 510(k)获批，开创快速监管通道
-- [Neuracle/NEO 2026](papers/clinical-regulatory/neuracle-2026-neo-nmpa-approval.md) — 中国NMPA颁发全球首张侵入式BCI注册证（三类），首个商业获批并接入医保的半侵入BCI，36例临床全部抓握改善（2026-03-13）
+- [Precision 2025](papers/clinical-regulatory/precision-2025-layer7-510k.md) — FDA K242618：Layer 7-T皮层电极/BCI组件获传统510(k) clearance（Class II, product code GYC），边界是短期皮层记录/刺激工具而非永久植入通信系统PMA
+- [Neuracle/NEO 2026](papers/clinical-regulatory/neuracle-2026-neo-nmpa-approval.md) — 中国NMPA批准博睿康NEO硬膜外BCI手部运动功能代偿系统上市；公开中文来源支持"获批上市的植入式BCI三类医疗器械"框架，注册证编号/医保范围仍需继续核
 
 ## ai-neural-modeling (21 papers)
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
@@ -206,7 +207,7 @@ Total papers: 199
 - [Oby 2019](papers/population-dynamics/oby-2019-new-activity-patterns-long-term.md) — 流形外经长期训练可长出新活动模式，定义"短期重配 vs 长期重塑"对照，PNAS
 - [Gallego 2020](papers/population-dynamics/gallego-2020-long-term-stability-dynamics.md) — 低维潜在动力学跨~2年稳定（单神经元在换），BCI长期免校准的群体动力学基础，Nat Neurosci
 - [Gallego 2018](papers/population-dynamics/gallego-2018-preserved-manifold-multiple-behaviors.md) — 多种运动行为共享同一被保留流形，证明流形是通用低维底座，Nat Commun
-- [Busch 2026](papers/population-dynamics/busch-2026-human-noninvasive-manifold-bci.md) — 首次在人类无创(fMRI)验证流形约束学习：流形内ΔBrainControl +49.3/+16.4可学、流形外−0.4学不会(N=18)，Nat Neurosci
+- [Busch 2025](papers/population-dynamics/busch-2025-human-noninvasive-manifold-bci.md) — bioRxiv：在人类无创(fMRI)验证流形约束学习；流形内ΔBrainControl +49.3/+16.4可学，流形外−0.4学不会(N=18)
 - [de Vicente 2026](papers/population-dynamics/devicente-2026-circuit-specific-volitional-learning.md) — 首次把流形-BCI学习搬出运动皮层、进海马CA3并与M1对比：两区学得一样好(p=0.453 n.s.)但动力学分叉(M1流过/CA3折返)，RNN证差异源于环路架构→principled degeneracy，bioRxiv
 
 ## performance-variability (8 papers)
@@ -237,7 +238,7 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Downey 2016](papers/shared-autonomy-bci/downey-2016-blending-bmi-vision-guided.md) — 同源团队:BMI到达+视觉引导抓取分工,紧邻物体抓取准确率92%,证明收益来自"分工"而非整体提升解码
 - [Javdani 2018](papers/shared-autonomy-bci/javdani-2018-hindsight-optimization.md) — 事后优化近似求解POMDP形式化的共享自主,与策略混合并列两大理论范式,IJRR(原RSS 2015)
 - [Reddy 2018](papers/shared-autonomy-bci/reddy-2018-deep-rl-shared-autonomy.md) — 深度强化学习端到端学习共享自主,方法论从手工设计转向数据驱动,RSS
-- [Ghasemi 2022](papers/shared-autonomy-bci/ghasemi-2022-shared-autonomy-eeg-bci.md) — 共享自主扩展到非侵入EEG-BCI机械臂操作,理论+实验,Science Robotics
+- [⚠ Unverified Ghasemi 2022](papers/shared-autonomy-bci/ghasemi-2022-shared-autonomy-eeg-bci.md) — 已隔离：当前DOI和题名未能核实，不作为shared-autonomy-bci milestone使用
 - [Beraldo 2022](papers/shared-autonomy-bci/beraldo-2022-shared-intelligence-teleoperation-bmi.md) — EEG-BMI"共享智能"遥操作远程呈现机器人,机器人自主处理低层执行,IEEE THMS
 - [Saussus 2026](papers/shared-autonomy-bci/saussus-2026-confidence-modulated-navigation.md) — 首次机制性刻画共享控制"何时失灵":置信度调制AI副驾驶把执行失败率37%→4%,但目标中途突变(Respawn)时反而80%→67%,离线回放+先验重置证明失灵是算法性的而非解码问题(2只恒河猴,bioRxiv)
 

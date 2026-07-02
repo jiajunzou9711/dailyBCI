@@ -1,8 +1,8 @@
 ---
-title: "Human learning of a noninvasive brain–computer interface via manifold geometry"
+title: "Accelerated learning of a noninvasive human brain-computer interface via manifold geometry"
 authors: Busch, Fincke, Lajoie, Krishnaswamy, Turk-Browne
-year: 2026
-venue: Nature Neuroscience (preprint bioRxiv 2025.03.29.646109)
+year: 2025
+venue: bioRxiv preprint 2025.03.29.646109
 url: https://doi.org/10.1101/2025.03.29.646109
 subfield: population-dynamics
 tags: [neural-manifold, BCI-learning, noninvasive, fMRI, T-PHATE, within-manifold, outside-manifold, human]

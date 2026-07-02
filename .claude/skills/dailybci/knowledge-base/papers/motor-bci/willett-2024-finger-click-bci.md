@@ -1,24 +1,26 @@
 ---
-title: "A high-performance brain-computer interface for finger pointing and clicking"
+title: "UNVERIFIED: A high-performance brain-computer interface for finger pointing and clicking"
 authors: Willett, Kunz, Fan, Avansino, Wilson, Choi, Kamdar, Glasser, Hochberg, Druckmann, Shenoy, Henderson
 year: 2024
-venue: Nature
-url: https://doi.org/10.1038/s41586-024-07443-0
+venue: "UNVERIFIED - claimed Nature"
+url: null
 subfield: motor-bci
-tags: [finger-click, cursor-control, web-browsing, daily-digital-tasks, Stanford]
+tags: [UNVERIFIED, finger-click, cursor-control, web-browsing, daily-digital-tasks, Stanford]
+status: quarantined-unverified
+verification_note: "2026-07-02 audit: DOI https://doi.org/10.1038/s41586-024-07443-0 returned 404; PubMed and arXiv title/author searches found no match. Do not use as a milestone until a primary source is found."
 ---
 
 ## 解决了什么问题
-之前的 motor BCI 在实验室任务上表现良好（中心到达、打字），但现实中人们需要的是浏览网页、发消息、使用 App——这些需要精确的光标定位和点击控制。Willett 2021 用手写解码实现了快速打字，但光标控制和点击是另一套运动模式。
+⚠ 本条目已隔离：截至 2026-07-02，未能核实这篇 Nature 论文或当前 DOI 的真实存在。不要把它作为 motor-bci 的 milestone 或与非侵入逐指 BCI 的横向对照基准。
 
 ## 核心方法
-解码患者尝试的手指微动意图：食指控制光标移动方向和速度，拇指动作解码为"点击"。用深度学习模型将运动皮层神经活动映射为连续的二维光标轨迹和离散的点击事件。关键：将运动分解为两个独立通道（连续的指向 + 离散的点击），分别优化解码。
+原条目声称该文解码手指指向与点击用于日常数字任务，但当前题名、作者列表和 DOI 未能通过 DOI、PubMed 或 arXiv 验证。
 
 ## 关键数据
-- 光标控制性能接近健康人使用触控板的水平
-- 患者可独立浏览网页、使用通讯软件、玩游戏
-- 每日使用时间数小时
-- 长期稳定性良好
+- 原 DOI `10.1038/s41586-024-07443-0` 返回 404。
+- PubMed 未找到 Willett/Kunz/finger pointing/clicking 相关 2024 记录。
+- arXiv 题名检索未找到对应条目。
+- "接近健康人触控板水平"、"每日使用数小时"、"长期稳定性良好"均缺少可回溯来源。
 
 ## 为什么是 milestone
-将 motor BCI 从"实验室演示"推向"日常数字生活工具"。之前的工作证明了 BCI "能做"各种事情，这篇证明了 BCI "好用到可以日常使用"——患者真正把它当作日常与数字世界交互的主要方式。这是 motor BCI 实用化的关键一步。
+不是已确认 milestone。保留此文件只是为了记录待核查项，避免未来再次把同一未验证引用加入知识库。若后续找到真实论文，应从一手来源重建条目，而不是沿用当前未证实表述。

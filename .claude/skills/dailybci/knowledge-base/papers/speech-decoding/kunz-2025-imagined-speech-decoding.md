@@ -1,24 +1,27 @@
 ---
-title: "Decoding inner speech from intracortical neural activity"
-authors: Kunz, Abramovich Krasa, Meschede-Krasa, Kamdar, Avansino, Willett et al.
+title: "Inner speech in motor cortex and implications for speech neuroprostheses"
+authors: Kunz, Abramovich Krasa, Kamdar, Avansino, Hahn, Yoon et al.
 year: 2025
-venue: Cell
-url: https://doi.org/10.1016/j.cell.2025.07.xxx
+venue: Cell 188(17):4658-4673.e17
+url: https://doi.org/10.1016/j.cell.2025.06.015
 subfield: speech-decoding
 tags: [imagined-speech, inner-speech, covert-speech, intracortical, motor-cortex, Stanford-BrainGate]
+pmid: 40816265
+pmcid: PMC12360486
 ---
 
 ## 解决了什么问题
-到目前为止所有成功的 speech BCI 都基于 attempted speech（患者尝试说话，产生运动皮层活动）。但很多患者（如完全 locked-in）甚至无法做出"尝试说话"的动作。理想状态是解码 imagined speech（纯粹在脑中想的语言），但之前普遍认为 imagined speech 的神经信号太弱、太不稳定，无法可靠解码。
+当前高性能 speech BCI 主要依赖 attempted speech（患者尝试说话，产生运动皮层活动），但这会带来疲劳、速度限制和隐私问题；对部分严重瘫痪或失语患者来说，attempted speech 本身也可能很困难。本文问的是：motor cortex 中是否存在足够稳定的 inner speech 表征，能否支持实时句子解码，并且如何防止 BCI 意外读出用户不想输出的内心语言。
 
 ## 核心方法
-让植入 intracortical 电极的瘫痪患者不做任何尝试发声的动作，仅在脑中"想"完整句子。用针对 imagined speech 优化的解码器从运动皮层活动中提取信号。关键发现：运动皮层在 imagined speech 时确实有可解码的活动，虽然信号模式与 attempted speech 不同但有足够的结构。
+研究分析 4 名 BrainGate2 参与者（T12、T15、T16、T17；ALS 或脑桥卒中导致严重 dysarthria/anarthria）的 motor cortex 微电极阵列记录，比较 attempted speech、inner speech、perceived speech 等条件下的神经表征。实时 BCI 部分在 3 名 dysarthric 参与者中训练 inner-speech RNN 解码器：神经特征输入 RNN，输出 39 个 phoneme 加 silence token 的概率，再由语言模型生成文字。论文还测试了 attempted-speech decoder 是否会读出 inner speech，并提出 imagery-silenced 训练与 keyword lock/unlock 来避免非预期输出。
 
 ## 关键数据
-- 50 词词汇表：词错误率 14-33%
-- 125,000 词词汇表：词错误率 26-54%
-- 实时在线解码（非离线分析）
-- 首次证明 imagined speech 可以从运动皮层实时解码
+- 神经表征分析：4 名参与者的 motor cortex 中均可观察 inner speech 相关表征；inner speech 与 attempted speech 高度相关，但存在可区分的 motor-intent 维度。
+- 实时 self-paced inner-speech 解码：3 名 dysarthric 参与者。
+- 50 词词汇表 WER：T12 24%、T15 14%、T16 33%。
+- 125,000 词词汇表 WER：T15/T16 为 26% 到 54%。
+- 论文报告，attempted-speech decoder 只用 attempted speech 训练时也能在所有参与者上以高于随机的水平解码 inner speech；imagery-silenced 训练和 keyword gating 可降低非预期输出风险。
 
 ## 为什么是 milestone
-打破了"imagined speech 不可解码"的普遍假设。虽然性能远低于 attempted speech（Card 2024 的 2.5% WER vs 这里的 14-54%），但它证明了这条路是走得通的。对于完全 locked-in 患者（不能做任何运动尝试），这可能是唯一的通信路径。同时揭示了运动皮层在无运动输出时的 covert activity 结构，有重要的基础神经科学意义。
+这篇论文的核心贡献不是笼统地"首次解码 inner speech"：原文也承认此前已有 ECoG 与 supramarginal gyrus intracortical inner-speech decoding 工作。它更准确的位置是：在人类 motor cortex intracortical 记录中系统刻画 inner speech 表征，并演示实时 self-paced、可扩展到 125k 词汇的 inner-speech BCI proof of concept；同时把 speech BCI 的隐私问题从伦理猜想推进到可测、可防护的工程问题。它为完全依赖 attempted speech 的语音 BCI 路线补上了一个重要分支，但当前 WER 仍明显高于 attempted-speech 系统。
