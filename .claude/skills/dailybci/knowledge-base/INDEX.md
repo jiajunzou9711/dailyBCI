@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-02
-Total papers: 200
+Last updated: 2026-07-04
+Total papers: 201
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -200,7 +200,7 @@ Total papers: 200
 - [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
 - [Ismail 2026 (naturalistic word meaning)](papers/ai-neural-modeling/ismail-2026-naturalistic-word-meaning.md) — 首次从**被动录的日常自然语音**(21患者/871h/527万词)估计**人类单神经元**对词义的编码：Behnke-Fried 微丝深部电极，全自动转录+区分说话人+检动作电位，无人工标注/分选；编码全患者显著、10类语义解码20.9%(随机10%)；自己说>环境语音2.42×(注意力)、自动化≈人工精标；把神经→语义从受控刺激推到零控制日常语音+百万词级(Baylor·Hayden/Sheth/Provenza，bioRxiv)
 
-## population-dynamics (8 papers)
+## population-dynamics (9 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature
 - [Gallego 2017](papers/population-dynamics/gallego-2017-neural-manifolds-movement.md) — 定义性框架综述，确立neural manifold/neural modes作为群体运动控制的统一语言，Neuron
 - [Golub 2018](papers/population-dynamics/golub-2018-learning-neural-reassociation.md) — 流形内学习机制=neural reassociation（重配已有模式而非生成新模式），Nat Neurosci
@@ -209,6 +209,7 @@ Total papers: 200
 - [Gallego 2018](papers/population-dynamics/gallego-2018-preserved-manifold-multiple-behaviors.md) — 多种运动行为共享同一被保留流形，证明流形是通用低维底座，Nat Commun
 - [Busch 2025](papers/population-dynamics/busch-2025-human-noninvasive-manifold-bci.md) — bioRxiv：在人类无创(fMRI)验证流形约束学习；流形内ΔBrainControl +49.3/+16.4可学，流形外−0.4学不会(N=18)
 - [de Vicente 2026](papers/population-dynamics/devicente-2026-circuit-specific-volitional-learning.md) — 首次把流形-BCI学习搬出运动皮层、进海马CA3并与M1对比：两区学得一样好(p=0.453 n.s.)但动力学分叉(M1流过/CA3折返)，RNN证差异源于环路架构→principled degeneracy，bioRxiv
+- [Micou 2026](papers/population-dynamics/micou-2026-hippocampal-bmi-navigation.md) — 海马 CA1 闭环 BMI 导航:250-500 个 CA1 神经元实时解码推动 400 cm VR 轨道;旧跑轮地图直接接入 BMI 失效,重新训练后恢复;superposed 细胞 3.1%(586/18,902) 指向新旧位置地图并行叠加,bioRxiv
 
 ## performance-variability (8 papers)
 BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-注意因素)与皮层内(信号非平稳-神经状态)两支。
