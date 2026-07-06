@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-04
-Total papers: 201
+Last updated: 2026-07-06
+Total papers: 204
 
 ## speech-decoding (16 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -44,7 +44,7 @@ Total papers: 201
 - [BrainGate 2023](papers/motor-bci/braingate-2023-long-term-safety.md) — 17年14名参与者长期安全数据，信号仅下降7%，支撑临床扩展
 - [Conlan 2026](papers/motor-bci/conlan-2026-ifg-grasp-decoding.md) — 首次在人类额下回(IFG，猕猴F5同源区)皮层内记录中用析因设计拆分抓法/物体/交互三因素：抓法解码显著主导(41.1-41.8% vs 33.3%随机)，物体贡献弱且更早、movement期已不显著；补上"非M1皮层内电极靶点"这条此前空白的线(与Ajiboye 2017对照，同组·bioRxiv)
 
-## electrode-hardware (16 papers)
+## electrode-hardware (17 papers)
 - [Wise 1970](papers/electrode-hardware/wise-1970-silicon-microprobe.md) — 首次用IC工艺制造多位点神经探针，开启微加工电极时代
 - [Campbell 1991](papers/electrode-hardware/campbell-1991-utah-array.md) — Utah阵列发明，100通道3D硅电极，BCI临床试验的硬件基石
 - [Rousche 1998](papers/electrode-hardware/rousche-1998-chronic-biocompatibility.md) — 首次系统验证Utah阵列慢性植入可行性，揭示胶质瘢痕核心挑战
@@ -58,6 +58,7 @@ Total papers: 201
 - [Musk/Neuralink 2019](papers/electrode-hardware/musk-2019-neuralink-threads.md) — 1024通道全无线BCI平台，柔性线程+手术机器人+定制ASIC
 - [Obaid 2020](papers/electrode-hardware/obaid-2020-cmos-microwire-arrays.md) — 微线阵列直接集成CMOS芯片，展示大规模穿透式记录的片上读出路线
 - [Simeral 2021](papers/electrode-hardware/simeral-2021-braingate-wireless.md) — 首次intracortical BCI家庭无线化使用，24小时连续运行
+- [Paradromics 2025](papers/electrode-hardware/paradromics-2025-acute-connexus-human.md) — Connexus 首次人类急性植入/记录/完整取出(<20分钟)，为后续 Connect-One 长期植入试验铺路；高密度皮层内阵列 + 胸部收发器路线
 - [Hettick 2025](papers/electrode-hardware/hettick-2025-layer7-cortical-interface.md) — Layer 7高密度皮层表面阵列，推动微创、可逆的临床ECoG路线
 - [Jung 2025](papers/electrode-hardware/jung-2025-bisc-wireless-subdural-bci.md) — BISC无线无电池subdural interface：65,536电极、1,024通道，探索超大规模皮层表面接口
 - [Bourhis 2026](papers/electrode-hardware/bourhis-2026-tft-backplane.md) — 显示式有源矩阵TFT背板(a-IGZO直接长在聚酰亚胺)：256通道(16×16)柔性皮层表面阵列，布线O(n)→O(√n)、温升<2°C、封装投影寿命>38年、大鼠30天稳定；确立"柔性有源(非转印硅)"一格(Dayeh组·UCSD)
@@ -164,7 +165,7 @@ Total papers: 201
 - [Frolov 2017](papers/rehabilitation/frolov-2017-bci-exoskeleton-multicenter-rct.md) — 最大规模BCI康复多中心RCT（74人），证明跨机构推广可行性
 - [Biasiucci 2018](papers/rehabilitation/biasiucci-2018-bci-fes-lasting-recovery.md) — BCI-FES康复效果持续6-12个月，EEG连接变化为神经可塑性客观证据
 
-## clinical-regulatory (9 papers)
+## clinical-regulatory (11 papers)
 - [Huggins 2011](papers/clinical-regulatory/huggins-2011-bci-user-needs.md) — 首次系统调查BCI用户需求，定义准确率≥90%、速度≥15字母/分钟等临床标准
 - [Yuste 2017](papers/clinical-regulatory/yuste-2017-four-ethical-priorities.md) — Nature评论：四大神经伦理优先领域，催生NeuroRights Foundation
 - [Ienca 2017](papers/clinical-regulatory/ienca-2017-neurorights-framework.md) — 系统提出四项神经权利（认知自由、心理隐私、心理完整性、心理连续性）
@@ -172,8 +173,10 @@ Total papers: 201
 - [Oxley 2023](papers/clinical-regulatory/oxley-2023-switch-trial-safety.md) — Synchron SWITCH试验：首个血管内BCI人体安全数据，JAMA Neurology
 - [Rubin 2023](papers/clinical-regulatory/rubin-2023-braingate-safety-profile.md) — BrainGate 14人×17年安全数据，安全性与已批准DBS相当，Neurology
 - [Synchron 2024](papers/clinical-regulatory/synchron-2024-command-feasibility.md) — COMMAND：首个FDA IDE永久植入BCI研究，6/6安全终点达标
+- [Mokienko 2024](papers/clinical-regulatory/mokienko-2024-intracortical-implants-review.md) — 皮层内植入式BCI综述来源，梳理运动控制、电脑/平板、文本输入、语音恢复等临床能力演进；用于 Paradromics/Connexus 补库的抽取基准
 - [Precision 2025](papers/clinical-regulatory/precision-2025-layer7-510k.md) — FDA K242618：Layer 7-T皮层电极/BCI组件获传统510(k) clearance（Class II, product code GYC），边界是短期皮层记录/刺激工具而非永久植入通信系统PMA
 - [Neuracle/NEO 2026](papers/clinical-regulatory/neuracle-2026-neo-nmpa-approval.md) — 中国NMPA批准博睿康NEO硬膜外BCI手部运动功能代偿系统上市；公开中文来源支持"获批上市的植入式BCI三类医疗器械"框架，注册证编号/医保范围仍需继续核
+- [Paradromics 2026](papers/clinical-regulatory/paradromics-2026-connect-one-first-implant.md) — Connect-One 早期可行性研究首例长期 Connexus 植入(报道称 FDA IDE、随访最长6年)，高密度皮层内全植入 BCI 进入 speech restoration 临床分支
 
 ## ai-neural-modeling (21 papers)
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
