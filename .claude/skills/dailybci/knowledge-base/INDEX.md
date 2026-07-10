@@ -1,9 +1,9 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-06
-Total papers: 204
+Last updated: 2026-07-09
+Total papers: 220
 
-## speech-decoding (16 papers)
+## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
 - [Leuthardt 2011](papers/speech-decoding/leuthardt-2011-ecog-speech-bci.md) — 首个ECoG语音信号BCI控制，开创用说话意图控制BCI的ECoG路线
 - [Bouchard 2013](papers/speech-decoding/bouchard-2013-sensorimotor-speech-organization.md) — 发现语音运动皮层编码发音动作（非声学特征），奠定articulatory decoding基础
@@ -20,6 +20,7 @@ Total papers: 204
 - [Kunz 2025](papers/speech-decoding/kunz-2025-imagined-speech-decoding.md) — Cell：motor cortex inner speech表征+实时self-paced inner-speech BCI proof of concept（4名参与者表征分析，3名实时解码；50词WER 14-33%，125k词WER 26-54%）
 - [Yoon 2026](papers/speech-decoding/yoon-2026-deep-neural-ensembles.md) — 深度集成首次实时闭环验证(WER 33.7%→26.0%)；提出伪集成单解码器降算力，把优化轴从精度扩到可部署性
 - [Card 2026](papers/speech-decoding/card-2026-longterm-independent-bci.md) — 皮层内语音+光标BCI首次家庭自主长期使用：ALS患者19个月/3801小时/18.3万句、研究员不在场、保住全职工作；transformer达99.2%词准确率，信号18个月余弦相似度>0.6(同一患者T15，Nature Medicine)
+- [Wairagkar 2026](papers/speech-decoding/wairagkar-2026-brain2voice2-voice-synthesis.md) — 脑-语音合成首次跨过可懂度门槛：多模态因果Transformer(四路互补目标:连续声学/离散RVQ token/音素/自监督)+多尺度对抗，听者WER 5.24% vs前作43.75%(8×)、79%句零错；治回归损失抹糊辅音的根本问题(同队Wairagkar 2025续作，人类单被试T15，bioRxiv)
 
 ## motor-bci (21 papers)
 - [Georgopoulos 1986](papers/motor-bci/georgopoulos-1986-population-vector.md) — Population vector理论，证明运动方向可从神经群体活动数学读出
@@ -76,7 +77,7 @@ Total papers: 204
 - [Metzger 2023](papers/signal-processing/metzger-2023-multimodal-speech-avatar-decoder.md) — 多模态speech/avatar decoder，把神经解码从文本扩展到声音与表情控制
 - [Card 2024](papers/signal-processing/card-2024-rapid-calibration-speech.md) — 快速校准speech decoder + online adaptation，推进临床可用的高准确率通信
 
-## non-invasive (22 papers)
+## non-invasive (28 papers)
 - [Farwell 1988](papers/non-invasive/farwell-1988-p300-speller.md) — P300 speller范式，6×6矩阵，定义非侵入BCI通信范式
 - [Wolpaw 1991](papers/non-invasive/wolpaw-1991-mu-rhythm-cursor.md) — 首个mu节律EEG光标控制，确立SMR-BCI路线
 - [Pfurtscheller 1997](papers/non-invasive/pfurtscheller-1997-motor-imagery-erd.md) — Motor imagery ERD/ERS，建立运动想象BCI神经生理学基础
@@ -101,6 +102,18 @@ Total papers: 204
 - [Geirnaert 2021](papers/non-invasive/geirnaert-2021-aad-review-benchmark.md) — AAD定义性综述+统一基准，提出MESD性能指标，本线milestone抽取来源
 - [Geirnaert 2022](papers/non-invasive/geirnaert-2022-unsupervised-time-adaptive-aad.md) — 无监督+时间自适应AAD，免逐人标注，走向实际部署的实用性milestone
 - [Jayaram & Barachant 2018](papers/non-invasive/jayaram-2018-moabb-benchmarking.md) — MOABB：首个聚合多公开EEG数据集+统一评估框架，暴露EEG领域可重复性危机，EEGDash的直接前驱
+
+### 自定步调/异步控制 (self-paced / idle-state detection)
+BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这条子线。milestone抽取自Mason et al. 2007综述。
+- [Mason 2007](papers/non-invasive/mason-2007-comprehensive-survey-bci-designs.md) — 系统分类BCI接口设计(同步/异步)，定义self-paced为独立设计维度，本子线milestone抽取来源综述
+- [Borisoff 2004](papers/non-invasive/borisoff-2004-lf-asd-asynchronous-brain-switch.md) — LF-ASD异步脑开关改进版，早期"意图性脑开关"实证，确立idle-state误报是异步BCI核心问题(UBC Birch组)
+- [Scherer 2007](papers/non-invasive/scherer-2007-self-paced-graz-bci.md) — Graz组3类自定步调运动想象BCI，显式区分IC/NC两态，虚拟环境导航+Google Earth真实闭环验证，今日候选(Müller-Putz组)概念前驱
+
+### 语言模型辅助拼写纠错 (LM-assisted spelling / error correction)
+把语言模型用于非侵入BCI拼写系统的纠错/免校准，与speech-decoding线的LM+解码器范式呼应但应用在更慢速的P300拼写场景。milestone抽取自Mora-Cortes et al. 2014综述。
+- [Mora-Cortes 2014](papers/non-invasive/mora-cortes-2014-language-model-bci-spelling-review.md) — 系统综述LM在BCI拼写中的应用分类(预测补全 vs 纠错、静态vs动态界面)，本子线milestone抽取来源
+- [Speier 2012](papers/non-invasive/speier-2012-nlp-dynamic-classification-p300.md) — 首次证明HMM+语言模型动态分类显著提升P300拼写器准确率和比特率，LM纠错路线奠基实证
+- [Kindermans 2012](papers/non-invasive/kindermans-2012-p300-bci-masses-prior.md) — 贝叶斯语言先验让P300拼写器免校准、无监督即可用，把LM角色从事后纠错扩展到替代监督训练
 
 ## invasive-recording (9 papers)
 - [Kennedy 1998](papers/invasive-recording/kennedy-1998-first-human-intracortical-bci.md) — 首次人类慢性intracortical记录用于BCI，Neurotrophic Electrode
@@ -254,3 +267,15 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Farina & Negro 2015](papers/emg-motor-unit/farina-negro-2015-common-synaptic-input.md) — 把共同驱动形式化为可计算的神经驱动框架(共同低频成分经肌肉低通传为力)，"放电序列→共同成分→力/控制"因果链
 - [Negro 2016](papers/emg-motor-unit/negro-2016-convolutive-bss-decomposition.md) — 通用卷积盲源分解，把 CKC 推成可验证·社区标准方法(openhdemg 算法核心)，今日候选工具链源头
 - [Farina 2017](papers/emg-motor-unit/farina-2017-manmachine-interface-motor-neurons.md) — 用脊髓运动神经元放电时序作控制命令驱动假肢(6名TMR截肢者，离线)，把运动单位解码推向真正的神经接口，本线最 BCI-relevant 地标
+
+## cancer-neuroscience (9 papers)
+神经科学 × 肿瘤：神经元活动如何经旁分泌/电与突触整合驱动胶质瘤，以及用神经记录读出/监测肿瘤状态。与 BCI 主线在"植入式神经接口"硬件端相接（同一电极换用途做疾病监测）。milestone 抽取自 Mancusi & Monje 2023 (Nature) 综述引用。
+- [Venkatesh 2015](papers/cancer-neuroscience/venkatesh-2015-neuronal-activity-glioma-nlgn3.md) — 首次证明神经元活动驱动胶质瘤生长，鉴定活动调控旁分泌因子 NLGN3/BDNF，整条线起点(小鼠+人异种移植，Cell)
+- [Venkatesh 2017](papers/cancer-neuroscience/venkatesh-2017-targeting-nlgn3-dependency.md) — 胶质瘤强依赖 NLGN3，阻断 ADAM10 切割释放可抑瘤，把通路推向治疗靶点(Nature)
+- [Pan 2021](papers/cancer-neuroscience/pan-2021-nf1-activity-optic-glioma-initiation.md) — 神经元活动不仅促生长、还驱动 NF1 视路低级别胶质瘤的起始与维持，跨亚型跨阶段(小鼠，Nature)
+- [Venkatesh 2019](papers/cancer-neuroscience/venkatesh-2019-electrical-synaptic-integration-glioma.md) — 电生理核心：神经元与胶质瘤间 AMPA 真突触 + 钾诱发电流随场电位增大(神经越活跃肿瘤电流越强)，"神经活动追踪肿瘤"的机制基础(Nature)
+- [Venkataramani 2019](papers/cancer-neuroscience/venkataramani-2019-glutamatergic-input-glioma.md) — 独立团队与 Venkatesh 2019 背靠背，确证神经元→胶质瘤谷氨酸能真突触驱动进展(Nature)
+- [Venkataramani 2022](papers/cancer-neuroscience/venkataramani-2022-glioblastoma-hijacks-invasion.md) — 肿瘤微管网络：胶质母细胞瘤劫持神经元样机制侵袭、缝隙连接耦合成网接收突触输入(Cell)
+- [Derks 2018](papers/cancer-neuroscience/derks-2018-oscillatory-activity-glioma-survival.md) — "用神经活动读出肿瘤"最早人体证据：MEG 脑振荡与 NLGN3 相关、预测无进展生存期(人类)
+- [Krishna 2023](papers/cancer-neuroscience/krishna-2023-glioblastoma-remodelling-human-circuits.md) — 人体地标：胶质母细胞瘤重塑人脑功能连接，高整合区伴认知下降、生存更短(术中记录+功能连接，Nature)
+- [Mancusi & Monje 2023](papers/cancer-neuroscience/mancusi-2023-neuroscience-of-cancer-review.md) — 定义性框架综述，本子领域 milestone 抽取来源(Nature)

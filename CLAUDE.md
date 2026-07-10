@@ -5,7 +5,11 @@
 ## 写作偏好
 
 - 中文内容默认使用肯定陈述,减少否定起句。
-- 禁用"不是……而是……"式对照句;需要表达对比时,改用"关键在于""核心差别是""更准确地说""主要来自"等肯定句式。
+- 严格禁用"不是……而是……"式对照句,包括"不是 X,而是 Y""并不是 X,而是 Y""不只是 X,而是 Y"等变体;需要表达对比时,改用"关键在于""核心差别是""更准确地说""主要来自""相比 X,Y 更..."等肯定句式。
+- 任何技术术语、缩写、指标第一次出现时必须给出一句简短解释。例如第一次写 CPM 时标明 "characters per minute, 每分钟字符数"。
+- 标题必须是简短、肯定、信息增量明确的断言句,优先直接传递本篇文章的核心结论;避免疑问句、悬念句和只抛问题的标题。
+- 日报通常围绕一篇主文章展开:封面/来源区已交代主文章后,后续图卡引用主文章事实默认不重复加脚标;只有引用其他论文、综述、公司/监管来源或横纵对照材料时再加脚标。
+- 图卡文案要保持链式逻辑:每张开头承接上一张结尾并高度总结本卡要点,每张结尾自然引出下一张。生产前先给分卡文字供审阅。
 
 ---
 
@@ -18,7 +22,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 │   └── skills/
 │       └── dailybci/
 │           ├── SKILL.md           ← 技能主文件(调试主要改这里)
-│           ├── knowledge-base/    ← INDEX.md + papers/<子领域>/(16 个子领域,篇数见 INDEX.md)
+│           ├── knowledge-base/    ← INDEX.md + papers/<子领域>/(18 个子领域,篇数见 INDEX.md)
 │           ├── scripts/
 │           │   ├── card_generator.py   ← 小红书卡片生成器(HTML/CSS+Chromium)
 │           │   ├── figcrop.py          ← 论文图自动裁切(亮度投影找真实边界,见 SKILL Step 8)
@@ -56,7 +60,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - **Step 5–8 内容先行**:第一版即给**双语文字稿 + 粗裁图(内联)**→ 自动事实核查 → 生产(渲染卡片)→ 打磨(图多轮裁干净)。最贵的渲染推到事实锁定之后。
 - **卡片渲染内核 = HTML/CSS + Chromium**(2026-06-22 从 Pillow 迁移):`card_generator.py` 四个方法签名不变(`cover/figure/text/tail_card`),内核改填 HTML 模板再经 `npx playwright screenshot` 截图。收益:自动流式排版(不再手算坐标/静默溢出)、`**关键词**` 句中高亮、上标原生;代价:多一个 Chromium 依赖。调版式改 CSS,可直接浏览器预览。
 - **Content Standards**:标物种、数字回溯原文、慎用"首次/都/all"、术语分层、中文源核实公司名;**双语大纲一致但内容可不同**(thread 纯文字自洽 / 小红书图文更深、用"结论→读图→转场"链);**图永远内联呈现 = 存盘 + Read**(不用浏览器 screenshot)。
-- **知识库 17 子领域(篇数见 INDEX.md)**,`population-dynamics` 线延伸到 de Vicente 2026(Sadtler 2014 → Busch 2025 → de Vicente 2026);`non-invasive` 新增 AAD(听觉注意解码)子线;`performance-variability`(认知状态/注意/信号变异,横跨非侵入与皮层内)为 2026-06-23 新建子领域;`affective-bci`(情感/EEG 情绪解码) 与 `emg-motor-unit`(外周肌电/运动单位解码→神经驱动) 为 2026-06-29 新建;`neuromodulation` 下 2026-06-30 新增 current-steering(电流聚焦/刺激空间选择性)子簇。
+- **知识库 18 子领域(篇数见 INDEX.md)**,`population-dynamics` 线延伸到 de Vicente 2026(Sadtler 2014 → Busch 2025 → de Vicente 2026);`non-invasive` 新增 AAD(听觉注意解码)子线;`performance-variability`(认知状态/注意/信号变异,横跨非侵入与皮层内)为 2026-06-23 新建子领域;`affective-bci`(情感/EEG 情绪解码) 与 `emg-motor-unit`(外周肌电/运动单位解码→神经驱动) 为 2026-06-29 新建;`neuromodulation` 下 2026-06-30 新增 current-steering(电流聚焦/刺激空间选择性)子簇;`cancer-neuroscience`(神经元活动↔胶质瘤电/突触整合、用神经记录监测肿瘤)为 2026-07-09 新建。
 
 ---
 
