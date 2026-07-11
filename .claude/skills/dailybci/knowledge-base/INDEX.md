@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
 Last updated: 2026-07-11
-Total papers: 231
+Total papers: 232
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -291,7 +291,7 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Negro 2016](papers/emg-motor-unit/negro-2016-convolutive-bss-decomposition.md) — 通用卷积盲源分解，把 CKC 推成可验证·社区标准方法(openhdemg 算法核心)，今日候选工具链源头
 - [Farina 2017](papers/emg-motor-unit/farina-2017-manmachine-interface-motor-neurons.md) — 用脊髓运动神经元放电时序作控制命令驱动假肢(6名TMR截肢者，离线)，把运动单位解码推向真正的神经接口，本线最 BCI-relevant 地标
 
-## cancer-neuroscience (9 papers)
+## cancer-neuroscience (10 papers)
 神经科学 × 肿瘤：神经元活动如何经旁分泌/电与突触整合驱动胶质瘤，以及用神经记录读出/监测肿瘤状态。与 BCI 主线在"植入式神经接口"硬件端相接（同一电极换用途做疾病监测）。milestone 抽取自 Mancusi & Monje 2023 (Nature) 综述引用。
 - [Venkatesh 2015](papers/cancer-neuroscience/venkatesh-2015-neuronal-activity-glioma-nlgn3.md) — 首次证明神经元活动驱动胶质瘤生长，鉴定活动调控旁分泌因子 NLGN3/BDNF，整条线起点(小鼠+人异种移植，Cell)
 - [Venkatesh 2017](papers/cancer-neuroscience/venkatesh-2017-targeting-nlgn3-dependency.md) — 胶质瘤强依赖 NLGN3，阻断 ADAM10 切割释放可抑瘤，把通路推向治疗靶点(Nature)
@@ -302,3 +302,4 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Derks 2018](papers/cancer-neuroscience/derks-2018-oscillatory-activity-glioma-survival.md) — "用神经活动读出肿瘤"最早人体证据：MEG 脑振荡与 NLGN3 相关、预测无进展生存期(人类)
 - [Krishna 2023](papers/cancer-neuroscience/krishna-2023-glioblastoma-remodelling-human-circuits.md) — 人体地标：胶质母细胞瘤重塑人脑功能连接，高整合区伴认知下降、生存更短(术中记录+功能连接，Nature)
 - [Mancusi & Monje 2023](papers/cancer-neuroscience/mancusi-2023-neuroscience-of-cancer-review.md) — 定义性框架综述，本子领域 milestone 抽取来源(Nature)
+- [Stroud 2026](papers/cancer-neuroscience/stroud-2026-glioma-neural-monitoring.md) — 首批把 cancer neuroscience 机制做成慢性植入监测器件：<2g 头帽+微丝电极在自由活动小鼠(人 GBM/DIPG 异种移植)慢性记录 LFP，gamma 功率随肿瘤生长升高(跨 GBM+DIPG)、高 γ 上升速率预测个体生长率(交叉验证 R²=0.88)、化疗组轨迹带治疗反应信号；开辟"cancer neurotechnology"监测分支(Coherence Neuro×Monje，bioRxiv，小鼠概念验证)
