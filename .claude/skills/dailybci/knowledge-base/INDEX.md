@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-09
-Total papers: 220
+Last updated: 2026-07-11
+Total papers: 231
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -125,6 +125,29 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Flint 2013](papers/invasive-recording/flint-2013-lfp-long-term-bmi.md) — LFP-based BMI性能可比spikes，11个月稳定无需重训练
 - [NEO 2024](papers/invasive-recording/neo-2024-epidural-minimally-invasive-bci.md) — 首个无线无电池硬膜外人体BCI，eECoG作"第四类模态"，C4完全SCI患者9个月家用信号不降反升，驱动脑-脊髓康复（清华×博睿康）
 - [NEO 2025](papers/invasive-recording/neo-2025-fine-grained-2d-cursor.md) — 硬膜外微创BCI实现精细二维光标控制，发现双侧/多效应器表征，ITR 36.7 bpm、记录稳定>18个月
+
+## functional-ultrasound (11 papers)
+功能超声成像(fUS/fUSI)：用超快多普勒读取神经血管耦合下的脑血容量变化。信号层级是血流动力学(与 fMRI 同类的间接信号)，但空间分辨率达亚毫米、时间分辨率亚秒，且不穿刺皮层，因此在 BCI 记录模态谱系里占据"皮层内电生理 vs 非侵入成像"之间的一格。milestone 抽取自 Wang et al. (2023) *The Emergence of Functional Ultrasound for Noninvasive Brain–Computer Interface* (Research/AAAS, PMC10427153) 与 Deffieux et al. (2018, Curr Opin Neurobiol) 两篇综述，BCI 解码线的近期三篇(Norman/Griggs/Rabut)为综述后补充。
+关键约束：**成人颅骨挡住超声**，所以人体 fUS 必须有声窗——新生儿囟门 / 术中开颅 / 植入声学透明颅骨置换物。这条约束决定了这条线的全部临床形态。
+
+### 方法学地基
+- [Montaldo 2009](papers/functional-ultrasound/montaldo-2009-plane-wave-compounding.md) — 相干平面波复合：一次发射整个平面波 + 多角度相干叠加，把帧率推到每秒数千帧而不牺牲画质；fUS 的物理前提(非神经科学论文)
+- [Macé 2011](papers/functional-ultrasound/mace-2011-functional-ultrasound-brain.md) — fUS 原始方法论文：超快多普勒成像脑血容量瞬态变化，大鼠触须诱发响应+癫痫样传播；整条模态的起点
+- [Errico 2015](papers/functional-ultrasound/errico-2015-ultrasound-localization-microscopy.md) — 超声定位显微(ULM)：微泡逐个定位突破衍射极限，>500 fps、深度>10 mm 分辨 <10 µm 脑微血管(大鼠)；分辨率上限的另一条线
+
+### 清醒 / 行为下记录
+- [Sieu 2015](papers/functional-ultrasound/sieu-2015-fus-eeg-mobile-rats.md) — 首次在清醒自由活动大鼠做 fUS 并同步 EEG(迷宫 theta + 自发癫痫两个概念验证)，把 fUS 变成行为下可用的记录手段
+- [Blaize 2020](papers/functional-ultrasound/blaize-2020-fus-deep-visual-cortex-nhp.md) — 2 只清醒猕猴深部视皮层(V1/V2/V3，距状沟/月状沟内)视网膜拓扑成像，分辨出类眼优势柱模式；确立"介观"定位
+
+### 人体：声窗决定形态
+- [Demené 2017](papers/functional-ultrasound/demene-2017-fus-human-newborns.md) — 首次人体 fUS：经新生儿囟门 + 同步视频 EEG，检出睡眠状态相关脑血容量变化、定位癫痫起始灶(UfD 200 µm / EEG 1 ms)
+- [Imbault 2017](papers/functional-ultrasound/imbault-2017-intraoperative-human-fus.md) — 首次成人人脑 fUS：术中开颅提供声窗，250 µm/1 ms，定位脑沟深部任务诱发激活(清醒与全麻患者)
+- [Rabut 2024](papers/functional-ultrasound/rabut-2024-human-acoustic-cranial-window.md) — 声学透明 PMMA 颅骨置换物做成永久声窗：1 名成人(TBI 后颅骨重建)在手术室之外清醒 fUSI，约 200 µm 分辨率，游戏任务的映射与解码；把人体 fUS 从"一次性机会"变成可重复会话
+
+### BCI 解码线
+- [Norman 2021](papers/functional-ultrasound/norman-2021-single-trial-decoding-fus.md) — 首次把 fUS 当 BCI 记录模态检验：猕猴硬膜外记录 PPC(100 µm)，从运动前延迟期信号**单试次**离线解出运动方向与效应器
+- [Griggs 2024](papers/functional-ultrasound/griggs-2024-closed-loop-ultrasonic-bmi.md) — 首个**闭环**超声 BMI：2 只恒河猴用 PPC 的 fUS 流控制至多 8 个运动方向；用既往会话预训练解码器，跨天(相隔数月)立即可控、免大规模重校准
+- [Lin 2026](papers/functional-ultrasound/lin-2026-human-cranial-window-effector-mapping.md) — 人体 fUSI 首次做到单指级躯体拓扑 + 单试次 + 跨会话解码：装声学透明 PMMA 颅骨窗的成人(同 Rabut 2024 的被试)，300 µm 体素同覆 M1/S1/SMG，五指质心间距 1.49–5.82 mm、单试次解码约 78%(机会 20%)；反预期仅 BA 1 显著解码。血流类换空间不换时间(0.6 Hz、需 block 设计)的例证(Andersen/Shapiro 组·Caltech)
 
 ## sensory-feedback (14 papers)
 - [Romo 1998](papers/sensory-feedback/romo-1998-icms-tactile-discrimination.md) — 首次ICMS产生与自然触觉不可区分的人工触觉感知
