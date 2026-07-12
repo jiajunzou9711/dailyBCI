@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-11
-Total papers: 232
+Last updated: 2026-07-12
+Total papers: 246
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -168,7 +168,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Cogan 2016](papers/sensory-feedback/cogan-2016-tissue-damage-thresholds.md) — 重审Shannon判据:源于宏电极、未必适用微电极,当代微刺激安全再评估起点
 - [Iliasov 2026](papers/sensory-feedback/iliasov-2026-microbubble-icms-safety.md) — 子簇首篇"在体实时血管成像看ICMS损伤":清醒小鼠双光子,气泡面积随电流~二次方增长、≥60µA急转BBB破裂;把电解微气泡从被动标志重定位为主动致损机制,给柔性电极ICMS机制性安全窗(何飞组·光机所×复旦华山)
 
-## neuromodulation (13 papers)
+## neuromodulation (14 papers)
 - [Benabid 1991](papers/neuromodulation/benabid-1991-dbs-tremor-suppression.md) — 开创现代DBS疗法，高频VIM刺激长期抑制帕金森震颤，可逆可调
 - [Limousin 1998](papers/neuromodulation/limousin-1998-stn-dbs-parkinson.md) — 确立STN-DBS作为晚期帕金森标准治疗，UPDRS运动评分改善~50%
 - [Morrell 2011](papers/neuromodulation/morrell-2011-rns-closed-loop-epilepsy.md) — 首个闭环脑刺激RCT（RNS），191名癫痫患者，2013年FDA批准
@@ -176,6 +176,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Little 2013](papers/neuromodulation/little-2013-adaptive-dbs-human.md) — 首次人类闭环自适应DBS，用beta振荡作为生物标志物，刺激量减半
 - [Scangos 2021](papers/neuromodulation/scangos-2021-closed-loop-depression.md) — 首次个性化闭环神经调控治疗难治性抑郁症
 - [Shirvalkar 2023](papers/neuromodulation/shirvalkar-2023-chronic-pain-biomarker.md) — 首次从颅内慢性记录预测慢性疼痛状态，OFC为关键生物标志物
+- [Liu 2026](papers/neuromodulation/liu-2026-device-accelerometry-adbs.md) — 首个在大规模人体慢性数据(11 名 PD，>1900h，Summit RC+S)系统指出 aDBS 经典标志物 STN beta 的两个独立失效：关刺激时"总 beta"混叠周期(↑)/非周期(↓)、开刺激后周期 beta 与症状解耦；提出植入器自带加速度计作抗刺激的行为学标志物(解码 Acc R≈0.49/0.56 > 全神经 0.44/0.47)，推进 little-2013 的 beta-aDBS 范式(bioRxiv)
 
 ### 刺激空间选择性 / 电流聚焦 (current steering & field shaping)
 "用电流几何/时空结构而非移动电极来控制激活区"这条母题，服务 SCS / DBS / 外周刺激；为本期 ACM(焦点式深部刺激)的纵向前作与横向对照。milestone 抽取自 Liang et al. 2023 (Neuromodulation) 的 SCS 计算模型系统综述。
@@ -303,3 +304,22 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Krishna 2023](papers/cancer-neuroscience/krishna-2023-glioblastoma-remodelling-human-circuits.md) — 人体地标：胶质母细胞瘤重塑人脑功能连接，高整合区伴认知下降、生存更短(术中记录+功能连接，Nature)
 - [Mancusi & Monje 2023](papers/cancer-neuroscience/mancusi-2023-neuroscience-of-cancer-review.md) — 定义性框架综述，本子领域 milestone 抽取来源(Nature)
 - [Stroud 2026](papers/cancer-neuroscience/stroud-2026-glioma-neural-monitoring.md) — 首批把 cancer neuroscience 机制做成慢性植入监测器件：<2g 头帽+微丝电极在自由活动小鼠(人 GBM/DIPG 异种移植)慢性记录 LFP，gamma 功率随肿瘤生长升高(跨 GBM+DIPG)、高 γ 上升速率预测个体生长率(交叉验证 R²=0.88)、化疗组轨迹带治疗反应信号；开辟"cancer neurotechnology"监测分支(Coherence Neuro×Monje，bioRxiv，小鼠概念验证)
+
+## presurgical-mapping (6 papers)
+术前无创功能定位：把术中直接皮层电刺激(DCS)所做的语言/运动皮层定位，用无创手段(MEG 激活成像、navigated TMS 干扰法)搬到术前，供神经外科规划。信号性质与 BCI 主线不同(不是控制、是定位)，但共用"皮层功能作图"的方法学，且 TMS/MEG 属非侵入模态。目前先建语言区一条线。milestone 抽取自 Sollmann/Ille et al. (2022, J Pers Med 12:1589) 综述 + Krieg et al. (2017) 共识。
+- [Ojemann 1989](papers/presurgical-mapping/ojemann-1989-dcs-language-mapping.md) — 直接皮层电刺激语言定位金标准(117 例)：语言区高度个体化、呈 <Broca-Wernicke 的小马赛克，确立"必须逐人定位"，所有无创法的对照基准
+- [Pascual-Leone 1991](papers/presurgical-mapping/pascual-leone-1991-tms-speech-arrest.md) — 首次用 TMS 无创诱发言语中断做语言偏侧化、与 Wada 一致；TMS 语言定位线起点(定位不精催生 navigated TMS)
+- [Papanicolaou 2004](papers/presurgical-mapping/papanicolaou-2004-meg-wada-language.md) — MEG 作 Wada 无创替代做语言偏侧化(100 例，与 Wada 一致率 87%、灵敏度 98%)；MEG 术前语言线代表
+- [Picht 2013](papers/presurgical-mapping/picht-2013-ntms-vs-dcs-language.md) — 首个 nrTMS 语言定位对照 DCS 金标准：高灵敏(~90%)、低特异(~24%)、高阴性预测值(~84%)，确立 nTMS 强在排除、弱在精确阳性
+- [Tarapore 2013](papers/presurgical-mapping/tarapore-2013-ntms-megi-language.md) — nrTMS(干扰法)+MEGI(激活法)联合对照 DCS，两者互补；今日候选(MEG 引导 TMS 时机)的直接方法学前作
+- [Krieg 2017](papers/presurgical-mapping/krieg-2017-ntms-mapping-protocol.md) — 赫尔辛基工作组共识协议，标准化 nTMS 运动/语言作图；本子领域标准化基石与 milestone 抽取源
+
+## visual-prosthesis (7 papers)
+视觉假体 / 视网膜电刺激：给因感光细胞退化(RP/AMD)致盲者，电刺激存活的内层视网膜(神经节细胞/双极细胞)重建视觉。与 BCI 主线在"植入式电极+电刺激神经组织"硬件端相接。三条临床路线：视网膜上(epiretinal，刺激神经节细胞)、视网膜下(subretinal，刺激双极细胞)、光伏视网膜下(无线近红外供能)。另有一条 Chichilnisky 组"精准刺激"研究线(MEA 单细胞级刺激→空间电流成形→规避轴突束)，是今日候选 3 的直系。深层源头是皮层视觉假体(Foerster 1929/Brindley & Lewin 1968 的皮层光幻视)。milestone 抽取自 Retinal Prostheses: Engineering and Clinical Perspectives (2023, PMC10347280) + Expert Rev Ophthalmol (2025) 综述。
+- [Humayun 1996](papers/visual-prosthesis/humayun-1996-retinal-stimulation-phosphenes.md) — 首次在盲人(RP/AMD)视网膜电刺激诱发可分辨光幻视，证明可绕过死掉的感光细胞刺激存活内层；整条线人体起点
+- [Sekirnjak 2008](papers/visual-prosthesis/sekirnjak-2008-high-res-rgc-stimulation.md) — Chichilnisky 组：MEA 在安全电荷下单节细胞级高分辨刺激(离体猕猴)；"精准刺激"研究线起点
+- [Zrenner 2011](papers/visual-prosthesis/zrenner-2011-alpha-ims-subretinal.md) — Alpha-IMS 视网膜下 1500 光电二极管芯片，盲人读字母组词/辨物/读钟面；视网膜下(双极细胞)路线代表
+- [Humayun 2012](papers/visual-prosthesis/humayun-2012-argus-ii-trial.md) — Argus II 国际试验(30 例)，2013 年成为首个 FDA 批准的视网膜假体；视网膜上(epiretinal)路线里程碑
+- [Jepson 2014](papers/visual-prosthesis/jepson-2014-spatially-patterned-stimulation.md) — 多电极空间电流成形(current steering)提升刺激的细胞类型选择性，把单细胞刺激推向阵列协同(Chichilnisky 组)
+- [Grosberg 2017](papers/visual-prosthesis/grosberg-2017-axon-bundle-activation.md) — 指认轴突束激活为 epiretinal 假体的核心分辨率上限(512 电极离体猕猴)；正是候选 3 生物物理建模要规避的问题
+- [Palanker 2020](papers/visual-prosthesis/palanker-2020-prima-photovoltaic.md) — PRIMA 无线光伏视网膜下假体首次人体(5 例 GA/AMD)，约 20/420、达像素间距；光伏路线里程碑
