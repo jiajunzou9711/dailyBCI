@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-12
-Total papers: 246
+Last updated: 2026-07-13
+Total papers: 247
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -305,7 +305,7 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Mancusi & Monje 2023](papers/cancer-neuroscience/mancusi-2023-neuroscience-of-cancer-review.md) — 定义性框架综述，本子领域 milestone 抽取来源(Nature)
 - [Stroud 2026](papers/cancer-neuroscience/stroud-2026-glioma-neural-monitoring.md) — 首批把 cancer neuroscience 机制做成慢性植入监测器件：<2g 头帽+微丝电极在自由活动小鼠(人 GBM/DIPG 异种移植)慢性记录 LFP，gamma 功率随肿瘤生长升高(跨 GBM+DIPG)、高 γ 上升速率预测个体生长率(交叉验证 R²=0.88)、化疗组轨迹带治疗反应信号；开辟"cancer neurotechnology"监测分支(Coherence Neuro×Monje，bioRxiv，小鼠概念验证)
 
-## presurgical-mapping (6 papers)
+## presurgical-mapping (7 papers)
 术前无创功能定位：把术中直接皮层电刺激(DCS)所做的语言/运动皮层定位，用无创手段(MEG 激活成像、navigated TMS 干扰法)搬到术前，供神经外科规划。信号性质与 BCI 主线不同(不是控制、是定位)，但共用"皮层功能作图"的方法学，且 TMS/MEG 属非侵入模态。目前先建语言区一条线。milestone 抽取自 Sollmann/Ille et al. (2022, J Pers Med 12:1589) 综述 + Krieg et al. (2017) 共识。
 - [Ojemann 1989](papers/presurgical-mapping/ojemann-1989-dcs-language-mapping.md) — 直接皮层电刺激语言定位金标准(117 例)：语言区高度个体化、呈 <Broca-Wernicke 的小马赛克，确立"必须逐人定位"，所有无创法的对照基准
 - [Pascual-Leone 1991](papers/presurgical-mapping/pascual-leone-1991-tms-speech-arrest.md) — 首次用 TMS 无创诱发言语中断做语言偏侧化、与 Wada 一致；TMS 语言定位线起点(定位不精催生 navigated TMS)
@@ -313,6 +313,7 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Picht 2013](papers/presurgical-mapping/picht-2013-ntms-vs-dcs-language.md) — 首个 nrTMS 语言定位对照 DCS 金标准：高灵敏(~90%)、低特异(~24%)、高阴性预测值(~84%)，确立 nTMS 强在排除、弱在精确阳性
 - [Tarapore 2013](papers/presurgical-mapping/tarapore-2013-ntms-megi-language.md) — nrTMS(干扰法)+MEGI(激活法)联合对照 DCS，两者互补；今日候选(MEG 引导 TMS 时机)的直接方法学前作
 - [Krieg 2017](papers/presurgical-mapping/krieg-2017-ntms-mapping-protocol.md) — 赫尔辛基工作组共识协议，标准化 nTMS 运动/语言作图；本子领域标准化基石与 milestone 抽取源
+- [Autti 2026](papers/presurgical-mapping/autti-2026-meg-informed-ntms-timing.md) — 用个人 MEG 语音激活时序个体化 nrTMS 的发放时机(PTI):best PTI 与 MEG 峰值显著正相关(Combined R=0.713，best PTI 平均早于峰值 132 ms)，把 nrTMS 个体化从"只调空间"推进到"空间+时间"，让被动 MEG 配置主动 TMS 的采集参数(非并联出第二张图)；仅额叶/语言产出区成立;概念验证(健康人 N=13、未对照 DCS、特异度收益待证)(赫尔辛基/Aalto·bioRxiv)
 
 ## visual-prosthesis (7 papers)
 视觉假体 / 视网膜电刺激：给因感光细胞退化(RP/AMD)致盲者，电刺激存活的内层视网膜(神经节细胞/双极细胞)重建视觉。与 BCI 主线在"植入式电极+电刺激神经组织"硬件端相接。三条临床路线：视网膜上(epiretinal，刺激神经节细胞)、视网膜下(subretinal，刺激双极细胞)、光伏视网膜下(无线近红外供能)。另有一条 Chichilnisky 组"精准刺激"研究线(MEA 单细胞级刺激→空间电流成形→规避轴突束)，是今日候选 3 的直系。深层源头是皮层视觉假体(Foerster 1929/Brindley & Lewin 1968 的皮层光幻视)。milestone 抽取自 Retinal Prostheses: Engineering and Clinical Perspectives (2023, PMC10347280) + Expert Rev Ophthalmol (2025) 综述。
