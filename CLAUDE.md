@@ -10,6 +10,9 @@
 - 标题必须是简短、肯定、信息增量明确的断言句,优先直接传递本篇文章的核心结论;避免疑问句、悬念句和只抛问题的标题。
 - 日报通常围绕一篇主文章展开:封面/来源区已交代主文章后,后续图卡引用主文章事实默认不重复加脚标;只有引用其他论文、综述、公司/监管来源或横纵对照材料时再加脚标。
 - 图卡文案要保持链式逻辑:每张开头承接上一张结尾并高度总结本卡要点,每张结尾自然引出下一张。生产前先给分卡文字供审阅。
+- 少用比喻和拟人等修辞(硬规则)。比喻会让信息失真,对严谨科学论文尤其危险,默认用字面、准确的说法把术语和逻辑讲清。被点名的反例:把"结果分成两类"说成"劈成两种命运"、给数据/过程套上命运/意志等拟人。需要对比时用肯定句式("关键差别是""相比 X,Y 更…")。
+- 术语第一次出现时,即使读者可能没读过原文也要能看懂:承重的抽象说法(如"价值两极清晰 / 价值模糊")首次出现必须就地用一句具体话解释(如"物品的奖惩含义是否分明"),不要把只有读过论文的人才懂的压缩表达直接抛给冷读者。
+- 脚手架标签(承上/读图/转场/分点/结论/Qn 等)只是写作时给自己的结构提示,绝不能作为字面文字进入小红书图卡或 thread 的成品正文。
 
 ---
 
@@ -60,7 +63,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - **Step 5–8 内容先行**:第一版即给**双语文字稿 + 粗裁图(内联)**→ 自动事实核查 → 生产(渲染卡片)→ 打磨(图多轮裁干净)。最贵的渲染推到事实锁定之后。
 - **卡片渲染内核 = HTML/CSS + Chromium**(2026-06-22 从 Pillow 迁移):`card_generator.py` 四个方法签名不变(`cover/figure/text/tail_card`),内核改填 HTML 模板再经 `npx playwright screenshot` 截图。收益:自动流式排版(不再手算坐标/静默溢出)、`**关键词**` 句中高亮、上标原生;代价:多一个 Chromium 依赖。调版式改 CSS,可直接浏览器预览。
 - **Content Standards**:标物种、数字回溯原文、慎用"首次/都/all"、术语分层、中文源核实公司名;**双语大纲一致但内容可不同**(thread 纯文字自洽 / 小红书图文更深、用"结论→读图→转场"链);**图永远内联呈现 = 存盘 + Read**(不用浏览器 screenshot)。
-- **知识库 21 子领域(篇数见 INDEX.md)**,`population-dynamics` 线延伸到 de Vicente 2026(Sadtler 2014 → Busch 2025 → de Vicente 2026);`non-invasive` 新增 AAD(听觉注意解码)子线;`performance-variability`(认知状态/注意/信号变异,横跨非侵入与皮层内)为 2026-06-23 新建子领域;`affective-bci`(情感/EEG 情绪解码) 与 `emg-motor-unit`(外周肌电/运动单位解码→神经驱动) 为 2026-06-29 新建;`neuromodulation` 下 2026-06-30 新增 current-steering(电流聚焦/刺激空间选择性)子簇;`cancer-neuroscience`(神经元活动↔胶质瘤电/突触整合、用神经记录监测肿瘤)为 2026-07-09 新建;`functional-ultrasound`(功能超声成像 fUSI/血流动力学神经接口:Macé 2011→Norman 2021→Griggs 2024→Rabut 2024→Lin 2026)为 2026-07-11 新建;`presurgical-mapping`(术前无创功能定位,先建语言区线:Ojemann DCS 金标准→Pascual-Leone 1991→Papanicolaou 2004 MEG→Picht 2013 nrTMS vs DCS→Tarapore 2013→Krieg 2017→Autti 2026 MEG 引导 nrTMS 时机)与 `visual-prosthesis`(视觉假体/视网膜电刺激:Humayun 1996→Argus II/Alpha-IMS/PRIMA + Chichilnisky 精准刺激线)为 2026-07-12 新建;`neuromodulation` 2026-07-12 增 Liu 2026(加速度计 vs beta 生物标志物);`presurgical-mapping` 2026-07-13 增 Autti 2026(用个人 MEG 峰值个体化 nrTMS 发放时机 PTI,best PTI≈MEG 峰值−132ms,R=0.713)。
+- **知识库 21 子领域(篇数见 INDEX.md)**,`population-dynamics` 线延伸到 de Vicente 2026(Sadtler 2014 → Busch 2025 → de Vicente 2026);`non-invasive` 新增 AAD(听觉注意解码)子线;`performance-variability`(认知状态/注意/信号变异,横跨非侵入与皮层内)为 2026-06-23 新建子领域;`affective-bci`(情感/EEG 情绪解码) 与 `emg-motor-unit`(外周肌电/运动单位解码→神经驱动) 为 2026-06-29 新建;`neuromodulation` 下 2026-06-30 新增 current-steering(电流聚焦/刺激空间选择性)子簇;`cancer-neuroscience`(神经元活动↔胶质瘤电/突触整合、用神经记录监测肿瘤)为 2026-07-09 新建;`functional-ultrasound`(功能超声成像 fUSI/血流动力学神经接口:Macé 2011→Norman 2021→Griggs 2024→Rabut 2024→Lin 2026)为 2026-07-11 新建;`presurgical-mapping`(术前无创功能定位,先建语言区线:Ojemann DCS 金标准→Pascual-Leone 1991→Papanicolaou 2004 MEG→Picht 2013 nrTMS vs DCS→Tarapore 2013→Krieg 2017→Autti 2026 MEG 引导 nrTMS 时机)与 `visual-prosthesis`(视觉假体/视网膜电刺激:Humayun 1996→Argus II/Alpha-IMS/PRIMA + Chichilnisky 精准刺激线)为 2026-07-12 新建;`neuromodulation` 2026-07-12 增 Liu 2026(加速度计 vs beta 生物标志物);`presurgical-mapping` 2026-07-13 增 Autti 2026(用个人 MEG 峰值个体化 nrTMS 发放时机 PTI,best PTI≈MEG 峰值−132ms,R=0.713);`passive-bci`(被动脑机接口/神经自适应:把自发认知状态当隐式输入让机器适应,抽取源 Zander & Kothe 2011;Parra 2003 ERN 纠错→Kohlmorgen 2007 真实驾驶工作负荷→Ferrez 2008 交互 ErrP→Zander 2016 PNAS neuroadaptive 闭环→Aricò 2016 空管部署)为 2026-07-14 新建(6 篇);同日日报选题 Pan 2026(首个动态 VR 游戏中实时闭环解码交互意图:gaze+被动EEG,人类23人;affordance 稳在77.8–83.5%,approach-avoidance 仅价值两极可解 coins/bombs 80.8%、价值模糊塌回随机59%;划出"可解码信号=效价"边界)入库,并补横向对照 Reddy 2024(SPN 隐式选择,CHI '24)、Dehais 2022(dual passive-reactive,Front Neuroergonomics),`passive-bci` 增至 9 篇。**补库流程 2026-07-14 起自动写入,不再逐篇征询用户(见记忆 `dailybci-modeb-autoadd`)。**
 
 ---
 

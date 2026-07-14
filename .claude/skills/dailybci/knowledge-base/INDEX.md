@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-13
-Total papers: 247
+Last updated: 2026-07-14
+Total papers: 256
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -261,6 +261,18 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Dunlap 2020](papers/performance-variability/dunlap-2020-intracortical-signal-disruptions-review.md) — 皮层内BMI信号中断的定义性综述：按影响时长×可补偿性提出四类框架(瞬时/可逆/不可逆可补偿/不可逆不可补偿)+各类补偿策略
 - [Niu 2025](papers/performance-variability/niu-2025-cognitive-state-eeg-bci-review.md) — 最新定义性系统综述(PRISMA，25项)：年龄/认知/注意/心理状态对EEG-BCI有效性的影响；P300/SSVEP更鲁棒、MI对认知与年龄更敏感
 - [Canario 2026](papers/performance-variability/canario-2026-attentional-load-ibci.md) — 极少数在人类皮层内BCI主动操纵注意负荷(双任务N-Back)的工作：负荷经EEG/准确率/自评确证抬高,但光标控制基本不掉、运动意图信号保住;最差(植入约8年的P2)成功率跌<10% vs EEG-BCI约20%;脆弱性跟信号质量/植入年限走而非分心本身(匹兹堡Chase·Collinger组,2名四肢瘫,Utah阵列)
+
+## passive-bci (9 papers)
+被动脑机接口 / 神经自适应(neuroadaptive)。把自发认知状态(错误感知/工作负荷/期望违背)当作隐式输入让机器适应,区别于把认知状态当噪声的 performance-variability、把情绪当对象的 affective-bci。抽取源=Zander & Kothe 2011(定义"passive BCI"三分类)。主线：框架→隐式信号机制(ErrP/ERN)→真实环境工作负荷→神经自适应闭环地标→操作环境部署。
+- [Parra 2003](papers/passive-bci/parra-2003-response-error-correction.md) — 最早闭环之一：单试次检出错误相关负波(ERN)自动纠错,人机绩效平均+21%(人类EEG),Ferrez 2008 的前驱
+- [Kohlmorgen 2007](papers/passive-bci/kohlmorgen-2007-workload-real-driving.md) — 真实道路驾驶中实时检测高心理负荷→即时削减车载信息流,最早走出实验室的工作负荷型 passive BCI 之一(人类EEG,MIT Press)
+- [Ferrez & Millán 2008](papers/passive-bci/ferrez-2008-error-related-potentials.md) — 确立"交互错误电位(interaction ErrP,机器误解用户意图时诱发)",给出可复现波形+单试次检出,passive BCI 纠错的核心信号机制(人类EEG,IEEE TBME)
+- [Zander & Kothe 2011](papers/passive-bci/zander-2011-passive-bci.md) — 定义框架(抽取源)：提出"passive BCI",把 BCI 分 active/reactive/passive,整条线的命名与概念原点(J Neural Eng,综述)
+- [Zander 2016](papers/passive-bci/zander-2016-neuroadaptive-cursor.md) — 地标闭环：无任何显式指令,从 mPFC 单试次 ERP 解码"期望违背"(幅度线性对应)→机器自动把光标引向用户内心目标,"neuroadaptive"由此定名(人类EEG,PNAS)
+- [Aricò 2016](papers/passive-bci/arico-2016-adaptive-automation-atc.md) — 走向部署：EEG 工作负荷指数触发自适应自动化,贴近真实空管(ATC)任务里验证"监测→触发→负荷下降"完整闭环(人类EEG,Front Hum Neurosci)
+- [Dehais 2022](papers/passive-bci/dehais-2022-dual-passive-reactive-bci.md) — dual passive-reactive BCI：把被动(监测隐式状态)+反应(SSVEP 主动选择)合成双向闭环"人机共生"混合范式,拓宽 passive BCI 的通道组合(人类EEG,Front Neuroergonomics)
+- [Reddy 2024](papers/passive-bci/reddy-2024-eye-brain-computer-interface.md) — eye-brain-computer interface：用前瞻性 ERP 的刺激前负波(SPN)在 XR 里做隐式选择确认,论证 SPN 由选择意图而非反馈驱动;gaze+EEG 目标选择的同期横向对照(离线,人类EEG,CHI '24)
+- [Pan 2026](papers/passive-bci/pan-2026-vr-gaze-intent.md) — 首个动态 VR 游戏中实时闭环解码交互意图(gaze+被动EEG,人类23人)：affordance 稳在77.8–83.5%、approach-avoidance 仅价值两极时可解(coins vs bombs 80.8%)、价值模糊塌回随机(59%);离线66.3→在线69.6;划出"可解码信号=效价,意图仅在绑定强价值时连带可解"的能力边界(Zander/Klug 组,bioRxiv)
 
 ## affective-bci (7 papers)
 情感脑机接口 / EEG 情绪解码(aBCI)。多为 passive BCI——检测而非主动控制情感状态。主线：理论原点→神经生理地基→benchmark 数据集→特征/深度学习→跨被试·跨数据集泛化。
