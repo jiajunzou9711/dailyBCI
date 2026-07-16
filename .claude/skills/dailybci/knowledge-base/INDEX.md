@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-15
-Total papers: 257
+Last updated: 2026-07-16
+Total papers: 258
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -116,7 +116,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Speier 2012](papers/non-invasive/speier-2012-nlp-dynamic-classification-p300.md) — 首次证明HMM+语言模型动态分类显著提升P300拼写器准确率和比特率，LM纠错路线奠基实证
 - [Kindermans 2012](papers/non-invasive/kindermans-2012-p300-bci-masses-prior.md) — 贝叶斯语言先验让P300拼写器免校准、无监督即可用，把LM角色从事后纠错扩展到替代监督训练
 
-## invasive-recording (9 papers)
+## invasive-recording (10 papers)
 - [Kennedy 1998](papers/invasive-recording/kennedy-1998-first-human-intracortical-bci.md) — 首次人类慢性intracortical记录用于BCI，Neurotrophic Electrode
 - [Leuthardt 2004](papers/invasive-recording/leuthardt-2004-first-ecog-bci.md) — 首次证明ECoG可用于BCI控制，确立ECoG作为记录模态的"最优平衡点"
 - [Schalk 2008](papers/invasive-recording/schalk-2008-ecog-2d-control.md) — 首次ECoG 2D控制，发现high-gamma具有cosine方向调谐特性
@@ -126,6 +126,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Flint 2013](papers/invasive-recording/flint-2013-lfp-long-term-bmi.md) — LFP-based BMI性能可比spikes，11个月稳定无需重训练
 - [NEO 2024](papers/invasive-recording/neo-2024-epidural-minimally-invasive-bci.md) — 首个无线无电池硬膜外人体BCI，eECoG作"第四类模态"，C4完全SCI患者9个月家用信号不降反升，驱动脑-脊髓康复（清华×博睿康）
 - [NEO 2025](papers/invasive-recording/neo-2025-fine-grained-2d-cursor.md) — 硬膜外微创BCI实现精细二维光标控制，发现双侧/多效应器表征，ITR 36.7 bpm、记录稳定>18个月
+- [Jafri 2026](papers/invasive-recording/jafri-2026-white-matter-signals.md) — 把"白质触点=灰质衰减副本"这个默认证伪：谱参数化拆出 offset(总功率)/exponent(1/f斜率)，衰减只能动前者——实测两者双降(exponent 2.46 vs 2.77)且 **19 人无一例外**；delta 中心频率位移(2.40 vs 2.00 Hz)更是完全免疫于幅度缩放。白质复杂度更高，仅凭信号分类组织 AUC 0.92。给 [[buzsaki-2012]] 的理论补上实证："生成机制不同"对了(灰=慢突触电流/白=快轴突动作电位)，"那里什么都没有"错了。前作见条目内(Mercier 2017/Greene 2021/**Li 2021=解码增益出处**/Revell 2026)。**本篇不做解码**；束归位为作者自陈 putative 且主文无方法、FA 相关仅 rho=0.12(19人/1717触点，36%在白质，bioRxiv)
 
 ## functional-ultrasound (11 papers)
 功能超声成像(fUS/fUSI)：用超快多普勒读取神经血管耦合下的脑血容量变化。信号层级是血流动力学(与 fMRI 同类的间接信号)，但空间分辨率达亚毫米、时间分辨率亚秒，且不穿刺皮层，因此在 BCI 记录模态谱系里占据"皮层内电生理 vs 非侵入成像"之间的一格。milestone 抽取自 Wang et al. (2023) *The Emergence of Functional Ultrasound for Noninvasive Brain–Computer Interface* (Research/AAAS, PMC10427153) 与 Deffieux et al. (2018, Curr Opin Neurobiol) 两篇综述，BCI 解码线的近期三篇(Norman/Griggs/Rabut)为综述后补充。
