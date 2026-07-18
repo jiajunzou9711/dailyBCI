@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-16
-Total papers: 258
+Last updated: 2026-07-17
+Total papers: 278
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -21,6 +21,24 @@ Total papers: 258
 - [Yoon 2026](papers/speech-decoding/yoon-2026-deep-neural-ensembles.md) — 深度集成首次实时闭环验证(WER 33.7%→26.0%)；提出伪集成单解码器降算力，把优化轴从精度扩到可部署性
 - [Card 2026](papers/speech-decoding/card-2026-longterm-independent-bci.md) — 皮层内语音+光标BCI首次家庭自主长期使用：ALS患者19个月/3801小时/18.3万句、研究员不在场、保住全职工作；transformer达99.2%词准确率，信号18个月余弦相似度>0.6(同一患者T15，Nature Medicine)
 - [Wairagkar 2026](papers/speech-decoding/wairagkar-2026-brain2voice2-voice-synthesis.md) — 脑-语音合成首次跨过可懂度门槛：多模态因果Transformer(四路互补目标:连续声学/离散RVQ token/音素/自监督)+多尺度对抗，听者WER 5.24% vs前作43.75%(8×)、79%句零错；治回归损失抹糊辅音的根本问题(同队Wairagkar 2025续作，人类单被试T15，bioRxiv)
+
+## semantic-decoding (11 papers)
+语义解码：从神经活动读出"此刻想的是哪个概念"，而非"嘴要怎么动"。与 speech-decoding 的根本差别是解码层级——后者 17 篇全押在发音/音素层(articulatory)，本线目标是概念层。milestone 抽取自 **Rybář & Daly 2022 (J Neural Eng 19, PRISMA 系统综述)** 的引用，理论侧锚定 Patterson 2007 / Ralph 2017 两篇 Nat Rev Neurosci。
+**两条硬约束，评估本线任何新工作时先过一遍：**
+1. **"颅内高伽马能否解出语义范畴"在 2011 年已被肯定回答**([[wang-2011-ecog-semantic-decoding]])，2011 年后任何"首次证明颅内可解语义"的说法都需仔细核边界；真增量必须落在别处(更多范畴/跨模态泛化/未训练概念外推/实时闭环/自然语境)。
+2. **方法学最高标杆是 [[rupp-2017-ecog-semantic-attributes]]**(12 范畴 + 零样本外推 + 约等于全脑 fMRI)。只做封闭集 N 选一分类、无属性空间无外推的新工作，方法学上其实落后于 2017 年。
+- [Rybář & Daly 2022](papers/semantic-decoding/rybar-2022-semantic-decoding-review.md) — **本子领域 milestone 抽取源**(J Neural Eng 19，PRISMA 跨模态系统综述)：作者自陈是首篇跨神经成像模态、以量化解码器效能为重点的语义解码综述。用**信息传输率**作统一标尺衡量各模态解码器，把评价标准从"显著高于随机"推向"作为通信通道够不够用"。发在 BCI 核心期刊本身即说明语义解码已被接编进神经工程议程
+- [Patterson 2007](papers/semantic-decoding/patterson-2007-semantic-knowledge-representation.md) — 理论地基(Nat Rev Neurosci 8:976–987)：hub-and-spoke 架构，模态特异皮层为辐条、**前颞叶(ATL)** 为模态无关枢纽；关键论据是语义性痴呆的**跨模态跨类别**语义崩解。给语义解码提供"电极该放哪"的空间先验
+- [Mitchell 2008](papers/semantic-decoding/mitchell-2008-predicting-noun-meanings.md) — 范式起点(Science 320:1191–1195)：万亿词语料的动词共现向量表词义→线性映射到 fMRI，可预测**从未扫描过**的名词激活(60 名词验证显著)。确立"不解码是哪个词、解码词义向量再检索"这条此后通用的路线(zero-shot 祖先)
+- [Liu 2009](papers/semantic-decoding/liu-2009-fast-object-decoding-intracranial.md) — 颅内单试次范畴解码奠基(Neuron 62:281–290，11 人/912 电极)：刺激后**最早 100ms** 即可单试次解出物体范畴，且对深度旋转/尺度稳健。证明颅内场电位的范畴信息单试次可提取(实时 BCI 前提)。**归位：解的是视觉物体范畴，偏知觉侧**
+- [Simanova 2010](papers/semantic-decoding/simanova-2010-eeg-object-categories.md) — 非侵入侧起点(PLoS ONE 5:e14465)：头皮 EEG 单试次范畴解码，但**模态落差显著**——物体线描图 89%，听觉/书面词仅部分被试显著。提示 EEG 可读成分很大程度是知觉驱动而非概念枢纽；此后评估任何语义解码都要问"准确率来自概念还是刺激的知觉表面属性"
+- [Wang 2011](papers/semantic-decoding/wang-2011-ecog-semantic-decoding.md) — **"语义 BCI"提法的源头之一**(EMBC 2011:6294–6298，4 人 ECoG)：图片命名任务，高伽马 60–120Hz，LIFG + pSTG 稳健激活，GNB/SVM 可预测语义范畴；明确提出 semantic-based BCI 服务重度交流障碍者。**摘要无准确率数值，引用时勿编造**；概念验证级而非性能级
+- [Huth 2016](papers/semantic-decoding/huth-2016-semantic-maps.md) — 自然语流 + 体素级编码模型画出连续语义地图(Nature 532:453–458)，语义选择性**平铺整个皮层**、跨双侧广布。推论对颅内不友好：sEEG/ECoG 只采样到这张大地图的稀疏片段，是颅内准确率长期低于全脑 fMRI 的结构性原因
+- [Ralph 2017](papers/semantic-decoding/ralph-2017-semantic-cognition-review.md) — 理论整合(Nat Rev Neurosci 18:42–55)：语义认知 = **表征**(ATL 枢纽)+**控制**(IFG/pMTG 网络按语境调制取出哪些属性)，双分离由语义性痴呆 vs 语义通达障碍证据支撑。推论：同一概念的神经模式随任务/语境变，解码器可能学到任务态而非概念；且 **LIFG 属控制网络而非表征枢纽**，在那里解出的东西未必等于概念表征本身
+- [Rupp 2017](papers/semantic-decoding/rupp-2017-ecog-semantic-attributes.md) — **本线方法学标杆**(NeuroImage 148:318–329)：ECoG 命名 12 语义范畴，训高维**属性编码模型**映射谱-时特征，对**未训练物体**零样本解码达**与全脑 fMRI 相当**；高伽马 70–110Hz 在基底枕颞关联三个语义维度(人造-有生命/典型大-小/场所-工具)。唯一把 Mitchell 2008 属性+零样本范式完整搬进人类 ECoG 的工作
+- [Pereira 2018](papers/semantic-decoding/pereira-2018-universal-decoder.md) — 把 Mitchell 范式推到逻辑终点(Nat Commun 9:963)：语义空间采样选训练刺激→**单概念训练、解码句子**，覆盖具体+抽象、两独立数据集，可区分语义相似句。**抽象概念 + 句子级至今仍是颅内的空白**
+- [Nagata 2022](papers/semantic-decoding/nagata-2022-abstract-concrete-semantics.md) — 颅内线上**唯一以词(非图片)为刺激**的代表作(Cereb Cortex 32:5544–5554)：ECoG 高伽马 + SVM 单试次分抽象/具体词 **73.1±7.5%**；避开了"解出的其实是视觉特征"这个软肋，并把抽象性带进颅内。**注意是二分类(随机 50%)，约 0.16 bit/试次，作通信通道远不够；引用务必带"二分类"，勿与多分类准确率直接比大小**
+- 邻线交叉引用(条目在 ai-neural-modeling)：[[tang-2023-semantic-language-reconstruction]](首次非侵入 fMRI 语义重建连续语言，Pereira 2018 直系后继)、[[ismail-2026-naturalistic-word-meaning]](人类单神经元词义编码，21 患者/871h 被动自然语音，10 类语义解码 20.9% vs 随机 10%)
 
 ## motor-bci (21 papers)
 - [Georgopoulos 1986](papers/motor-bci/georgopoulos-1986-population-vector.md) — Population vector理论，证明运动方向可从神经群体活动数学读出
@@ -116,7 +134,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Speier 2012](papers/non-invasive/speier-2012-nlp-dynamic-classification-p300.md) — 首次证明HMM+语言模型动态分类显著提升P300拼写器准确率和比特率，LM纠错路线奠基实证
 - [Kindermans 2012](papers/non-invasive/kindermans-2012-p300-bci-masses-prior.md) — 贝叶斯语言先验让P300拼写器免校准、无监督即可用，把LM角色从事后纠错扩展到替代监督训练
 
-## invasive-recording (10 papers)
+## invasive-recording (19 papers)
 - [Kennedy 1998](papers/invasive-recording/kennedy-1998-first-human-intracortical-bci.md) — 首次人类慢性intracortical记录用于BCI，Neurotrophic Electrode
 - [Leuthardt 2004](papers/invasive-recording/leuthardt-2004-first-ecog-bci.md) — 首次证明ECoG可用于BCI控制，确立ECoG作为记录模态的"最优平衡点"
 - [Schalk 2008](papers/invasive-recording/schalk-2008-ecog-2d-control.md) — 首次ECoG 2D控制，发现high-gamma具有cosine方向调谐特性
@@ -127,6 +145,19 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [NEO 2024](papers/invasive-recording/neo-2024-epidural-minimally-invasive-bci.md) — 首个无线无电池硬膜外人体BCI，eECoG作"第四类模态"，C4完全SCI患者9个月家用信号不降反升，驱动脑-脊髓康复（清华×博睿康）
 - [NEO 2025](papers/invasive-recording/neo-2025-fine-grained-2d-cursor.md) — 硬膜外微创BCI实现精细二维光标控制，发现双侧/多效应器表征，ITR 36.7 bpm、记录稳定>18个月
 - [Jafri 2026](papers/invasive-recording/jafri-2026-white-matter-signals.md) — 把"白质触点=灰质衰减副本"这个默认证伪：谱参数化拆出 offset(总功率)/exponent(1/f斜率)，衰减只能动前者——实测两者双降(exponent 2.46 vs 2.77)且 **19 人无一例外**；delta 中心频率位移(2.40 vs 2.00 Hz)更是完全免疫于幅度缩放。白质复杂度更高，仅凭信号分类组织 AUC 0.92。给 [[buzsaki-2012]] 的理论补上实证："生成机制不同"对了(灰=慢突触电流/白=快轴突动作电位)，"那里什么都没有"错了。前作见条目内(Mercier 2017/Greene 2021/**Li 2021=解码增益出处**/Revell 2026)。**本篇不做解码**；束归位为作者自陈 putative 且主文无方法、FA 相关仅 rho=0.12(19人/1717触点，36%在白质，bioRxiv)
+
+### sEEG 植入精度 / 立体定向 (implantation accuracy & stereotaxy)
+"电极到底能放多准"这条子线——侵入式记录的隐形地基：所有颅内 BCI/认知研究都搭在癫痫术前评估的临床基础设施上，采样到哪个解剖结构由植入精度决定。milestone 抽取自 Cardinale et al. 2016 (J Clin Neurophysiol, 系统综述) + Abbas et al. 2026 (Acta Neurochir, meta 分析) 两篇。
+**这条线最有价值处：它把"机器人比框架更准"这个看似常识的判断变成了证据分裂、需逐项拆混杂的实证问题。当前最好的合并结论是"机器人买到的是时间，不是精度"。**
+- [Bancaud & Talairach 1970](papers/invasive-recording/bancaud-1970-seeg-functional-stereotaxic-exploration.md) — sEEG 的起点与命名来源：立体定向慢性植入深部电极、在自然发作期三维采样，确立 Talairach 方法学；今天几乎所有人类颅内认知/语义研究的临床基础设施由此而来(完整方法学专著见 Talairach 1974, Neurochirurgie 20 Suppl 1:1–240)
+- [Cardinale 2013](papers/invasive-recording/cardinale-2013-seeg-500-procedures-accuracy.md) — 定义性精度基准(米兰 Niguarda，500 台/6496 根)：靶点误差中位数传统流程 2.69mm→新流程(无框架无标记+多模态规划+机器人) 1.77mm，入点 1.43→0.78mm，主要并发症 2.4%。**关键：提升来自整包流程变更，无法归因到机器人单一变量**
+- [González-Martínez 2016](papers/invasive-recording/gonzalez-martinez-2016-robot-assisted-seeg.md) — 机器人辅助 sEEG 代表性技术论文(Cleveland Clinic，ROSA，100 人/101 台/1245 根)：靶点误差中位数 1.7mm、入点 1.2mm，与 Cardinale 2013 新流程互证"现代流程靶点误差约 1.7–1.8mm"；总并发症 4%。**前瞻观察、无对照组**，不证明机器人更准
+- [Mullin 2016](papers/invasive-recording/mullin-2016-seeg-safety-meta-analysis.md) — 首次系统汇总 sEEG 并发症(PRISMA)：总 1.3%(95%CI 0.9–1.7)、出血 1.0%、感染 0.8%、死亡 0.3%；侵入式 BCI 讨论风险时的参照系(注：临床 sEEG 留置 1–2 周即取出，不可直接外推到慢性植入)
+- [Cardinale 2016](papers/invasive-recording/cardinale-2016-seeg-implantation-review.md) — 系统综述(milestone 抽取源)：指认本领域核心麻烦是**精度指标定义不统一**(欧氏/径向/深度/靶点/入点误差混用)导致跨研究比较失效；此诊断到 2026 年仍成立
+- [Iordanou 2019](papers/invasive-recording/iordanou-2019-approach-angle-accuracy.md) — 首次把"精度取决于轨迹几何"落成硬数字：斜行(>30°)径向误差 2.05mm vs 正交(<30°) 1.45mm，p<0.001(约差 41%)；机器人不是精度恒定的黑盒
+- [Vakharia 2021](papers/invasive-recording/vakharia-2021-robot-vs-manual-rct.md) — **本线唯一 RCT**(UCL·Duncan 组，32 人，单盲随机，CONSORT)，结论反直觉：机器人 iSYS1 **更快**(螺栓 6.36 vs 9.06 min，p<0.0001)但手动 PAD **更准**(靶点 1.16 vs 1.58mm，p=0.004；角度误差 1.71° vs 2.13°，p=0.023)。证据等级最高，解读任何机器人 vs 框架对比的必备对照
+- [Abbas 2026](papers/invasive-recording/abbas-2026-robot-vs-frame-meta-analysis.md) — 最新最大合并证据(8 项回顾队列/758 人，检索至 2025-09)：精度**无显著差异**(深度 MD 0.24mm、径向 MD 0.07mm，CI 均跨 0)、安全性无差异，机器人只是**显著更快**(总手术 −32.58min、每根 −6.55min)。与唯一 RCT 汇成一致图景：**机器人买到时间不是精度**；单中心回顾性报告"机器人更准"时应先追问选择偏倚与年代流程混杂
+- [Thurairajah 2026](papers/invasive-recording/thurairajah-2026-seeg-accuracy-3000-trajectories.md) — 当代最大规模实证盘点(单中心回顾队列，260 人/**3176 条轨迹**/12 年，人类)，把这条线从"设备之争"推进到"逐轨迹因素分解"：① 精度更多是**轨迹几何**属性——同批病人/同台机器人/同颞叶内误差随进针角度差 **2.8 倍**(海马后部 1.18mm@10.4° ↔ 颞极 3.28mm@33.9°)，角度是可规划因素中相关最强(ρ=0.28)、每变 30° 增约 1mm、cutpoint 22.25°(但 AUC 仅 0.67)；组织状态也相关(硬化海马 1.58 vs 正常 1.12mm)；② **15% 天花板**——所有已测因素多变量 R²=0.150，毫米级不确定性大体是技术固有属性。**边界**：本文"机器人更准(2.19 vs 2.76mm)"是单中心回顾、框架组为历史对照(2013–17)有年代混杂(作者自陈)，与 [[vakharia-2021-robot-vs-manual-rct]]/[[abbas-2026-robot-vs-frame-meta-analysis]] 汇成"设备之争被混杂放大、几何才是主因";只称"相关"未验证力学机制;**不做解码**，经"植入定位"母题接 BCI(2026-07-17 日报主文章;催生待做专题 ⑥ 精度/容差/回避三路线)
 
 ## functional-ultrasound (11 papers)
 功能超声成像(fUS/fUSI)：用超快多普勒读取神经血管耦合下的脑血容量变化。信号层级是血流动力学(与 fMRI 同类的间接信号)，但空间分辨率达亚毫米、时间分辨率亚秒，且不穿刺皮层，因此在 BCI 记录模态谱系里占据"皮层内电生理 vs 非侵入成像"之间的一格。milestone 抽取自 Wang et al. (2023) *The Emergence of Functional Ultrasound for Noninvasive Brain–Computer Interface* (Research/AAAS, PMC10427153) 与 Deffieux et al. (2018, Curr Opin Neurobiol) 两篇综述，BCI 解码线的近期三篇(Norman/Griggs/Rabut)为综述后补充。

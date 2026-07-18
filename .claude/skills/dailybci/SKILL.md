@@ -43,6 +43,15 @@ These standards apply to all output — X threads, 小红书 cards, knowledge ba
 
 5. **Fact verification step.** After completing a draft, run the three-layer verification defined in Step 6 (trace back to source → cross-source check → assertion audit with knowledge base + web search). Present the verification table to the user before any discussion of wording. Facts must be confirmed before polish begins. See Step 6 for the full procedure.
 
+### 背景先行 + 一次一小块（2026-07-17 用户定，写死；管全流程与全部对话）
+
+两条硬规则，适用范围是**我对用户的全部叙述**，不限于成品文案，也不限于 Step 4：
+
+1. **背景先行。** 任何判断、insight、对比、评价抛出之前，先讲清它所处的背景——这个领域在干什么、现在卡在哪、这篇站在哪一格。**默认用户没听说过这个子方向**（他是泛神经科学背景，不是每个子领域的专家）。承重的名词第一次出现就地讲透，且要讲"它为什么存在、解决什么问题"，不能只给定义。**原理：用户无法判断一个他不理解其背景的结论的质量。** 背景缺席时，确认关卡就退化成盲签。
+2. **一次只出一小块，出完停下来问。** 不要一口气倒出大段内容。用户原话（2026-07-17）："我最开始就有问题，后面的我也不可能看得懂的。"——前一块没懂，后面全部作废。宁可多几轮往返，不要一次性堆料。这与"口语化可以口水化不行"不冲突：**每一块都要紧凑，但块要小、要分次给。**
+
+配套的完整操作细则见 Step 4a（背景对齐关卡）。用户随时可喊停内容生产转纯讲解，此时放弃出稿节奏、转入教学（见记忆 `user-stepwise-tech-tutorials`）。
+
 ### Technical Term Usage
 
 Terms fall into two tiers:
@@ -302,6 +311,27 @@ Distinguish clearly between:
 - **This paper's unique contribution** — explain this thoroughly: the mechanism, the principle, why it works where previous approaches didn't
 
 A good test: if you removed your explanation of this one point, would a reader miss the most important thing about this paper? If yes, you found it.
+
+#### Step 4a: 背景对齐关卡 —— 先讲清"这篇在解决什么问题"，再谈 insight（2026-07-17 用户定，写死）
+
+**这是 Step 4 的第一个动作，也是一道独立的确认关卡：在抛出任何 insight 之前，必须先把这篇论文所处的大背景讲清楚，并停下来等用户确认。** 用户不确认背景，不许进入 insight 呈现。
+
+**为什么写死这条（起因）：** 本条源于 2026-07-17 的 sEEG 植入精度那期——我直接抛出"进针角度是最强相关因子（ρ=0.28）""框架式 vs 机器人"这类判断，默认了用户已经知道 sEEG 手术怎么做、什么叫框架式、什么叫径向误差。用户的原话是"我是一脸懵的"。**根因是我把"选题时的候选表"当成了背景交代——它不是。** 候选表回答的是"值不值得讲"，背景回答的是"这到底是个什么事"。两者不能互相替代。
+
+**根本原理：用户无法判断一个他不理解其背景的 insight 的质量。** insight 的价值恒等于"它相对背景推进了什么"——背景缺席时，再准确的 insight 也只是一串悬空的名词和数字，用户既没法判断它好不好，也没法判断自己想不想深入。**这一步不是礼貌性的铺垫，它是让确认关卡真正有效的前提。** 没有它，用户的"确认"只是在盲签。
+
+**必须讲清的四件事**（顺序即讲述顺序，全部用字面、平实的说法，术语首次出现就地解释）：
+1. **这个领域在干什么、为什么要干** —— 这项技术/手术/范式本身是做什么用的，它服务的真实需求是什么。假设用户没听说过。
+2. **现状与卡点** —— 目前是怎么做的，做到什么程度，卡在哪。这里要把后文会用到的**每一个核心名词就地讲透**（如"框架式""机器人辅助""径向误差 vs 欧氏误差"），并且**讲清它们各自要解决的问题**——名词不能只给定义，要给"它为什么存在"。
+3. **这篇论文站在哪一格** —— 它接的是谁的问题，动的是哪一格。此处可引知识库条目。
+4. **为什么这个问题值得关心** —— 特别是当选题不在 BCI 主线上时（如本例是癫痫外科），必须说清它与 BCI 的关系，别让用户觉得跑题。
+
+**呈现方式（硬性）：**
+- **一次只出一小块，出完就停下来问。** 不要把背景 + insight + 对比分析一股脑倒出来。背景本身若较长，也要拆成小块逐块确认。**理由（用户 2026-07-17 原话）："我最开始就有问题，后面的我也不可能看得懂的。"** 前一块没懂，后面全部作废，且用户的阅读负担被白白浪费。
+- 讲完背景明确交回："**这个背景清楚了吗？有没有哪个概念要我再展开？**"——用户确认后才呈现 insight。
+- 用户在背景阶段追问，**耐心逐个答透，一次答一个**，不要急着回到内容生产。这些追问是产品的核心价值（见记忆 `user-stepwise-tech-tutorials`），不是打断。
+
+**用户随时可以喊停内容生产、转成纯讲解模式。** 出现这种情况时，**放弃 Step 5–8 的节奏，转入教学**：一次一小部分、给路线图、从第一性原理拆、拒绝堆名词。日报可以晚一点，甚至这期不出——用户把论文搞懂的价值高于按时出稿。搞懂之后再问要不要回到生产。
 
 **呈现 insight 并等待用户确认，然后才进入 Step 5。** 与 Step 2 一致——机器不是中立地把选项摆出来，而是**先给出自己带理由的主张**，让用户在一个明确判断上做确认或反驳。简洁地告诉用户：
 
