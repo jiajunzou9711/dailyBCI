@@ -1,0 +1,127 @@
+Does an implanted brain electrode actually need to be placed precisely?
+
+The honest answer: "precise" is not an absolute virtue. It's a ratio — set by how local your signal is, and how far your electrode can actually hear.
+
+A thread on the physics.
+
+------------------------------------------------------------
+
+Precision only becomes a question if two things hold: the signal you want lives in a specific place, and the electrode hears only a small volume around it.
+
+If signal were smeared brain-wide, or one contact could hear all of it, placement wouldn't matter.
+
+------------------------------------------------------------
+
+So — is function localized or distributed?
+
+Localization: Broca (human), Fritsch & Hitzig (dog). Holism: Lashley (rat), where the deficit tracked how much cortex you removed, not which part.
+
+Reality sits between them, and exactly where it sits is the whole answer.
+
+------------------------------------------------------------
+
+Consensus, three layers:
+
+1. Macro address is real — region + topographic maps
+2. How local depends on signal type: state/movement goes brain-wide, percept & choice stay restricted (Steinmetz, Stringer; mice)
+3. Within a region: distributed and redundant (Rigotti; macaque)
+
+------------------------------------------------------------
+
+Layers 1 and 3 squeeze out a standard.
+
+Lower bound: you must land in the right region. Miss it and no decoder recovers it — the information isn't inside the listening radius.
+Upper bound: you needn't hit a specific neuron.
+
+So the scale is millimetres, not microns.
+
+------------------------------------------------------------
+
+Which makes "precise enough" an inequality:
+
+how far you actually miss < how far you're allowed to miss
+
+Tolerance shrinks with small targets, with dangerous neighbours (a vessel, another nucleus), and with finer signals. The miss itself grows with depth.
+
+------------------------------------------------------------
+
+Depth is pure geometry: 1° of angular error over 80 mm is 1.40 mm at the tip.
+
+It shows up in real surgery. Across 500 sEEG procedures, 6496 electrodes: median entry error 1.43 mm, median target error 1.77 mm.
+
+Same trajectory, worse the deeper it goes.
+
+------------------------------------------------------------
+
+What sets the tolerance is the listening radius. And an electrode never "hears a neuron" — it measures extracellular potential at one point, V = I/(4πσr), falling off with distance.
+
+The radius is simply where that decay meets the noise floor.
+
+------------------------------------------------------------
+
+Measured, it's three zones rather than one line:
+
+<50 µm — sortable single units
+50–140 µm — above noise, but you can't tell which neuron
+>140 µm — background only
+
+Change frequency band and the scale jumps: LFP reaches 250–500 µm, into mm when neurons fire in sync.
+
+------------------------------------------------------------
+
+Two knobs, two different physics, constantly conflated.
+
+Impedance → noise. Effective surface area sets impedance, impedance sets thermal noise. Lower is simply better.
+
+Footprint → range. A wide contact spatially averages, which low-passes the spikes away.
+
+------------------------------------------------------------
+
+The trick: those are two different areas. A porous coating (PEDOT, Pt black, IrOx) raises microscopic surface area without widening the footprint.
+
+Low impedance and single-unit resolution at once — which is why you don't just make electrodes as small as possible.
+
+------------------------------------------------------------
+
+Now flip to stimulation. Different physics.
+
+You inject current, so the quantity is the volume of tissue activated. Threshold grows with the square of distance: 10 µA reaches ~85 µm (macaque motor cortex).
+
+Recording's radius is fixed. Stimulation's you can dial.
+
+------------------------------------------------------------
+
+And the counterintuitive part: stimulation doesn't drive the somata beside the contact. Axons have lower thresholds — fibres of passage included.
+
+Two-photon imaging in mouse cortex: microstimulation excites a sparse, scattered set, sometimes mm away, by exciting axons directly.
+
+------------------------------------------------------------
+
+So one electrode reaches two different populations: local somata when it listens, a distributed axonal set when it drives.
+
+"Precise" was never absolute. It's relative to the signal you chose and the physics of your contact.
+
+Next: what time does to all of this.
+
+------------------------------------------------------------
+
+Refs (1/2):
+Henze 2000, J Neurophysiol
+Rey, Pedreira & Quian Quiroga 2015, Brain Res Bull
+Lindén 2011, Neuron
+Buzsáki, Anastassiou & Koch 2012, Nat Rev Neurosci
+Cardinale 2013, Neurosurgery
+Steinmetz 2019, Nature
+Stringer 2019, Science
+
+------------------------------------------------------------
+
+Refs (2/2):
+Rigotti 2013, Nature
+Lewis 2024, Adv Healthc Mater
+Ludwig 2006, J Neural Eng
+Stoney, Thompson & Asanuma 1968, J Neurophysiol
+Histed, Bonin & Reid 2009, Neuron
+Shannon 1992, IEEE TBME
+
+Historical: Broca 1861; Fritsch & Hitzig 1870; Lashley 1929
