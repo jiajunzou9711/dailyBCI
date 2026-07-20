@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-17
-Total papers: 278
+Last updated: 2026-07-20
+Total papers: 295
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -22,7 +22,7 @@ Total papers: 278
 - [Card 2026](papers/speech-decoding/card-2026-longterm-independent-bci.md) — 皮层内语音+光标BCI首次家庭自主长期使用：ALS患者19个月/3801小时/18.3万句、研究员不在场、保住全职工作；transformer达99.2%词准确率，信号18个月余弦相似度>0.6(同一患者T15，Nature Medicine)
 - [Wairagkar 2026](papers/speech-decoding/wairagkar-2026-brain2voice2-voice-synthesis.md) — 脑-语音合成首次跨过可懂度门槛：多模态因果Transformer(四路互补目标:连续声学/离散RVQ token/音素/自监督)+多尺度对抗，听者WER 5.24% vs前作43.75%(8×)、79%句零错；治回归损失抹糊辅音的根本问题(同队Wairagkar 2025续作，人类单被试T15，bioRxiv)
 
-## semantic-decoding (11 papers)
+## semantic-decoding (12 papers)
 语义解码：从神经活动读出"此刻想的是哪个概念"，而非"嘴要怎么动"。与 speech-decoding 的根本差别是解码层级——后者 17 篇全押在发音/音素层(articulatory)，本线目标是概念层。milestone 抽取自 **Rybář & Daly 2022 (J Neural Eng 19, PRISMA 系统综述)** 的引用，理论侧锚定 Patterson 2007 / Ralph 2017 两篇 Nat Rev Neurosci。
 **两条硬约束，评估本线任何新工作时先过一遍：**
 1. **"颅内高伽马能否解出语义范畴"在 2011 年已被肯定回答**([[wang-2011-ecog-semantic-decoding]])，2011 年后任何"首次证明颅内可解语义"的说法都需仔细核边界；真增量必须落在别处(更多范畴/跨模态泛化/未训练概念外推/实时闭环/自然语境)。
@@ -39,6 +39,7 @@ Total papers: 278
 - [Pereira 2018](papers/semantic-decoding/pereira-2018-universal-decoder.md) — 把 Mitchell 范式推到逻辑终点(Nat Commun 9:963)：语义空间采样选训练刺激→**单概念训练、解码句子**，覆盖具体+抽象、两独立数据集，可区分语义相似句。**抽象概念 + 句子级至今仍是颅内的空白**
 - [Nagata 2022](papers/semantic-decoding/nagata-2022-abstract-concrete-semantics.md) — 颅内线上**唯一以词(非图片)为刺激**的代表作(Cereb Cortex 32:5544–5554)：ECoG 高伽马 + SVM 单试次分抽象/具体词 **73.1±7.5%**；避开了"解出的其实是视觉特征"这个软肋，并把抽象性带进颅内。**注意是二分类(随机 50%)，约 0.16 bit/试次，作通信通道远不够；引用务必带"二分类"，勿与多分类准确率直接比大小**
 - 邻线交叉引用(条目在 ai-neural-modeling)：[[tang-2023-semantic-language-reconstruction]](首次非侵入 fMRI 语义重建连续语言，Pereira 2018 直系后继)、[[ismail-2026-naturalistic-word-meaning]](人类单神经元词义编码，21 患者/871h 被动自然语音，10 类语义解码 20.9% vs 随机 10%)
+- [Quian Quiroga 2005](papers/semantic-decoding/quian-quiroga-2005-concept-cells.md) — 人类内侧颞叶概念细胞：特定概念只激活极少数高度选择性神经元，且跨呈现形式不变。**稀疏编码使「撒一批电极」的冗余逻辑失效**，靶向精度要求由此回归
 
 ## motor-bci (21 papers)
 - [Georgopoulos 1986](papers/motor-bci/georgopoulos-1986-population-vector.md) — Population vector理论，证明运动方向可从神经群体活动数学读出
@@ -63,7 +64,7 @@ Total papers: 278
 - [BrainGate 2023](papers/motor-bci/braingate-2023-long-term-safety.md) — 17年14名参与者长期安全数据，信号仅下降7%，支撑临床扩展
 - [Conlan 2026](papers/motor-bci/conlan-2026-ifg-grasp-decoding.md) — 首次在人类额下回(IFG，猕猴F5同源区)皮层内记录中用析因设计拆分抓法/物体/交互三因素：抓法解码显著主导(41.1-41.8% vs 33.3%随机)，物体贡献弱且更早、movement期已不显著；补上"非M1皮层内电极靶点"这条此前空白的线(与Ajiboye 2017对照，同组·bioRxiv)
 
-## electrode-hardware (18 papers)
+## electrode-hardware (24 papers)
 - [Wise 1970](papers/electrode-hardware/wise-1970-silicon-microprobe.md) — 首次用IC工艺制造多位点神经探针，开启微加工电极时代
 - [Campbell 1991](papers/electrode-hardware/campbell-1991-utah-array.md) — Utah阵列发明，100通道3D硅电极，BCI临床试验的硬件基石
 - [Rousche 1998](papers/electrode-hardware/rousche-1998-chronic-biocompatibility.md) — 首次系统验证Utah阵列慢性植入可行性，揭示胶质瘢痕核心挑战
@@ -82,6 +83,12 @@ Total papers: 278
 - [Jung 2025](papers/electrode-hardware/jung-2025-bisc-wireless-subdural-bci.md) — BISC无线无电池subdural interface：65,536电极、1,024通道，探索超大规模皮层表面接口
 - [Bourhis 2026](papers/electrode-hardware/bourhis-2026-tft-backplane.md) — 显示式有源矩阵TFT背板(a-IGZO直接长在聚酰亚胺)：256通道(16×16)柔性皮层表面阵列，布线O(n)→O(√n)、温升<2°C、封装投影寿命>38年、大鼠30天稳定；确立"柔性有源(非转印硅)"一格(Dayeh组·UCSD)
 - [Li 2026](papers/electrode-hardware/li-2026-skull-microhole-hybrid-bci.md) — "颅骨微孔电极"新微创模态:超声自限打 300–800 μm 微孔(不取材料、对软硬膜不切削、终止检测 34ms/16μm)+单点 Pt/Ir 电极皮下植入、远端贴硬膜外(不穿硬膜)、有源电子体外经隔皮欧姆传导耦合;大鼠上 SEP/SSVEP 信噪比与各频段功率抬 2.6–8.9×、刺激侧仅仿真(TI 深部聚焦)。在"头皮 EEG↔硬膜外 ECoG"间插一格:点 vs 片、微孔 vs 骨瓣(对照 [[neo-2024]]);范式提出型,大鼠记录+仿真,企业参与(中山大深圳×深圳BrainXess,bioRxiv)
+- [Poncelet 1992](papers/electrode-hardware/poncelet-1992-human-brain-motion.md) — **人体**相位对比 MRI：心动周期内脑组织相对颅骨峰值位移 0.1–0.5 mm，是 50 µm 单单元区的 2–10 倍。讨论临床植入的机械环境时以此为准(非大鼠数据)
+- [Gilletti 2006](papers/electrode-hardware/gilletti-2006-brain-micromotion.md) — 大鼠开颅后界面处直测微动：呼吸 10–30 µm、心跳 2–4 µm，有硬膜时更小。慢性微创伤的机械源头；与 Poncelet 1992 测的不是同一个量，引用须标条件
+- [Lacour 2016](papers/electrode-hardware/lacour-2016-soft-implantable-neuroprostheses.md) — 力学失配的标准综述：硅约 165 GPa vs 脑 1–10 kPa，相差约 10⁷–10⁸ 倍，应变集中到界面。把失配从「生物相容性」重定位为力学设计问题
+- [Biran 2005](papers/electrode-hardware/biran-2005-neuronal-kill-zone.md) — kill zone 定量：电极周围 100 µm 内神经元密度降约 40%，4–8 周内最近健康神经元可退到数百微米。慢性失效的机制从「信号被挡住」改写为**信号源被推走**
+- [Savya 2022](papers/electrode-hardware/savya-2022-astrocyte-reactivity-dynamics.md) — 星胶反应时空动力学(大鼠)：第 1 周激活达峰、约 500 µm，第 3 周约 700 µm，第 6 周致密包裹趋稳。给出慢性相的时间与空间刻度
+- [Ludwig 2006](papers/electrode-hardware/ludwig-2006-pedot-coating-chronic.md) — PEDOT 涂层慢性记录：信噪比与可用单单元数均优于对照。**几何足印与有效表面积可分离**的实证落地——涂层只涨后者，故不必一味把电极做小
 
 ## signal-processing (11 papers)
 - [Wu 2006](papers/signal-processing/wu-2006-kalman-filter.md) — Kalman filter贝叶斯连续解码，奠定motor BCI实时状态估计基线
@@ -134,7 +141,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Speier 2012](papers/non-invasive/speier-2012-nlp-dynamic-classification-p300.md) — 首次证明HMM+语言模型动态分类显著提升P300拼写器准确率和比特率，LM纠错路线奠基实证
 - [Kindermans 2012](papers/non-invasive/kindermans-2012-p300-bci-masses-prior.md) — 贝叶斯语言先验让P300拼写器免校准、无监督即可用，把LM角色从事后纠错扩展到替代监督训练
 
-## invasive-recording (19 papers)
+## invasive-recording (21 papers)
 - [Kennedy 1998](papers/invasive-recording/kennedy-1998-first-human-intracortical-bci.md) — 首次人类慢性intracortical记录用于BCI，Neurotrophic Electrode
 - [Leuthardt 2004](papers/invasive-recording/leuthardt-2004-first-ecog-bci.md) — 首次证明ECoG可用于BCI控制，确立ECoG作为记录模态的"最优平衡点"
 - [Schalk 2008](papers/invasive-recording/schalk-2008-ecog-2d-control.md) — 首次ECoG 2D控制，发现high-gamma具有cosine方向调谐特性
@@ -158,6 +165,8 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Vakharia 2021](papers/invasive-recording/vakharia-2021-robot-vs-manual-rct.md) — **本线唯一 RCT**(UCL·Duncan 组，32 人，单盲随机，CONSORT)，结论反直觉：机器人 iSYS1 **更快**(螺栓 6.36 vs 9.06 min，p<0.0001)但手动 PAD **更准**(靶点 1.16 vs 1.58mm，p=0.004；角度误差 1.71° vs 2.13°，p=0.023)。证据等级最高，解读任何机器人 vs 框架对比的必备对照
 - [Abbas 2026](papers/invasive-recording/abbas-2026-robot-vs-frame-meta-analysis.md) — 最新最大合并证据(8 项回顾队列/758 人，检索至 2025-09)：精度**无显著差异**(深度 MD 0.24mm、径向 MD 0.07mm，CI 均跨 0)、安全性无差异，机器人只是**显著更快**(总手术 −32.58min、每根 −6.55min)。与唯一 RCT 汇成一致图景：**机器人买到时间不是精度**；单中心回顾性报告"机器人更准"时应先追问选择偏倚与年代流程混杂
 - [Thurairajah 2026](papers/invasive-recording/thurairajah-2026-seeg-accuracy-3000-trajectories.md) — 当代最大规模实证盘点(单中心回顾队列，260 人/**3176 条轨迹**/12 年，人类)，把这条线从"设备之争"推进到"逐轨迹因素分解"：① 精度更多是**轨迹几何**属性——同批病人/同台机器人/同颞叶内误差随进针角度差 **2.8 倍**(海马后部 1.18mm@10.4° ↔ 颞极 3.28mm@33.9°)，角度是可规划因素中相关最强(ρ=0.28)、每变 30° 增约 1mm、cutpoint 22.25°(但 AUC 仅 0.67)；组织状态也相关(硬化海马 1.58 vs 正常 1.12mm)；② **15% 天花板**——所有已测因素多变量 R²=0.150，毫米级不确定性大体是技术固有属性。**边界**：本文"机器人更准(2.19 vs 2.76mm)"是单中心回顾、框架组为历史对照(2013–17)有年代混杂(作者自陈)，与 [[vakharia-2021-robot-vs-manual-rct]]/[[abbas-2026-robot-vs-frame-meta-analysis]] 汇成"设备之争被混杂放大、几何才是主因";只称"相关"未验证力学机制;**不做解码**，经"植入定位"母题接 BCI(2026-07-17 日报主文章;催生待做专题 ⑥ 精度/容差/回避三路线)
+- [Henze 2000](papers/invasive-recording/henze-2000-extracellular-spike-distance.md) — 胞内+胞外同步标定「距离 vs 动作电位幅度」的地面真值(麻醉大鼠 CA1)：可分离单单元约 <50 µm，分离阈值 SNR 3–4 倍/约 50–60 µV。听力半径由定性直觉变成可引用数字
+- [Lindén 2011](papers/invasive-recording/linden-2011-lfp-spatial-reach.md) — LFP 空间可及范围建模：不相关输入约 250–500 µm，输入相关同步时同相叠加可达毫米级，且频率依赖。**半径主导权在「源同不同步」而非电极**，解释了文献分歧
 
 ## functional-ultrasound (11 papers)
 功能超声成像(fUS/fUSI)：用超快多普勒读取神经血管耦合下的脑血容量变化。信号层级是血流动力学(与 fMRI 同类的间接信号)，但空间分辨率达亚毫米、时间分辨率亚秒，且不穿刺皮层，因此在 BCI 记录模态谱系里占据"皮层内电生理 vs 非侵入成像"之间的一格。milestone 抽取自 Wang et al. (2023) *The Emergence of Functional Ultrasound for Noninvasive Brain–Computer Interface* (Research/AAAS, PMC10427153) 与 Deffieux et al. (2018, Curr Opin Neurobiol) 两篇综述，BCI 解码线的近期三篇(Norman/Griggs/Rabut)为综述后补充。
@@ -201,7 +210,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Cogan 2016](papers/sensory-feedback/cogan-2016-tissue-damage-thresholds.md) — 重审Shannon判据:源于宏电极、未必适用微电极,当代微刺激安全再评估起点
 - [Iliasov 2026](papers/sensory-feedback/iliasov-2026-microbubble-icms-safety.md) — 子簇首篇"在体实时血管成像看ICMS损伤":清醒小鼠双光子,气泡面积随电流~二次方增长、≥60µA急转BBB破裂;把电解微气泡从被动标志重定位为主动致损机制,给柔性电极ICMS机制性安全窗(何飞组·光机所×复旦华山)
 
-## neuromodulation (14 papers)
+## neuromodulation (16 papers)
 - [Benabid 1991](papers/neuromodulation/benabid-1991-dbs-tremor-suppression.md) — 开创现代DBS疗法，高频VIM刺激长期抑制帕金森震颤，可逆可调
 - [Limousin 1998](papers/neuromodulation/limousin-1998-stn-dbs-parkinson.md) — 确立STN-DBS作为晚期帕金森标准治疗，UPDRS运动评分改善~50%
 - [Morrell 2011](papers/neuromodulation/morrell-2011-rns-closed-loop-epilepsy.md) — 首个闭环脑刺激RCT（RNS），191名癫痫患者，2013年FDA批准
@@ -219,6 +228,8 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Capogrosso 2013](papers/neuromodulation/capogrosso-2013-epidural-stim-model.md) — 首个真实 3D 硬膜外 SCS 模型，证明优先募集背根 afferent，靶向时空刺激(Wagner/Lorach)的建模引擎
 - [Rowald 2022](papers/neuromodulation/rowald-2022-spatiotemporal-epidural.md) — MRI 个体化 + 软件电流 steering 靶向躯干/腿运动池，完全 SCI 患者 1 天内恢复站立行走，临床级 current-steering 标杆(人体)
 - [Grossman 2017](papers/neuromodulation/grossman-2017-temporal-interference.md) — 时间干涉(TI)：两路高频场深部干涉出低频包络，表面电极聚焦激活深部、放过浅层，ACM"深部聚焦"概念近亲(小鼠)
+- [Stoney 1968](papers/neuromodulation/stoney-1968-current-distance-relationship.md) — 刺激侧基本定律：阈值随距离**平方**增长 I_th(r)=I₀+k·r²，10 µA 约激活 85 µm 内(猕猴运动皮层)。与记录的被动衰减分属两套物理——刺激半径可由电流调
+- [Histed 2009](papers/neuromodulation/histed-2009-sparse-distributed-activation.md) — 双光子直接观察(小鼠)：微刺激激活的是**稀疏、分布很广**、有时远在毫米外的神经元，机制是直接激活**轴突/过路纤维**而非旁边胞体。改写刺激的空间图景
 
 ## locomotion (6 papers)
 - [Harkema 2011](papers/locomotion/harkema-2011-epidural-stimulation-standing.md) — 首次硬膜外脊髓刺激恢复完全瘫痪者站立和步进，颠覆不可恢复教条
@@ -273,7 +284,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
 - [Ismail 2026 (naturalistic word meaning)](papers/ai-neural-modeling/ismail-2026-naturalistic-word-meaning.md) — 首次从**被动录的日常自然语音**(21患者/871h/527万词)估计**人类单神经元**对词义的编码：Behnke-Fried 微丝深部电极，全自动转录+区分说话人+检动作电位，无人工标注/分选；编码全患者显著、10类语义解码20.9%(随机10%)；自己说>环境语音2.42×(注意力)、自动化≈人工精标；把神经→语义从受控刺激推到零控制日常语音+百万词级(Baylor·Hayden/Sheth/Provenza，bioRxiv)
 
-## population-dynamics (9 papers)
+## population-dynamics (15 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature
 - [Gallego 2017](papers/population-dynamics/gallego-2017-neural-manifolds-movement.md) — 定义性框架综述，确立neural manifold/neural modes作为群体运动控制的统一语言，Neuron
 - [Golub 2018](papers/population-dynamics/golub-2018-learning-neural-reassociation.md) — 流形内学习机制=neural reassociation（重配已有模式而非生成新模式），Nat Neurosci
@@ -283,6 +294,12 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Busch 2025](papers/population-dynamics/busch-2025-human-noninvasive-manifold-bci.md) — bioRxiv：在人类无创(fMRI)验证流形约束学习；流形内ΔBrainControl +49.3/+16.4可学，流形外−0.4学不会(N=18)
 - [de Vicente 2026](papers/population-dynamics/devicente-2026-circuit-specific-volitional-learning.md) — 首次把流形-BCI学习搬出运动皮层、进海马CA3并与M1对比：两区学得一样好(p=0.453 n.s.)但动力学分叉(M1流过/CA3折返)，RNN证差异源于环路架构→principled degeneracy，bioRxiv
 - [Micou 2026](papers/population-dynamics/micou-2026-hippocampal-bmi-navigation.md) — 海马 CA1 闭环 BMI 导航:250-500 个 CA1 神经元实时解码推动 400 cm VR 轨道;旧跑轮地图直接接入 BMI 失效,重新训练后恢复;superposed 细胞 3.1%(586/18,902) 指向新旧位置地图并行叠加,bioRxiv
+- [Rigotti 2013](papers/population-dynamics/rigotti-2013-mixed-selectivity.md) — 猕猴前额叶非线性混合选择性：消除单细胞对某变量的选择性后，该变量仍可从群体解出。「信息住在群体、不锁在单个神经元」的关键实证，也解释复杂认知为何高维
+- [Ziv 2013](papers/population-dynamics/ziv-2013-hippocampal-place-code-drift.md) — 表征漂移硬实证(小鼠 CA1，长期钙成像)：同一熟悉环境每天换一批位置细胞，任意两天仅约 15–25% 重叠；但这一小撮稳定核心已足够维持数周空间表征
+- [Stringer 2019](papers/population-dynamics/stringer-2019-high-dimensional-visual-cortex.md) — 小鼠 V1 对自然图像的群体响应高维，特征谱呈幂律(第 n 主成分方差 ∝ 1/n)，且是「保持编码平滑前提下维度尽可能高」的结果。高维是被优化到极限的设计
+- [Degenhart 2020](papers/population-dynamics/degenhart-2020-bci-stabilization-alignment.md) — 无监督对齐稳定 BCI：把当天活动对齐回参考日的低维空间，**不需新标签**即维持性能。划清「漂移可救 / 物理包裹不可救」的界线
+- [Li 2024](papers/population-dynamics/li-2024-behaviorally-relevant-dimensionality.md) — 分离行为相关信号(猕猴)：原始主子空间 26/64/45 维，**行为相关仅 7/13/9 维**。运动 BCI 冗余成立的定量基础。注意该文主张是「行为占据的空间比想象更高维」，勿简化引用
+- [Manley 2024](papers/population-dynamics/manley-2024-unbounded-dimensionality-scaling.md) — 至多约 100 万神经元的皮层范围记录：**维度随神经元数持续增长、未见饱和**。给「低维」结论加上记录尺度这一限定条件
 
 ## performance-variability (8 papers)
 BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-注意因素)与皮层内(信号非平稳-神经状态)两支。

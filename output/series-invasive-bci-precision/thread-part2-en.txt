@@ -1,0 +1,129 @@
+Part 2 on precision in implanted BCIs.
+
+Part 1 ended on a static picture: how far an electrode reaches, in space. Add time and three separate mechanisms erode it — and the standard fix, "just add more electrodes," turns out to have a boundary.
+
+------------------------------------------------------------
+
+Three mechanisms, each with its own timescale:
+
+1. Mechanical — micromotion at the interface
+2. Biological — encapsulation by a foreign body response
+3. Representational drift — the neural code changes
+
+First two break the container. The third moves the target.
+
+------------------------------------------------------------
+
+Micromotion, measured in humans: phase-contrast MRI puts peak brain displacement relative to the skull at 0.1–0.5 mm per cardiac cycle.
+
+Compare that with the single-unit zone from Part 1, ~50 µm. The brain shifts several times that distance every heartbeat.
+
+------------------------------------------------------------
+
+Why it matters is stiffness. Silicon ~165 GPa, brain tissue ~1–10 kPa — seven to eight orders of magnitude apart.
+
+A rigid probe barely deforms, so tissue deforms around it and strain concentrates at the interface. At ~1 Hz that's ~10⁵ cycles a day.
+
+------------------------------------------------------------
+
+That constant micro-injury keeps a wound response from ever resolving. Astrocytes peak in week 1 and form a dense sheath by weeks 2–3.
+
+The chronic phase is what isolates the electrode — not the insertion injury itself.
+
+------------------------------------------------------------
+
+And it attacks Part 1's listening radius from both ends.
+
+Space: neuron density falls ~40% within 100 µm; by 4–8 weeks the nearest healthy neuron can sit hundreds of µm out.
+Noise: encapsulation raises impedance, which raises the noise floor.
+
+------------------------------------------------------------
+
+Layer 3 is different — the container can be perfectly fine.
+
+Representational drift: electrode stable, same neurons, SNR unchanged, same behaviour, yet how those neurons encode task variables slowly changes.
+
+Not a failure. A property of the code.
+
+------------------------------------------------------------
+
+How fast depends heavily on region.
+
+Hippocampus (mouse): in one familiar environment, only ~15–25% of place cells overlap between any two days.
+
+Motor cortex (monkey, 2 years): single units turn over and drift, but the low-dimensional manifold holds its shape.
+
+------------------------------------------------------------
+
+That split has a practical edge. A fixed decoder built on raw activity degrades; one built on the stable manifold decoded reliably across two years.
+
+Note the asymmetry too: drift is recoverable by recalibration. Encapsulation is physical — no algorithm undoes it.
+
+------------------------------------------------------------
+
+Three unrelated problems, one shared rescue — information is spread across many neurons, not locked into any one:
+
+Bad placement → scatter electrodes, some land well
+Channels die → enough good ones remain
+Drift → units move, the manifold doesn't
+
+------------------------------------------------------------
+
+The drift fix is elegant. What changes is the coordinate frame, not the shape.
+
+Reduce a day's population activity to 2D and reach directions trace a ring. Weeks later the ring is intact but rotated, so a position-based decoder misreads it.
+
+------------------------------------------------------------
+
+So rotate it back — and you can recover the angle from the temporal structure of the dynamics alone, without knowing what the user intended.
+
+That's the unsupervised part. It works because the dynamics are rich enough to pin the rotation uniquely.
+
+------------------------------------------------------------
+
+But redundancy isn't free. It needs information spread across many neurons AND low-dimensional relative to your sampling.
+
+Motor cortex qualifies: the behaviourally relevant subspace runs ~10 dimensions (7, 13 and 9 across three monkeys).
+
+------------------------------------------------------------
+
+Sparse codes break it. Concept cells in human MTL: one specific concept fires very few, highly selective neurons. And in mouse, choice and stimulus signals are both sparse and spatially restricted.
+
+Scatter electrodes at random and you miss them.
+
+------------------------------------------------------------
+
+Which flips Part 1's conclusion at one end. The tolerance route escaped needing precise placement — but only for dense codes.
+
+For sparse ones you have to actually hit those few cells. Placement precision comes straight back.
+
+------------------------------------------------------------
+
+Last caveat: dimensionality isn't a fixed label on a region. It's a function of area × task × recording scale, and measured low dimensionality partly reflects simple lab tasks.
+
+Many BCIs work by deliberately keeping the task low-dimensional.
+
+------------------------------------------------------------
+
+So "is this system precise enough" was never a one-time question. It depends on which signal you want, where you put the electrode, how long you need it — and whether that signal is spread across cortex or lives in a handful of cells.
+
+------------------------------------------------------------
+
+Refs (1/2):
+Poncelet 1992, Radiology
+Lacour, Courtine & Guck 2016, Nat Rev Mater
+Savya 2022, Biomaterials
+Biran, Martin & Tresco 2005, Exp Neurol
+Ziv 2013, Nat Neurosci
+Gallego 2020, Nat Neurosci
+
+------------------------------------------------------------
+
+Refs (2/2):
+Degenhart 2020, Nat Biomed Eng
+Li, Zhu, Qi, Wang & Gallego 2024, eLife
+Quian Quiroga 2005, Nature
+Steinmetz 2019, Nature
+Stringer 2019, Nature
+Rigotti 2013, Nature
+Manley 2024, Neuron

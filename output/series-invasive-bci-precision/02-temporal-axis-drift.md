@@ -5,23 +5,24 @@
 
 ## 总览：三个不同层次的失效，别合成一句"信号衰减"
 
-> **机械（微动，引信）→ 生物（异物反应，容器变坏 = 听力半径随时间缩小）→ 编码漂移（靶子自己动，容器完好也失准）。**
+> **机械（微动，持续制造界面微损伤）→ 生物（异物反应，容器变坏 = 听力半径随时间缩小）→ 编码漂移（靶子自己动，容器完好也失准）。**
 
 前两层是"容器变坏"，第三层是"目标移动"，机制、时程、能否补救都不同。
 
-## 第一层 · 微动：引信
+## 第一层 · 微动：持续制造界面微损伤
 
 **两个来源：**
-- **内源（脑自己搏动）**——实测（Gilletti & Muthuswamy 2006，大鼠躯体感觉皮层，位移传感器）：**呼吸引起 10–30 µm**、**心跳引起 2–4 µm** 的周期位移；有硬脑膜时呼吸位移明显更小。
+- **内源（脑自己搏动）**——**人体实测最承重**（Poncelet 1992，相位对比 MRI，健康志愿者）：一个心动周期内，**脑组织相对颅骨的峰值位移 0.1–0.5 mm**（即 100–500 µm），大脑各叶/间脑/脑干/小脑均在此区间。
+  另有大鼠界面处直测（Gilletti & Muthuswamy 2006，躯体感觉皮层，位移传感器）：呼吸 10–30 µm、心跳 2–4 µm。**两者测的不是同一个量**——人体 MRI 是颅骨完整、无植入物下的整体组织位移；大鼠是开颅后电极处表面位移。方向一致、量级可比，但引用时须标清条件。
 - **外源（tethering）**——电极若固定在颅骨上，头动/颅骨运动顺刚性连接传到电极，而脑还在自己漂，两者错动。悬浮阵列即为切断这条耦合。
 
 **为什么错动致命——力学失配。** 硅约 **165 GPa**，脑组织约 **1–10 kPa**，相差**约 10⁷–10⁸ 倍**。刚性电极自己几乎不形变，只能让软组织绕它变形，每次搏动的应变都**集中到电极-组织界面**。若刚度匹配、电极跟组织一起动，界面应变就很小。
 
 **两个数字对照才见其要害：**
-- **幅度**：微动 1–30 µm，与第 ① 节单单元区（~50 µm）同量级——电极与目标神经元的相对位置每个心跳周期都在这个尺度上晃，影响 spike 波形稳定与可分离性。
+- **幅度**：人脑心动周期位移 100–500 µm，是第 ① 节单单元区（~50 µm）的 **2–10 倍**——电极与目标神经元的相对位置，每个心跳都在数倍于单单元区的尺度上晃动，影响动作电位波形稳定与可分离性。
 - **次数**：心跳约 1 Hz 量级 → 每天约十万次、数月累计上千万次的循环剪切。它是持续微创伤，不是一次性损伤。
 
-**角色**：微动本身通常不直接毁信号，它持续在界面制造微损伤，给第二层供燃料。
+**角色**：微动本身通常不直接毁信号，它持续在界面制造微损伤，使第二层的反应无法消退。
 
 ## 第二层 · 异物反应：听力半径随时间缩小
 
@@ -35,7 +36,7 @@
 
 一个把源推远、一个把地板抬高，从两头挤压听力半径——**这就是"听力半径随时间缩小"的精确机制。**
 
-**为什么烧不灭**：异物一直在 + 微动每个周期制造新微损伤 → 反应从"愈合"转成"慢性包裹"。第一层是它的燃料。
+**为什么持续不消退**：异物一直在 + 微动每个周期制造新微损伤 → 反应从"愈合"转成"慢性包裹"。第一层是它持续不消退的原因。
 
 **对策方向**：减小力学失配 + 缩小尺寸 + 降密度失配——超柔性探针（Luan 2017）、注射式网状电子（Liu 2015）、Neuralink 柔性线（均在知识库 electrode-hardware）。
 
@@ -90,12 +91,15 @@ D 死认位置。用户想"上"，第 1 天点在环顶、D 报"上"✓；第 30
 ---
 
 ### 参考来源
-- Gilletti A, Muthuswamy J. (2006). Brain micromotion around implants in the rodent somatosensory cortex. J Neural Eng 3:189–195.（微动幅度）
+- Poncelet BP, Wedeen VJ, Weisskoff RM, Cohen MS. (1992). Brain parenchyma motion: measurement with cine echo-planar MR imaging. Radiology 185:645–651.（人脑心动周期位移 0.1–0.5 mm）
+- Gilletti A, Muthuswamy J. (2006). Brain micromotion around implants in the rodent somatosensory cortex. J Neural Eng 3:189–195.（大鼠界面处直测）
 - Biran R, Martin DC, Tresco PA. (2005). Neuronal cell loss accompanies the brain tissue response to chronically implanted silicon microelectrode arrays. Exp Neurol 195:115–126.（kill zone ~40%/100µm）
 - Ziv Y, et al. (2013). Long-term dynamics of CA1 hippocampal place codes. Nat Neurosci 16:264–266.（海马漂移 15–25% 重叠）
 - Gallego JA, Perich MG, Chowdhury RH, Solla SA, Miller LE. (2020). Long-term stability of cortical population dynamics underlying consistent behavior. Nat Neurosci 23:260–270.（流形 2 年稳定）
 - Rule ME, O'Leary T, Harvey CD. (2019). Causes and consequences of representational drift. Curr Opin Neurobiol 58:141–147.（综述）
 - Degenhart AD, et al. (2020). Stabilization of a brain–computer interface via the alignment of low-dimensional spaces of neural activity. Nat Biomed Eng 4:672–685.（无监督对齐）
-- 力学失配与组织反应综述见 electrode-hardware 知识库（Liu 2015 注射式网状、Luan 2017 超柔性探针）。
+- Lacour SP, Courtine G, Guck J. (2016). Materials and technologies for soft implantable neuroprostheses. Nat Rev Mater 1:16063.（力学失配）
+- Savya SP, et al. (2022). In vivo spatiotemporal dynamics of astrocyte reactivity following neural electrode implantation. Biomaterials 289:121784.（星胶包裹时空扩张）
+- 器件对策见 electrode-hardware 知识库（Liu 2015 注射式网状、Luan 2017 超柔性探针）。
 
 *学习笔记草稿 · 小邹 × Claude · 2026-07-18*
