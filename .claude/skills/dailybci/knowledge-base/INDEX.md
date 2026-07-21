@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
 Last updated: 2026-07-20
-Total papers: 295
+Total papers: 316
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -210,7 +210,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Cogan 2016](papers/sensory-feedback/cogan-2016-tissue-damage-thresholds.md) — 重审Shannon判据:源于宏电极、未必适用微电极,当代微刺激安全再评估起点
 - [Iliasov 2026](papers/sensory-feedback/iliasov-2026-microbubble-icms-safety.md) — 子簇首篇"在体实时血管成像看ICMS损伤":清醒小鼠双光子,气泡面积随电流~二次方增长、≥60µA急转BBB破裂;把电解微气泡从被动标志重定位为主动致损机制,给柔性电极ICMS机制性安全窗(何飞组·光机所×复旦华山)
 
-## neuromodulation (16 papers)
+## neuromodulation (29 papers)
 - [Benabid 1991](papers/neuromodulation/benabid-1991-dbs-tremor-suppression.md) — 开创现代DBS疗法，高频VIM刺激长期抑制帕金森震颤，可逆可调
 - [Limousin 1998](papers/neuromodulation/limousin-1998-stn-dbs-parkinson.md) — 确立STN-DBS作为晚期帕金森标准治疗，UPDRS运动评分改善~50%
 - [Morrell 2011](papers/neuromodulation/morrell-2011-rns-closed-loop-epilepsy.md) — 首个闭环脑刺激RCT（RNS），191名癫痫患者，2013年FDA批准
@@ -230,6 +230,33 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Grossman 2017](papers/neuromodulation/grossman-2017-temporal-interference.md) — 时间干涉(TI)：两路高频场深部干涉出低频包络，表面电极聚焦激活深部、放过浅层，ACM"深部聚焦"概念近亲(小鼠)
 - [Stoney 1968](papers/neuromodulation/stoney-1968-current-distance-relationship.md) — 刺激侧基本定律：阈值随距离**平方**增长 I_th(r)=I₀+k·r²，10 µA 约激活 85 µm 内(猕猴运动皮层)。与记录的被动衰减分属两套物理——刺激半径可由电流调
 - [Histed 2009](papers/neuromodulation/histed-2009-sparse-distributed-activation.md) — 双光子直接观察(小鼠)：微刺激激活的是**稀疏、分布很广**、有时远在毫米外的神经元，机制是直接激活**轴突/过路纤维**而非旁边胞体。改写刺激的空间图景
+
+### 经颅振荡干预 / 非侵入夹带 (transcranial oscillation entrainment)
+"用外加弱电磁场夹带内源节律、把振荡从相关性推到因果性"这条线，服务 tACS / kTMP 等非侵入调控。核心张力恒定：**脑内场强够不够**。milestone 抽取自 Wischnewski et al. (2023, Prog Neurobiol; PMC8909135) 的 tACS 机制综述 + 各源头论文回溯。建于 2026-07-20。
+- [Terzuolo & Bullock 1956](papers/neuromodulation/terzuolo-bullock-1956-imposed-voltage-gradient.md) — 弱胞外电压梯度可改变神经元放电节律的最早定量测量，全部经颅电磁调控的物理起点(无脊椎动物)
+- [Deans 2007](papers/neuromodulation/deans-2007-ac-field-sensitivity.md) — 定量拆开单细胞 vs 网络敏感度：DC 场 0.18 mV per V/m；50 Hz、1 V/m 峰峰值改变放电时相(71% 脑片)，对应胞体仅约 **70 µV**、低于膜电位噪声——网络的涌现性质比单神经元更敏感(大鼠脑片)
+- [Fröhlich & McCormick 2010](papers/neuromodulation/frohlich-mccormick-2010-endogenous-fields.md) — 把内源电场从"副产物"改判为可能引导皮层活动的因素；实时正/负反馈电场直接证出活动↔电场的闭环(离体新皮层)
+- [Ozen 2010](papers/neuromodulation/ozen-2010-tes-entrains-cortical-populations.md) — 首次在完整在体脑测到经颅电刺激夹带神经元：**1 mV/mm** 即足以相位偏置放电；且夹带比例依赖行为状态(大鼠，Buzsáki 组)
+- [Reato 2010](papers/neuromodulation/reato-2010-low-intensity-stimulation.md) — "弱场→相干微小扰动→网络动力学放大"机制，胞内验证 **0.2 V/m** 处的相位夹带共振；把效应量问题改写成"取决于网络动力学状态"(大鼠脑片+模型)
+- [Antal 2008](papers/neuromodulation/antal-2008-tacs-weak-aftereffects.md) — tACS 影响人类运动学习的最早报告(仅 10 Hz 显著)，同时诚实划出局限：常规参数下对皮层兴奋性的后效明显弱于 tDCS，MEP/EEG 均无显著改变(人类 N=50)
+- [Zaehle 2010](papers/neuromodulation/zaehle-2010-tacs-enhances-alpha.md) — tACS 与人脑内源振荡相互作用的**首个直接电生理证据**(枕叶个体 alpha 功率上升)，确立 entrainment 与 STDP 两条机制路线(人类 N=10)
+- [Pogosyan 2009](papers/neuromodulation/pogosyan-2009-beta-tacs-slows-movement.md) — 20 Hz tACS 减慢自主运动：**健康人身上振荡↔运动行为因果关系的首个直接证据**。判断新颖度的关键基准——人类 beta 因果证据 2009 年即存在(人类，Peter Brown 组)
+- [Wischnewski 2019](papers/neuromodulation/wischnewski-2019-nmda-beta-tacs.md) — 20 Hz beta tACS 后效持续 ≥60 分钟，被 NMDA 拮抗剂完全消除；证出 tACS 可诱导 NMDA 介导的可塑性，把机制从"刺激期夹带"扩展到"刺激后可塑性"(人类)
+- [Vöröslakos 2018](papers/neuromodulation/voroslakos-2018-direct-effects-tes.md) — **本线最具批判性的一篇**：人体尸体脑颅内直测，头皮电流约 **75%** 被衰减、需 ≥**1 mV/mm** 才影响放电、要在脑内产生 1 V/m 约需头皮 **6 mA**(远高于常规 1–2 mA)。把"场强不足"从顾虑变成有数字的硬约束(大鼠+人体尸体，Buzsáki/Berényi)
+- [Krause 2019](papers/neuromodulation/krause-2019-tacs-entrains-primate-neurons.md) — 人体常规参数 tACS 在猕猴深部结构测得 0.28/0.35 V/m，稳定影响放电**时刻**而不改变放电**率**；把 tACS 的作用形式收窄为调时序(猕猴 N=2)
+- [Johnson 2020](papers/neuromodulation/johnson-2020-dose-dependent-tacs-spike-timing.md) — 清醒猕猴单神经元记录测出**剂量依赖**夹带，并归纳出两类响应(burst 性增加 / 相位夹带)；剂量-反应是走向可控协议的前提(猕猴)
+- [Labruna 2025](papers/neuromodulation/labruna-2025-ktmp-method.md) — kTMP 方法学奠基：改用**磁感应**产生连续千赫兹窄带电场绕开头皮电流瓶颈，10 分钟在 M1 诱导约 **2.0 V/m**、提升皮层兴奋性且几乎无体感(仅听觉音调，便于双盲)；诚实报告 AM 相对非调制无额外增益(人类，Ivry/Peterchev，eLife)
+
+## optical-bci (8 papers)
+光学脑机接口：用钙成像(而非电极)读出神经活动来驱动闭环解码。相对电生理 BCI 的独有能力是**知道每个参与细胞的身份、层次、类型与空间位置**，因而既是工程路线也是研究工具；代价是钙信号相对动作电位的时间分辨率与信噪比。milestone 抽取自 Hira R. (2024, Neurophotonics 11:033405) 的多光子闭环/BMI 综述。建于 2026-07-20。
+- [Fetz 1969](papers/optical-bci/fetz-1969-operant-conditioning-cortical-units.md) — BCI 的思想原点：猕猴经操作性条件反射把**新分离**单神经元的放电提高到基线 **50%–500%**，证明神经活动可被任意调控、不必绑定自然运动输出。本线全部工作沿用这套范式、只把电极换成光学记录(猕猴)
+- [Ghosh 2011](papers/optical-bci/ghosh-2011-miniaturized-fluorescence-microscope.md) — miniscope 硬件起点：**1.9 g** 集成荧光显微镜，自由活动小鼠上约 0.5 mm² 视野同时追踪 >200 个浦肯野细胞。单光子宽场是其可及性来源，也带来先天代价——离焦背景荧光(小鼠，Schnitzer 组)
+- [Ziv 2013](papers/optical-bci/ziv-2013-long-term-place-codes.md) — 表征漂移的奠基观察：跨周追踪同一批 CA1 细胞，每天参与表征的是不同子集、任两天仅重叠 **15–25%**，但重叠部分保持位置野即足以维持准确空间表征。对 BCI 的含义是解码基底本身在换人(小鼠)
+- [Clancy 2014](papers/optical-bci/clancy-2014-optical-neuroprosthetic-learning.md) — **首个双光子钙成像 BMI**，开创光学 BCI 线：小鼠用 2/3 层神经元活动差控制听觉光标，学习伴随空间局部化网络的精细放电相关性改变(小鼠，Carmena 组)
+- [Hira 2014](papers/optical-bci/hira-2014-single-neuron-operant-conditioning.md) — 强化推到**单神经元**：15 分钟内提高目标神经元活动而不改变前肢运动；非目标神经元受双向调制，方向由奖励与活动的**相对时刻**决定、**与空间距离无关**(小鼠)
+- [Mitani 2018](papers/optical-bci/mitani-2018-inhibitory-neuron-bci.md) — 首次把**细胞类型**作为 BCI 自变量：PV/SOM/VIP 三类中间神经元都能学会，但策略亚型特异(PV 压低 N−，SOM/VIP 抬高 N+)。电极分不清这三类(小鼠，Komiyama 组)
+- [Zhang 2018](papers/optical-bci/zhang-2018-closed-loop-all-optical.md) — 闭环**全光学**：成像在线读出 + 双光子光遗传实时定制写入，行为进行中操纵回路。对应电生理双向接口的光学版本，但精度到单细胞(小鼠，Häusser 组)
+- [Trautmann 2021](papers/optical-bci/trautmann-2021-optical-bci-macaque.md) — 光学 BCI 推进到**非人灵长类**：胞体因光子散射不可及，改成像顶树突接入 PMd/M1，在线解码运动方向；CLARITY 回溯确认许多树突来自第 5 层输出神经元(含疑似 Betz 细胞)(猕猴，Shenoy/Deisseroth 组)
 
 ## locomotion (6 papers)
 - [Harkema 2011](papers/locomotion/harkema-2011-epidural-stimulation-standing.md) — 首次硬膜外脊髓刺激恢复完全瘫痪者站立和步进，颠覆不可恢复教条
