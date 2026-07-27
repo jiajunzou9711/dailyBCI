@@ -78,7 +78,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - **「建知识库 [子领域]」** / **「add to knowledge base」** → 触发 Mode B 补库。
 - 技能会按 SKILL.md 在每个关卡停下等你确认——这是设计如此,日报的核心价值就在这几轮对话里。
 
-- **「专题」深度长文(常青,独立于日报)= SKILL.md 的 Mode C** → 不走 Mode A 的关卡;轻量流程 = 提纲→确认→双语文案→出图,piece-by-piece。成品进 `output/series-<slug>/`,出图复用 `card_generator.py` + 自制 SVG 示意图。**Mode C 有三道特有关卡(2026-07-24 建):C-1 选题三方交汇(用户兴趣 × 主题insight × 小红书真实需求·权重最高;需求判定两轴分开——A需求强度[联想词/收藏/留言]、B供给空位,都过线才入选)、C-2 极简封面 + 目录卡、C-3 出稿同时给标题候选 + 话题标签候选 + 半定量打分。** 已出:犹他阵列、电极绝缘材料、神经解码方法论(四轴/生成式脊柱/三层嵌套)、侵入式定位精度(上下各17卡)、EEG 工频/阻抗均衡(series-eeg-impedance-01,17卡)、EEG 电极界面/基线漂移(series-eeg-impedance-02,18卡含目录卡)。体量大的拆上/下多篇,各守 18 卡上限。细节见记忆 `dailybci-series-deep-dive-track` 与 SKILL.md Mode C。
+- **「专题」深度长文(常青,独立于日报)= SKILL.md 的 Mode C** → 不走 Mode A 的关卡;轻量流程 = 提纲→确认→双语文案→出图,piece-by-piece。成品进 `output/series-<slug>/`,出图复用 `card_generator.py` + 自制 SVG 示意图。**Mode C 有三道特有关卡(2026-07-24 建):C-1 选题三方交汇(用户兴趣 × 主题insight × 小红书真实需求·权重最高;需求判定两轴分开——A需求强度[联想词/收藏/留言]、B供给空位,都过线才入选)、C-2 极简封面 + 目录卡、C-3 出稿同时给标题候选 + 话题标签候选 + 半定量打分。** 已出:犹他阵列、电极绝缘材料、神经解码方法论(四轴/生成式脊柱/三层嵌套)、侵入式定位精度(上下各17卡)、EEG 工频/阻抗均衡(series-eeg-impedance-01,17卡)、EEG 电极界面/基线漂移(series-eeg-impedance-02,18卡含目录卡)、硬脑膜四期系列第①期「所有入脑手术的第一道关」(series-dura-01,17卡;起因是 Neuralink 2026-05 首例经硬膜植入,②力学穿透/③隔膜成像/④系留代价待做)。体量大的拆上/下多篇,各守 18 卡上限。细节见记忆 `dailybci-series-deep-dive-track` 与 SKILL.md Mode C。
 
 **定时运行**:想每天自动出初稿,可用 cron 调用 Claude Code 的无头模式(`claude -p "run the daily"` 之类),让它跑到第一个确认关卡或产出草稿,你早上来审。具体命令见 docs.claude.com 的 Claude Code headless / print 模式。
 

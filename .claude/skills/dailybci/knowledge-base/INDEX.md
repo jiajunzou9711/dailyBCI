@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-20
-Total papers: 316
+Last updated: 2026-07-27
+Total papers: 318
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -64,7 +64,7 @@ Total papers: 316
 - [BrainGate 2023](papers/motor-bci/braingate-2023-long-term-safety.md) — 17年14名参与者长期安全数据，信号仅下降7%，支撑临床扩展
 - [Conlan 2026](papers/motor-bci/conlan-2026-ifg-grasp-decoding.md) — 首次在人类额下回(IFG，猕猴F5同源区)皮层内记录中用析因设计拆分抓法/物体/交互三因素：抓法解码显著主导(41.1-41.8% vs 33.3%随机)，物体贡献弱且更早、movement期已不显著；补上"非M1皮层内电极靶点"这条此前空白的线(与Ajiboye 2017对照，同组·bioRxiv)
 
-## electrode-hardware (24 papers)
+## electrode-hardware (25 papers)
 - [Wise 1970](papers/electrode-hardware/wise-1970-silicon-microprobe.md) — 首次用IC工艺制造多位点神经探针，开启微加工电极时代
 - [Campbell 1991](papers/electrode-hardware/campbell-1991-utah-array.md) — Utah阵列发明，100通道3D硅电极，BCI临床试验的硬件基石
 - [Rousche 1998](papers/electrode-hardware/rousche-1998-chronic-biocompatibility.md) — 首次系统验证Utah阵列慢性植入可行性，揭示胶质瘢痕核心挑战
@@ -89,6 +89,7 @@ Total papers: 316
 - [Biran 2005](papers/electrode-hardware/biran-2005-neuronal-kill-zone.md) — kill zone 定量：电极周围 100 µm 内神经元密度降约 40%，4–8 周内最近健康神经元可退到数百微米。慢性失效的机制从「信号被挡住」改写为**信号源被推走**
 - [Savya 2022](papers/electrode-hardware/savya-2022-astrocyte-reactivity-dynamics.md) — 星胶反应时空动力学(大鼠)：第 1 周激活达峰、约 500 µm，第 3 周约 700 µm，第 6 周致密包裹趋稳。给出慢性相的时间与空间刻度
 - [Ludwig 2006](papers/electrode-hardware/ludwig-2006-pedot-coating-chronic.md) — PEDOT 涂层慢性记录：信噪比与可用单单元数均优于对照。**几何足印与有效表面积可分离**的实证落地——涂层只涨后者，故不必一味把电极做小
+- [Kinaci 2020](papers/electrode-hardware/kinaci-2020-dura-cross-species.md) — 10 物种同法比较硬脑膜厚度：人 564 µm vs 大鼠 49 µm（差 11.5 倍），猪 304 µm 最接近；大鼠/绵羊/山羊/马仅单一纤维血管层。**动物硬膜无法代表人**的定量依据
 
 ## signal-processing (11 papers)
 - [Wu 2006](papers/signal-processing/wu-2006-kalman-filter.md) — Kalman filter贝叶斯连续解码，奠定motor BCI实时状态估计基线
@@ -273,7 +274,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Frolov 2017](papers/rehabilitation/frolov-2017-bci-exoskeleton-multicenter-rct.md) — 最大规模BCI康复多中心RCT（74人），证明跨机构推广可行性
 - [Biasiucci 2018](papers/rehabilitation/biasiucci-2018-bci-fes-lasting-recovery.md) — BCI-FES康复效果持续6-12个月，EEG连接变化为神经可塑性客观证据
 
-## clinical-regulatory (11 papers)
+## clinical-regulatory (12 papers)
 - [Huggins 2011](papers/clinical-regulatory/huggins-2011-bci-user-needs.md) — 首次系统调查BCI用户需求，定义准确率≥90%、速度≥15字母/分钟等临床标准
 - [Yuste 2017](papers/clinical-regulatory/yuste-2017-four-ethical-priorities.md) — Nature评论：四大神经伦理优先领域，催生NeuroRights Foundation
 - [Ienca 2017](papers/clinical-regulatory/ienca-2017-neurorights-framework.md) — 系统提出四项神经权利（认知自由、心理隐私、心理完整性、心理连续性）
@@ -285,6 +286,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Precision 2025](papers/clinical-regulatory/precision-2025-layer7-510k.md) — FDA K242618：Layer 7-T皮层电极/BCI组件获传统510(k) clearance（Class II, product code GYC），边界是短期皮层记录/刺激工具而非永久植入通信系统PMA
 - [Neuracle/NEO 2026](papers/clinical-regulatory/neuracle-2026-neo-nmpa-approval.md) — 中国NMPA批准博睿康NEO硬膜外BCI手部运动功能代偿系统上市；公开中文来源支持"获批上市的植入式BCI三类医疗器械"框架，注册证编号/医保范围仍需继续核
 - [Paradromics 2026](papers/clinical-regulatory/paradromics-2026-connect-one-first-implant.md) — Connect-One 早期可行性研究首例长期 Connexus 植入(报道称 FDA IDE、随访最长6年)，高密度皮层内全植入 BCI 进入 speech restoration 临床分支
+- [Przepiorka 2025](papers/clinical-regulatory/przepiorka-2025-dural-tenting-rct.md) — 490 例多中心 RCT：择期幕上开颅**省略预防性硬膜悬吊线非劣**（因血肿再手术 0.8% vs 0.4%）。沿用数十年的标准步骤被首次随机检验
 
 ## ai-neural-modeling (21 papers)
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
