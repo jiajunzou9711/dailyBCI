@@ -222,43 +222,58 @@ def fig_motion():
 # ---------------- 08 脑移位 ----------------
 def fig_shift():
     W = 1080
-    s = [header("毫米级的脑移位，只在切开硬膜之后出现", W)]
-    s.append(T(W / 2, 110, "Hill 等 1998，21 名患者，骨内标记配准到术前 MRI", 21, GRAY))
+    s = [header("硬膜一切开，脑就开始下沉", W)]
+    s.append(T(W / 2, 104, "Hill 等 1998：21 名患者。术中用探针实测表面位置，和术前 MRI 预测的位置比对",
+               21, BODY))
 
-    SC = 620.0 / 6.0
-    X0 = 300
-    rows = [
-        ("硬　膜", "开硬膜前", 1.2, "#9AA7B4"),
-        ("脑表面", "开硬膜后 第一次", 4.4, "#C0603B"),
-        ("脑表面", "约一小时后 第二次", 5.6, RED),
-    ]
-    y = 152
-    for name, when, val, col in rows:
-        s.append(T(60, y + 30, name, 25, INK, anchor="start", weight="700"))
-        s.append(T(60, y + 58, when, 19, GRAY, anchor="start"))
-        s.append(f'<rect x="{X0}" y="{y+16}" width="{val*SC:.0f}" height="34" '
-                 f'rx="5" fill="{col}"/>')
-        s.append(T(X0 + val * SC + 14, y + 42, f"{val} mm", 25, col,
-                   anchor="start", weight="700"))
-        y += 92
-    # 误差带
-    s.append(f'<rect x="{X0}" y="150" width="{2*SC:.0f}" height="{y-158}" '
-             f'fill="#000000" opacity="0.055"/>')
-    s.append(f'<line x1="{X0+2*SC}" y1="150" x2="{X0+2*SC}" y2="{y-8}" '
-             f'stroke="{GRAY}" stroke-width="1.6" stroke-dasharray="6,5"/>')
-    s.append(T(X0 + 2 * SC + 10, y + 16, "测量误差 1–2 mm", 19, GRAY, anchor="start"))
+    Y0 = 172                      # 术前 MRI 预测位置 = 0 mm
+    PXMM = 44.0                   # 每毫米像素
+    XL, XR = 150, 950
+    XS = [300, 590, 850]
+    VALS = [1.2, 4.4, 5.6]
+    LABS = [("取下骨瓣后", "硬膜还没切"), ("刚切开硬膜", ""), ("再过约一小时", "")]
 
-    yy = y + 44
-    s.append(box(30, yy, W - 60, 86, "#FDF3F1", "#E5B9AF", 10, 1.5))
-    s.append(T(W / 2, yy + 36, "最大位移超过 10 mm：第一次测量约占 1/3 患者，第二次约占 1/2",
+    # 误差带 0–2 mm
+    s.append(f'<rect x="{XL}" y="{Y0}" width="{XR-XL}" height="{2*PXMM}" '
+             f'fill="#000000" opacity="0.05"/>')
+    s.append(T(XR - 8, Y0 + 2 * PXMM - 12, "测量误差 1–2 mm：落在这一带里 = 测不出移动",
+               19, GRAY, anchor="end"))
+
+    # 基准线
+    s.append(line(XL, Y0, XR, Y0, ACCD, 2.5))
+    s.append(T(XL, Y0 - 14, "术前 MRI 预测的表面位置", 21, ACCD, anchor="start", weight="700"))
+
+    # 硬膜完整 / 已切开 分界
+    XD = 445
+    s.append(line(XD, Y0 - 6, XD, Y0 + 6.6 * PXMM, PERE, 2, "8,6"))
+    s.append(T(XD - 16, Y0 + 6.6 * PXMM + 6, "硬膜完整", 20, PERE, anchor="end", weight="700"))
+    s.append(T(XD + 16, Y0 + 6.6 * PXMM + 6, "硬膜已切开", 20, RED, anchor="start", weight="700"))
+
+    # 折线
+    pts = " ".join(f"{XS[i]},{Y0+VALS[i]*PXMM:.0f}" for i in range(3))
+    s.append(f'<polyline points="{pts}" fill="none" stroke="{RED}" stroke-width="3" '
+             f'opacity="0.55"/>')
+
+    for i in range(3):
+        x = XS[i]; y = Y0 + VALS[i] * PXMM
+        col = "#9AA7B4" if i == 0 else RED
+        s.append(line(x, Y0, x, y, col, 1.6, "5,5"))
+        s.append(f'<circle cx="{x}" cy="{y:.0f}" r="11" fill="{col}"/>')
+        s.append(T(x + 26, y + 8, f"↓ {VALS[i]} mm", 26, col, anchor="start", weight="700"))
+        s.append(T(x, Y0 + 7.5 * PXMM, LABS[i][0], 22, INK, weight="700"))
+        if LABS[i][1]:
+            s.append(T(x, Y0 + 7.5 * PXMM + 30, "（" + LABS[i][1] + "）", 19, GRAY))
+
+    y = Y0 + 8.6 * PXMM
+    s.append(box(30, y, W - 60, 84, "#FDF3F1", "#E5B9AF", 10, 1.5))
+    s.append(T(W / 2, y + 34, "最大位移超过 10 mm：第一次测量约 1/3 患者，第二次约 1/2",
                23, "#A03A28", weight="700"))
-    s.append(T(W / 2, yy + 66, "均值严重低估最坏情况；方向一致，全部是脑相对术前位置下沉",
-               20, BODY))
+    s.append(T(W / 2, y + 64, "均值看不出这些最严重的情况；方向全部是下沉", 20, BODY))
 
-    yz = yy + 106
-    s.append(concl(yz, "推论：大位移主要由开硬膜后的脑脊液流失驱动",
-                   "硬膜读数取自开膜前、脑表面取自开膜后；目前仅此一项间接证据", W))
-    return W, yz + 116, "".join(s)
+    yz = y + 104
+    s.append(concl(yz, "毫米级的下沉，只出现在切开硬膜之后",
+                   "主要由脑脊液流失驱动（推论：目前只有这一项间接证据）", W))
+    return W, int(yz + 116), "".join(s)
 
 
 # ---------------- 11 钨铼 ----------------
