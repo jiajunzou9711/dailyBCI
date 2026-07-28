@@ -133,14 +133,16 @@ gen.figure_card(
         "深度解决了，还剩穿透。官方讲得很直白：\"Our original needle design was **not able to "
         "reliably penetrate it**. One of the things we did was **increase the diameter of our "
         "needle just slightly**.\"",
-        "时间线比那台手术更早。2025 年夏季更新描述当时在产的针盒：把 40 µm 钨铼线**电抛光**成锥尖，"
-        "手工穿进套管上 60 µm 的孔；**飞秒激光铣制**当时已用于针尖制造。",
+        "时间线比那台手术更早。2025 年夏季更新讲的是**针盒在工厂里怎么装配**"
+        "（术前就做好的一次性耗材，不是术中步骤）：技师把 40 µm 钨铼线**电抛光**成锥尖，"
+        "再**手工**穿进套管上 60 µm 的孔——官方原话是 \"This is done manually\"，最后激光焊接。"
+        "单个针盒周期约 **24 小时**、机加工件约 **350 美元**。",
         "讲到下一代针盒时，官方说 \"deleted the electropolishing setup with a **revised needle "
         "tip geometry**, which is also compatible with **inserting the threads through the "
-        "dura**\"。也就是说，电抛光在**下一代针盒**中取消；2025 年夏官方就已把新几何与「经硬膜插丝」"
-        "绑在一起说明。",
+        "dura**\"，并用漏斗结构取消了手工穿线，周期降到 30 分钟。"
+        "**2025 年夏，官方就已把新针尖几何与「经硬膜插丝」绑在一起说明。**",
     ],
-    P("10-needle.png"), figure_height=420,
+    P("10-needle.png"), figure_height=380,
 )
 
 # 11 钨铼
