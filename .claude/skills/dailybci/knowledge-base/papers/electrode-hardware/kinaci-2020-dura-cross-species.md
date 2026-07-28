@@ -17,7 +17,8 @@ tags: [dura-mater, cross-species, histology, thickness, animal-model, implantati
 ## 关键数据
 - 厚度（µm，均值 ± SD）：人 564 ± 50；马 313 ± 64；牛 311 ± 87；猪 304 ± 77；山羊 284 ± 57；绵羊 234 ± 91；狗 233 ± 71；猫 201 ± 78；兔 99 ± 32；大鼠 49 ± 15
 - 人的硬膜比动物中最厚者仍厚将近 2 倍；人 vs 大鼠相差约 11.5 倍
-- 分层：人、牛、狗、猫、兔、猪可分辨出多个纤维血管层；山羊、马、大鼠、绵羊仅有单一纤维血管层
+- 分层（原文逐字）：人硬膜 "consists of 3 layers: the periosteal layer, meningeal layer, and dural border cell (DBC) layer"；"The fibrovascular layer of cows, cats, dogs, pigs, and rabbits had distinguishable periosteal and meningeal layers"；"The dura of goats, horses, rats, and sheep consisted histologically of a single fibrovascular layer"（马另注为 intermediate form）
+- 骨内膜层与脑膜层 "tightly adhered to each other, except at the height of the dural venous sinuses and the cranial reflections" —— 即平时融合成一张，仅在静脉窦与硬膜反折处分开
 - 所有物种均含至少一层纤维血管层（胶原、成纤维细胞、血管）与一层硬膜边界细胞层
 - 作者推荐：综合大体解剖、可行性、饲养与伦理因素，**猪是硬膜研究（尤其在体研究）最合适的动物模型**
 
