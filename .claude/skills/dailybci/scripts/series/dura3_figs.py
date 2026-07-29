@@ -16,6 +16,7 @@ PER = "#F0C478"; MEN = "#E0A757"; DBC = "#C98F45"; PERE = "#A87B32"
 ARA = "#BFD9EC"; CSF = "#DCEBF7"; CSF_E = "#8FBADA"; PIA = "#8FB6D4"
 CTX = "#E4E7E2"; CTX_E = "#AEB4AC"
 TOOL = "#5A6570"
+GOLD = "#8A6D1A"; GOLDB = "#FBF7E9"; GOLDE = "#D9C98A"
 
 
 def T(x, y, s, size=22, fill=INK, anchor="middle", weight="400"):
@@ -26,6 +27,10 @@ def T(x, y, s, size=22, fill=INK, anchor="middle", weight="400"):
 def box(x, y, w, h, fill, stroke, rx=8, sw=1.5):
     return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" '
             f'fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>')
+
+
+def line(x1, y1, x2, y2, stroke=INK, sw=2):
+    return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{stroke}" stroke-width="{sw}"/>'
 
 
 def bleeds():
@@ -231,14 +236,190 @@ def chronic():
     return W, H, "".join(s)
 
 
-FIGS = {"fig-bleeds": bleeds, "fig-chronic": chronic}
+
+def toc():
+    W, H = 1080, 1440
+    s = [f'<rect width="{W}" height="{H}" fill="#141A22"/>']
+    s.append(T(96, 128, "本期路线", 34, "#FFFFFF", anchor="start", weight="700"))
+    s.append(T(96, 172, "FOUR  COMPARTMENTS", 18, "#6E8095", anchor="start"))
+    AX = 128; y0, dy = 262, 158
+    items = [("01", "电极的路径", "穿过哪一层，就在哪一层出血"),
+             ("02", "四类出血", "腔隙、血管、影像形态"),
+             ("03", "影像上常见，症状上罕见", "19.1% 出血，其中 88% 无症状"),
+             ("04", "被推开还是被扎破", "25 µm 是阈值，不是比例"),
+             ("05", "针为什么还要加粗", "四次方打赢一次方"),
+             ("06", "微出血付的账", "人体尸检与分子链"),
+             ("07", "止住出血解决不了全部", "慢性危害是两条链")]
+    s.append(f'<line x1="{AX}" y1="{y0-56}" x2="{AX}" y2="{y0+dy*6+30}" stroke="#2C3946" stroke-width="2"/>')
+    for i, (n, t, sub) in enumerate(items):
+        y = y0 + dy * i
+        s.append(f'<circle cx="{AX}" cy="{y-14}" r="6" fill="#4E7FB8"/>')
+        s.append(T(AX + 34, y + 2, n, 46, "#3C5A7C", anchor="start", weight="700"))
+        s.append(T(AX + 122, y - 6, t, 33, "#FFFFFF", anchor="start", weight="700"))
+        s.append(T(AX + 124, y + 34, sub, 21, "#8397AC", anchor="start"))
+    return W, H, "".join(s)
+
+
+def rate():
+    W, H = 1080, 620
+    s = [box(20, 14, W - 40, 52, TINT, ACC, 10, 1.5),
+         T(W / 2, 48, "术后 CT 上的出血：常见，但多数无声", 27, ACCD, weight="700")]
+    s.append(T(W / 2, 104, "McGovern 等 2019，549 台连续 sEEG 植入，每张术后 CT 由盲法神经放射科医师分级",
+               20, GRAY))
+    TOT = 549
+    rows = [("有出血", 105, "19.1%", RED),
+            ("其中无症状", 93, "16.9%", "#C98F45"),
+            ("有症状", 12, "2.2%", "#A11F1A"),
+            ("永久性缺损", 2, "0.4%", "#7A1A14"),
+            ("死亡", 1, "0.2%", "#4A0F0B")]
+    SC = 540.0 / 105
+    y = 150
+    for name, n, pct, col in rows:
+        s.append(T(60, y + 34, name, 24, INK, anchor="start", weight="700"))
+        w = max(n * SC, 4)
+        s.append(f'<rect x="300" y="{y+14}" width="{w:.0f}" height="34" rx="4" fill="{col}"/>')
+        s.append(T(300 + w + 14, y + 40, f"{n} 台　{pct}", 22, col, anchor="start", weight="700"))
+        y += 66
+    s.append(box(30, y + 16, W - 60, 84, "#FDF3F1", "#E5B9AF", 10, 1.5))
+    s.append(T(W / 2, y + 50, "出血里约 88% 完全没有症状", 26, "#A03A28", weight="700"))
+    s.append(T(W / 2, y + 78, "不会被登记为并发症，不会被处理，在统计表上近乎不存在", 20, BODY))
+    return W, y + 124, "".join(s)
+
+
+def margin():
+    W, H = 1080, 660
+    s = [box(20, 14, W - 40, 52, TINT, ACC, 10, 1.5),
+         T(W / 2, 48, "一个四次方打赢了一个一次方", 27, ACCD, weight="700")]
+    s.append(T(W / 2, 104, "针能推出的力随直径四次方增长，破膜需要的力只随直径线性增长", 21, BODY))
+
+    boxes = [("针能推出的力", "P_cr ∝ d⁴", "不屈曲的上限", ACC, 60),
+             ("破膜需要的力", "F_p ∝ d", "沿棱边起裂，正比于周长", "#C98F45", 400),
+             ("净余量", "∝ d³", "两者之比", RED, 740)]
+    for title, f, sub, col, x in boxes:
+        s.append(box(x, 140, 280, 150, "#FFFFFF", col, 12, 2))
+        s.append(T(x + 140, 178, title, 22, BODY))
+        s.append(T(x + 140, 226, f, 36, col, weight="700"))
+        s.append(T(x + 140, 264, sub, 18, GRAY))
+    for x in (350, 690):
+        s.append(T(x + 15, 226, "vs" if x == 350 else "→", 26, GRAY))
+
+    s.append(T(W / 2, 340, "代入实测的 43 → 61 µm（直径比 1.42）", 22, INK, weight="700"))
+    cols = [("抗屈曲能力", "× 4.05", ACC), ("破膜所需力", "× 1.39", "#C98F45"), ("净余量", "× 2.92", RED)]
+    x = 120
+    for name, v, col in cols:
+        s.append(box(x, 370, 280, 116, "#FAFAFA", "#E0E0E0", 10, 1.4))
+        s.append(T(x + 140, 408, name, 21, BODY))
+        s.append(T(x + 140, 458, v, 38, col, weight="700"))
+        x += 300
+    s.append(box(30, 508, W - 60, 92, GOLDB, GOLDE, 10, 1.5))
+    s.append(T(W / 2, 544, "原来的针在把力推到破膜所需之前，自己先屈曲了", 25, GOLD, weight="700"))
+    s.append(T(W / 2, 576, "加粗抬高的是上限，而不是锋利度", 21, GOLD))
+    return W, 630, "".join(s)
+
+
+def cost():
+    W = 1080
+    s = [box(20, 14, W - 40, 52, TINT, ACC, 10, 1.5),
+         T(W / 2, 48, "加粗的账单", 27, ACCD, weight="700")]
+    s.append(T(W / 2, 104, "同一篇 PNAS 的拟合式（小鼠、软膜）：Fp = 0.0346 + 10.07·d　dp = 0.212 + 5.06·d",
+               19, GRAY))
+    s.append(T(60, 158, "直径", 21, GRAY, anchor="start"))
+    s.append(T(280, 158, "穿破力", 21, GRAY, anchor="start"))
+    s.append(T(500, 158, "平均压强", 21, GRAY, anchor="start"))
+    s.append(T(730, 158, "穿破前压陷", 21, GRAY, anchor="start"))
+    s.append(T(950, 158, "血管", 21, GRAY, anchor="start"))
+    s.append(line(56, 172, 1024, 172, "#DDDDDD", 1.5))
+    rows = [("24 µm", "0.28 mN", "611 kPa", "0.33 mm", "临界线内", ACC),
+            ("43 µm", "0.47 mN", "322 kPa", "0.43 mm", "已越线", "#C98F45"),
+            ("61 µm", "0.65 mN", "222 kPa", "0.52 mm", "已越线", RED)]
+    y = 190
+    for d, f, pa, dp, v, col in rows:
+        s.append(T(60, y + 34, d, 26, INK, anchor="start", weight="700"))
+        s.append(T(280, y + 34, f, 23, BODY, anchor="start"))
+        s.append(T(500, y + 34, pa, 23, BODY, anchor="start"))
+        s.append(T(730, y + 34, dp, 23, col, anchor="start", weight="700"))
+        s.append(T(950, y + 34, v, 21, col, anchor="start", weight="700"))
+        y += 70
+    s.append(line(56, y + 4, 1024, y + 4, "#DDDDDD", 1.5))
+    s.append(box(30, y + 26, W - 60, 88, "#FDF3F1", "#E5B9AF", 10, 1.5))
+    s.append(T(W / 2, y + 62, "0.52 mm 的压陷，已经和心跳搏动（0.1–0.5 mm）同一个数量级",
+               24, "#A03A28", weight="700"))
+    s.append(T(W / 2, y + 92, "而 61 µm 越过了 25 µm，重新进入会扎破血管的区间", 21, BODY))
+    yz = y + 132
+    s.append(box(30, yz, W - 60, 76, GOLDB, GOLDE, 10, 1.4))
+    s.append(T(W / 2, yz + 32, "针径为本人在官方视频帧上按 100 µm 标尺自测，非公开数值",
+               21, GOLD, weight="700"))
+    s.append(T(W / 2, yz + 60, "小鼠软膜的绝对值不能搬到硬膜；可搬的是标度关系", 19, GOLD))
+    return W, yz + 108, "".join(s)
+
+
+def fibrin():
+    W = 1080
+    s = [box(20, 14, W - 40, 52, TINT, ACC, 10, 1.5),
+         T(W / 2, 48, "血液漏进脑组织之后，发生了一串确定的事", 27, ACCD, weight="700")]
+    s.append(T(W / 2, 102, "Schachtrup 等 2010，J Neurosci，小鼠皮层损伤", 20, GRAY))
+    steps = [("血脑屏障破坏", "纤维蛋白原立刻漏进中枢"),
+             ("纤维蛋白原 = 潜伏型 TGF-β 的载体", "把生长因子一并带进脑实质"),
+             ("星形胶质细胞 Smad2 磷酸化", "TGF-β / Smad 通路被激活"),
+             ("沉积硫酸软骨素蛋白聚糖", "抑制神经突生长，形成胶质瘢痕")]
+    y = 140
+    for i, (a, b) in enumerate(steps):
+        s.append(box(150, y, 780, 84, "#FDF3F1", "#E5B9AF", 10, 1.4))
+        s.append(f'<circle cx="196" cy="{y+42}" r="20" fill="{RED}"/>')
+        s.append(T(196, y + 50, str(i + 1), 23, "#FFFFFF", weight="700"))
+        s.append(T(232, y + 38, a, 24, INK, anchor="start", weight="700"))
+        s.append(T(232, y + 66, b, 18, BODY, anchor="start"))
+        y += 84
+        if i < 3:
+            s.append(f'<line x1="540" y1="{y+2}" x2="540" y2="{y+20}" stroke="{RED}" stroke-width="2.5"/>')
+            s.append(f'<path d="M532,{y+20} L548,{y+20} L540,{y+34} Z" fill="{RED}"/>')
+            y += 38
+    s.append(box(30, y + 20, W - 60, 96, GOLDB, GOLDE, 10, 1.5))
+    s.append(T(W / 2, y + 56, "去掉纤维蛋白原，整条链都减轻", 26, GOLD, weight="700"))
+    s.append(T(W / 2, y + 86, "遗传或药理手段清除后，活性 TGF-β、Smad2 磷酸化、胶质活化与蛋白聚糖沉积全部下降——这是干预实验",
+               19, GOLD))
+    return W, y + 144, "".join(s)
+
+
+def dsa():
+    W = 1080
+    s = [box(20, 14, W - 40, 52, TINT, ACC, 10, 1.5),
+         T(W / 2, 48, "出血由碰没碰到血管决定，而这件事可以被预测", 27, ACCD, weight="700")]
+    s.append(T(W / 2, 104, "Stefanelli 等 2022，World Neurosurg：72 台植入 / 1028 根电极，术后 CT 与术前 DSA 配准",
+               19, GRAY))
+    items = [("3 例", "硬膜下出血", "全部与血管碰撞或 1 mm 内擦过", RED),
+             ("2 例", "蛛网膜下腔出血", "全部与血管碰撞或 1 mm 内擦过", RED),
+             ("2 例", "脑内血肿", "其中一半旁边没有明显血管", "#8A8A8A")]
+    y = 146
+    for n, name, note, col in items:
+        s.append(box(60, y, W - 120, 88, "#FFFFFF", "#E2D3D1", 10, 1.5))
+        s.append(T(112, y + 54, n, 30, col, weight="700"))
+        s.append(T(180, y + 40, name, 24, INK, anchor="start", weight="700"))
+        s.append(T(180, y + 68, note, 19, BODY, anchor="start"))
+        y += 100
+    s.append(box(60, y + 16, 460, 110, TINT, ACC, 10, 1.8))
+    s.append(T(290, y + 56, "94.7%", 40, ACCD, weight="700"))
+    s.append(T(290, y + 92, "术前 DSA 预测术后影像学出血的敏感度", 19, BODY))
+    s.append(box(560, y + 16, 460, 110, "#FAFAFA", "#DDDDDD", 10, 1.8))
+    s.append(T(790, y + 56, "53.6%", 40, GRAY, weight="700"))
+    s.append(T(790, y + 92, "特异度", 19, BODY))
+    yz = y + 150
+    s.append(box(30, yz, W - 60, 88, GOLDB, GOLDE, 10, 1.5))
+    s.append(T(W / 2, yz + 36, "事件数很小：共 7 处出血", 24, GOLD, weight="700"))
+    s.append(T(W / 2, yz + 66, "深部出血还有 DSA 看不见的来源，这条结论不能推到全部出血类型", 20, GOLD))
+    return W, yz + 132, "".join(s)
+
+
+FIGS = {"toc": toc, "fig-bleeds": bleeds, "fig-chronic": chronic,
+        "fig-rate": rate, "fig-margin": margin, "fig-cost": cost,
+        "fig-fibrin": fibrin, "fig-dsa": dsa}
 
 
 def render(name, w, h, inner):
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" '
            f'viewBox="0 0 {w} {h}" font-family="HeitiSC,Helvetica,Arial,sans-serif">'
            f'<defs><marker id="ac" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="context-stroke"/></marker></defs>'
-           f'<rect width="{w}" height="{h}" fill="#FFFFFF"/>{inner}</svg>')
+           + (f'<rect width="{w}" height="{h}" fill="#FFFFFF"/>' if name!='toc' else '')+f'{inner}</svg>')
     html = (f'<!DOCTYPE html><html><head><meta charset="utf-8"><style>'
             f'@font-face{{font-family:"HeitiSC";src:url("file://{FONT}");}}'
             f'*{{margin:0;padding:0}}body{{width:{w}px;height:{h}px}}</style></head>'
