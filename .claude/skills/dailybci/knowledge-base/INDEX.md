@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-27
-Total papers: 318
+Last updated: 2026-07-30
+Total papers: 320
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -64,7 +64,7 @@ Total papers: 318
 - [BrainGate 2023](papers/motor-bci/braingate-2023-long-term-safety.md) — 17年14名参与者长期安全数据，信号仅下降7%，支撑临床扩展
 - [Conlan 2026](papers/motor-bci/conlan-2026-ifg-grasp-decoding.md) — 首次在人类额下回(IFG，猕猴F5同源区)皮层内记录中用析因设计拆分抓法/物体/交互三因素：抓法解码显著主导(41.1-41.8% vs 33.3%随机)，物体贡献弱且更早、movement期已不显著；补上"非M1皮层内电极靶点"这条此前空白的线(与Ajiboye 2017对照，同组·bioRxiv)
 
-## electrode-hardware (25 papers)
+## electrode-hardware (27 papers)
 - [Wise 1970](papers/electrode-hardware/wise-1970-silicon-microprobe.md) — 首次用IC工艺制造多位点神经探针，开启微加工电极时代
 - [Campbell 1991](papers/electrode-hardware/campbell-1991-utah-array.md) — Utah阵列发明，100通道3D硅电极，BCI临床试验的硬件基石
 - [Rousche 1998](papers/electrode-hardware/rousche-1998-chronic-biocompatibility.md) — 首次系统验证Utah阵列慢性植入可行性，揭示胶质瘢痕核心挑战
@@ -80,6 +80,8 @@ Total papers: 318
 - [Simeral 2021](papers/electrode-hardware/simeral-2021-braingate-wireless.md) — 首次intracortical BCI家庭无线化使用，24小时连续运行
 - [Paradromics 2025](papers/electrode-hardware/paradromics-2025-acute-connexus-human.md) — Connexus 首次人类急性植入/记录/完整取出(<20分钟)，为后续 Connect-One 长期植入试验铺路；高密度皮层内阵列 + 胸部收发器路线
 - [Hettick 2025](papers/electrode-hardware/hettick-2025-layer7-cortical-interface.md) — Layer 7高密度皮层表面阵列，推动微创、可逆的临床ECoG路线
+- [Steinmetz 2021](papers/electrode-hardware/steinmetz-2021-neuropixels-2.md) — Neuropixels 2.0：四针脚/5120电极点/384同时通道，确立此后的事实标准规格；也留下「电极点远多于同时通道」这个瓶颈
+- [Chang 2026](papers/electrode-hardware/chang-2026-neuropixels-quad-base.md) — Quad Base：几何与5120电极点全不动，同时通道384→1536(双探针3072)；用同一份记录自我抽子集作对照，证明一次8针脚同时记录检出的跨区Granger连接数超过四次连续2针脚记录的总和(总通道数相同)。推论：少通道会系统性低估脑区间耦合(小鼠)
 - [Jung 2025](papers/electrode-hardware/jung-2025-bisc-wireless-subdural-bci.md) — BISC无线无电池subdural interface：65,536电极、1,024通道，探索超大规模皮层表面接口
 - [Bourhis 2026](papers/electrode-hardware/bourhis-2026-tft-backplane.md) — 显示式有源矩阵TFT背板(a-IGZO直接长在聚酰亚胺)：256通道(16×16)柔性皮层表面阵列，布线O(n)→O(√n)、温升<2°C、封装投影寿命>38年、大鼠30天稳定；确立"柔性有源(非转印硅)"一格(Dayeh组·UCSD)
 - [Li 2026](papers/electrode-hardware/li-2026-skull-microhole-hybrid-bci.md) — "颅骨微孔电极"新微创模态:超声自限打 300–800 μm 微孔(不取材料、对软硬膜不切削、终止检测 34ms/16μm)+单点 Pt/Ir 电极皮下植入、远端贴硬膜外(不穿硬膜)、有源电子体外经隔皮欧姆传导耦合;大鼠上 SEP/SSVEP 信噪比与各频段功率抬 2.6–8.9×、刺激侧仅仿真(TI 深部聚焦)。在"头皮 EEG↔硬膜外 ECoG"间插一格:点 vs 片、微孔 vs 骨瓣(对照 [[neo-2024]]);范式提出型,大鼠记录+仿真,企业参与(中山大深圳×深圳BrainXess,bioRxiv)

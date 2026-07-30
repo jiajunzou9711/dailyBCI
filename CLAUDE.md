@@ -1,6 +1,6 @@
 # DailyBCI — Claude Code 项目指南
 
-这是 **dailybci** 技能的 Claude Code 工程版。每天产出一份双语 BCI 学术日报(英文 X thread + 中文小红书卡片),并维护一个里程碑论文知识库。本文件是你从当前确定版**继续调试 + 日常运行**的操作手册。
+这是 **dailybci** 技能的 Claude Code 工程版。每天产出一份 BCI 学术日报(中文小红书图卡;**X thread 自 2026-07-30 起默认不出**,仅当期明确要求才做),并维护一个里程碑论文知识库。本文件是你从当前确定版**继续调试 + 日常运行**的操作手册。
 
 ## 写作偏好
 
@@ -63,10 +63,11 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 
 - **Mode A 10 步**(末步 Step 10 收尾清理 papers/ scratch),三个强制确认关卡:**Step 2 选题**(表格候选 + 知识库对照 + 推荐;无对照基准弹缺位提示问是否补库)、**Step 4 insight**(先给带理由的主张 + **直接贴论文原图**,用户确认才走)、**Step 6 事实核查**(草稿后自动三层核查出表,⚠/✗ 按"承重×严重度"分流,全 ✓ 才进生产)。
 - **Step 3 选题即"一次性扒全"**:经浏览器把**全文 PDF**(PyMuPDF 抽文)+ **全部图**(F1 探到 404)一次性下到本地,之后深读/核查/裁图全读本地、不再回访网页。curl 抓 bioRxiv/PMC 会被 Cloudflare/JS 拦,故走浏览器。
-- **Step 5–8 内容先行**:第一版即给**双语文字稿 + 粗裁图(内联)**→ 自动事实核查 → 生产(渲染卡片)→ 打磨(图多轮裁干净)。最贵的渲染推到事实锁定之后。
+- **Step 5–8 内容先行**:第一版即给**文字稿 + 粗裁图(内联)**→ 自动事实核查 → 生产(渲染卡片)→ 打磨(图多轮裁干净)。最贵的渲染推到事实锁定之后。
 - **卡片渲染内核 = HTML/CSS + Chromium**(2026-06-22 从 Pillow 迁移):`card_generator.py` 四个方法签名不变(`cover/figure/text/tail_card`),内核改填 HTML 模板再经 `npx playwright screenshot` 截图。收益:自动流式排版(不再手算坐标/静默溢出)、`**关键词**` 句中高亮、上标原生;代价:多一个 Chromium 依赖。调版式改 CSS,可直接浏览器预览。
-- **Content Standards**:标物种、数字回溯原文、慎用"首次/都/all"、术语分层、中文源核实公司名;**双语大纲一致但内容可不同**(thread 纯文字自洽 / 小红书图文更深、用"结论→读图→转场"链);**图永远内联呈现 = 存盘 + Read**(不用浏览器 screenshot)。
+- **Content Standards**:标物种、数字回溯原文、慎用"首次/都/all"、术语分层、中文源核实公司名;**图卡用"结论→读图→转场"链**(若当期同时出 thread,两者共用提纲、各自独立撰写);**图永远内联呈现 = 存盘 + Read**(不用浏览器 screenshot)。
 - **知识库 23 子领域(篇数见 INDEX.md)**,`population-dynamics` 线延伸到 de Vicente 2026(Sadtler 2014 → Busch 2025 → de Vicente 2026);`non-invasive` 新增 AAD(听觉注意解码)子线;`performance-variability`(认知状态/注意/信号变异,横跨非侵入与皮层内)为 2026-06-23 新建子领域;`affective-bci`(情感/EEG 情绪解码) 与 `emg-motor-unit`(外周肌电/运动单位解码→神经驱动) 为 2026-06-29 新建;`neuromodulation` 下 2026-06-30 新增 current-steering(电流聚焦/刺激空间选择性)子簇;`cancer-neuroscience`(神经元活动↔胶质瘤电/突触整合、用神经记录监测肿瘤)为 2026-07-09 新建;`functional-ultrasound`(功能超声成像 fUSI/血流动力学神经接口:Macé 2011→Norman 2021→Griggs 2024→Rabut 2024→Lin 2026)为 2026-07-11 新建;`presurgical-mapping`(术前无创功能定位,先建语言区线:Ojemann DCS 金标准→Pascual-Leone 1991→Papanicolaou 2004 MEG→Picht 2013 nrTMS vs DCS→Tarapore 2013→Krieg 2017→Autti 2026 MEG 引导 nrTMS 时机)与 `visual-prosthesis`(视觉假体/视网膜电刺激:Humayun 1996→Argus II/Alpha-IMS/PRIMA + Chichilnisky 精准刺激线)为 2026-07-12 新建;`neuromodulation` 2026-07-12 增 Liu 2026(加速度计 vs beta 生物标志物);`presurgical-mapping` 2026-07-13 增 Autti 2026(用个人 MEG 峰值个体化 nrTMS 发放时机 PTI,best PTI≈MEG 峰值−132ms,R=0.713);`passive-bci`(被动脑机接口/神经自适应:把自发认知状态当隐式输入让机器适应,抽取源 Zander & Kothe 2011;Parra 2003 ERN 纠错→Kohlmorgen 2007 真实驾驶工作负荷→Ferrez 2008 交互 ErrP→Zander 2016 PNAS neuroadaptive 闭环→Aricò 2016 空管部署)为 2026-07-14 新建(6 篇);同日日报选题 Pan 2026(首个动态 VR 游戏中实时闭环解码交互意图:gaze+被动EEG,人类23人;affordance 稳在77.8–83.5%,approach-avoidance 仅价值两极可解 coins/bombs 80.8%、价值模糊塌回随机59%;划出"可解码信号=效价"边界)入库,并补横向对照 Reddy 2024(SPN 隐式选择,CHI '24)、Dehais 2022(dual passive-reactive,Front Neuroergonomics),`passive-bci` 增至 9 篇;`invasive-recording` 2026-07-16 增 Jafri 2026(把"白质 sEEG 触点=灰质衰减副本"证伪:谱参数化拆 offset/exponent,衰减只能动前者而实测双降且 19 人无一例外,delta 中心频率位移更免疫于幅度缩放;仅凭信号分类组织 AUC 0.92。给 buzsaki-2012 补实证:"生成机制不同"对、"那里什么都没有"错。**本篇不做解码**,增益出处是 Li 2021),`invasive-recording` 增至 10 篇;2026-07-17 补库两条线并新建 `semantic-decoding`(语义解码/读概念非发音,抽取源 Rybář&Daly 2022 综述,Patterson 2007→Mitchell 2008→Rupp 2017 属性零样本标杆→Nagata 2022,11 篇)、`invasive-recording` 加 sEEG 植入精度子簇(Bancaud 1970→Cardinale 2013 基准→Vakharia 2021 唯一 RCT→Abbas 2026 meta,共识"机器人买到时间不是精度",8 篇);同日日报选题 Thurairajah 2026(3176 条轨迹拆解 sEEG 精度=轨迹几何属性、已知因素只解释 15%)入库,`invasive-recording` 增至 19 篇。**补库流程 2026-07-14 起自动写入,不再逐篇征询用户(见记忆 `dailybci-modeb-autoadd`)。背景先行+一次一小块见记忆 `background-first-one-chunk-at-a-time`。**
+- **2026-07-30**:`electrode-hardware` 增至 27 篇——补入 Steinmetz 2021(Neuropixels 2.0,四针脚/5120 点/384 通道的事实标准)与当日选题 Chang 2026(Quad Base,同时通道 384→1536;用同一份记录自我抽子集作对照,证明一次 8 针脚同时记录检出的跨区 Granger 连接数超过四次连续 2 针脚记录的总和)。成品 17 卡在 `output/2026-07-30-quadbase/`,自制 SVG 脚本 `scripts/series/quadbase_figs.py`、卡片脚本 `scripts/series/build_quadbase_cards.py`。本期同时定下两条规则:**X thread 默认不出**、**对话与成品一律不用 LaTeX 记号**;并派生两个待做方法论专题(跨 session 可辨识性与缝合、DLAG/mDLAG),见记忆 `dailybci-principles-issue-identifiability`。
 
 ---
 
@@ -78,7 +79,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - **「建知识库 [子领域]」** / **「add to knowledge base」** → 触发 Mode B 补库。
 - 技能会按 SKILL.md 在每个关卡停下等你确认——这是设计如此,日报的核心价值就在这几轮对话里。
 
-- **「专题」深度长文(常青,独立于日报)= SKILL.md 的 Mode C** → 不走 Mode A 的关卡;轻量流程 = 提纲→确认→双语文案→出图,piece-by-piece。成品进 `output/series-<slug>/`,出图复用 `card_generator.py` + 自制 SVG 示意图。**Mode C 有三道特有关卡(2026-07-24 建):C-1 选题三方交汇(用户兴趣 × 主题insight × 小红书真实需求·权重最高;需求判定两轴分开——A需求强度[联想词/收藏/留言]、B供给空位,都过线才入选)、C-2 极简封面 + 目录卡、C-3 出稿同时给标题候选 + 话题标签候选 + 半定量打分。** 已出:犹他阵列、电极绝缘材料、神经解码方法论(四轴/生成式脊柱/三层嵌套)、侵入式定位精度(上下各17卡)、EEG 工频/阻抗均衡(series-eeg-impedance-01,17卡)、EEG 电极界面/基线漂移(series-eeg-impedance-02,18卡含目录卡)、硬脑膜四期系列第①期「所有入脑手术的第一道关」(series-dura-01,17卡;起因是 Neuralink 2026-05 首例经硬膜植入,②力学穿透/③隔膜成像/④系留代价待做)。体量大的拆上/下多篇,各守 18 卡上限。细节见记忆 `dailybci-series-deep-dive-track` 与 SKILL.md Mode C。
+- **「专题」深度长文(常青,独立于日报)= SKILL.md 的 Mode C** → 不走 Mode A 的关卡;轻量流程 = 提纲→确认→文案→出图,piece-by-piece。成品进 `output/series-<slug>/`,出图复用 `card_generator.py` + 自制 SVG 示意图。**Mode C 有三道特有关卡(2026-07-24 建):C-1 选题三方交汇(用户兴趣 × 主题insight × 小红书真实需求·权重最高;需求判定两轴分开——A需求强度[联想词/收藏/留言]、B供给空位,都过线才入选)、C-2 极简封面 + 目录卡、C-3 出稿同时给标题候选 + 话题标签候选 + 半定量打分。** 已出:犹他阵列、电极绝缘材料、神经解码方法论(四轴/生成式脊柱/三层嵌套)、侵入式定位精度(上下各17卡)、EEG 工频/阻抗均衡(series-eeg-impedance-01,17卡)、EEG 电极界面/基线漂移(series-eeg-impedance-02,18卡含目录卡)、硬脑膜四期系列第①期「所有入脑手术的第一道关」(series-dura-01,17卡;起因是 Neuralink 2026-05 首例经硬膜植入,②力学穿透/③隔膜成像/④系留代价待做)。体量大的拆上/下多篇,各守 18 卡上限。细节见记忆 `dailybci-series-deep-dive-track` 与 SKILL.md Mode C。
 
 **定时运行**:想每天自动出初稿,可用 cron 调用 Claude Code 的无头模式(`claude -p "run the daily"` 之类),让它跑到第一个确认关卡或产出草稿,你早上来审。具体命令见 docs.claude.com 的 Claude Code headless / print 模式。
 

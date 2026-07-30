@@ -3,7 +3,7 @@ name: dailybci
 description: >
   Daily BCI (brain-computer interface) academic digest with two modes:
   (1) Daily digest mode — find the most important recent BCI paper, identify its core technical insight using the
-  knowledge base for context, and produce a deep explanation in English (X thread) and Chinese (小红书 post).
+  knowledge base for context, and produce a deep explanation as Chinese 小红书 cards (English X thread only when the user asks for one that issue).
   (2) Knowledge base mode — build and maintain a structured library of milestone BCI papers organized by sub-field.
   Use this skill whenever the user says "今天BCI有什么新的", "dailybci", "BCI日报", "run the daily",
   "generate today's post", "建知识库", "add to knowledge base", or any request related to finding, explaining,
@@ -72,6 +72,9 @@ Terms fall into two tiers:
 - **本期（2026-06-30 Brain2Qwerty/MEG）被用户确认为表达与图卡的标杆样例。** 以后照此办：① **文案科学平实**——开篇身份直说、术语保留、少修辞零拟人、不口水化、承重数字带角标；② **图卡截干净**——用亮度投影定真实包围盒、逐版 `Read` 自检四边构件齐（标签/坐标/图例全进、邻图/散文图注全出），做到"这张卡的图恰好说明这张卡、不多不少"。
 
 ### Bilingual Content Workflow
+
+> **⛔ X thread 默认不出（2026-07-30 用户定，写死）。** 从 2026-07-30 起，**除用户在当期明确要求外，不再生产 English X/Twitter thread**——每期的成品只有**中文小红书图卡**。所以 Step 5 只出小红书 copy、Step 7 只渲染小红书图卡、Step 8 的"最终版"也只含图卡。不要主动询问是否要 thread，也不要"顺手附上"。
+> 用户明确说要 thread 的那一期，才回到下面这套双语流程（届时 thread 与图卡共用同一提纲、各自独立撰写、每条 ≤280 字符等规则全部照旧）。
 
 1. **Start with a unified content outline** — a numbered list of information points and their order. Both the English X thread and the Chinese 小红书 cards are written from this outline. The outline determines what to include, what to omit, and in what sequence.
 
@@ -360,9 +363,11 @@ A good test: if you removed your explanation of this one point, would a reader m
 - **升格规则**:若某条横/纵对比特别精彩、构成"超出单篇解读的信息增量",就把它编进当天日报——thread 加 1 条对比 tweet,或小红书加 1 张对比卡(对比卡同样守三段式 + 图文对版)。普通的对比留在小分析里即可。
 - **硬约束(承接 §Factual Accuracy 与 Step 2 缺位处理)**:对比**必须基于 KB 真实条目或当场核实的来源**,绝不凭记忆编造"同期某组也做了 X"。KB 在该方向覆盖不足时,如实标"此方向 KB 尚薄、横向对比有限",并可顺势提议补库(Mode B),**不硬凑一个看似博学的对比**。
 
-### Step 5: First draft — thread copy + 小红书 copy with rough figures, in chat
+### Step 5: First draft — 小红书 copy with rough figures, in chat
 
-Right after the insight is confirmed, produce the **first full version** and present it in chat: **both** the English X-thread copy **and** the 小红书 card-by-card copy, with **each figure card's figure shown inline (a rough crop is fine)** so the user sees text+figure paired from the very first version. This is the content layer — logic, numbers, comparisons, and the text–figure pairing — produced cheaply so it can be revised and fact-checked **before** the expensive final card rendering. (Rationale: rendering polished cards is the heavy step; if a core number is wrong, that work is wasted. Facts first, polished production later. But rough crops of already-downloaded figures are cheap, so pair them in from the start — don't make the user imagine the layout.)
+**默认只出小红书 copy（X thread 默认不出，见 Content Standards → Bilingual Content Workflow 顶部的写死条款）。** 下文凡提到 thread 的部分，仅在用户当期明确要求 thread 时才适用。
+
+Right after the insight is confirmed, produce the **first full version** and present it in chat: the 小红书 card-by-card copy (plus the English X-thread copy **only if the user asked for one this issue**), with **each figure card's figure shown inline (a rough crop is fine)** so the user sees text+figure paired from the very first version. This is the content layer — logic, numbers, comparisons, and the text–figure pairing — produced cheaply so it can be revised and fact-checked **before** the expensive final card rendering. (Rationale: rendering polished cards is the heavy step; if a core number is wrong, that work is wasted. Facts first, polished production later. But rough crops of already-downloaded figures are cheap, so pair them in from the start — don't make the user imagine the layout.)
 
 Both versions are written from the **shared outline** (see Content Standards → Bilingual Content Workflow) and cover, in order:
 - Enough context to understand the problem (2-3 sentences, no more)
@@ -414,11 +419,11 @@ Present this table immediately after the content draft, before inviting any disc
 
 Only after every ✗ and ⚠ is resolved (fixed in the draft, softened/dropped, or explicitly accepted by the user) does the flow move on to production (Step 7).
 
-### Step 7: Production — X thread + 小红书 cards with figures
+### Step 7: Production — 小红书 cards with figures（X thread 仅在用户当期要求时才出）
 
-Run this **only after the fact-check gate (Step 6) is clear.** The copy for both languages was already drafted in Step 5 and verified in Step 6; Step 7 turns it into the two **published forms** — finalize the thread and render the 小红书 cards. (When revising, keep each language written independently from the shared outline — never translate one from the other. They share the outline and load-bearing facts, but the two media may differ in depth: thread = self-contained in text; 小红书 = deeper via figure+text. See Content Standards → Bilingual Content Workflow.)
+Run this **only after the fact-check gate (Step 6) is clear.** The copy was already drafted in Step 5 and verified in Step 6; Step 7 turns it into the **published form** — render the 小红书 cards. **默认成品只有小红书图卡**（见 Content Standards → Bilingual Content Workflow 顶部的写死条款）。(When a thread *is* requested, keep each language written independently from the shared outline — never translate one from the other. They share the outline and load-bearing facts, but the two media may differ in depth: thread = self-contained in text; 小红书 = deeper via figure+text.)
 
-**English — X/Twitter thread:**
+**English — X/Twitter thread（仅用户当期明确要求时才做）：**
 - Hook tweet naming the core finding, then numbered 1/, 2/, 3/ … (typically 6-10 tweets)
 - ~90% deep explanation of the core insight, ~10% understated closing comment
 - **Respect X's 280-character per-tweet limit — every tweet (hook, each numbered tweet, and the reference tweet) must independently fit within 280 characters.** Count the characters of each tweet and split or trim anything over; never assume a long tweet will post. (A URL counts as ~23 chars on X regardless of length.)
