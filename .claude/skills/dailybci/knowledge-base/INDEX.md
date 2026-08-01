@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-30
-Total papers: 320
+Last updated: 2026-07-31
+Total papers: 321
 
 ## speech-decoding (17 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -290,12 +290,13 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Paradromics 2026](papers/clinical-regulatory/paradromics-2026-connect-one-first-implant.md) — Connect-One 早期可行性研究首例长期 Connexus 植入(报道称 FDA IDE、随访最长6年)，高密度皮层内全植入 BCI 进入 speech restoration 临床分支
 - [Przepiorka 2025](papers/clinical-regulatory/przepiorka-2025-dural-tenting-rct.md) — 490 例多中心 RCT：择期幕上开颅**省略预防性硬膜悬吊线非劣**（因血肿再手术 0.8% vs 0.4%）。沿用数十年的标准步骤被首次随机检验
 
-## ai-neural-modeling (21 papers)
+## ai-neural-modeling (22 papers)
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
 - [Ye 2021](papers/ai-neural-modeling/ye-2021-neural-data-transformer.md) — NDT首次将Transformer应用于神经spike数据，推理速度比RNN快6倍
 - [Ye 2023](papers/ai-neural-modeling/ye-2023-ndt2-multi-context.md) — NDT-2跨session预训练，证明预训练+微调范式在神经数据上有效，NeurIPS 2023
 - [Azabou 2024](papers/ai-neural-modeling/azabou-2024-mtm-universal-translator.md) — MtM三维度掩码自监督，跨脑区跨细胞类型联合建模，NeurIPS 2024
-- [Azabou 2025](papers/ai-neural-modeling/azabou-2025-poyo-plus.md) — POYO+多session多任务foundation model，Allen Institute全量数据，ICLR 2025
+- [Azabou 2023](papers/ai-neural-modeling/azabou-2023-poyo.md) — **POYO**：把单个动作电位当 token（神经元嵌入 + 发放时刻）+ cross-attention/PerceiverIO 主干，解掉"跨 session 神经元无对应"的结构性障碍；7 只非人灵长类 / 158+ session / 27,373+ 单元 / 100+ 小时，可 few-shot 适配对应未知的新 session。是 [[azabou-2024-mtm-universal-translator]] 与 [[azabou-2025-poyo-plus]] 的 tokenization 源头
+- [Azabou 2025](papers/ai-neural-modeling/azabou-2025-poyo-plus.md) — POYO+ 多 session 多任务 foundation model；tokenization 沿用 POYO(2023)：每个 token = 神经元嵌入 + 时间，摆脱"输入维度=神经元个数"的锁死，迁移新 session 只需学新单元嵌入。训练于 Allen Brain Observatory **双光子钙成像**(>10 万神经元/6 脑区，非 spike)，故增设幅值投影层；ICLR 2025。属 stitching 路线，增益来自结构假设+锚点
 - [Defossez 2023](papers/ai-neural-modeling/defossez-2023-meta-meg-speech.md) — Meta FAIR对比学习将MEG映射到wav2vec表征空间，非侵入语音解码新范式
 - [Yang 2023](papers/ai-neural-modeling/yang-2023-biot-biosignal-transformer.md) — BIOT：首个跨数据集生物信号基础模型(EEG+ECG+体动)，patch tokenization+masked自监督，NeurIPS 2023
 - [Jiang 2024](papers/ai-neural-modeling/jiang-2024-labram-large-brain-model.md) — LaBraM：首个大规模EEG基础模型，2500h/20数据集VQ频谱预训练，跨任务微调全超SOTA，ICLR 2024 Spotlight
