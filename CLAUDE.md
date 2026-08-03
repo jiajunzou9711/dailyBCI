@@ -28,7 +28,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 │   └── skills/
 │       └── dailybci/
 │           ├── SKILL.md           ← 技能主文件(调试主要改这里)
-│           ├── knowledge-base/    ← INDEX.md + papers/<子领域>/(22 个子领域,篇数见 INDEX.md)
+│           ├── knowledge-base/    ← INDEX.md + papers/<子领域>/(子领域数与篇数一律以 INDEX.md 为准)
 │           ├── scripts/
 │           │   ├── card_generator.py   ← 小红书卡片生成器(HTML/CSS+Chromium)
 │           │   ├── figcrop.py          ← 论文图自动裁切(亮度投影找真实边界,见 SKILL Step 8)
@@ -66,8 +66,11 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - **Step 5–8 内容先行**:第一版即给**文字稿 + 粗裁图(内联)**→ 自动事实核查 → 生产(渲染卡片)→ 打磨(图多轮裁干净)。最贵的渲染推到事实锁定之后。
 - **卡片渲染内核 = HTML/CSS + Chromium**(2026-06-22 从 Pillow 迁移):`card_generator.py` 四个方法签名不变(`cover/figure/text/tail_card`),内核改填 HTML 模板再经 `npx playwright screenshot` 截图。收益:自动流式排版(不再手算坐标/静默溢出)、`**关键词**` 句中高亮、上标原生;代价:多一个 Chromium 依赖。调版式改 CSS,可直接浏览器预览。
 - **Content Standards**:标物种、数字回溯原文、慎用"首次/都/all"、术语分层、中文源核实公司名;**图卡用"结论→读图→转场"链**(若当期同时出 thread,两者共用提纲、各自独立撰写);**图永远呈现给用户 = 存盘 + `SendUserFile`**(`Read` 只进模型上下文、桌面端会折叠成一行,用户看不到;浏览器 screenshot 同理)。
-- **知识库 23 子领域(篇数见 INDEX.md)**,`population-dynamics` 线延伸到 de Vicente 2026(Sadtler 2014 → Busch 2025 → de Vicente 2026);`non-invasive` 新增 AAD(听觉注意解码)子线;`performance-variability`(认知状态/注意/信号变异,横跨非侵入与皮层内)为 2026-06-23 新建子领域;`affective-bci`(情感/EEG 情绪解码) 与 `emg-motor-unit`(外周肌电/运动单位解码→神经驱动) 为 2026-06-29 新建;`neuromodulation` 下 2026-06-30 新增 current-steering(电流聚焦/刺激空间选择性)子簇;`cancer-neuroscience`(神经元活动↔胶质瘤电/突触整合、用神经记录监测肿瘤)为 2026-07-09 新建;`functional-ultrasound`(功能超声成像 fUSI/血流动力学神经接口:Macé 2011→Norman 2021→Griggs 2024→Rabut 2024→Lin 2026)为 2026-07-11 新建;`presurgical-mapping`(术前无创功能定位,先建语言区线:Ojemann DCS 金标准→Pascual-Leone 1991→Papanicolaou 2004 MEG→Picht 2013 nrTMS vs DCS→Tarapore 2013→Krieg 2017→Autti 2026 MEG 引导 nrTMS 时机)与 `visual-prosthesis`(视觉假体/视网膜电刺激:Humayun 1996→Argus II/Alpha-IMS/PRIMA + Chichilnisky 精准刺激线)为 2026-07-12 新建;`neuromodulation` 2026-07-12 增 Liu 2026(加速度计 vs beta 生物标志物);`presurgical-mapping` 2026-07-13 增 Autti 2026(用个人 MEG 峰值个体化 nrTMS 发放时机 PTI,best PTI≈MEG 峰值−132ms,R=0.713);`passive-bci`(被动脑机接口/神经自适应:把自发认知状态当隐式输入让机器适应,抽取源 Zander & Kothe 2011;Parra 2003 ERN 纠错→Kohlmorgen 2007 真实驾驶工作负荷→Ferrez 2008 交互 ErrP→Zander 2016 PNAS neuroadaptive 闭环→Aricò 2016 空管部署)为 2026-07-14 新建(6 篇);同日日报选题 Pan 2026(首个动态 VR 游戏中实时闭环解码交互意图:gaze+被动EEG,人类23人;affordance 稳在77.8–83.5%,approach-avoidance 仅价值两极可解 coins/bombs 80.8%、价值模糊塌回随机59%;划出"可解码信号=效价"边界)入库,并补横向对照 Reddy 2024(SPN 隐式选择,CHI '24)、Dehais 2022(dual passive-reactive,Front Neuroergonomics),`passive-bci` 增至 9 篇;`invasive-recording` 2026-07-16 增 Jafri 2026(把"白质 sEEG 触点=灰质衰减副本"证伪:谱参数化拆 offset/exponent,衰减只能动前者而实测双降且 19 人无一例外,delta 中心频率位移更免疫于幅度缩放;仅凭信号分类组织 AUC 0.92。给 buzsaki-2012 补实证:"生成机制不同"对、"那里什么都没有"错。**本篇不做解码**,增益出处是 Li 2021),`invasive-recording` 增至 10 篇;2026-07-17 补库两条线并新建 `semantic-decoding`(语义解码/读概念非发音,抽取源 Rybář&Daly 2022 综述,Patterson 2007→Mitchell 2008→Rupp 2017 属性零样本标杆→Nagata 2022,11 篇)、`invasive-recording` 加 sEEG 植入精度子簇(Bancaud 1970→Cardinale 2013 基准→Vakharia 2021 唯一 RCT→Abbas 2026 meta,共识"机器人买到时间不是精度",8 篇);同日日报选题 Thurairajah 2026(3176 条轨迹拆解 sEEG 精度=轨迹几何属性、已知因素只解释 15%)入库,`invasive-recording` 增至 19 篇。**补库流程 2026-07-14 起自动写入,不再逐篇征询用户(见记忆 `dailybci-modeb-autoadd`)。背景先行+一次一小块见记忆 `background-first-one-chunk-at-a-time`。**
-- **2026-07-30**:`electrode-hardware` 增至 27 篇——补入 Steinmetz 2021(Neuropixels 2.0,四针脚/5120 点/384 通道的事实标准)与当日选题 Chang 2026(Quad Base,同时通道 384→1536;用同一份记录自我抽子集作对照,证明一次 8 针脚同时记录检出的跨区 Granger 连接数超过四次连续 2 针脚记录的总和)。成品 17 卡在 `output/2026-07-30-quadbase/`,自制 SVG 脚本 `scripts/series/quadbase_figs.py`、卡片脚本 `scripts/series/build_quadbase_cards.py`。本期同时定下两条规则:**X thread 默认不出**、**对话与成品一律不用 LaTeX 记号**;由本期派生的两个方法论期已出:`output/2026-07-31-identifiability/`(跨 session 可辨识性与缝合,17 卡)、`output/2026-08-01-dlag/`(DLAG/mDLAG 方法论,18 卡;脚本 `series/dlag_figs.py` + `series/build_dlag_cards.py`)。
+- **知识库的唯一权威是 `knowledge-base/INDEX.md`**——子领域数、篇数、每条线的演进脉络与各子领域的"评估新工作先过一遍"硬约束,全部写在那里,**本文件不复述、也不做增量流水账**。改动知识库后只需保证 INDEX.md 表头的 `Total papers` 与 `## <子领域> (N papers)` 跟实际文件数对得上(校验:`find papers -name '*.md' | wc -l`)。
+- **补库不逐篇征询用户**,搜到的 milestone 候选默认全部自动写入(见记忆 `dailybci-modeb-autoadd`)。
+- **背景先行 + 一次一小块**是全流程硬规则,不限 Step 4(见记忆 `background-first-one-chunk-at-a-time`)。
+- **X thread 默认不出**,成品只有中文小红书图卡;**对话与成品一律不用 LaTeX 记号**(2026-07-30 定)。
+- **每期一对脚本**:自制 SVG 示意图 `scripts/series/<slug>_figs.py` + 图卡装配 `scripts/series/build_<slug>_cards.py`。新一期照抄最近一期改内容即可,不要另起结构。
 
 ---
 
@@ -102,4 +105,4 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 ## 6. 已知待留意项(首次在本机跑时)
 
 - **抓论文全文+图(Step 3)**:选题即经浏览器一次性下全文 PDF + 全部图到本地(PyMuPDF 抽全文/抽图),之后全程读本地(实测 curl 抓 bioRxiv/PMC 会被 Cloudflare/JS 拦,故走浏览器)。无浏览器时(如 cron / `claude -p`)才退回 curl + BioC API,需先确认 `pip install pymupdf` 成功。
-- **卡片渲染(Step 7/8)**:渲染靠 `npx playwright screenshot` 起 Chromium。首次跑前先 `npx playwright install chromium`;报"找不到浏览器"就是没装。CJK 字形由自带 `fonts/HeitiSC-Subset.ttf`(简体黑体子集 ~6MB)经 `@font-face` 锁定,不再依赖系统字体 / 字体集合 index,字形稳定。
+- **卡片渲染(Step 7/8)**:渲染靠 `npx playwright screenshot` 起 Chromium。首次跑前先 `npx playwright install chromium`;报"找不到浏览器"就是没装。**注意 playwright 自身升级后旧 Chromium 会失配、同样报这个错**(2026-08-03 踩到:报 `Executable doesn't exist at .../chromium_headless_shell-<新版本号>`),重跑一次 `npx playwright install chromium` 即可,约 95 MB、一两分钟。CJK 字形由自带 `fonts/HeitiSC-Subset.ttf`(简体黑体子集 ~6MB)经 `@font-face` 锁定,不再依赖系统字体 / 字体集合 index,字形稳定。

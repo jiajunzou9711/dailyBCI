@@ -1,9 +1,9 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-07-31
-Total papers: 321
+Last updated: 2026-08-02
+Total papers: 334
 
-## speech-decoding (17 papers)
+## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
 - [Leuthardt 2011](papers/speech-decoding/leuthardt-2011-ecog-speech-bci.md) — 首个ECoG语音信号BCI控制，开创用说话意图控制BCI的ECoG路线
 - [Bouchard 2013](papers/speech-decoding/bouchard-2013-sensorimotor-speech-organization.md) — 发现语音运动皮层编码发音动作（非声学特征），奠定articulatory decoding基础
@@ -11,16 +11,19 @@ Total papers: 321
 - [Anumanchipalli 2019](papers/speech-decoding/anumanchipalli-2019-speech-synthesis-neural-decoding.md) — 首次从脑活动合成可理解语音，确立两阶段解码范式（神经→运动→声音）
 - [Makin 2020](papers/speech-decoding/makin-2020-machine-translation-cortex-text.md) — 首个encoder-decoder框架brain-to-text，引入sequence-to-sequence范式
 - [Moses 2021](papers/speech-decoding/moses-2021-neuroprosthesis-anarthria.md) — 首次在瘫痪失语患者解码语音（PANCHO研究），50词，15词/分钟，NEJM
-- [Willett 2023](papers/speech-decoding/willett-2023-high-performance-speech.md) — Phoneme-level解码，62词/分钟，125k词汇，证明phoneme路线可扩展
+- [Willett 2023](papers/speech-decoding/willett-2023-high-performance-speech.md) — Phoneme-level解码，62词/分钟，125k词汇 WER 23.8%（50词词汇表 WER 9.1%），证明phoneme路线可扩展
 - [Metzger 2023](papers/speech-decoding/metzger-2023-speech-avatar-neuroprosthesis.md) — 78词/分钟+虚拟头像面部动画，首个多模态speech BCI
 - [Luo 2023](papers/speech-decoding/luo-2023-stable-als-speech-bci.md) — ALS患者3个月无校准稳定使用，证明ECoG长期临床可行性
 - [Card 2024](papers/speech-decoding/card-2024-accurate-rapidly-calibrating.md) — 97.5%准确率，125k词汇，<30分钟校准，8个月稳定，NEJM
 - [Silva 2024](papers/speech-decoding/silva-2024-bilingual-speech-neuroprosthesis.md) — 首个双语speech BCI，发现跨语言共享articulatory表征
-- [Wairagkar 2025](papers/speech-decoding/wairagkar-2025-instantaneous-voice-synthesis.md) — 80ms延迟流式语音合成，个性化声音，接近自然对话节奏
+- [Wairagkar 2025](papers/speech-decoding/wairagkar-2025-instantaneous-voice-synthesis.md) — **皮层内** brain-to-voice：256 电极直合成语音波形(不经文本)+闭环音频反馈，端到端约 80–130ms；首次实时解出**副语言**维度(语调/重音/三级音高可唱旋律/语速)。听者六选一中位 100%，但**开放转写音素错误率仍 43.6%**(人类单被试 T15，Nature 644:145-152)
+- [Littlejohn 2025](papers/speech-decoding/littlejohn-2025-streaming-brain-to-voice.md) — 同年 brain-to-voice 的**另一条路线**：Chang 组高密度 **ECoG** + 流式 RNN-Transducer，80ms 增量在线合成，声音个性化到伤前嗓音(人类单被试 BRAVO-3「Ann」，脑桥卒中，Nat Neurosci 28:902-912)。**与 Wairagkar 2025 务必区分**：模态/团队/病因全不同
 - [Kunz 2025](papers/speech-decoding/kunz-2025-imagined-speech-decoding.md) — Cell：motor cortex inner speech表征+实时self-paced inner-speech BCI proof of concept（4名参与者表征分析，3名实时解码；50词WER 14-33%，125k词WER 26-54%）
 - [Yoon 2026](papers/speech-decoding/yoon-2026-deep-neural-ensembles.md) — 深度集成首次实时闭环验证(WER 33.7%→26.0%)；提出伪集成单解码器降算力，把优化轴从精度扩到可部署性
 - [Card 2026](papers/speech-decoding/card-2026-longterm-independent-bci.md) — 皮层内语音+光标BCI首次家庭自主长期使用：ALS患者19个月/3801小时/18.3万句、研究员不在场、保住全职工作；transformer达99.2%词准确率，信号18个月余弦相似度>0.6(同一患者T15，Nature Medicine)
 - [Wairagkar 2026](papers/speech-decoding/wairagkar-2026-brain2voice2-voice-synthesis.md) — 脑-语音合成首次跨过可懂度门槛：多模态因果Transformer(四路互补目标:连续声学/离散RVQ token/音素/自监督)+多尺度对抗，听者WER 5.24% vs前作43.75%(8×)、79%句零错；治回归损失抹糊辅音的根本问题(同队Wairagkar 2025续作，人类单被试T15，bioRxiv)
+
+- [Fogg 2026](papers/speech-decoding/fogg-2026-generalizable-speech.md) — **首次证明皮层内语音表征跨人共享到「解码器可整个冻结」的程度**：六名 BrainGate2 参与者数据合池训一个 transformer 音素解码器，对**每一位**都优于其单人模型(相对 WER 均降 51.1%；**T17 从 65.6%→23.1%**，把一个不可用的解码器拉回 2023 年 SOTA 水平)；闭环实时降 55.9%。承重设计是 **frozen-decoder 适配**——解码器全冻、新用户只训一个线性映射+tanh(约 0.26M，占全模型约 0.4%)，**T22 90 试次/约 17 分钟→WER 10.2%**，同数据从零训 SU 为 76.9%；左半球模型可适配到右半球。缩放 1→4 人 17.6%→9.5% **未饱和**。已排除深度(SU 加深不受益)与句子重叠(去重后仍胜出)两个混淆。**边界**：T15-Large 仅 14.3%(本人数据极多时收益缩水)、六人小样本、全英语、同一皮层内系统与脑区(人类 6 名，bioRxiv)
 
 ## semantic-decoding (12 papers)
 语义解码：从神经活动读出"此刻想的是哪个概念"，而非"嘴要怎么动"。与 speech-decoding 的根本差别是解码层级——后者 17 篇全押在发音/音素层(articulatory)，本线目标是概念层。milestone 抽取自 **Rybář & Daly 2022 (J Neural Eng 19, PRISMA 系统综述)** 的引用，理论侧锚定 Patterson 2007 / Ralph 2017 两篇 Nat Rev Neurosci。
@@ -106,7 +109,7 @@ Total papers: 321
 - [Metzger 2023](papers/signal-processing/metzger-2023-multimodal-speech-avatar-decoder.md) — 多模态speech/avatar decoder，把神经解码从文本扩展到声音与表情控制
 - [Card 2024](papers/signal-processing/card-2024-rapid-calibration-speech.md) — 快速校准speech decoder + online adaptation，推进临床可用的高准确率通信
 
-## non-invasive (28 papers)
+## non-invasive (39 papers)
 - [Farwell 1988](papers/non-invasive/farwell-1988-p300-speller.md) — P300 speller范式，6×6矩阵，定义非侵入BCI通信范式
 - [Wolpaw 1991](papers/non-invasive/wolpaw-1991-mu-rhythm-cursor.md) — 首个mu节律EEG光标控制，确立SMR-BCI路线
 - [Pfurtscheller 1997](papers/non-invasive/pfurtscheller-1997-motor-imagery-erd.md) — Motor imagery ERD/ERS，建立运动想象BCI神经生理学基础
@@ -119,6 +122,24 @@ Total papers: 321
 - [Brain2Qwerty 2026](papers/non-invasive/brain2qwerty-2026-meg-typing-decoding.md) — Meta FAIR用MEG解码"打字时脑活动"逐句成文：v1(Nat Neurosci,同步,CER 32%)→v2(preprint,异步,WER 39%≈61%词准确率)；CTC去掉按键时刻依赖(同步→异步/离线→在线)、三层+微调LLM、准确率随数据对数线性(r=−0.99)未见顶；接Defossez同组MEG(感知→产出)，局限:MEG大扫描仪+健康人真打字、迁移未证
 - [Ding 2025](papers/non-invasive/ding-2025-finger-mi-healthy.md) — 首次用头皮EEG实时控制individual-finger级机械手(健康熟练者，2指80.6%/3指60.6%)：把"逐指"从皮层内推到非侵入，He组非侵入逐指线起点
 - [Ding 2026](papers/non-invasive/ding-2026-finger-mi-stroke.md) — 首次在零经验中风患者用头皮EEG实现实时逐指机械手控制：2指83.5%/3指61.4%(随机50%/33%)、患侧≈健侧(d=0.18/0.42)、低频delta是信号；中风把精细运动编码重组成双侧/分散/低频，EEGNet跟住(He组，naïve中风≈其2025 Nat Commun健康熟练者)
+
+### OPM / 可穿戴 MEG 硬件线 (OPM-MEG instrumentation)
+脑磁图(MEG)的**仪器**这一格：从 SQUID(必须泡液氦、刚性阵列、被试不能动)换成光泵磁力计(OPM，室温工作、可贴头皮、可随头移动)之后，MEG 的哪些结构性限制被解开、又派生出哪些新限制。与 non-invasive 里既有的 MEG 条目(Defossez 2023、Brain2Qwerty 2026)分工明确：那些讲**用 MEG 解码什么**，本线讲**MEG 这台机器本身**。milestone 抽取自 **Brookes et al. (2022, Trends Neurosci 45:621-634)** 的引用。建于 2026-08-02。
+**三条硬约束，评估本线任何新工作时先过一遍：**
+1. **"贴近头皮"与"允许运动"是两件被分开解决的事**，别混为一谈：前者靠 scanner-cast 定制头模([[boto-2017-room-temperature-opm-meg]])，后者靠主动场置零线圈([[holmes-2018-biplanar-nulling-coils]])。宣称"信号更强"和宣称"能自由活动"承重在不同证据上。
+2. **"测到信号"≠"能做源定位"。** 源定位要求整个阵列、且每个传感器沿已知方向测量([[tierney-2019-opm-quantum-origins]])。[[zhang-2020-unshielded-earth-field-meg]] 在无屏蔽地磁场下测到了 alpha 与 M100，但只有 2 通道、未做源定位——这两步之间隔着很大一段。
+3. **截至 2022 年综述，"脱离被动屏蔽室"和"被试在房间里走动"仍是公开问题**([[brookes-2022-opm-meg-review]] Outstanding Questions)。任何声称跨过这两条的新工作，需核它跨的是哪一条、跨到什么程度。
+- [Cohen 1972](papers/non-invasive/cohen-1972-squid-meg.md) — MEG 的起点：用 **SQUID** 首次实用化地测到人脑自发磁场活动。同时定下此后半个世纪的技术底座与全部结构性限制——传感器泡在约 4 K 液氦里，因而必须刚性固定、离头皮约 2 cm、被试不能动
+- [Allred 2002](papers/non-invasive/allred-2002-serf-magnetometer.md) — 整条 OPM 路线的**物理前提**：提出 **SERF(自旋交换弛豫自由)** 工作区，靠加热蒸气使碰撞快到不破坏自旋相干，消除限制灵敏度的自旋交换弛豫。也埋下 OPM 的两个先天代价——传感器发热、且**只在近零场工作(动态范围约 3 nT)**，后者正是可穿戴 OPM 必须配主动屏蔽的根本原因
+- [Sander 2012](papers/non-invasive/sander-2012-chipscale-opm-meg.md) — 把 OPM 从"物理可行"推到"**几何上可阵列化**"：用芯片级原子磁力计测到人脑磁信号，此后 MEG 用的 OPM 才被做成约乐高积木大小的自包含单元，可穿戴头盔由此成立
+- [Iivanainen 2017](papers/non-invasive/iivanainen-2017-on-scalp-arrays.md) — 定量算清"贴近头皮"的取舍(仿真)：相对 SQUID 磁强计，法向 OPM 阵列信号功率高 **7.5×**、点扩散小 **2.4×**、信息容量明显更高，但**单偶极子定位精度三者相当**。收益主要在信号强度与分辨多源的能力。法向 vs 切向的体电流削减差异(**10% vs 72%**)解释了后续系统为何普遍测垂直头皮分量
+- [Boto 2017](papers/non-invasive/boto-2017-room-temperature-opm-meg.md) — 从仿真走向**人体实测**：室温 OPM + 按解剖定制的 3D 打印 scanner-cast 贴近头皮，与同被试常规 SQUID MEG 对照。**但传感器仍刚性固定、被试仍需静止**——"可穿戴"要到下一步才成立
+- [Holmes 2018](papers/non-invasive/holmes-2018-biplanar-nulling-coils.md) — 把瓶颈从传感器转到**磁场环境工程**，并给出此后的标准解法：双平面"指纹"绕线线圈生成三个均匀场 + 五个一阶梯度做主动置零。Bx 从 **21.8→0.47 nT**、dBx/dz 从 **7.4→0.55 nT/m**；置零后头模转动 **±34°**、平移 **±9.7 cm**，阵列上场变化仅约 **1 nT**。限制：只在头部上方**固定体积**内补偿，且仍在被动屏蔽室**内**
+- [Boto 2018](papers/non-invasive/boto-2018-wearable-meg-nature.md) — **可穿戴 MEG 奠基**(Nature 555:657-661)：OPM 头盔 + 主动置零合成一套系统，被试点头/伸展/喝水/打乒乓球时完成毫秒级记录。头动幅度 **>±10 cm**(常规 **<2 mm**)，残余场降约 **50×**、主梯度降约 **35×**，传感器噪声约 **15 fT/√Hz**；原型 **13 通道**、连接性演示 **26 通道**。**边界**：仍在被动屏蔽室内、场置零只覆盖固定体积，不允许在房间里走动
+- [Hill 2019](papers/non-invasive/hill-2019-lifespan-compliance.md) — 把 OPM 的收益扩到"**能扫的人群更广**"(lifespan compliance)：头盔可按头围贴合定制，破掉常规 MEG"一码通吃刚性壳"导致的小头者信号弱、覆盖不均。截至 2022 综述**仍无 0–1 岁婴儿 OPM-MEG 研究**(头盔重量婴儿承受不了)
+- [Tierney 2019](papers/non-invasive/tierney-2019-opm-quantum-origins.md) — 本线**方法学参考点**(NeuroImage 199:598-608)：从量子原理到多通道 MEG 数据处理的整链，重点是传感器标定与位置/朝向共配准。确立那条硬前提——**能否做源定位取决于能否稳定确定传感器几何**
+- [Zhang 2020](papers/non-invasive/zhang-2020-unshielded-earth-field-meg.md) — 另一条技术路线：放弃 SERF、改用可覆盖地磁场的 **AM-NMOR 标量磁力计**做双传感器梯度计，在**未屏蔽地磁场**下测到闭眼 alpha(7–13 Hz)与听觉诱发场 M100，梯度噪声约 **4 fT/cm·√Hz**。**关键边界：仅 2 通道、未做源定位**(北京大学 Hong Guo 组)
+- [Brookes 2022](papers/non-invasive/brookes-2022-opm-meg-review.md) — **本子线 milestone 抽取源**(Trends Neurosci 45:621-634，开放获取)。梳理 OPM 物理、屏蔽技术与应用；屏蔽链条 **60 µT(地磁)→5 nT(被动)→200 pT(被动+主动)**，屏蔽因子约 **300 000**；OPM 噪声本底约 **7–10 fT/√Hz** vs SQUID 约 **2–5 fT/√Hz**，明确指出 OPM 尚未达到 SQUID 噪声本底、**深部源 SQUID 可能仍占优**。Outstanding Questions 直接列出"可重构线圈让零场体积跟着人走""行走等大幅运动尚未演示""屏蔽仍笨重昂贵"
 
 ### 听觉注意解码 / neuro-steered hearing (AAD line)
 - [Mesgarani & Chang 2012](papers/non-invasive/mesgarani-2012-attended-speaker-cortical.md) — 人类ECoG首证听觉皮层选择性重建被注意说话者，AAD的神经科学地基
