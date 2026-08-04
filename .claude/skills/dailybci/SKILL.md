@@ -150,19 +150,44 @@ Find BCI-related papers and news from the past 48 hours. **Browser-first, search
 - **bioRxiv neuroscience, newest first** (clinical/preprint BCI lands here): the search-results page sorted by publication date descending, e.g. `biorxiv.org/search/brain-computer+interface numresults:30 sort:publication-date direction:descending` (URL-encode the spaces). Also worth a pass: `neural+decoding`, `speech+BCI`, `intracortical`.
 - **arXiv recent** (computational/ML-for-neuro): `arxiv.org/list/q-bio.NC/recent` and `arxiv.org/list/eess.SP/recent`. Note arXiv doesn't post on weekends — on Sat/Sun the freshest batch is Friday's.
 - **Company/regulatory & researcher social** — open the source pages directly (Neuralink/Synchron/Paradromics/Precision blogs, FDA, X/Twitter of domain researchers).
-- Then use `WebSearch` to **supplement** — fill in journal (Nature/Science/NEJM) coverage, news framing, and to cross-check anything the listings surfaced. Search is the second pass, not the first.
+- Then use `WebSearch` to **supplement** — news framing, and cross-checking anything the listings surfaced. Search is the second pass, not the first.
+
+**⛔ 期刊正刊必须每天单独扫一遍（2026-08-04 用户定，写死）。** 预印本服务器只覆盖 BCI 的一部分——**很多最重要的工作直接发正刊、从不上 bioRxiv/arXiv**（尤其是临床试验、系统神经科学、器件工程）。只扫 bioRxiv + arXiv 会系统性漏掉这一整类。所以每天 Step 1 里，除预印本外，**必须再扫一遍下面这批期刊的「最新上线」页**，与预印本并列作为候选来源，不要降级成"WebSearch 顺带补一下"：
+
+| 期刊 | 最新上线页 |
+|---|---|
+| Nature | `nature.com/nature/research-articles` |
+| Science | `science.org/toc/science/0/0`（Current / First Release） |
+| Cell | `cell.com/cell/newarticles` |
+| Neuron | `cell.com/neuron/newarticles` |
+| Nature Neuroscience | `nature.com/neuro/research-articles` |
+| Nature Medicine | `nature.com/nm/research-articles` |
+| Nature Biomedical Engineering | `nature.com/natbiomedeng/research-articles` |
+| Current Biology | `cell.com/current-biology/newarticles` |
+| Nature Communications | `nature.com/ncomms/research-articles`（按 neuroscience 主题筛） |
+| Science Advances | `science.org/toc/sciadv/0/0` |
+| NEJM | `nejm.org/browse/specialty/neurology-neurosurgery` |
+
+做法：浏览器打开各刊的 new-articles / 最新目录页 → `get_page_text` → 按 BCI 关键词过一遍标题。刊多时可分两轮（Nature 系一轮、Cell 系 + Science 系一轮）。**扫过哪些刊要在给用户的 Step 1/2 汇报里如实说明**（扫了什么、有没有命中），不要默认用户知道你扫过。命中的正刊工作与预印本候选**平等参与 Step 2 的候选表**；正刊是 version of record，同等质量下优先于预印本。
 
 **Fallback path — no browser (headless / cron / `claude -p`).** Run at least 3 different `WebSearch` queries to cast a wide net, and pull preprint text via open APIs (e.g. NCBI BioC) rather than `curl` on the gated sites. Be explicit with the user that without a browser the freshest 48h may be under-covered due to index lag.
 
 **Honesty about the window:** the field does not produce a landmark every day. If the strict past-48h window is genuinely thin (common on weekends), say so in one line and present the most significant *recent* (this-week) work instead — degrade gracefully, never skip a day, never pad the freshness column.
 
 Source priority:
-1. **Academic preprints & journals** — arXiv (q-bio.NC, cs.AI+neuro), bioRxiv, medRxiv, Nature, Science, NEJM
+1. **Academic preprints & journals（两条腿，缺一不可）** — 预印本：arXiv (q-bio.NC, eess.SP, cs.AI+neuro)、bioRxiv、medRxiv；**正刊：Nature / Science / Cell / Neuron / Nature Neuroscience / Nature Medicine / Nature Biomedical Engineering / Current Biology / Nature Communications / Science Advances / NEJM，每天单独扫最新上线页**（表见上）
 2. **Conferences** — if SfN, NeurIPS, BCI Society, IEEE EMBS, or similar is happening, prioritize its outputs
 3. **Researcher social media** — X/Twitter posts from domain researchers
 4. **Company & regulatory** — Neuralink, Synchron, Paradromics, Precision Neuroscience, FDA, NIH BRAIN Initiative
 
 Search terms: "brain-computer interface", "BCI", "neural decoding", "neuroprosthesis", "ECoG", "intracortical", "neural interface", "brain-machine interface", "speech BCI", "motor decoding", "closed-loop neural", combined with date-relevant terms.
+
+**⛔ 不许只靠标题关键词过滤候选（2026-08-04 因实际漏检而写死）。** 起因：当期用 bioRxiv API 拉全窗口后跑关键词正则，把 *Linguistic contextualization in the human hippocampus* 滤掉了——该标题不含任何 BCI 关键词，内容却是**人类海马单神经元 + 自然语音**，与知识库 `ismail-2026-naturalistic-word-meaning` 同组同线，本该进候选表。**关键词过滤的假阴性比假阳性危险得多**：假阳性你一眼就丢掉，假阴性你根本不知道自己漏了。所以：
+1. **按类目全量看标题，别按关键词过滤。** bioRxiv/medRxiv 用 API 拉日期区间（`api.biorxiv.org/details/biorxiv/<from>/<to>/<cursor>`，每页 30 条，翻到 `total` 为止），筛出 `neuroscience` + `bioengineering` 类目后，**把标题整张列出来自己逐条看**。48h 窗口通常只有 40–60 篇，人眼扫得完。
+2. **标题看不出的就读摘要**，别猜。凡是涉及"人类颅内记录/单神经元/自然刺激/闭环/解码/植入/皮层刺激"的，哪怕标题很像纯认知神经科学，都读一遍摘要再决定。
+3. **关键词正则只用来排序、不用来删除**——命中的排前面看，未命中的仍然要过一遍标题。
+
+**⛔ 报告"新鲜度"前必须核版本号 / 原始公开日期（同日写死）。** 同期还踩到第二个坑：bioRxiv API 的 `date` 是**该版本**的上线日，正刊的上线日同理。当期看起来落在 48h 内的两条，实为旧工作的新版本——海马那篇是 **v3**（原始预印本 2025-06），Nature Neuroscience 那台全息中尺度显微镜是 **2026-08-03 正刊**但预印本 **2023** 年就公开了。**把改版日/见刊日当成"新工作"报给用户，是让日报的"新"失真。** 所以候选表的「时效」列必须分开写两件事：**这个版本的日期** 与 **这项工作首次公开的日期**，例如"8/3 正刊 ✓，预印本 2023 年已公开"。核法：bioRxiv API 的 `version` 字段、或 DOI 里的年份（`10.1101/2023.xx.xx` 即 2023 年首发）。
 
 ### Step 2: Present 2-3 candidate topics for user selection
 
@@ -454,7 +479,14 @@ Card sequence: 封面卡 → **目录卡（本期路线,强制,见下）** → �
 2. **目录卡 = 强制的第 2 张卡**:紧跟封面,用自制 SVG 做成分行分点的"本期路线"图——每一步 = 序号(圆号) + 一句标题 + 一句灰色副标题,让读者一眼扫完本期要讲的 5-6 步。做法直接复用 `series/eeg_drift_figs.py` 的 `toc()`(圆号 + 主标题 + 灰副标题的卡片列表),日报同样调它、把步骤换成当天内容的逻辑分段即可。**这一张计入 18 卡上限**,出提纲数卡时就把它数进去。
 3. 三者分工:**封面给读者看(吸引点开)、发布标题给平台搜(见下 §发布标题+话题标签)、目录给导航(知道要讲什么)**——不要混在一张卡上硬塞。
 
-**§发布标题 + 话题标签(所有小红书图文通用,日报与专题一律照办;2026-07-24 用户定「不仅专题,文献解读也都需要」)。渲染完全部图卡后自动做,作为出稿最后一步,产出「标题打分表 + 标签建议 + 推荐」,决定权交用户。**
+**⛔ 最终交付固定是三件套,缺一不可(2026-08-04 用户定,写死)。** 渲染完图卡后,一次性交付下面三样,**每一样都做成可直接复制粘贴的形式**(标题/标签/摘要一律放进代码块,不要混在叙述里让用户自己摘):
+1. **图卡定稿** —— 全部 PNG 经 `SendUserFile` 推给用户;
+2. **小红书发布标题 + 话题标签建议** —— 见下方 §发布标题 + 话题标签(先采真实搜索词、再造句、再打分);
+3. **微信公众平台摘要** —— 小红书与公众号是两个平台,文案形态不同,**不能拿小红书的标题或封面句顶替**。公众号的形态是「标题 + 下方一段摘要」,所以固定给两版:**(a) ≤120 字的摘要**(公众号摘要字段的官方上限,必须能整段塞进字段)、**(b) 约 200–300 字的正文开头导语**(可选,用户想放正文开头时用)。两版都守本技能的表达规则:科学平实、少修辞零拟人、承重数字带出处、不吹。
+
+**⛔ 交付到「最终稿」为止,不要顺势去跑 Step 9(2026-08-04 用户定,写死)。** 三件套交付完就**停下来等用户确认稿子**。用户明确说「这稿没问题」之后,才进入 Step 9 收尾(知识库入库 / 清理 scratch / neat-freak / commit)。**理由:Step 9 会写知识库、删文件、提交 git,都是基于「这一版就是定稿」这个前提;稿子还可能改的时候跑它,产出的入库摘要与提交都要返工。** 记忆 `dailybci-step9-autonomous`(Step 9 内部 a→d 全自动、不逐项征询)仍然有效——它管的是**进入 Step 9 之后**怎么跑,不是**什么时候进入**。
+
+**§发布标题 + 话题标签(所有小红书图文通用,日报与专题一律照办;2026-07-24 用户定「不仅专题,文献解读也都需要」)。渲染完全部图卡后自动做,产出「标题打分表 + 标签建议 + 推荐」,决定权交用户。**
 
 **先分清两种标题:封面标题**(印卡上,给读者看、吸引点开)守既有规则=**简短肯定断言句**(见 Content Standards / 写作偏好);**发布标题**(小红书图文的文字标题,给平台搜索/推流)**以匹配真实搜索词为准,哪怕是疑问形式**(如"为什么脑电会漂"本身就是真实联想词)——它唯一目的是被搜到,此处不受"避免疑问句"约束。
 
@@ -527,7 +559,9 @@ Present all final cards for last confirmation before posting.
 - **长度**:评论区体量,每条几句话;给 2–3 个不同侧重(如「边学边做」/「代码翻车自黑」/「给读者台阶」)供挑选。
 - 这是**可选的附加交付**:用户想用就复制,不用也不影响成品。(2026-07-22 用户定:每期定稿后固定给几条彩蛋留言选项,取材真实花絮、给读者优越感。)
 
-### Step 9: Close out(用户对最终版图卡+thread明确确认后,一次性走完)
+### Step 9: Close out(**用户对最终稿明确确认之后**才启动,启动后一次性走完)
+
+> **进入条件(2026-08-04 写死):** Step 8 交付「三件套」(图卡定稿 + 标题标签 + 公众号摘要)后**停下**,等用户给出「这稿没问题」之类的明确确认。**没拿到确认就不许进 Step 9。** 详见 Step 7 顶部的两条写死条款。
 
 **这是一个单一的收尾步骤,不是四个独立环节**——用户在 Step 8 给出最终确认后,以下 a→d 顺序执行、中途不再逐项停下来问,除非某一步本身要求用户表态(知识库入库的判断、删除前的确认):
 

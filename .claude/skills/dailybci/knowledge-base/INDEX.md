@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-02
-Total papers: 334
+Last updated: 2026-08-04
+Total papers: 349
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -271,7 +271,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Johnson 2020](papers/neuromodulation/johnson-2020-dose-dependent-tacs-spike-timing.md) — 清醒猕猴单神经元记录测出**剂量依赖**夹带，并归纳出两类响应(burst 性增加 / 相位夹带)；剂量-反应是走向可控协议的前提(猕猴)
 - [Labruna 2025](papers/neuromodulation/labruna-2025-ktmp-method.md) — kTMP 方法学奠基：改用**磁感应**产生连续千赫兹窄带电场绕开头皮电流瓶颈，10 分钟在 M1 诱导约 **2.0 V/m**、提升皮层兴奋性且几乎无体感(仅听觉音调，便于双盲)；诚实报告 AM 相对非调制无额外增益(人类，Ivry/Peterchev，eLife)
 
-## optical-bci (8 papers)
+## optical-bci (9 papers)
 光学脑机接口：用钙成像(而非电极)读出神经活动来驱动闭环解码。相对电生理 BCI 的独有能力是**知道每个参与细胞的身份、层次、类型与空间位置**，因而既是工程路线也是研究工具；代价是钙信号相对动作电位的时间分辨率与信噪比。milestone 抽取自 Hira R. (2024, Neurophotonics 11:033405) 的多光子闭环/BMI 综述。建于 2026-07-20。
 - [Fetz 1969](papers/optical-bci/fetz-1969-operant-conditioning-cortical-units.md) — BCI 的思想原点：猕猴经操作性条件反射把**新分离**单神经元的放电提高到基线 **50%–500%**，证明神经活动可被任意调控、不必绑定自然运动输出。本线全部工作沿用这套范式、只把电极换成光学记录(猕猴)
 - [Ghosh 2011](papers/optical-bci/ghosh-2011-miniaturized-fluorescence-microscope.md) — miniscope 硬件起点：**1.9 g** 集成荧光显微镜，自由活动小鼠上约 0.5 mm² 视野同时追踪 >200 个浦肯野细胞。单光子宽场是其可及性来源，也带来先天代价——离焦背景荧光(小鼠，Schnitzer 组)
@@ -281,6 +281,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Mitani 2018](papers/optical-bci/mitani-2018-inhibitory-neuron-bci.md) — 首次把**细胞类型**作为 BCI 自变量：PV/SOM/VIP 三类中间神经元都能学会，但策略亚型特异(PV 压低 N−，SOM/VIP 抬高 N+)。电极分不清这三类(小鼠，Komiyama 组)
 - [Zhang 2018](papers/optical-bci/zhang-2018-closed-loop-all-optical.md) — 闭环**全光学**：成像在线读出 + 双光子光遗传实时定制写入，行为进行中操纵回路。对应电生理双向接口的光学版本，但精度到单细胞(小鼠，Häusser 组)
 - [Trautmann 2021](papers/optical-bci/trautmann-2021-optical-bci-macaque.md) — 光学 BCI 推进到**非人灵长类**：胞体因光子散射不可及，改成像顶树突接入 PMd/M1，在线解码运动方向；CLARITY 回溯确认许多树突来自第 5 层输出神经元(含疑似 Betz 细胞)(猕猴，Shenoy/Deisseroth 组)
+- [Abdeladim 2026](papers/optical-bci/abdeladim-2026-holographic-mesoscope.md) — 把 [[zhang-2018-closed-loop-all-optical]] 的全光学读写从**单视野推到跨脑区**(Nat Neurosci 29:2023–2035)。解法是**两级寻址**：SLM 可及范围(约 950×990 µm，接近该放大倍率理论极限)尺寸不变，加一对振镜(±9°→样品面 ±1.4 mm)把它整体平移，视野切成 81 个 350 µm 格；光刺激视野达 **3.2×3.2 mm²**，约为此前十倍。绕开"做更大 SLM"(更大偏折角需更细像素，代价是衍射效率下降+像素串扰)。实测 PPSF 横向 **23–38 µm**、轴向 **35–77 µm**，目标细胞 **70%** 显著响应。两个承重结果：①**跨区可解**——刺激 LM，完全排除 LM 区后仅用其他视区仍解出写入的是哪一组，**0.65±0.02**(随机 0.5)；②**符号翻转**——同一次扰动 follower cells 净影响本地 **−0.19±0.02**、下游 **+0.1±0.01**(P=4.97×10⁻²⁶)。**本地净抑制属确证([[chettih-2019]] 等)，新的是两者能同批试次同时测出**。边界：结论依赖 follower cells 界定、朝向传递效应量小(0.271 vs 0.243, P=0.04)、"首台"措辞正刊已收窄(小鼠，Adesnik 组·UC Berkeley)
 
 ## locomotion (6 papers)
 - [Harkema 2011](papers/locomotion/harkema-2011-epidural-stimulation-standing.md) — 首次硬膜外脊髓刺激恢复完全瘫痪者站立和步进，颠覆不可恢复教条
@@ -336,6 +337,35 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Marin-Llobet 2026 (NEURRATOR)](papers/ai-neural-modeling/marin-llobet-2026-neurrator-single-cell-narration.md) — 首次把"神经活动→自由文本旁白"推到单神经元级(小鼠Neuropixels)：动作电位→冻结CLIP→冻结LLaVA零语言端训练；同一画面PV/SST讲车、VIP讲光影，把细胞类型从分类目标变成可用语言查询的功能探针(76%认型)
 - [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
 - [Ismail 2026 (naturalistic word meaning)](papers/ai-neural-modeling/ismail-2026-naturalistic-word-meaning.md) — 首次从**被动录的日常自然语音**(21患者/871h/527万词)估计**人类单神经元**对词义的编码：Behnke-Fried 微丝深部电极，全自动转录+区分说话人+检动作电位，无人工标注/分选；编码全患者显著、10类语义解码20.9%(随机10%)；自己说>环境语音2.42×(注意力)、自动化≈人工精标；把神经→语义从受控刺激推到零控制日常语音+百万词级(Baylor·Hayden/Sheth/Provenza，bioRxiv)
+
+## brain-encoding-models (14 papers)
+**预测脑活动本身**这一格——与全库其余子领域方向相反：那些是"从脑活动读出外界"（解码），本线是"给定外界或给定当前状态，预测脑活动会是什么"。建于 2026-08-04。本线分两条互不相同的研究纲领，评估任何新工作前先判定它落在哪一条：
+- **A · 编码模型（刺激 → 脑响应）**：前向映射，问"给定这个刺激，各体素/电极响应多大"。milestone 抽取自 **Naselaris et al. (2011, NeuroImage 56:400–410)**。
+- **B · 全脑动力学模型（当前状态 → 后续演化）**：时间演化，问"给定此刻的脑状态与连接结构，接下来怎么走"。milestone 抽取自 **Breakspear (2017, Nat Neurosci 20:340–352)**。
+
+**四条硬约束，评估本线任何新工作时先过一遍：**
+1. **必须在留出的、训练中未出现过的刺激上评估**，且优先看大候选集 identification 而非分类准确率（[[naselaris-2011-encoding-decoding-fmri]] 定的准则）。只报告训练分布内拟合度的工作，方法学上落后于 2008 年。
+2. **"更大的模型/更多数据"本身能带来对数线性增益**（[[antonello-2023-scaling-laws-encoding]]：125M→30B 约 +15%）。一项新工作的增益若能被换更大骨干解释掉，就不构成方法学增量。
+3. **B 线的两个零假设**：静息态慢波动可由连接组+传导延迟+噪声直接产生（[[deco-2009-coupling-delay-noise]]）；"结构决定功能"在长时间窗成立、短时间窗大量动态无法由结构解释（[[honey-2007-network-structure-shapes-fc]]）。任何赋予自发活动功能意义的说法都需先排除这两条。
+4. **自称"因果"要核它的因果性来自哪里**——来自实验操纵 + 生成模型反演（[[friston-2003-dynamic-causal-modelling]]），还是仅来自时序上的先后（后者不构成因果）。
+
+### A · 编码模型线
+- [Kay 2008](papers/brain-encoding-models/kay-2008-identifying-natural-images.md) — 路线起点(Nature 452:352–355)：对每个体素拟合 Gabor 感受野编码模型（空间位置/朝向/空间频率调谐），据此在大候选集中指认被试看的是**哪一张从未测量过的新自然图像**；性能超过只用视网膜拓扑的模型，说明空间调谐不足以解释。把 fMRI 解码从"已知类别选一"推进到"对未见刺激泛化"(人类)
+- [Naselaris 2011](papers/brain-encoding-models/naselaris-2011-encoding-decoding-fmri.md) — **A 线 milestone 抽取源**(NeuroImage 56:400–410)：把编码与解码写进同一形式框架，论证编码模型**指定了完整前向生成过程、原则上可推出最优解码器**，而解码器不唯一确定编码模型，故编码模型更一般、可证伪性更强。确立三条评价准则：特征空间的选择即科学假设、必须在留出刺激上评估、identification 严于分类
+- [Nishimoto 2011](papers/brain-encoding-models/nishimoto-2011-reconstructing-movies.md) — 把编码模型扩到**时间维度**(Curr Biol 21:1641–1646)：运动能量模型把"视觉快、BOLD 慢"这一错配显式拆成两级（时空 Gabor → 血流动力学卷积），配自然影片先验的贝叶斯解码器。百万量级候选片段中把刺激时刻定位在 **±1 秒内的比例 95%**。今日全部"自然主义刺激 + 编码模型"工作的问题设定源头(人类fMRI)
+- [Yamins 2014](papers/brain-encoding-models/yamins-2014-performance-optimized-models.md) — 确立"**任务优化即模型搜索**"(PNAS 111:8619–8624)：不手工设计特征，改在物体识别任务上优化分层网络、取各层激活作特征空间。识别性能与单个 IT 单元预测力强相关；高性能网络输出层预测 IT、**中间层预测 V4**。此后语言/语音编码模型全部沿用此范式。**边界：层级对应是相关证据，不等于机制等同**(猕猴)
+- [Schrimpf 2021](papers/brain-encoding-models/schrimpf-2021-neural-architecture-language.md) — 语言侧变成可比较的基准问题(PNAS 118:e2105646118)：**43 个**模型 × fMRI+ECoG+阅读时间统一评测；最好的 transformer 解释句子诱发响应中**接近 100% 的可解释方差**；**下一个词预测**能力（而非其他语言任务）预测神经与行为拟合；架构本身即有实质贡献。**引用须带"可解释方差"这一限定**(人类)
+- [Caucheteux & King 2022](papers/brain-encoding-models/caucheteux-2022-brains-algorithms-converge.md) — 与 Schrimpf 2021 独立同结论(Commun Biol 5:134，**102 名**被试/400 句/fMRI+MEG)：脑-模型相似度主要取决于**从上下文预测词**的能力。两条独立证据链使该结论比任一单篇更可靠；MEG 把结论从"哪里像"扩到"什么时候像"。作者与 [[defossez-2023-meta-meg-speech]]、[[brain2qwerty-2026-meg-typing-decoding]] 同组(人类)
+- [Antonello 2023](papers/brain-encoding-models/antonello-2023-scaling-laws-encoding.md) — 缩放规律(NeurIPS 2023)：脑预测性能随模型规模**对数线性**提升，OPT/LLaMA **125M→30B** 区间编码性能约 **+15%**；放大 fMRI 训练集规模有同样的对数线性行为；声学模型(HuBERT/WavLM/Whisper)提升幅度相当。**与 EEG 侧 [[liu-2026-eeg-fm-benchmark]] 的 "larger≠better" 形成对照——缩放行为不能跨模态假定**(人类fMRI，3被试)
+- [Tuckute 2024](papers/brain-encoding-models/tuckute-2024-driving-suppressing-language-network.md) — 编码模型从"描述"变成"**控制**"(Nat Hum Behav 8:544–561)：先在 **1000 句**上拟合 GPT 类编码模型，再反用它挑出预测会最大化/最小化语言网络响应的新句子，在**新被试**身上实测兑现；**意外性与语言良构性**是响应强度的主要决定因素。**本线与 BCI 最接近的一格**——首次给 BCI 的输入侧（如何设计刺激驱动特定回路）提供可计算的设计工具(人类fMRI)
+
+### B · 全脑动力学线
+- [Wilson & Cowan 1972](papers/brain-encoding-models/wilson-cowan-1972-excitatory-inhibitory.md) — 神经质量模型奠基(Biophys J 12:1–24)：把局部皮层抽象成耦合的兴奋/抑制两群体，状态变量取**平均发放率**，群体输入-输出用 sigmoid。给出稳定不动点、迟滞与极限环振荡，为皮层节律提供群体层面解释。**注意术语**：此处"群体"指解剖邻近的局部群体，与 population-dynamics 子领域的"记录到的神经元群体状态空间"是不同概念
+- [Jansen & Rit 1995](papers/brain-encoding-models/jansen-rit-1995-coupled-cortical-columns.md) — 把群体模型接到**可测观测量**(Biol Cybern 73:357–366)：皮层柱 = 锥体细胞群 + 兴奋性/抑制性中间神经元群，锥体群膜电位作 EEG 代理输出；同一模型在不同参数下既产生类 alpha 自发节律、又在脉冲输入下产生类视觉诱发电位波形。这一步使模型可被 EEG 数据证伪，是 DCM 的 EEG/MEG 版生成模型的直系祖先
+- [Friston 2003](papers/brain-encoding-models/friston-2003-dynamic-causal-modelling.md) — **DCM**：生成模型 + 贝叶斯反演正式接合(NeuroImage 19:1273–1302)。参数分三组：外源输入对状态的影响、状态间内在耦合、允许输入**调制**耦合的双线性参数；由此把"有效连接"与"实验操纵引起的连接变化"变成可估计量。把 fMRI 实验重新理解为对脑区间整合过程的实验操纵
+- [Honey 2007](papers/brain-encoding-models/honey-2007-network-structure-shapes-fc.md) — "结构决定功能"在**不同时间尺度上含义不同**(PNAS 104:10240–10245，猕猴连接组+仿真)：分钟级长窗功能网络与结构网络高度重合、枢纽对应；秒级出现两个反相关簇经前额/顶叶枢纽相连；百毫秒级为受解剖约束的锁相事件，并生成慢尺度上的功能连接。此后全脑模型的标准检验任务由此确立
+- [Deco 2009](papers/brain-encoding-models/deco-2009-coupling-delay-noise.md) — 静息态波动的结构性零假设(PNAS 106:10302–10307)：**38 个**耦合振子、时延取自灵长类通路长度；时延耦合导致涌现两组 40 Hz 振子，网络响应性在传导速度 **1–2 m/s**、耦合接近下限时最优，并存在使网络出现**随机共振**的特征噪声尺度。把传导延迟与噪声正式确立为全脑模型不可省略的参数
+- [Breakspear 2017](papers/brain-encoding-models/breakspear-2017-dynamic-models-review.md) — **B 线 milestone 抽取源**(Nat Neurosci 20:340–352)：梳理平均场/神经场/全脑网络三层与模型反演这一环。已被建模的现象：癫痫、脑病、睡眠、麻醉、静息态网络、人类 alpha 节律、多模态融合。明确本线与 A 线的分工——A 问"给定刺激脑活动是什么"，B 问"给定当前状态接下来怎么演化"
 
 ## population-dynamics (15 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature

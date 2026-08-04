@@ -71,6 +71,8 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 - **背景先行 + 一次一小块**是全流程硬规则,不限 Step 4(见记忆 `background-first-one-chunk-at-a-time`)。
 - **X thread 默认不出**,成品只有中文小红书图卡;**对话与成品一律不用 LaTeX 记号**(2026-07-30 定)。
 - **每期一对脚本**:自制 SVG 示意图 `scripts/series/<slug>_figs.py` + 图卡装配 `scripts/series/build_<slug>_cards.py`。新一期照抄最近一期改内容即可,不要另起结构。
+- **Step 1 搜索面 = 预印本 + 正刊两条腿**(2026-08-04 定):除 bioRxiv/medRxiv/arXiv 外,每天必须单独扫一遍 Nature / Science / Cell / Neuron / Nat Neurosci / Nat Med / Nat BME / Curr Biol / Nat Commun / Sci Adv / NEJM 的最新上线页(刊单见 SKILL.md Step 1)。另两条同日写死:**候选不许只靠标题关键词过滤**(按类目全量看标题、可疑读摘要)、**报新鲜度必须核版本号**(区分"这一版的日期"与"首次公开的日期")。
+- **最终交付固定三件套**(2026-08-04 定):图卡定稿 + 小红书标题标签 + **微信公众号摘要**(≤120 字摘要字段版 + 约 200–300 字导语版),全部做成可直接复制的形式。**交付后停下等用户确认,拿到确认才跑 Step 9**;成品图一律取正刊定稿 PDF,不用预印本(见记忆 `dailybci-figures-from-journal-version`)。
 
 ---
 
