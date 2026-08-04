@@ -551,7 +551,9 @@ Once content is locked, produce the **final publishing-ready version**:
 
 **The "最终版 / final version" is always the actually-rendered cards, shown inline — never text-only copy.** When the user asks for the final/最终版, that means: run `card_generator.py`, produce the PNGs (figure cards composited with the real paper images), and **display the rendered card images in chat so the user can browse the actual 图卡** — image and text together as they will publish. Do not stop at a text description of the cards and make the user imagine the layout. Rough text copy belongs to the *draft* stage (Steps 5/7); the final stage owes the user browsable cards. The only exception is a headless run with no way to surface images — then say so explicitly.
 
-Present all final cards for last confirmation before posting.
+**"最终版"= 图卡 + 另外两样,不是只有图卡(2026-08-04 补,防漏)。** 上一段只讲了"图卡必须真渲染出来",但**渲染好的图卡只是三件套的第一件**。最终稿必须同时交付:**① 图卡定稿 ② 小红书发布标题 + 话题标签建议(须先在小红书实采联想词/相关搜索词/头部帖标签,再造句打分,不许凭空拟) ③ 微信公众平台摘要(≤120 字字段版 + 200–300 字导语版)**,三样都放进代码块供直接复制。完整操作手册见 **Step 7 的「⛔ 最终交付固定是三件套」与「§发布标题 + 话题标签」两节**——只读本 Step 会漏掉后两样。
+
+Present all final cards for last confirmation before posting. **交付完三件套即停,等用户明确确认稿子后才进 Step 9**(见 Step 7 顶部写死条款与 Step 9 进入条件)。
 
 **发布后花絮 / 彩蛋留言选项(最终版锁定后,随成品一起给出)** — 每期最终版(图卡 + thread)定稿后,除了成品,再附 **2–3 条可直接复制粘贴的「彩蛋留言」**,供用户以「小邹」第一人称贴到小红书评论区,给硬核内容加一点「活人感」。要求:
 - **口吻**:低姿态、自黑、俏皮但真诚;给读者一点优越感(「能读到这儿已经很厉害」),绝不居高临下。口语化可以、口水化不行,少用比喻(仍守 avoid-metaphor 全局规则)。
