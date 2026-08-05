@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-04
-Total papers: 349
+Last updated: 2026-08-05
+Total papers: 372
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -234,7 +234,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Cogan 2016](papers/sensory-feedback/cogan-2016-tissue-damage-thresholds.md) — 重审Shannon判据:源于宏电极、未必适用微电极,当代微刺激安全再评估起点
 - [Iliasov 2026](papers/sensory-feedback/iliasov-2026-microbubble-icms-safety.md) — 子簇首篇"在体实时血管成像看ICMS损伤":清醒小鼠双光子,气泡面积随电流~二次方增长、≥60µA急转BBB破裂;把电解微气泡从被动标志重定位为主动致损机制,给柔性电极ICMS机制性安全窗(何飞组·光机所×复旦华山)
 
-## neuromodulation (29 papers)
+## neuromodulation (52 papers)
 - [Benabid 1991](papers/neuromodulation/benabid-1991-dbs-tremor-suppression.md) — 开创现代DBS疗法，高频VIM刺激长期抑制帕金森震颤，可逆可调
 - [Limousin 1998](papers/neuromodulation/limousin-1998-stn-dbs-parkinson.md) — 确立STN-DBS作为晚期帕金森标准治疗，UPDRS运动评分改善~50%
 - [Morrell 2011](papers/neuromodulation/morrell-2011-rns-closed-loop-epilepsy.md) — 首个闭环脑刺激RCT（RNS），191名癫痫患者，2013年FDA批准
@@ -270,6 +270,32 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Krause 2019](papers/neuromodulation/krause-2019-tacs-entrains-primate-neurons.md) — 人体常规参数 tACS 在猕猴深部结构测得 0.28/0.35 V/m，稳定影响放电**时刻**而不改变放电**率**；把 tACS 的作用形式收窄为调时序(猕猴 N=2)
 - [Johnson 2020](papers/neuromodulation/johnson-2020-dose-dependent-tacs-spike-timing.md) — 清醒猕猴单神经元记录测出**剂量依赖**夹带，并归纳出两类响应(burst 性增加 / 相位夹带)；剂量-反应是走向可控协议的前提(猕猴)
 - [Labruna 2025](papers/neuromodulation/labruna-2025-ktmp-method.md) — kTMP 方法学奠基：改用**磁感应**产生连续千赫兹窄带电场绕开头皮电流瓶颈，10 分钟在 M1 诱导约 **2.0 V/m**、提升皮层兴奋性且几乎无体感(仅听觉音调，便于双盲)；诚实报告 AM 相对非调制无额外增益(人类，Ivry/Peterchev，eLife)
+
+### 经颅超声神经调控 (transcranial ultrasound stimulation, TUS/tFUS)
+"用聚焦声波无创调控神经活动"这条线。相对经颅电磁刺激的卖点是**深部可及 + 毫米级聚焦**（TMS 打不深、tES 场强被头皮分流）。这条线的历史张力与 tACS 那条完全不同：**tACS 争的是"脑内场强够不够"，TUS 争的是"测到的效应到底是不是超声直接作用"**——2018 年两篇 Neuron 指出啮齿类的超声诱发反应可由**间接听觉通路**解释，此后听觉掩蔽/致聋/包络平滑成为必须的对照。**评估任何新的 TUS 工作，先过三关：① 有没有听觉对照（掩蔽或致聋或平滑包络）；② 有没有报告脑内原位剂量估计与声学仿真靶点验证（ITRUSST 六类参数）；③ 读数是不是 MEP/SEP 这类个体内外波动大的量、样本量够不够。** 三关不过的阳性结果要打折扣，三关都过的阴性结果要认真对待。milestone 抽取自 Sarica et al. (2022, Brain Stimul) 人体系统综述 + 一篇 2025 年 tFUS 运动感觉系统统合综述(PMC12664190)，各源头论文逐篇回溯 PubMed 核实卷期页。建于 2026-08-05。
+- [Fry 1958](papers/neuromodulation/fry-1958-reversible-cns-changes-ultrasound.md) — 整条线的起点：**猫**外侧膝状体核照射 20–120 秒，视皮层诱发电位初级响应降到不足 1/3、次级响应几近归零，**30 分钟完全恢复**、无组织学病灶。两个限制正是此后七十年的题目——**必须去掉颅骨**、作用位点未知(Science)
+- [Tyler 2008](papers/neuromodulation/tyler-2008-remote-excitation-ultrasound.md) — 现代起点之一：小鼠海马脑片/离体全脑，低强度低频超声经**电压门控 Na⁺/Ca²⁺ 通道**兴奋神经元并触发 SNARE 介导的突触传递。离体标本没有听觉外周，故机制结论不能直接外推到在体经颅(PLoS ONE)
+- [Tufail 2010](papers/neuromodulation/tufail-2010-transcranial-pulsed-ultrasound.md) — 推到**在体 + 经颅 + 有行为输出**(小鼠运动皮层引出运动、深部激活完整海马)；给出最常被引的两个数：横向分辨率约 **2 mm**、温升 **<0.01 °C**(即非热机制)、TTX 敏感。但其运动读数正是 2018 年听觉混淆争议的核心(Neuron)
+- [Yoo 2011](papers/neuromodulation/yoo-2011-region-specific-modulation-fmri.md) — 兔 + MRI 引导 + fMRI 读数，确立三个此后成标配的动作：影像引导靶向、影像读数、**"效应双向"框架**(同一技术既可兴奋也可抑制，方向取决于参数)；组织学无损伤(NeuroImage)
+- [King 2013](papers/neuromodulation/king-2013-effective-parameters.md) — 第一份定量剂量—反应规则(小鼠)：成功率随声强与时长上升、暗示 **50–150 ms 的幅度积分窗**、运动反应呈**全或无**(只改概率不改强度)；反直觉的一条是**连续波不比脉冲差**(Butts Pauly 组·Stanford)
+- [Deffieux 2013](papers/neuromodulation/deffieux-2013-monkey-visuomotor.md) — **首次在清醒非人灵长类因果调制行为**：2 只猕猴反扫视潜伏期被显著改变且依赖刺激半场，把这条线从"引出肌肉抽动"推到"干预有认知内容的任务"(Curr Biol)
+- [Legon 2014](papers/neuromodulation/legon-2014-human-s1-tfus.md) — **人体 TUS 开篇**：打 S1 衰减 SEP 幅度、改变诱发振荡频谱、提升感觉辨别；最承重的是空间对照——**焦点前后移 1 cm 效应即消失**。确立 SEP/MEP 读数 + 焦点位移对照两个标准动作(Nat Neurosci)
+- [Kubanek 2016](papers/neuromodulation/kubanek-2016-ion-channel-currents.md) — 机械→电转换的单通道直接证据：爪蟾卵母细胞表达 K2P(TREK-1/TREK-2/TRAAK)与 NaV1.5，超声调制电流**平均最高约 23%**、加阻断剂即消失；提出 **sonogenetics**。注意频率 10 MHz 远高于经颅常用的 0.2–0.7 MHz(Sci Rep)
+- [Sato 2018](papers/neuromodulation/sato-2018-indirect-auditory-mechanism.md) — **方法学地震(一)**：小鼠宽场钙成像看到的激活图样符合**间接听觉通路**而非焦点处直接调控，与可听声引发的图样相似、都像惊跳反射，**化学致聋后双双减弱**(Neuron)
+- [Guo 2018](papers/neuromodulation/guo-2018-cochlear-pathway.md) — **方法学地震(二)**，同期同刊独立验证：豚鼠电生理测得广泛激活，**切断听神经或去除耳蜗液后激活消失**，指认**耳蜗通路**。不同物种/技术/干预的双重独立验证，是该问题被迅速接受的原因(Neuron)
+- [Legon 2018](papers/neuromodulation/legon-2018-human-thalamus.md) — 人体**深部靶点**第一份系统证据(N=40)：打感觉丘脑抑制 **P14** 成分(发生源在 VPL，故能把效应定位到丘脑)；同时把 **CT+MRI 个体颅骨声学建模**推成标准动作(Hum Brain Mapp)
+- [Mohammadjavadi 2019](papers/neuromodulation/mohammadjavadi-2019-auditory-elimination.md) — **关键反驳与修正**：混淆的物理来源是**矩形包络的陡边沿**；平滑边沿即可消除听觉反应而**不影响运动反应**，遗传性耳聋小鼠上运动反应仍在。把争论精确化成可操作的工程问题(Brain Stimul)
+- [Verhagen 2019](papers/neuromodulation/verhagen-2019-offline-primate.md) — **离线效应范式**：猕猴 **40 秒刺激 → 效应持续 >1 小时**，被刺激区与全脑的相互作用变得更选择性，SMA/FPC 各自可分离；诚实报告两点——**脑膜腔室也有信号变化**、效应暂时且无微结构改变(eLife)
+- [Folloni 2019](papers/neuromodulation/folloni-2019-deep-primate.md) — 猕猴**杏仁核与 ACC**：这两个深部靶点是现有可逆干预最难触及的，TUS 后它们与互联区的相关性专门减弱、效应局灶可分离，且明确排除听觉混淆解释(Neuron)
+- [Braun 2020](papers/neuromodulation/braun-2020-auditory-confound-masking.md) — 把听觉混淆搬到**人**并给出解法：18 名被试**能听见 TUS、能区分有无刺激试次**(即未掩蔽的人体实验做不到盲)；经耳机播放掩蔽音后辨别率降到随机、听觉 EEG 成分消失(Brain Stimul)
+- [Fomenko 2020](papers/neuromodulation/fomenko-2020-parameter-systematic-human.md) — 人体侧最完整的**参数—效应图谱**(N=16，TUS 与 TMS 线圈耦合)：**更长声照时长 + 更短占空比 → 抑制更强**，且增强 GABA_A 介导的 SICI；诚实报告行为效应在加近体感阈主动对照后不再成立(eLife)
+- [Zeng 2022](papers/neuromodulation/zeng-2022-theta-burst-tus.md) — 人体**可塑性诱导**：80 秒 theta burst 图样 TUS → 皮质脊髓兴奋性升高 **≥30 分钟**，而**等声照时长的规则图样与伪刺激均无变化**——承重变量是时间图样而非总能量；打枕叶不影响 M1(Ann Neurol)
+- [Mohammadjavadi 2022](papers/neuromodulation/mohammadjavadi-2022-sheep-lgn-vep.md) — **大动物这一格**：绵羊(n=9)MRI 引导打 LGN，视觉诱发电位 N70/P100 峰峰幅度**可逆抑制**；用 **MR-ARFI** 实测声致微位移并证明**位移大小与抑制程度相关**——这条线少见的声学剂量↔神经效应定量对应。是 [[scott-2026-tus-human-lgn-null]] 的**同实验室同靶点同读数纵向前作**(Sci Rep)
+- [Martin 2025](papers/neuromodulation/martin-2025-256-element-human-lgn.md) — 人体深部 TUS 的**硬件代际更新**：256 阵元头盔式相控阵(555 kHz)+ 立体定向 + 个体化规划 + 实时 fMRI 监测，打人 **LGN** 使视皮层活动显著升高且跨个体可重复；theta burst 方案后效**≥40 分钟**，对照证实靶点特异。是 [[scott-2026-tus-human-lgn-null]] 最关键的**横向对照**(Oxford·Treeby/Stagg，Nat Commun)
+- [Scott 2026](papers/neuromodulation/scott-2026-tus-human-lgn-null.md) — 这条线**第一份「三关全过」的人体阴性结果**:25 人打左侧 LGN、逐试次随机三档 PRF(4.875/48.75/487.5 Hz,脉冲 20.5/2.05/0.205 ms,占空比 10%,原位 ISPPA 16.2±3.6 W/cm²),SSVEP 幅度/潜伏期/知觉行为**三个读数均未检出效应**,靶向精度与活动变化无相关。四项设计创新(频率标记与 PRF 谐波不重叠、同侧未受声半视野作内部对照、**改焦点深度 70→30 mm 而非关机**、白噪声掩蔽实现双盲)使它难以被「漏了某个对照」解释掉;检出力下限 f≥0.264,焦点峰值略偏浅、两名被试未重合。**必须与 [[fry-1958-reversible-cns-changes-ultrasound]]（猫·去颅骨）、[[mohammadjavadi-2022-sheep-lgn-vep]]（同实验室·绵羊·阳性）、[[martin-2025-256-element-human-lgn]]（人·256阵元·阳性）并读**(UCSF×Stanford,bioRxiv)
+- [Sarica 2022](papers/neuromodulation/sarica-2022-human-tus-systematic-review.md) — 人体侧**基准盘点**(截至 2022-01)：35 项研究、**677 名被试**，无严重不良反应，轻度症状 **3.4%(14/425)**；效应呈参数依赖，作者定性为"仍处早期阶段"。引用现状时注意时间戳与分母(Brain Stimul)
+- [Martin 2024](papers/neuromodulation/martin-2024-itrusst-reporting-standards.md) — ITRUSST **报告标准**：六类必报参数(换能器/驱动设置/自由场声学/脉冲时序/**脑内原位暴露估计**/强度)。承认领域分歧有相当部分源于"说不清到底打了多少剂量到脑内哪里"(Brain Stimul)
+- [Aubry 2025](papers/neuromodulation/aubry-2025-itrusst-biophysical-safety.md) — ITRUSST **安全阈值**：机械指数 MI/MI_tc **≤1.9**；热效应满足任一即可——峰值温升 **≤2 °C** 或绝对温度 **≤39 °C**、或热剂量脑 **2 CEM43**/骨 16/皮肤 21、或给定时长的 TI 取值。明确声明共识 ≠ 标准 ≠ 监管(Brain Stimul)
 
 ## optical-bci (9 papers)
 光学脑机接口：用钙成像(而非电极)读出神经活动来驱动闭环解码。相对电生理 BCI 的独有能力是**知道每个参与细胞的身份、层次、类型与空间位置**，因而既是工程路线也是研究工具；代价是钙信号相对动作电位的时间分辨率与信噪比。milestone 抽取自 Hira R. (2024, Neurophotonics 11:033405) 的多光子闭环/BMI 综述。建于 2026-07-20。

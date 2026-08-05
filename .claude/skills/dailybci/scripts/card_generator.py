@@ -115,6 +115,10 @@ def _base_css():
                    letter-spacing: 2px; color: var(--muted); }}
     .read-body {{ margin-top: 14px; font-size: {SIZE_CAPTION}px; line-height: 1.55; color: var(--caption); }}
     .cover-sep {{ margin-top: 46px; }}
+    /* cover concept image: one abstract visual that pairs with the title.
+       Never a flowchart/structure diagram — see SKILL.md Step 7 §封面 + 目录卡. */
+    .conceptwrap {{ margin-top: 74px; display: flex; align-items: center; justify-content: center; }}
+    .conceptwrap img {{ max-width: 100%; width: auto; height: auto; display: block; }}
 
     /* figure */
     .figwrap {{ margin: 60px -36px 0; border: 1px solid var(--line); background: #fff;
@@ -205,12 +209,26 @@ class CardGenerator:
 
     # ---- card types ----
 
-    def cover_card(self, title_line1, title_line2, subtitle, output_path, source=None):
-        """Cover card: two-line Chinese title, one-sentence finding, optional 解读 block."""
+    def cover_card(self, title_line1, title_line2, subtitle, output_path, source=None,
+                   concept_image=None, concept_height=520, title_size=None):
+        """Cover card: two-line Chinese title, one-sentence finding, concept image.
+
+        Default layout (2026-08-05): title + one-line core sentence + a CONCEPT image.
+        `concept_image` is an abstract visual that pairs with the title — never a
+        flowchart or structure diagram, and provenance no longer belongs here
+        (it moves to the TOC card). `source` is kept only for legacy callers.
+        """
+        tstyle = f" style='font-size:{title_size}px'" if title_size else ""
         body = (
-            f"<div class='title'>{self._fmt(title_line1)}<br>{self._fmt(title_line2)}</div>"
+            f"<div class='title'{tstyle}>{self._fmt(title_line1)}<br>{self._fmt(title_line2)}</div>"
             f"<div class='subtitle'>{self._fmt(subtitle)}</div>"
         )
+        if concept_image:
+            body += (
+                f"<div class='conceptwrap' style='max-height:{concept_height}px'>"
+                f"<img src='file://{os.path.abspath(concept_image)}' "
+                f"style='max-height:{concept_height}px'/></div>"
+            )
         if source:
             body += (
                 "<div class='sep cover-sep'></div>"
