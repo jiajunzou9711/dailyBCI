@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-05
-Total papers: 372
+Last updated: 2026-08-06
+Total papers: 377
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -234,7 +234,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Cogan 2016](papers/sensory-feedback/cogan-2016-tissue-damage-thresholds.md) — 重审Shannon判据:源于宏电极、未必适用微电极,当代微刺激安全再评估起点
 - [Iliasov 2026](papers/sensory-feedback/iliasov-2026-microbubble-icms-safety.md) — 子簇首篇"在体实时血管成像看ICMS损伤":清醒小鼠双光子,气泡面积随电流~二次方增长、≥60µA急转BBB破裂;把电解微气泡从被动标志重定位为主动致损机制,给柔性电极ICMS机制性安全窗(何飞组·光机所×复旦华山)
 
-## neuromodulation (52 papers)
+## neuromodulation (57 papers)
 - [Benabid 1991](papers/neuromodulation/benabid-1991-dbs-tremor-suppression.md) — 开创现代DBS疗法，高频VIM刺激长期抑制帕金森震颤，可逆可调
 - [Limousin 1998](papers/neuromodulation/limousin-1998-stn-dbs-parkinson.md) — 确立STN-DBS作为晚期帕金森标准治疗，UPDRS运动评分改善~50%
 - [Morrell 2011](papers/neuromodulation/morrell-2011-rns-closed-loop-epilepsy.md) — 首个闭环脑刺激RCT（RNS），191名癫痫患者，2013年FDA批准
@@ -296,6 +296,15 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Sarica 2022](papers/neuromodulation/sarica-2022-human-tus-systematic-review.md) — 人体侧**基准盘点**(截至 2022-01)：35 项研究、**677 名被试**，无严重不良反应，轻度症状 **3.4%(14/425)**；效应呈参数依赖，作者定性为"仍处早期阶段"。引用现状时注意时间戳与分母(Brain Stimul)
 - [Martin 2024](papers/neuromodulation/martin-2024-itrusst-reporting-standards.md) — ITRUSST **报告标准**：六类必报参数(换能器/驱动设置/自由场声学/脉冲时序/**脑内原位暴露估计**/强度)。承认领域分歧有相当部分源于"说不清到底打了多少剂量到脑内哪里"(Brain Stimul)
 - [Aubry 2025](papers/neuromodulation/aubry-2025-itrusst-biophysical-safety.md) — ITRUSST **安全阈值**：机械指数 MI/MI_tc **≤1.9**；热效应满足任一即可——峰值温升 **≤2 °C** 或绝对温度 **≤39 °C**、或热剂量脑 **2 CEM43**/骨 16/皮肤 21、或给定时长的 TI 取值。明确声明共识 ≠ 标准 ≠ 监管(Brain Stimul)
+
+- [Darrow 2019](papers/neuromodulation/darrow-2019-thermal-mechanism.md) — **对整条路线核心假设的反向主张**:聚焦超声的可逆神经抑制**由热机制介导**(标题即结论)。被 [[scott-2026-tus-human-lgn-null]] 引为"丘脑对 **0.5–1 °C** 升温即高度敏感"的依据。用法:评估任何 TUS 工作时**看它报没报温升与热剂量**——只报机械指数的排不掉热成分(Brain Stimul)
+
+### 颅骨作为声学屏障 (skull as the acoustic barrier)
+"隔着完整颅骨,能量到底有多少、以什么形态到达靶点"这条线,是全部经颅超声(调控 TUS / 消融 MRgFUS / 成像)的共同前提。核心事实:**同一个自由场输入,进到不同人脑内的剂量可以差一倍以上**——[[scott-2026-tus-human-lgn-null]] 中 25 名被试同用 68 W/cm² 自由场,脑内估计 8.5–20.5 W/cm²(2.4 倍)。**评估任何经颅超声工作时,只报自由场强度等于没报剂量**,必须看有没有个体化的脑内原位估计(ITRUSST 必报项,见 [[martin-2024-itrusst-reporting-standards]])。建于 2026-08-06。
+- [Fry & Barger 1978](papers/neuromodulation/fry-barger-1978-acoustical-properties-human-skull.md) — 基础测量(离体人颅骨,0.25–6 MHz,逐层切开测):**决定成人颅骨损耗的主导因素是中间那层板障(diploë,多孔松质骨)**;并给出 **0.5–1.0 MHz** 这个此后成为事实标准的频率窗口。板障厚度与孔隙率的个体差异,是经颅剂量千人千面的根源(J Acoust Soc Am)
+- [Pinton 2012](papers/neuromodulation/pinton-2012-skull-attenuation-decomposition.md) — 把颅骨总衰减拆成四个机制:界面反射 / **纵横波模式转换**(转成横波的能量基本不再入脑)/ 微结构散射 / **真正被吸收转成热的部分**(首次给出吸收系数估计)。谈热安全时承重的是吸收而非总衰减(Med Phys)
+- [Aubry 2003](papers/neuromodulation/aubry-2003-ct-based-adaptive-focusing.md) — "基于个体影像做声场仿真与相位校正"这条路线的起点:颅骨声学性质可从高分辨率 CT 反推,据此逐阵元补偿相位畸变、无创自适应聚焦。今天的 BabelBrain / k-Wave 个体化规划皆源于此。边界:**仿真是估计不是实测,不同软件结果不一致**(J Acoust Soc Am)
+- [Chang 2016](papers/neuromodulation/chang-2016-skull-factors-mrgfus.md) — 把颅骨差异变成有临床终点的实证问题(人类 n=25,MRgFUS 治疗震颤):**颅骨密度比 SDR 与靶点最高温度正相关(r²=0.263)**、声照野颅骨体积负相关(r²=0.206),即颅骨性质单独解释靶温约 20–26% 的变异。SDR 此后成为患者筛查指标(J Neurosurg)
 
 ## optical-bci (9 papers)
 光学脑机接口：用钙成像(而非电极)读出神经活动来驱动闭环解码。相对电生理 BCI 的独有能力是**知道每个参与细胞的身份、层次、类型与空间位置**，因而既是工程路线也是研究工具；代价是钙信号相对动作电位的时间分辨率与信噪比。milestone 抽取自 Hira R. (2024, Neurophotonics 11:033405) 的多光子闭环/BMI 综述。建于 2026-07-20。

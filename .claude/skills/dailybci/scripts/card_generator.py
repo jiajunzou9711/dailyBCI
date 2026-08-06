@@ -107,7 +107,7 @@ def _base_css():
     .sep {{ height: 1px; background: var(--line); }}
 
     /* cover */
-    .title {{ margin-top: 200px; font-size: {SIZE_TITLE_LG}px; font-weight: 800;
+    .title {{ margin-top: var(--title-top, 200px); font-size: {SIZE_TITLE_LG}px; font-weight: 800;
               line-height: 1.45; letter-spacing: 1px; color: var(--title); }}
     .subtitle {{ margin-top: 56px; font-size: {SIZE_SUBTITLE}px; font-weight: 400;
                  line-height: 1.6; color: var(--subtitle); }}
@@ -210,7 +210,8 @@ class CardGenerator:
     # ---- card types ----
 
     def cover_card(self, title_line1, title_line2, subtitle, output_path, source=None,
-                   concept_image=None, concept_height=520, title_size=None):
+                   concept_image=None, concept_height=520, title_size=None,
+                   title_top=None):
         """Cover card: two-line Chinese title, one-sentence finding, concept image.
 
         Default layout (2026-08-05): title + one-line core sentence + a CONCEPT image.
@@ -219,8 +220,14 @@ class CardGenerator:
         (it moves to the TOC card). `source` is kept only for legacy callers.
         """
         tstyle = f" style='font-size:{title_size}px'" if title_size else ""
+        if title_top is not None:
+            # 收紧标题上方留白,把版面让给概念图(默认 200px,不传则不变)
+            body_prefix = f"<style>:root{{--title-top:{title_top}px}}</style>"
+        else:
+            body_prefix = ""
         body = (
-            f"<div class='title'{tstyle}>{self._fmt(title_line1)}<br>{self._fmt(title_line2)}</div>"
+            body_prefix
+            + f"<div class='title'{tstyle}>{self._fmt(title_line1)}<br>{self._fmt(title_line2)}</div>"
             f"<div class='subtitle'>{self._fmt(subtitle)}</div>"
         )
         if concept_image:
