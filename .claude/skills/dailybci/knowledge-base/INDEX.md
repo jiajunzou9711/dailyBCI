@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-06
-Total papers: 377
+Last updated: 2026-08-10
+Total papers: 394
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -234,7 +234,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Cogan 2016](papers/sensory-feedback/cogan-2016-tissue-damage-thresholds.md) — 重审Shannon判据:源于宏电极、未必适用微电极,当代微刺激安全再评估起点
 - [Iliasov 2026](papers/sensory-feedback/iliasov-2026-microbubble-icms-safety.md) — 子簇首篇"在体实时血管成像看ICMS损伤":清醒小鼠双光子,气泡面积随电流~二次方增长、≥60µA急转BBB破裂;把电解微气泡从被动标志重定位为主动致损机制,给柔性电极ICMS机制性安全窗(何飞组·光机所×复旦华山)
 
-## neuromodulation (57 papers)
+## neuromodulation (64 papers)
 - [Benabid 1991](papers/neuromodulation/benabid-1991-dbs-tremor-suppression.md) — 开创现代DBS疗法，高频VIM刺激长期抑制帕金森震颤，可逆可调
 - [Limousin 1998](papers/neuromodulation/limousin-1998-stn-dbs-parkinson.md) — 确立STN-DBS作为晚期帕金森标准治疗，UPDRS运动评分改善~50%
 - [Morrell 2011](papers/neuromodulation/morrell-2011-rns-closed-loop-epilepsy.md) — 首个闭环脑刺激RCT（RNS），191名癫痫患者，2013年FDA批准
@@ -254,6 +254,21 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Grossman 2017](papers/neuromodulation/grossman-2017-temporal-interference.md) — 时间干涉(TI)：两路高频场深部干涉出低频包络，表面电极聚焦激活深部、放过浅层，ACM"深部聚焦"概念近亲(小鼠)
 - [Stoney 1968](papers/neuromodulation/stoney-1968-current-distance-relationship.md) — 刺激侧基本定律：阈值随距离**平方**增长 I_th(r)=I₀+k·r²，10 µA 约激活 85 µm 内(猕猴运动皮层)。与记录的被动衰减分属两套物理——刺激半径可由电流调
 - [Histed 2009](papers/neuromodulation/histed-2009-sparse-distributed-activation.md) — 双光子直接观察(小鼠)：微刺激激活的是**稀疏、分布很广**、有时远在毫米外的神经元，机制是直接激活**轴突/过路纤维**而非旁边胞体。改写刺激的空间图景
+
+### 外加电场促轴突再生 (applied electric fields for axon regeneration)
+"用一个持续的胞外直流电场把断掉的轴突引导着长回去"这条线，起点是 1920 年代的组织培养，终点目前停在 2005 年的一次人体 I 期。它与硬膜外脊髓刺激(Harkema/Wagner/Lorach 那条线)**机制层级不同**：后者即时改变现有神经元的兴奋性，本线走的是促生长/促再生。建于 2026-08-08。
+**三条硬约束，评估本线任何新工作时先过一遍：**
+1. **先问场强量级。** 培养皿里生长锥转向阈值 50–60 mV/mm；活体施加到脊髓的是 40–600 µV/mm，**相差约两个数量级**(此倍数为本项目自算，两份文献均未并列)。
+2. **先问形态学证据是哪一档。** 神经丝染色只能数"此刻有多少根轴突"，分不清再生/幸存/侧支发芽；**只有顺行示踪能判定再生**，而该档最好的结果是「长到断面为止，没有一根穿过」。
+3. **先问是不是直流。** 本线全部机制基于**持续同向直流场**；交流或双相输出的器件不能直接援引它。
+- [Marsh & Beams 1946 / Ingvar 1920](papers/neuromodulation/mccaig-2005-controlling-cell-behavior-electrically.md) — 现象的历史起点(条目并入 McCaig 2005 综述)：1920 年首次尝试，1946 年首个有说服力的 galvanotropic 反应(离体鸡胚神经纤维)
+- [McCaig 2005](papers/neuromodulation/mccaig-2005-controlling-cell-behavior-electrically.md) — **本线标准参考**(Physiol Rev)：内源电场量级(伤口约 140 mV/mm)、生长锥转向阈值 **50–60 mV/mm**、>70 mV/mm 朝阴极快 **3 倍但不转向**；机制为膜受体沿膜平面电泳/电渗至阴极侧。**方向不统一**：感觉突不转、运动突朝阴极、**PC12 朝阳极**
+- [Borgens 1986](papers/neuromodulation/borgens-1986-transected-axons-electric-field.md) — **本线证据天花板**(成年豚鼠，HRP 顺行示踪 + 精确标记切断平面)：多数动物轴突长到切断平面，少数绕到损伤边缘，**从未穿过损伤区**
+- [Borgens 1987](papers/neuromodulation/borgens-1987-behavioral-recovery-electric-fields.md) — 配套行为学(Science，成年豚鼠)：200 µV/mm、阴极在头端，**25% 的动物一个跨节段反射恢复**。恢复的是反射，不是行走
+- [Wang 2025](papers/neuromodulation/wang-2025-ofs-meta-analysis.md) — 振荡电场刺激的临床前荟萃(8 项研究，主要 SD 大鼠)：BBB 第 8 周合并 **+3.00 分**；电流常见 50 µA、**每 15 分钟翻转极性**(上行下行走向相反)；场强 **40–600 µV/mm**
+- [Shapiro 2005](papers/neuromodulation/shapiro-2005-ofs-human-phase1.md) — **本线唯一一项同行评议发表的人体结果**(I 期，10 例完全性 SCI)：1 年时轻触觉 +25.5、针刺觉 +20.4(各满分 112)，**运动仅 +6.3(满分 100)**；**无同期对照组**、合用大剂量激素；器械至今未获批
+- [Basso 1995](papers/neuromodulation/basso-1995-bbb-locomotor-scale.md) — 读任何大鼠 SCI 论文的度量衡：BBB 21 分量表，**0–7 孤立关节活动 / 8–13 不协调迈步 / 14–21 稳定的前后肢协调**；等级量表、分差不等距，看分差先看跨没跨档
+- [Liu 2026](papers/neuromodulation/liu-2026-piezo-gel-vertebral-implant.md) — 自供能器件路线(Sci Adv，大鼠)：可降解压电凝胶**替代被切除的椎体**，脊柱载荷即电源、超声可放大；把供电与康复训练合并为同一动作。重度组 8 周 BBB 13.7、轻度组 4 周 16.3。**边界**：输出为交流电、量级仍在活体这一档、体外用 PC12(朝阳极)
 
 ### 经颅振荡干预 / 非侵入夹带 (transcranial oscillation entrainment)
 "用外加弱电磁场夹带内源节律、把振荡从相关性推到因果性"这条线，服务 tACS / kTMP 等非侵入调控。核心张力恒定：**脑内场强够不够**。milestone 抽取自 Wischnewski et al. (2023, Prog Neurobiol; PMC8909135) 的 tACS 机制综述 + 各源头论文回溯。建于 2026-07-20。
@@ -495,12 +510,37 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Krieg 2017](papers/presurgical-mapping/krieg-2017-ntms-mapping-protocol.md) — 赫尔辛基工作组共识协议，标准化 nTMS 运动/语言作图；本子领域标准化基石与 milestone 抽取源
 - [Autti 2026](papers/presurgical-mapping/autti-2026-meg-informed-ntms-timing.md) — 用个人 MEG 语音激活时序个体化 nrTMS 的发放时机(PTI):best PTI 与 MEG 峰值显著正相关(Combined R=0.713，best PTI 平均早于峰值 132 ms)，把 nrTMS 个体化从"只调空间"推进到"空间+时间"，让被动 MEG 配置主动 TMS 的采集参数(非并联出第二张图)；仅额叶/语言产出区成立;概念验证(健康人 N=13、未对照 DCS、特异度收益待证)(赫尔辛基/Aalto·bioRxiv)
 
-## visual-prosthesis (7 papers)
-视觉假体 / 视网膜电刺激：给因感光细胞退化(RP/AMD)致盲者，电刺激存活的内层视网膜(神经节细胞/双极细胞)重建视觉。与 BCI 主线在"植入式电极+电刺激神经组织"硬件端相接。三条临床路线：视网膜上(epiretinal，刺激神经节细胞)、视网膜下(subretinal，刺激双极细胞)、光伏视网膜下(无线近红外供能)。另有一条 Chichilnisky 组"精准刺激"研究线(MEA 单细胞级刺激→空间电流成形→规避轴突束)，是今日候选 3 的直系。深层源头是皮层视觉假体(Foerster 1929/Brindley & Lewin 1968 的皮层光幻视)。milestone 抽取自 Retinal Prostheses: Engineering and Clinical Perspectives (2023, PMC10347280) + Expert Rev Ophthalmol (2025) 综述。
-- [Humayun 1996](papers/visual-prosthesis/humayun-1996-retinal-stimulation-phosphenes.md) — 首次在盲人(RP/AMD)视网膜电刺激诱发可分辨光幻视，证明可绕过死掉的感光细胞刺激存活内层；整条线人体起点
+## visual-prosthesis (17 papers)
+视觉假体：给失明者用电刺激重建视觉输入。**本子领域含两条相互独立的路线，评估任何新工作前先归位是哪一条**——
+
+**① 视网膜路线**（7 篇）：给因感光细胞退化(RP/AMD)致盲者，电刺激存活的内层视网膜(神经节细胞/双极细胞)。三条临床分支：视网膜上(epiretinal，刺激神经节细胞)、视网膜下(subretinal，刺激双极细胞)、光伏视网膜下(无线近红外供能)。另有一条 Chichilnisky 组"精准刺激"研究线(MEA 单细胞级刺激→空间电流成形→规避轴突束)。**前提是视网膜内层还在**，故不适用于视神经损伤、青光眼晚期等病因。milestone 抽取自 Retinal Prostheses: Engineering and Clinical Perspectives (2023, PMC10347280) + Expert Rev Ophthalmol (2025) 综述。
+
+**② 皮层路线**（10 篇，2026-08-10 建）：跳过整条眼-视神经通路，直接刺激初级视皮层 V1。**适用病因远比视网膜路线宽**——视网膜假体要求内层视网膜与视神经存活，**对眼球完全毁损或视神经离断的患者，皮层路线是唯一选项**；代价是要开颅、且失去视网膜自带的空间组织。分两支：**皮层表面**(epicortical，Brindley/Dobelle 一系，毫安级电流)与**皮层内穿刺**(intracortical/ICMS，Schmidt/Fernández 一系，µA 级电流、光幻视更细)。milestone 抽取自 **Nature Reviews Bioengineering (2026-06-01)《Restoring vision and touch with cortical microstimulation》**(doi 10.1038/s44222-026-00449-z) 的引用。
+
+**评估皮层路线任何新工作时先过一遍的三条硬约束：**
+1. **光幻视大小随电流迅速饱和**([[bosking-2017-phosphene-size-saturation]])，由被激活的皮层面积 × 该位置的皮层放大因子倒数决定。"加大电流换更大视野覆盖"这条路不通；分辨率上限由皮层功能结构而非电子学决定。
+2. **多电极同时刺激并非独立叠加**——单个光幻视的特征会互相干扰([[beauchamp-2020-dynamic-current-steering]] 的出发点)，且同时刺激会显著降低阈值([[fernandez-2021-intracortical-96ch-human]])。任何按"像素阵列"直觉设计的编码方案都要先过这一关。
+3. **人体端通道数与慢性时长长期停滞**：1996 年 38 根/4 个月，2021 年 96 根/6 个月；1024 通道只在猕猴上做到([[chen-2020-high-channel-count-neuroprosthesis]])。看到"高通道数皮层视觉假体"的说法先核物种。
+另：盲人的光幻视映射精度比明眼人差近一个数量级，明眼人数据会系统性高估假体可达精度([[oswalt-2021-multielectrode-phosphene-mapping]])。
+
+### 视网膜路线 (retinal line)
+- [Humayun 1996](papers/visual-prosthesis/humayun-1996-retinal-stimulation-phosphenes.md) — 首次在盲人(RP/AMD)视网膜电刺激诱发可分辨光幻视，证明可绕过死掉的感光细胞刺激存活内层；视网膜线人体起点
 - [Sekirnjak 2008](papers/visual-prosthesis/sekirnjak-2008-high-res-rgc-stimulation.md) — Chichilnisky 组：MEA 在安全电荷下单节细胞级高分辨刺激(离体猕猴)；"精准刺激"研究线起点
 - [Zrenner 2011](papers/visual-prosthesis/zrenner-2011-alpha-ims-subretinal.md) — Alpha-IMS 视网膜下 1500 光电二极管芯片，盲人读字母组词/辨物/读钟面；视网膜下(双极细胞)路线代表
 - [Humayun 2012](papers/visual-prosthesis/humayun-2012-argus-ii-trial.md) — Argus II 国际试验(30 例)，2013 年成为首个 FDA 批准的视网膜假体；视网膜上(epiretinal)路线里程碑
 - [Jepson 2014](papers/visual-prosthesis/jepson-2014-spatially-patterned-stimulation.md) — 多电极空间电流成形(current steering)提升刺激的细胞类型选择性，把单细胞刺激推向阵列协同(Chichilnisky 组)
-- [Grosberg 2017](papers/visual-prosthesis/grosberg-2017-axon-bundle-activation.md) — 指认轴突束激活为 epiretinal 假体的核心分辨率上限(512 电极离体猕猴)；正是候选 3 生物物理建模要规避的问题
+- [Grosberg 2017](papers/visual-prosthesis/grosberg-2017-axon-bundle-activation.md) — 指认轴突束激活为 epiretinal 假体的核心分辨率上限(512 电极离体猕猴)；精准刺激线要规避的核心问题
 - [Palanker 2020](papers/visual-prosthesis/palanker-2020-prima-photovoltaic.md) — PRIMA 无线光伏视网膜下假体首次人体(5 例 GA/AMD)，约 20/420、达像素间距；光伏路线里程碑
+
+
+### 皮层路线 (cortical line)
+- [Brindley & Lewin 1968](papers/visual-prosthesis/brindley-1968-cortical-phosphenes.md) — **整条皮层线的人体起点**：52 岁盲人枕极皮层表面阵列，单电极诱发固定位置的小白点、间距 2.4 mm 即可分辨、多电极可拼出可预期的简单图案；光幻视分布大致符合经典视网膜拓扑图，强刺激下另出现一套关于水平子午线翻转的图
+- [Dobelle 1974](papers/visual-prosthesis/dobelle-1974-artificial-vision-blind.md) — 推广到**长期失明**者(全盲 7 年与 28 年)，多电极同时刺激使其中一人识别简单图案含字母；配套的 J Physiol 同年论文给出光幻视性质的首份系统刻画(大小跨度、10–15 秒褪去、亮度可由脉冲幅度调制)
+- [Dobelle 1976](papers/visual-prosthesis/dobelle-1976-braille-reading.md) — 首次把皮层光幻视用于**真实读取任务**(点阵盲文)，评价标准从"能否看到光点"推进到"能否读出内容"。**Nature 两页短报告、PubMed 无摘要，引用数字须回原文核**
+- [Schmidt 1996](papers/visual-prosthesis/schmidt-1996-intracortical-microstimulation-feasibility.md) — **表面电极→皮层内穿刺的转折点**：全盲 22 年患者植入 38 根微电极 4 个月，34 根出光幻视，阈值低至 1.9 µA(多数<25 µA，比表面刺激低约三个数量级)；**两点分辨 500 µm 可分、250 µm 不可分**
+- [Schiller 2011](papers/visual-prosthesis/schiller-2011-v1-phosphene-size-color.md) — 首份可量化的**光幻视心理物理**(恒河猴 V1)：中央 5° 内光斑直径 9–26 弧分、对比度 2.6%–10%、且多数**比背景更暗**。与"刺激=在视野里点亮像素"的直觉相反
+- [Bosking 2017](papers/visual-prosthesis/bosking-2017-phosphene-size-saturation.md) — **这条线最硬的分辨率约束**：13 名人类 93 电极，光幻视大小超阈后迅速**饱和**，由激活皮层面积 × 皮层放大因子倒数两步模型准确预测；意味着皮层功能结构限制了人工活动的扩散
+- [Beauchamp 2020](papers/visual-prosthesis/beauchamp-2020-dynamic-current-steering.md) — **编码范式从空间并行改为时间序列**：按顺序刺激电极在皮层上"描摹"形状(动态电流转向)，明眼与盲人均准确识别字母，盲人**达每分钟 86 个形状**；绕开多电极同时刺激互相干扰的长期障碍
+- [Chen 2020](papers/visual-prosthesis/chen-2020-high-channel-count-neuroprosthesis.md) — **通道数量级跃迁(→1024，猕猴 V1+V4)**：数百电极出光幻视且位置与感受野吻合，多电极图案被猴子**立即**识别为形状/运动/字母；**V4 活动可预测 V1 刺激所致感知**，为双向闭环假体提供依据
+- [Oswalt 2021](papers/visual-prosthesis/oswalt-2021-multielectrode-phosphene-mapping.md) — 把**标定**当研究对象：盲人光幻视映射精度 16±2.9° vs 明眼 1.9±0.93°；误差大头来自本体感觉固视不稳，改双手固视即从 19° 降到 4°。"逐电极手工标定既费力又不准"的实证
+- [Fernández 2021](papers/visual-prosthesis/fernandez-2021-intracortical-96ch-human.md) — **皮层线目前的人体标杆**：全盲 57 岁参与者植入 96 电极 Utah 阵列 6 个月，无并发症，平均阈值 66.8±36.5 µA，多电极同时刺激显著降阈并使其**识别部分字母、辨认物体边界**；同一阵列持续记录到视觉剥夺神经元(双向闭环的前提)。CORTIVIS 项目(Miguel Hernández 大学 Elche)
