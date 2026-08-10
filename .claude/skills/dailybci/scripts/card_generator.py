@@ -120,6 +120,12 @@ def _base_css():
     .conceptwrap {{ margin-top: 74px; display: flex; align-items: center; justify-content: center; }}
     .conceptwrap img {{ max-width: 100%; width: auto; height: auto; display: block; }}
 
+    /* card title (与目录逐条对应的导航标题,排在图上方) */
+    .cardtitle {{ margin-top: 54px; font-size: 46px; font-weight: 800;
+                  line-height: 1.35; color: var(--title); }}
+    .cardtitle .num {{ color: var(--accent); margin-right: 16px; }}
+    .cardtitle + .figwrap {{ margin-top: 28px; }}
+
     /* figure */
     .figwrap {{ margin: 60px -36px 0; border: 1px solid var(--line); background: #fff;
                 display: flex; align-items: center; justify-content: center; overflow: hidden; }}
@@ -245,11 +251,15 @@ class CardGenerator:
         return self._render(self._page(body), output_path)
 
     def figure_card(self, figure_path_or_image, caption_label, annotation_paragraphs,
-                    output_path, figure_height=560):
+                    output_path, figure_height=560, title=None, title_num=None):
         """Figure card: a REAL paper figure (image) on top, caption label, annotations.
 
         figure_path_or_image may be a path str or a PIL.Image (saved to a temp PNG).
         Figures are embedded verbatim via <img> — never AI-generated.
+
+        `title` (+ optional `title_num`) renders a navigation heading ABOVE the figure
+        (2026-08-10 加). 措辞应与目录卡逐条对应,让读者在目录里看到的那一条,
+        在正文卡上能原样找到;多张卡讲同一条目录项时,沿用同一标题即可。
         """
         fig_path = figure_path_or_image
         tmp_fig = None
@@ -267,7 +277,13 @@ class CardGenerator:
             annots = "".join(
                 f"<div class='annot'>{self._fmt(p)}</div>" for p in annotation_paragraphs
             )
+            head = ""
+            if title:
+                num = (f"<span class='num'>{html.escape(str(title_num))}</span>"
+                       if title_num is not None else "")
+                head = f"<div class='cardtitle'>{num}{self._fmt(title)}</div>"
             body = (
+                f"{head}"
                 f"<div class='figwrap' style='max-height:{figure_height}px'>"
                 f"<img src='{_file_url(fig_path)}' style='max-height:{figure_height}px'>"
                 "</div>"

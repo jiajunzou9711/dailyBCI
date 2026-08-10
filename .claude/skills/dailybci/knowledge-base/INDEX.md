@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
 Last updated: 2026-08-10
-Total papers: 394
+Total papers: 395
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -510,7 +510,7 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Krieg 2017](papers/presurgical-mapping/krieg-2017-ntms-mapping-protocol.md) — 赫尔辛基工作组共识协议，标准化 nTMS 运动/语言作图；本子领域标准化基石与 milestone 抽取源
 - [Autti 2026](papers/presurgical-mapping/autti-2026-meg-informed-ntms-timing.md) — 用个人 MEG 语音激活时序个体化 nrTMS 的发放时机(PTI):best PTI 与 MEG 峰值显著正相关(Combined R=0.713，best PTI 平均早于峰值 132 ms)，把 nrTMS 个体化从"只调空间"推进到"空间+时间"，让被动 MEG 配置主动 TMS 的采集参数(非并联出第二张图)；仅额叶/语言产出区成立;概念验证(健康人 N=13、未对照 DCS、特异度收益待证)(赫尔辛基/Aalto·bioRxiv)
 
-## visual-prosthesis (17 papers)
+## visual-prosthesis (18 papers)
 视觉假体：给失明者用电刺激重建视觉输入。**本子领域含两条相互独立的路线，评估任何新工作前先归位是哪一条**——
 
 **① 视网膜路线**（7 篇）：给因感光细胞退化(RP/AMD)致盲者，电刺激存活的内层视网膜(神经节细胞/双极细胞)。三条临床分支：视网膜上(epiretinal，刺激神经节细胞)、视网膜下(subretinal，刺激双极细胞)、光伏视网膜下(无线近红外供能)。另有一条 Chichilnisky 组"精准刺激"研究线(MEA 单细胞级刺激→空间电流成形→规避轴突束)。**前提是视网膜内层还在**，故不适用于视神经损伤、青光眼晚期等病因。milestone 抽取自 Retinal Prostheses: Engineering and Clinical Perspectives (2023, PMC10347280) + Expert Rev Ophthalmol (2025) 综述。
@@ -531,6 +531,7 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Jepson 2014](papers/visual-prosthesis/jepson-2014-spatially-patterned-stimulation.md) — 多电极空间电流成形(current steering)提升刺激的细胞类型选择性，把单细胞刺激推向阵列协同(Chichilnisky 组)
 - [Grosberg 2017](papers/visual-prosthesis/grosberg-2017-axon-bundle-activation.md) — 指认轴突束激活为 epiretinal 假体的核心分辨率上限(512 电极离体猕猴)；精准刺激线要规避的核心问题
 - [Palanker 2020](papers/visual-prosthesis/palanker-2020-prima-photovoltaic.md) — PRIMA 无线光伏视网膜下假体首次人体(5 例 GA/AMD)，约 20/420、达像素间距；光伏路线里程碑
+- [Holz 2026](papers/visual-prosthesis/holz-2026-prima-nejm-trial.md) — **视网膜线目前最强临床结果**：PRIMA 更大规模试验，38 人植入、32 人满 12 个月，**26 人(81%)达到有临床意义的视力改善(≥0.2 logMAR)**，正推进欧洲上市(NEJM 394:232–242，在线首发 2025-10-20)。把适应症从 RP 挪到**干性 AMD 地图状萎缩**这个大病种；是评价皮层路线时必须并置的标尺
 
 
 ### 皮层路线 (cortical line)
