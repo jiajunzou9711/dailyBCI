@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-10
-Total papers: 395
+Last updated: 2026-08-11
+Total papers: 396
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -510,12 +510,12 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Krieg 2017](papers/presurgical-mapping/krieg-2017-ntms-mapping-protocol.md) — 赫尔辛基工作组共识协议，标准化 nTMS 运动/语言作图；本子领域标准化基石与 milestone 抽取源
 - [Autti 2026](papers/presurgical-mapping/autti-2026-meg-informed-ntms-timing.md) — 用个人 MEG 语音激活时序个体化 nrTMS 的发放时机(PTI):best PTI 与 MEG 峰值显著正相关(Combined R=0.713，best PTI 平均早于峰值 132 ms)，把 nrTMS 个体化从"只调空间"推进到"空间+时间"，让被动 MEG 配置主动 TMS 的采集参数(非并联出第二张图)；仅额叶/语言产出区成立;概念验证(健康人 N=13、未对照 DCS、特异度收益待证)(赫尔辛基/Aalto·bioRxiv)
 
-## visual-prosthesis (18 papers)
+## visual-prosthesis (19 papers)
 视觉假体：给失明者用电刺激重建视觉输入。**本子领域含两条相互独立的路线，评估任何新工作前先归位是哪一条**——
 
-**① 视网膜路线**（7 篇）：给因感光细胞退化(RP/AMD)致盲者，电刺激存活的内层视网膜(神经节细胞/双极细胞)。三条临床分支：视网膜上(epiretinal，刺激神经节细胞)、视网膜下(subretinal，刺激双极细胞)、光伏视网膜下(无线近红外供能)。另有一条 Chichilnisky 组"精准刺激"研究线(MEA 单细胞级刺激→空间电流成形→规避轴突束)。**前提是视网膜内层还在**，故不适用于视神经损伤、青光眼晚期等病因。milestone 抽取自 Retinal Prostheses: Engineering and Clinical Perspectives (2023, PMC10347280) + Expert Rev Ophthalmol (2025) 综述。
+**① 视网膜路线**（8 篇）：给因感光细胞退化(RP/AMD)致盲者，电刺激存活的内层视网膜(神经节细胞/双极细胞)。三条临床分支：视网膜上(epiretinal，刺激神经节细胞)、视网膜下(subretinal，刺激双极细胞)、光伏视网膜下(无线近红外供能)。另有一条 Chichilnisky 组"精准刺激"研究线(MEA 单细胞级刺激→空间电流成形→规避轴突束)。**前提是视网膜内层还在**，故不适用于视神经损伤、青光眼晚期等病因。milestone 抽取自 Retinal Prostheses: Engineering and Clinical Perspectives (2023, PMC10347280) + Expert Rev Ophthalmol (2025) 综述。
 
-**② 皮层路线**（10 篇，2026-08-10 建）：跳过整条眼-视神经通路，直接刺激初级视皮层 V1。**适用病因远比视网膜路线宽**——视网膜假体要求内层视网膜与视神经存活，**对眼球完全毁损或视神经离断的患者，皮层路线是唯一选项**；代价是要开颅、且失去视网膜自带的空间组织。分两支：**皮层表面**(epicortical，Brindley/Dobelle 一系，毫安级电流)与**皮层内穿刺**(intracortical/ICMS，Schmidt/Fernández 一系，µA 级电流、光幻视更细)。milestone 抽取自 **Nature Reviews Bioengineering (2026-06-01)《Restoring vision and touch with cortical microstimulation》**(doi 10.1038/s44222-026-00449-z) 的引用。
+**② 皮层路线**（11 篇，2026-08-10 建）：跳过整条眼-视神经通路，直接刺激初级视皮层 V1。**适用病因远比视网膜路线宽**——视网膜假体要求内层视网膜与视神经存活，**对眼球完全毁损或视神经离断的患者，皮层路线是唯一选项**；代价是要开颅、且失去视网膜自带的空间组织。分两支：**皮层表面**(epicortical，Brindley/Dobelle 一系，毫安级电流)与**皮层内穿刺**(intracortical/ICMS，Schmidt/Fernández 一系，µA 级电流、光幻视更细)。milestone 抽取自 **Nature Reviews Bioengineering (2026-06-01)《Restoring vision and touch with cortical microstimulation》**(doi 10.1038/s44222-026-00449-z) 的引用。
 
 **评估皮层路线任何新工作时先过一遍的三条硬约束：**
 1. **光幻视大小随电流迅速饱和**([[bosking-2017-phosphene-size-saturation]])，由被激活的皮层面积 × 该位置的皮层放大因子倒数决定。"加大电流换更大视野覆盖"这条路不通；分辨率上限由皮层功能结构而非电子学决定。
@@ -544,4 +544,5 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Beauchamp 2020](papers/visual-prosthesis/beauchamp-2020-dynamic-current-steering.md) — **编码范式从空间并行改为时间序列**：按顺序刺激电极在皮层上"描摹"形状(动态电流转向)，明眼与盲人均准确识别字母，盲人**达每分钟 86 个形状**；绕开多电极同时刺激互相干扰的长期障碍
 - [Chen 2020](papers/visual-prosthesis/chen-2020-high-channel-count-neuroprosthesis.md) — **通道数量级跃迁(→1024，猕猴 V1+V4)**：数百电极出光幻视且位置与感受野吻合，多电极图案被猴子**立即**识别为形状/运动/字母；**V4 活动可预测 V1 刺激所致感知**，为双向闭环假体提供依据
 - [Oswalt 2021](papers/visual-prosthesis/oswalt-2021-multielectrode-phosphene-mapping.md) — 把**标定**当研究对象：盲人光幻视映射精度 16±2.9° vs 明眼 1.9±0.93°；误差大头来自本体感觉固视不稳，改双手固视即从 19° 降到 4°。"逐电极手工标定既费力又不准"的实证
+- [Caspi 2021](papers/visual-prosthesis/caspi-2021-eye-movements-phosphene-location.md) — **「眼动主导了光幻视的感知位置」**(人体,RNS + Orion,眼位与刺激同步记录):知觉位置随刺激当时的眼位移动;用实测眼位**重映射**后,电极→视网膜拓扑位置的对应其实稳定,残余方差只受指点误差限制。把 Oswalt 量到的巨大映射误差定位到**测量环节**而非神经环节;现有系统靠转头而非转眼取景正源于此
 - [Fernández 2021](papers/visual-prosthesis/fernandez-2021-intracortical-96ch-human.md) — **皮层线目前的人体标杆**：全盲 57 岁参与者植入 96 电极 Utah 阵列 6 个月，无并发症，平均阈值 66.8±36.5 µA，多电极同时刺激显著降阈并使其**识别部分字母、辨认物体边界**；同一阵列持续记录到视觉剥夺神经元(双向闭环的前提)。CORTIVIS 项目(Miguel Hernández 大学 Elche)
