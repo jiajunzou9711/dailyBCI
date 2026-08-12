@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-11
-Total papers: 396
+Last updated: 2026-08-12
+Total papers: 397
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -66,6 +66,8 @@ Total papers: 396
 - [Neuralink 2024](papers/motor-bci/neuralink-2024-prime-n1-first-human.md) — 首个全植入无线1024通道BCI人体试验，患者日常使用>10h
 - [BrainGate 2023](papers/motor-bci/braingate-2023-long-term-safety.md) — 17年14名参与者长期安全数据，信号仅下降7%，支撑临床扩展
 - [Conlan 2026](papers/motor-bci/conlan-2026-ifg-grasp-decoding.md) — 首次在人类额下回(IFG，猕猴F5同源区)皮层内记录中用析因设计拆分抓法/物体/交互三因素：抓法解码显著主导(41.1-41.8% vs 33.3%随机)，物体贡献弱且更早、movement期已不显著；补上"非M1皮层内电极靶点"这条此前空白的线(与Ajiboye 2017对照，同组·bioRxiv)
+- [Vansteensel 2016](papers/motor-bci/vansteensel-2016-fully-implanted-ecoG-bci.md) — **首个完全植入式 BCI**(无经皮连接器)且**首个由 locked-in 患者在家独立使用**:晚期 ALS 患者运动皮层表面 ECoG + 全植入放大与无线传输,拼写约 2 字母/分,稳定运行数月(人类 1 名，NEJM)
+- [Vansteensel 2016](papers/motor-bci/vansteensel-2016-fully-implanted-ecoG-bci.md) — **首个完全植入式 BCI**(无经皮连接器)且**首个由 locked-in 患者在家独立使用**:晚期 ALS 患者运动皮层表面 ECoG + 全植入放大与无线传输,拼写约 2 字母/分,稳定运行数月(人类 1 名，NEJM)
 
 ## electrode-hardware (27 papers)
 - [Wise 1970](papers/electrode-hardware/wise-1970-silicon-microprobe.md) — 首次用IC工艺制造多位点神经探针，开启微加工电极时代
@@ -510,7 +512,7 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Krieg 2017](papers/presurgical-mapping/krieg-2017-ntms-mapping-protocol.md) — 赫尔辛基工作组共识协议，标准化 nTMS 运动/语言作图；本子领域标准化基石与 milestone 抽取源
 - [Autti 2026](papers/presurgical-mapping/autti-2026-meg-informed-ntms-timing.md) — 用个人 MEG 语音激活时序个体化 nrTMS 的发放时机(PTI):best PTI 与 MEG 峰值显著正相关(Combined R=0.713，best PTI 平均早于峰值 132 ms)，把 nrTMS 个体化从"只调空间"推进到"空间+时间"，让被动 MEG 配置主动 TMS 的采集参数(非并联出第二张图)；仅额叶/语言产出区成立;概念验证(健康人 N=13、未对照 DCS、特异度收益待证)(赫尔辛基/Aalto·bioRxiv)
 
-## visual-prosthesis (19 papers)
+## visual-prosthesis (20 papers)
 视觉假体：给失明者用电刺激重建视觉输入。**本子领域含两条相互独立的路线，评估任何新工作前先归位是哪一条**——
 
 **① 视网膜路线**（8 篇）：给因感光细胞退化(RP/AMD)致盲者，电刺激存活的内层视网膜(神经节细胞/双极细胞)。三条临床分支：视网膜上(epiretinal，刺激神经节细胞)、视网膜下(subretinal，刺激双极细胞)、光伏视网膜下(无线近红外供能)。另有一条 Chichilnisky 组"精准刺激"研究线(MEA 单细胞级刺激→空间电流成形→规避轴突束)。**前提是视网膜内层还在**，故不适用于视神经损伤、青光眼晚期等病因。milestone 抽取自 Retinal Prostheses: Engineering and Clinical Perspectives (2023, PMC10347280) + Expert Rev Ophthalmol (2025) 综述。
@@ -546,3 +548,4 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Oswalt 2021](papers/visual-prosthesis/oswalt-2021-multielectrode-phosphene-mapping.md) — 把**标定**当研究对象：盲人光幻视映射精度 16±2.9° vs 明眼 1.9±0.93°；误差大头来自本体感觉固视不稳，改双手固视即从 19° 降到 4°。"逐电极手工标定既费力又不准"的实证
 - [Caspi 2021](papers/visual-prosthesis/caspi-2021-eye-movements-phosphene-location.md) — **「眼动主导了光幻视的感知位置」**(人体,RNS + Orion,眼位与刺激同步记录):知觉位置随刺激当时的眼位移动;用实测眼位**重映射**后,电极→视网膜拓扑位置的对应其实稳定,残余方差只受指点误差限制。把 Oswalt 量到的巨大映射误差定位到**测量环节**而非神经环节;现有系统靠转头而非转眼取景正源于此
 - [Fernández 2021](papers/visual-prosthesis/fernandez-2021-intracortical-96ch-human.md) — **皮层线目前的人体标杆**：全盲 57 岁参与者植入 96 电极 Utah 阵列 6 个月，无并发症，平均阈值 66.8±36.5 µA，多电极同时刺激显著降阈并使其**识别部分字母、辨认物体边界**；同一阵列持续记录到视觉剥夺神经元(双向闭环的前提)。CORTIVIS 项目(Miguel Hernández 大学 Elche)
+- [Moure 2026](papers/visual-prosthesis/moure-2026-dl-control-evoked-activity.md) — **首次在清醒人体做成数据驱动的神经活动塑形**：把编码环节从「人按光幻视图手工设计」换成模型求解。前向模型(120 万参数，输入含当天基线)预测 ΔMUAe，再两路反解——梯度优化 **10–20 秒/目标**(最准，误差与重放原刺激相当)、逆网络 **约 50 微秒**(可实时)，均显著优于含 1-to-1 在内的全部基线且用更低电流(与幅度仅 r=0.25)。两个跨路线结论:**可达活动只需 10 个潜因子而指令空间需 86 个，且难度可由「离流形多远」预测(r=0.85)**;**记录到的活动比刺激参数更能预测知觉**(检测 74.2%→88.7%)，标定可从「问患者」转向「读电极」。**边界**:单被试、**非闭环**、仅 54/96 通道有效、固定脉冲串只调幅度(人类 1 名，Neuron)
