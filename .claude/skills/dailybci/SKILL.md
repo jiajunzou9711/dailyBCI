@@ -41,7 +41,14 @@ These standards apply to all output — X threads, 小红书 cards, knowledge ba
 
 4. **Avoid universal claims unless individually verified.** Words like "all", "every", "no other", "the first ever", and "都" are strong assertions that require exhaustive checking. Prefer bounded language: "the main prior approaches included…" instead of "all previous work relied on…"; "among the earliest" instead of "the first." Use "首次" or "first" only when verified against the knowledge base.
 
-5. **Fact verification step.** After completing a draft, run the three-layer verification defined in Step 6 (trace back to source → cross-source check → assertion audit with knowledge base + web search). Present the verification table to the user before any discussion of wording. Facts must be confirmed before polish begins. See Step 6 for the full procedure.
+5. **⛔ 关于真人与课题组的任何方向性断言,一律回到权威来源核实,不许凭印象写(2026-08-13 用户定,写死)。** 起因:当期目录卡的来源区我写了"通讯作者 Hao F. Zhang,美国西北大学生物医学工程系,**长期做视网膜活体光学成像**"——完全是凭印象。核实后发现**范围写窄了**:他是生物医学工程系教授**兼聘眼科**,实验室(Functional Optical Imaging Laboratory)的两条主线是**可见光 OCT** 与**光谱单分子定位显微**,尺度"从单分子到整只人眼"、**含人体临床**。"长期做视网膜活体光学成像"砍掉了单分子显微与人体临床两半,把一个宽方向的组写成了只做小鼠视网膜成像的组。
+   - **适用范围**:某人/某组"主要做什么方向""在哪个领域长期深耕""是谁的一作/通讯""有多权威""开创了什么"——**只要是关于真实人物或实验室的断言,一律先核后写**,不限于哪一步、哪张卡。用户的判据:**"这不是知识本身,涉及到真人,所以必须准确。"**
+   - **核到哪里为止**:① 本人/实验室的**官方主页或机构 profile**(最权威);② 该论文**自己的参考文献**——自引往往能直接坐实"这个组做过什么",且可回溯(当期就是靠参考文献 [7] 的 PNAS 2022 坐实了"活体单细胞钙成像"这件事,比"长期做…"硬得多);③ 权威数据库(PubMed / Google Scholar)。**搜索摘要的转述不算核实的终点**,能回到原始 profile 或论文就回。
+   - **写不实的两种保守写法**:核不到就**只写能核到的部分**(职称、单位、这篇的方法),或如实标"团队方向待核"。**宁可少写一句,不要给真人安一个方向。**
+   - **优先用可回溯的具体事实替代模糊的资历形容**:"同组 2022 年在 PNAS 上做过小鼠视网膜神经节细胞的活体单细胞钙成像" > "长期做视网膜成像"。前者可查、信息量更大,后者既模糊又容易写错。
+   - 这条与 Step 2 候选表「团队·单位·影响力」列已有的"叫不准影响力时如实写待核、不要编造资历"是同一条规则的两端:**Step 2 管选题时,这一条管出稿时**。
+
+6. **Fact verification step.** After completing a draft, run the three-layer verification defined in Step 6 (trace back to source → cross-source check → assertion audit with knowledge base + web search). Present the verification table to the user before any discussion of wording. Facts must be confirmed before polish begins. See Step 6 for the full procedure.
 
 ### 背景先行 + 一次一小块（2026-07-17 用户定，写死；管全流程与全部对话）
 
@@ -392,7 +399,7 @@ A good test: if you removed your explanation of this one point, would a reader m
   2. **已点名的比喻与拟人**（花样、活不过、旋钮、命运、欠账/还债、买到/付出代价、证据"告诉我们"、指标"承认"…）→ 改字面陈述。此表随每次被点名而追加，**新词一旦被用户点名就补进这条 grep**。
   3. **脚手架词与元信息**（承上/转场/主体/结论/Qn/（开头））→ 一律删除，只留自然正文。
   
-  grep 抓不到的三条靠人工过：① 每张内容卡是否有与目录逐字一致的圈号标题；② 承重数字/最高级是否**就地**挂了角标、且与尾卡列表同序不跳号；③ 是否把"预印本、未经同行评审"写成了局限性（禁止，见 Tone and Voice）。
+  grep 抓不到的四条靠人工过：① 每张内容卡是否有与目录逐字一致的圈号标题；② 承重数字/最高级是否**就地**挂了角标、且与尾卡列表同序不跳号；③ 是否把"预印本、未经同行评审"写成了局限性（禁止，见 Tone and Voice）；④ **稿子里关于真人/课题组的方向性断言（"长期做 X""专攻 Y""是 Z 的开创者"）是否逐条回权威来源核过**——凭印象写的一律删掉或改成可回溯的具体事实（2026-08-13 加，见 Content Standards → Factual Accuracy 第 5 条）。
 
 **用户随时可以喊停内容生产、转成纯讲解模式。** 出现这种情况时，**放弃 Step 5–8 的节奏，转入教学**：一次一小部分、给路线图、从第一性原理拆、拒绝堆名词。日报可以晚一点，甚至这期不出——用户把论文搞懂的价值高于按时出稿。搞懂之后再问要不要回到生产。
 
@@ -575,6 +582,8 @@ Card sequence: 封面卡 → **目录卡（本期路线,强制,见下）** → �
 **目录卡 = 强制的第 2 张卡,承担「路线 + 溯源」两件事:**
 1. **本期路线**:自制 SVG 做成分行分点——每一步 = 序号(圆号) + 一句标题 + 一句灰色副标题,让读者一眼扫完本期要讲的 5-6 步。做法复用 `series/eeg_drift_figs.py` 的 `toc()`。
 2. **来源区(2026-08-05 从封面移来)**:何时 · 什么平台/期刊 · 题为《…》的论文 · 团队/机构与通讯作者(值得说时加一句为什么权威) · 方法一句话。排在路线之下或之上均可,守住"同一张卡上读者能同时完成信任判断与导航"。
+   - **⛔ "为什么权威"这一句是最容易凭印象编的地方,必须先核后写**(2026-08-13 因当期写错 Hao F. Zhang 的方向而写死,完整规则见 Content Standards → Factual Accuracy 第 5 条)。优先写**可回溯的具体事实**(职称与兼聘、实验室名、"同组某年在某刊做过某事"),避免"长期做 X""深耕 Y"这类模糊资历形容——后者既难核又容易把一个宽方向的组写窄。
+   - 来源区内容变长时,用 `figure_card(..., annot_size=27)` **收小注文字号**(2026-08-13 为此加的参数),不要靠删溯源信息来腾地方。
 3. **这一张计入 18 卡上限**,出提纲数卡时就把它数进去。
 
 **三者分工:封面给读者看(吸引点开)、发布标题给平台搜(见下 §发布标题+话题标签)、目录给导航与溯源。** 不要混在一张卡上硬塞。

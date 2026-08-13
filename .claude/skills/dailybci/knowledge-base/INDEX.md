@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-12
-Total papers: 397
+Last updated: 2026-08-13
+Total papers: 398
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -323,7 +323,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Aubry 2003](papers/neuromodulation/aubry-2003-ct-based-adaptive-focusing.md) — "基于个体影像做声场仿真与相位校正"这条路线的起点:颅骨声学性质可从高分辨率 CT 反推,据此逐阵元补偿相位畸变、无创自适应聚焦。今天的 BabelBrain / k-Wave 个体化规划皆源于此。边界:**仿真是估计不是实测,不同软件结果不一致**(J Acoust Soc Am)
 - [Chang 2016](papers/neuromodulation/chang-2016-skull-factors-mrgfus.md) — 把颅骨差异变成有临床终点的实证问题(人类 n=25,MRgFUS 治疗震颤):**颅骨密度比 SDR 与靶点最高温度正相关(r²=0.263)**、声照野颅骨体积负相关(r²=0.206),即颅骨性质单独解释靶温约 20–26% 的变异。SDR 此后成为患者筛查指标(J Neurosurg)
 
-## optical-bci (9 papers)
+## optical-bci (10 papers)
 光学脑机接口：用钙成像(而非电极)读出神经活动来驱动闭环解码。相对电生理 BCI 的独有能力是**知道每个参与细胞的身份、层次、类型与空间位置**，因而既是工程路线也是研究工具；代价是钙信号相对动作电位的时间分辨率与信噪比。milestone 抽取自 Hira R. (2024, Neurophotonics 11:033405) 的多光子闭环/BMI 综述。建于 2026-07-20。
 - [Fetz 1969](papers/optical-bci/fetz-1969-operant-conditioning-cortical-units.md) — BCI 的思想原点：猕猴经操作性条件反射把**新分离**单神经元的放电提高到基线 **50%–500%**，证明神经活动可被任意调控、不必绑定自然运动输出。本线全部工作沿用这套范式、只把电极换成光学记录(猕猴)
 - [Ghosh 2011](papers/optical-bci/ghosh-2011-miniaturized-fluorescence-microscope.md) — miniscope 硬件起点：**1.9 g** 集成荧光显微镜，自由活动小鼠上约 0.5 mm² 视野同时追踪 >200 个浦肯野细胞。单光子宽场是其可及性来源，也带来先天代价——离焦背景荧光(小鼠，Schnitzer 组)
@@ -334,6 +334,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Zhang 2018](papers/optical-bci/zhang-2018-closed-loop-all-optical.md) — 闭环**全光学**：成像在线读出 + 双光子光遗传实时定制写入，行为进行中操纵回路。对应电生理双向接口的光学版本，但精度到单细胞(小鼠，Häusser 组)
 - [Trautmann 2021](papers/optical-bci/trautmann-2021-optical-bci-macaque.md) — 光学 BCI 推进到**非人灵长类**：胞体因光子散射不可及，改成像顶树突接入 PMd/M1，在线解码运动方向；CLARITY 回溯确认许多树突来自第 5 层输出神经元(含疑似 Betz 细胞)(猕猴，Shenoy/Deisseroth 组)
 - [Abdeladim 2026](papers/optical-bci/abdeladim-2026-holographic-mesoscope.md) — 把 [[zhang-2018-closed-loop-all-optical]] 的全光学读写从**单视野推到跨脑区**(Nat Neurosci 29:2023–2035)。解法是**两级寻址**：SLM 可及范围(约 950×990 µm，接近该放大倍率理论极限)尺寸不变，加一对振镜(±9°→样品面 ±1.4 mm)把它整体平移，视野切成 81 个 350 µm 格；光刺激视野达 **3.2×3.2 mm²**，约为此前十倍。绕开"做更大 SLM"(更大偏折角需更细像素，代价是衍射效率下降+像素串扰)。实测 PPSF 横向 **23–38 µm**、轴向 **35–77 µm**，目标细胞 **70%** 显著响应。两个承重结果：①**跨区可解**——刺激 LM，完全排除 LM 区后仅用其他视区仍解出写入的是哪一组，**0.65±0.02**(随机 0.5)；②**符号翻转**——同一次扰动 follower cells 净影响本地 **−0.19±0.02**、下游 **+0.1±0.01**(P=4.97×10⁻²⁶)。**本地净抑制属确证([[chettih-2019]] 等)，新的是两者能同批试次同时测出**。边界：结论依赖 follower cells 界定、朝向传递效应量小(0.271 vs 0.243, P=0.04)、"首台"措辞正刊已收窄(小鼠，Adesnik 组·UC Berkeley)
+- [Chen 2026](papers/optical-bci/chen-2026-closed-loop-retinal-stimulation.md) — **补充性条目(工具/平台论文,非 milestone)**:本线其余条目做皮层光学读/写,这一篇是**眼与视网膜侧的写入端**。把此前等于零的一个误差量了出来——定位波长与刺激波长的**焦平面相差 213 ± 43 µm(n=5,小鼠)**,**大于整层视网膜厚度、也大于 180 µm 的景深需求**,于是「图案面与视网膜面共轭」这个从未被核对的假设第一次被证伪。解法是眼底成像与图案刺激共路共轭 + 两条通路各挂一个电控可调焦透镜 + Tenengrad 实时判读清晰度;理想面横向分辨率优于 **6.7 µm**(作者估算视锥间距约 9 µm),活体眼底棋盘格可辨至约 **30 µm**(受限于浅层主血管的血红蛋白吸收,非光学极限)。**全文无任何神经反应测量、用健康麻醉小鼠、无疾病模型与时间序列**;青光眼仅为引言动机。复用点:评估任何**在体光刺激**工作,先问「落点与对焦是被验证过的,还是被假定的」(bioRxiv)
 
 ## locomotion (6 papers)
 - [Harkema 2011](papers/locomotion/harkema-2011-epidural-stimulation-standing.md) — 首次硬膜外脊髓刺激恢复完全瘫痪者站立和步进，颠覆不可恢复教条

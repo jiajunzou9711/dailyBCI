@@ -251,7 +251,8 @@ class CardGenerator:
         return self._render(self._page(body), output_path)
 
     def figure_card(self, figure_path_or_image, caption_label, annotation_paragraphs,
-                    output_path, figure_height=560, title=None, title_num=None):
+                    output_path, figure_height=560, title=None, title_num=None,
+                    annot_size=None):
         """Figure card: a REAL paper figure (image) on top, caption label, annotations.
 
         figure_path_or_image may be a path str or a PIL.Image (saved to a temp PNG).
@@ -274,8 +275,12 @@ class CardGenerator:
             fig_path = tmp_fig.name
 
         try:
+            # annot_size: 收小注文字号(默认走 CSS 的 SIZE_ANNOTATION)。
+            # 用途:溯源信息较长的目录卡等,内容多到默认字号放不下时。
+            astyle = f" style='font-size:{annot_size}px'" if annot_size else ""
             annots = "".join(
-                f"<div class='annot'>{self._fmt(p)}</div>" for p in annotation_paragraphs
+                f"<div class='annot'{astyle}>{self._fmt(p)}</div>"
+                for p in annotation_paragraphs
             )
             head = ""
             if title:
