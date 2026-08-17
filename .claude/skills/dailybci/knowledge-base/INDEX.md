@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-13
-Total papers: 398
+Last updated: 2026-08-17
+Total papers: 400
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -391,7 +391,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
 - [Ismail 2026 (naturalistic word meaning)](papers/ai-neural-modeling/ismail-2026-naturalistic-word-meaning.md) — 首次从**被动录的日常自然语音**(21患者/871h/527万词)估计**人类单神经元**对词义的编码：Behnke-Fried 微丝深部电极，全自动转录+区分说话人+检动作电位，无人工标注/分选；编码全患者显著、10类语义解码20.9%(随机10%)；自己说>环境语音2.42×(注意力)、自动化≈人工精标；把神经→语义从受控刺激推到零控制日常语音+百万词级(Baylor·Hayden/Sheth/Provenza，bioRxiv)
 
-## brain-encoding-models (14 papers)
+## brain-encoding-models (16 papers)
 **预测脑活动本身**这一格——与全库其余子领域方向相反：那些是"从脑活动读出外界"（解码），本线是"给定外界或给定当前状态，预测脑活动会是什么"。建于 2026-08-04。本线分两条互不相同的研究纲领，评估任何新工作前先判定它落在哪一条：
 - **A · 编码模型（刺激 → 脑响应）**：前向映射，问"给定这个刺激，各体素/电极响应多大"。milestone 抽取自 **Naselaris et al. (2011, NeuroImage 56:400–410)**。
 - **B · 全脑动力学模型（当前状态 → 后续演化）**：时间演化，问"给定此刻的脑状态与连接结构，接下来怎么走"。milestone 抽取自 **Breakspear (2017, Nat Neurosci 20:340–352)**。
@@ -401,6 +401,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 2. **"更大的模型/更多数据"本身能带来对数线性增益**（[[antonello-2023-scaling-laws-encoding]]：125M→30B 约 +15%）。一项新工作的增益若能被换更大骨干解释掉，就不构成方法学增量。
 3. **B 线的两个零假设**：静息态慢波动可由连接组+传导延迟+噪声直接产生（[[deco-2009-coupling-delay-noise]]）；"结构决定功能"在长时间窗成立、短时间窗大量动态无法由结构解释（[[honey-2007-network-structure-shapes-fc]]）。任何赋予自发活动功能意义的说法都需先排除这两条。
 4. **自称"因果"要核它的因果性来自哪里**——来自实验操纵 + 生成模型反演（[[friston-2003-dynamic-causal-modelling]]），还是仅来自时序上的先后（后者不构成因果）。
+5. **别把句法与语义当成可分的两个建模目标**（2026-08-17 加）：[[shain-2024-distributed-syntax-semantics]] 在 75 名被试的语言网络里找不到这条分界——纯结构效应遍布几乎所有语言区、词汇性效应遍布所有语言区、且二者互相调制。任何以「句法中枢 / 语义中枢」为前提的编码模型设计，需先说明它如何绕开这批阴性证据。配套的框架性主张见 [[nastase-2026-language-population-code]]，其核心判据可复用到全线：**「能从模型或神经数据里读出某个结构」不等于「该结构在内部真实存在」**。
 
 ### A · 编码模型线
 - [Kay 2008](papers/brain-encoding-models/kay-2008-identifying-natural-images.md) — 路线起点(Nature 452:352–355)：对每个体素拟合 Gabor 感受野编码模型（空间位置/朝向/空间频率调谐），据此在大候选集中指认被试看的是**哪一张从未测量过的新自然图像**；性能超过只用视网膜拓扑的模型，说明空间调谐不足以解释。把 fMRI 解码从"已知类别选一"推进到"对未见刺激泛化"(人类)
@@ -411,6 +412,8 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Caucheteux & King 2022](papers/brain-encoding-models/caucheteux-2022-brains-algorithms-converge.md) — 与 Schrimpf 2021 独立同结论(Commun Biol 5:134，**102 名**被试/400 句/fMRI+MEG)：脑-模型相似度主要取决于**从上下文预测词**的能力。两条独立证据链使该结论比任一单篇更可靠；MEG 把结论从"哪里像"扩到"什么时候像"。作者与 [[defossez-2023-meta-meg-speech]]、[[brain2qwerty-2026-meg-typing-decoding]] 同组(人类)
 - [Antonello 2023](papers/brain-encoding-models/antonello-2023-scaling-laws-encoding.md) — 缩放规律(NeurIPS 2023)：脑预测性能随模型规模**对数线性**提升，OPT/LLaMA **125M→30B** 区间编码性能约 **+15%**；放大 fMRI 训练集规模有同样的对数线性行为；声学模型(HuBERT/WavLM/Whisper)提升幅度相当。**与 EEG 侧 [[liu-2026-eeg-fm-benchmark]] 的 "larger≠better" 形成对照——缩放行为不能跨模态假定**(人类fMRI，3被试)
 - [Tuckute 2024](papers/brain-encoding-models/tuckute-2024-driving-suppressing-language-network.md) — 编码模型从"描述"变成"**控制**"(Nat Hum Behav 8:544–561)：先在 **1000 句**上拟合 GPT 类编码模型，再反用它挑出预测会最大化/最小化语言网络响应的新句子，在**新被试**身上实测兑现；**意外性与语言良构性**是响应强度的主要决定因素。**本线与 BCI 最接近的一格**——首次给 BCI 的输入侧（如何设计刺激驱动特定回路）提供可计算的设计工具(人类fMRI)
+- [Shain 2024](papers/brain-encoding-models/shain-2024-distributed-syntax-semantics.md) — **给 A 线语言侧划了一条硬边界**(J Cogn Neurosci 36:1427–1471，三个 fMRI 实验/**75 人**/精确 fMRI 个体化定位)：重做 Pallier-Devauchelle-Dehaene 2011 那项支持「句法与语义分处两区」的里程碑研究，**效应复现、定位推翻**。总词数卡死在 12、只变块长，另设 Jabberwocky(实词换假词、句法框架保留)。假词条件下**所有**语言区均有块长效应(仅角回例外)；**所有**区均有词汇性效应；除左后颞叶(≈0)与左中额回(未达显著)外均有块长×词汇性**交互**——结构加工的强度取决于词有没有意义。实验三用 **86.5% 非成分**材料，效应与前两个实验无显著差异，**连「这是句法效应」这个前提本身都被削弱**。**与 PDD 正面冲突处**：额下回并非纯句法，反倒左后颞叶最像「句法专区」(人类)
+- [Nastase 2026](papers/brain-encoding-models/nastase-2026-language-population-code.md) — **Perspective，全篇无自有新数据**(Neuron 114)：主张语言各层级统一编码在一个高维**神经群体编码**里，六个描述层级是同一空间中的不同方向。把 LLM 的成功抽成两条原理(表征格式 / 语境驱动统计学习)，各配两个人类神经证据案例。承重实证转引 Goldstein 2025(**ECoG**、约 **100 小时**日常对话、Whisper 三层嵌入全面优于音素与词性)、Kumar 2024、Zada 2024。**全文主脊：「能读出来」≠「里面存在」**——音素可从语音嵌入恢复、词性可从语言嵌入恢复，而模型内部并无这两种离散符号；推到大脑即对语音 BCI 的音素层解码目标构成质疑。**边界**：作者自陈编码模型对齐不证明架构或算法相似，只主张**表征格式**收敛；且 Case 2/3/4 的承重实证多为自引，属一个研究组为自身路线所做的系统论证(人类)
 
 ### B · 全脑动力学线
 - [Wilson & Cowan 1972](papers/brain-encoding-models/wilson-cowan-1972-excitatory-inhibitory.md) — 神经质量模型奠基(Biophys J 12:1–24)：把局部皮层抽象成耦合的兴奋/抑制两群体，状态变量取**平均发放率**，群体输入-输出用 sigmoid。给出稳定不动点、迟滞与极限环振荡，为皮层节律提供群体层面解释。**注意术语**：此处"群体"指解剖邻近的局部群体，与 population-dynamics 子领域的"记录到的神经元群体状态空间"是不同概念
