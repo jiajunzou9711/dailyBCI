@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DailyBCI 双平台数据看板</title>
+<style>
+  :root{
+    --xhs:#ff2442; --wx:#07c160; --ink:#1f2328; --sub:#6b7280; --line:#e5e7eb; --bg:#fafafa;
+    --card:#ffffff; --up:#16a34a; --down:#dc2626; --na:#9ca3af;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.55; padding:24px 16px 48px;}
+  .wrap{max-width:1080px; margin:0 auto;}
+  header{margin-bottom:18px;}
+  h1{font-size:22px; font-weight:700; letter-spacing:.5px;}
+  .meta{color:var(--sub); font-size:12px; margin-top:6px;}
+  .meta b{color:var(--ink); font-weight:600;}
+
+  .acct{display:flex; flex-wrap:wrap; gap:12px; margin-top:14px;}
+  .acct .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 16px; min-width:150px; flex:1;}
+  .acct .card .lbl{font-size:11.5px; color:var(--sub);}
+  .acct .card .val{font-size:20px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .acct .card .delta{font-size:11.5px; margin-top:2px;}
+  .acct .card.xhs .val{color:var(--xhs);} .acct .card.wx .val{color:var(--wx);}
+  .delta.up{color:var(--up);} .delta.down{color:var(--down);} .delta.flat{color:var(--sub);}
+
+  .bar{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:14px;}
+  .bar .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center;}
+  .bar .row + .row{margin-top:10px;}
+  .seg{display:flex; flex-wrap:wrap; gap:6px; align-items:center;}
+  .seg .lbl{font-size:12px; color:var(--sub); margin-right:2px;}
+  .chip{border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:99px; padding:4px 13px; font-size:12.5px; cursor:pointer; transition:all .12s;}
+  .chip:hover{border-color:#c4c7cc;}
+  .chip.on{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .chip.xhs-on{background:var(--xhs); color:#fff; border-color:var(--xhs);}
+  .chip.wx-on{background:var(--wx); color:#fff; border-color:var(--wx);}
+  .range input{width:130px; padding:4px 8px; font-size:12px; border:1px solid var(--line); border-radius:6px; color:var(--ink);}
+  .range .dash{color:var(--sub);}
+
+  section{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:16px;}
+  h2{font-size:16px; font-weight:700; margin-bottom:12px;}
+  h2 .tag{display:inline-block; font-size:11px; font-weight:600; color:#fff; border-radius:4px; padding:1px 7px; margin-right:8px; vertical-align:2px;}
+  .tag.xhs{background:var(--xhs);} .tag.wx{background:var(--wx);} .tag.both{background:#7c3aed;}
+
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px;}
+  .cards .c{background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:12px 14px;}
+  .cards .c .lbl{font-size:11.5px; color:var(--sub);}
+  .cards .c .val{font-size:21px; font-weight:700; font-variant-numeric:tabular-nums; margin-top:3px;}
+  .cards .c .sub{font-size:11px; color:var(--sub); margin-top:2px;}
+
+  table{width:100%; border-collapse:collapse; font-size:12.5px;}
+  th{text-align:left; font-weight:600; color:var(--sub); font-size:11.5px; border-bottom:1px solid var(--line); padding:8px 6px; white-space:nowrap;}
+  td{padding:8px 6px; border-bottom:1px solid #f3f4f6; vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr.post{cursor:pointer;}
+  tbody tr.post:hover{background:#f6f7f8;}
+  td.num{font-variant-numeric:tabular-nums; white-space:nowrap;}
+  td.title{font-weight:600;}
+  .na{color:var(--na); font-weight:400;}
+  .up-t{color:var(--up);} .down-t{color:var(--down);}
+  .pill{display:inline-block; font-size:10.5px; font-weight:600; border-radius:99px; padding:0 7px; margin-left:3px;}
+  .pill.good{background:#ecfdf5; color:#059669;} .pill.warn{background:#fff7ed; color:#ea580c;}
+  .foot{font-size:11.5px; color:var(--sub); margin-top:10px; line-height:1.6;}
+  .empty{padding:28px; text-align:center; color:var(--sub); font-size:13px;}
+
+  /* 复盘 */
+  .review{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .review .box{border-radius:10px; padding:12px 14px; font-size:12.5px;}
+  .review .box h3{font-size:13px; margin-bottom:6px;}
+  .review .good{background:#ecfdf5; border:1px solid #a7f3d0;} .review .good h3{color:#059669;}
+  .review .bad{background:#fff7ed; border:1px solid #fed7aa;} .review .bad h3{color:#ea580c;}
+  .review ul{margin-left:16px;} .review li{margin-bottom:5px;}
+  .next{margin-top:14px; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:10px; padding:12px 14px; font-size:12.5px;}
+  .next h3{color:#7c3aed; font-size:13px; margin-bottom:6px;}
+  .next ol{margin-left:18px;} .next li{margin-bottom:5px;}
+
+  /* 详情弹窗 */
+  .mask{position:fixed; inset:0; background:rgba(17,24,28,.45); display:none; align-items:flex-start; justify-content:center; z-index:50; padding:32px 12px; overflow-y:auto;}
+  .mask.show{display:flex;}
+  .modal{background:#fff; border-radius:14px; max-width:860px; width:100%; padding:20px 22px; position:relative;}
+  .modal .close{position:absolute; top:14px; right:16px; border:none; background:#f3f4f6; width:30px; height:30px; border-radius:8px; cursor:pointer; font-size:16px; color:var(--ink);}
+  .modal h3{font-size:17px; margin-bottom:2px;}
+  .modal .dt{font-size:12px; color:var(--sub); margin-bottom:4px;}
+  .modal .ttl{font-size:13px; color:var(--ink); margin-bottom:12px;}
+  .modal .ttl .k{color:var(--sub);}
+  .modal .ttl .x{color:var(--xhs); font-weight:600;} .modal .ttl .w{color:var(--wx); font-weight:600;}
+  .modal h4{font-size:13.5px; margin:14px 0 6px;}
+  .modal table{font-size:12px;}
+  .modal table th{font-size:11px;}
+  .cmp{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0;}
+  .cmp .tag2{font-size:11.5px; border:1px solid var(--line); border-radius:8px; padding:3px 9px; color:var(--ink);}
+  .cmp .tag2 b{font-variant-numeric:tabular-nums;}
+  .sparkwrap{display:flex; gap:24px; flex-wrap:wrap; margin-top:4px;}
+  .sparkwrap .s{flex:1; min-width:220px;}
+  .sparkwrap .s .sl{font-size:11.5px; color:var(--sub); margin-bottom:4px;}
+  .sparkwrap .s svg{display:block; background:#fafafa; border:1px solid var(--line); border-radius:6px;}
+  .sparkwrap .s .xax{display:flex; justify-content:space-between; font-size:10.5px; color:var(--sub);}
+  .snapnote{font-size:11px; color:var(--sub); margin-top:10px;}
+
+  @media (max-width:680px){ .review{grid-template-columns:1fr;} .cards{grid-template-columns:repeat(2,1fr);} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>DailyBCI 双平台数据看板</h1>
+    <div class="meta" id="metaLine">数据加载中…</div>
+    <div class="acct" id="acctBar"></div>
+  </header>
+
+  <div class="bar">
+    <div class="row">
+      <div class="seg">
+        <span class="lbl">时间范围</span>
+        <button class="chip" data-mode="today">今天</button>
+        <button class="chip" data-mode="last3">最近 3 天</button>
+        <button class="chip" data-mode="last7">最近 7 天</button>
+        <button class="chip on" data-mode="all">全部</button>
+      </div>
+      <div class="seg">
+        <span class="lbl">平台</span>
+        <button class="chip on" data-plat="xhs">小红书</button>
+        <button class="chip" data-plat="wx">公众号</button>
+        <button class="chip" data-plat="both">双平台对比</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="seg range">
+        <span class="lbl">自定义</span>
+        <input type="date" id="from"> <span class="dash">至</span> <input type="date" id="to">
+        <button class="chip" id="applyRange">应用</button>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2 id="ovTitle"><span class="tag xhs">小红书</span>概览</h2>
+    <div class="cards" id="ovCards"></div>
+  </section>
+
+  <section>
+    <h2 id="listTitle"><span class="tag xhs">小红书</span>文章列表</h2>
+    <div id="listWrap"></div>
+    <div class="foot" id="footNote"></div>
+  </section>
+
+  <section id="reviewSection" style="display:none;">
+    <h2>复盘 · 下一步</h2>
+    <div class="review">
+      <div class="box good"><h3>强项（继续发扬）</h3><ul id="rvGood"></ul></div>
+      <div class="box bad"><h3>短板（需要修补）</h3><ul id="rvBad"></ul></div>
+    </div>
+    <div class="next"><h3>下一步只改这几件事</h3><ol id="rvNext"></ol></div>
+  </section>
+
+  <div class="foot" id="globalFoot">
+    口径说明：打开率＝阅读人数/送达人数（总口径，含推荐）；小红书观看不足 100 无笔记诊断；公众号未群发无送达；平台未报告的字段一律标「未报告」，不填 0。百分比均为百分数数值。
+  </div>
+</div>
+
+<!-- 详情弹窗 -->
+<div class="mask" id="mask">
+  <div class="modal">
+    <button class="close" id="closeBtn">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var DATA = window.DASHBOARD_DATA || {meta:{}, accounts:[], posts:[]};
+
+  /* ---------- 工具 ---------- */
+  function parseDate(s){ if(!s) return null; var p=s.split('-').map(Number); return new Date(p[0], p[1]-1, p[2]); }
+  function fmtDate(s){ var d=parseDate(s); if(!d) return '—'; return (d.getMonth()+1)+'-'+String(d.getDate()).padStart(2,'0'); }
+  function todayStr(){ var d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function daysAgoStr(n){ var d=new Date(); d.setDate(d.getDate()-n); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+
+  function fmt(v, type){
+    if(v===null || v===undefined || v==='') return '<span class="na">未报告</span>';
+    if(type==='pct') return String(v)+'%';
+    if(type==='sec') return String(v)+'s';
+    if(typeof v==='number') return v.toLocaleString('zh-CN');
+    return String(v);
+  }
+  function numVal(v){ return (typeof v==='number') ? v : null; }
+
+  function latestMetrics(post){ var ms=post.metrics||[]; return ms.length? ms[ms.length-1] : null; }
+  function platformOf(post, plat){ var m=latestMetrics(post); return m ? (m[plat]||null) : null; }
+
+  /* ---------- 状态 ---------- */
+  var mode = 'all';
+  var plat = 'xhs';
+  var customFrom = '', customTo = '';
+
+  function inWindow(dateStr){
+    if(!dateStr) return false;
+    var d = parseDate(dateStr);
+    var t = parseDate(todayStr());
+    if(mode==='today') return dateStr === todayStr();
+    if(mode==='last3'){ var f=parseDate(daysAgoStr(2)); return d>=f && d<=t; }
+    if(mode==='last7'){ var f=parseDate(daysAgoStr(6)); return d>=f && d<=t; }
+    if(mode==='custom'){
+      var cf=parseDate(customFrom), ct=parseDate(customTo||customFrom);
+      if(!cf) return true;
+      return d>=cf && d<=(ct||t);
+    }
+    return true;
+  }
+  function filtered(){ return (DATA.posts||[]).filter(function(p){ return inWindow(p.publish_date); })
+      .sort(function(a,b){ return (b.publish_date||'').localeCompare(a.publish_date||''); }); }
+
+  /* ---------- 汇总 ---------- */
+  function sumOf(list, getter){ var s=0,n=0; list.forEach(function(p){ var v=numVal(getter(p)); if(v!==null){ s+=v; n++; } }); return {sum:s, n:n}; }
+  function meanOf(list, getter){ var s=0,n=0; list.forEach(function(p){ var v=numVal(getter(p)); if(v!==null){ s+=v; n++; } }); return n? s/n : null; }
+
+  var XHS_SUM = [
+    {label:'总曝光', get:function(p){return platformOf(p,'xhs')&&platformOf(p,'xhs').exposure;}, type:'num'},
+    {label:'总观看', get:function(p){return platformOf(p,'xhs')&&platformOf(p,'xhs').views;}, type:'num'},
+    {label:'均封面点击率', get:function(p){return platformOf(p,'xhs')&&platformOf(p,'xhs').ctr;}, type:'pct'},
+    {label:'均互动率', get:function(p){return platformOf(p,'xhs')&&platformOf(p,'xhs').engage_rate;}, type:'pct'},
+    {label:'总涨粉', get:function(p){return platformOf(p,'xhs')&&platformOf(p,'xhs').followers_gain;}, type:'num'}
+  ];
+  var WX_SUM = [
+    {label:'总送达', get:function(p){return platformOf(p,'wx')&&platformOf(p,'wx').send_uv;}, type:'num'},
+    {label:'总阅读', get:function(p){return platformOf(p,'wx')&&platformOf(p,'wx').read_uv;}, type:'num'},
+    {label:'均打开率', get:function(p){return platformOf(p,'wx')&&platformOf(p,'wx').open_rate;}, type:'pct'},
+    {label:'均完读率', get:function(p){return platformOf(p,'wx')&&platformOf(p,'wx').finish_rate;}, type:'pct'},
+    {label:'总分享', get:function(p){return platformOf(p,'wx')&&platformOf(p,'wx').share_uv;}, type:'num'},
+    {label:'总新增关注', get:function(p){return platformOf(p,'wx')&&platformOf(p,'wx').follow_after_read;}, type:'num'}
+  ];
+
+  function renderOverview(){
+    var list = filtered();
+    var cards=[];
+    var specs = plat==='xhs' ? XHS_SUM : plat==='wx' ? WX_SUM : [];
+    if(plat==='both'){
+      var xv=sumOf(list, function(p){return platformOf(p,'xhs')&&platformOf(p,'xhs').views;});
+      var wr=sumOf(list, function(p){return platformOf(p,'wx')&&platformOf(p,'wx').read_uv;});
+      var xctr=meanOf(list, function(p){return platformOf(p,'xhs')&&platformOf(p,'xhs').ctr;});
+      var wopen=meanOf(list, function(p){return platformOf(p,'wx')&&platformOf(p,'wx').open_rate;});
+      cards=[
+        {label:'小红书总观看', val:fmt(xv.sum,'num'), sub:xv.n+' 篇有值'},
+        {label:'公众号总阅读', val:fmt(wr.sum,'num'), sub:wr.n+' 篇有值'},
+        {label:'小红书均封面点击率', val:fmt(xctr,'pct')},
+        {label:'公众号均打开率', val:fmt(wopen,'pct')}
+      ];
+    } else {
+      specs.forEach(function(s){
+        var isSum = s.label.indexOf('总')===0;
+        if(isSum){ var r=sumOf(list, s.get); cards.push({label:s.label, val:fmt(r.sum,s.type), sub:r.n+' 篇有值'}); }
+        else { var m=meanOf(list, s.get); cards.push({label:s.label, val:fmt(m,s.type), sub:'均值'}); }
+      });
+    }
+    cards.push({label:'样本', val:list.length, sub:'篇内容'});
+
+    var ov=document.getElementById('ovCards');
+    ov.innerHTML = cards.map(function(c){
+      return '<div class="c"><div class="lbl">'+c.label+'</div><div class="val">'+c.val+'</div>'+(c.sub?'<div class="sub">'+c.sub+'</div>':'')+'</div>';
+    }).join('');
+  }
+
+  /* ---------- 列表 ---------- */
+  var XHS_COLS = [
+    {key:'exposure', label:'曝光', type:'num'},
+    {key:'views', label:'观看', type:'num'},
+    {key:'ctr', label:'封面点击率', type:'pct'},
+    {key:'engage_rate', label:'互动率', type:'pct'},
+    {key:'followers_gain', label:'涨粉', type:'num'}
+  ];
+  var WX_COLS = [
+    {key:'send_uv', label:'送达', type:'num'},
+    {key:'read_uv', label:'阅读', type:'num'},
+    {key:'open_rate', label:'打开率', type:'pct'},
+    {key:'finish_rate', label:'完读率', type:'pct'},
+    {key:'share_uv', label:'分享', type:'num'},
+    {key:'follow_after_read', label:'新增关注', type:'num'}
+  ];
+
+  function titleFor(post){
+    if(plat==='xhs') return post.title_xhs || post.slug || '';
+    if(plat==='wx') return post.title_wx || post.slug || '';
+    return post.title_xhs || post.title_wx || post.slug || '';
+  }
+
+  function renderList(){
+    var list = filtered();
+    var wrap = document.getElementById('listWrap');
+    if(!list.length){
+      wrap.innerHTML = '<div class="empty">当前时间范围内没有内容。可切到「全部」或换一个时间段。</div>';
+      return;
+    }
+    var html;
+    if(plat==='xhs' || plat==='wx'){
+      var cols = plat==='xhs' ? XHS_COLS : WX_COLS;
+      var head = '<tr><th>日期 · 标题</th>'+cols.map(function(c){return '<th class="num">'+c.label+'</th>';}).join('')+'</tr>';
+      var rows = list.map(function(p){
+        var pf = platformOf(p, plat) || {};
+        var cells = cols.map(function(c){
+          var v = pf[c.key];
+          if(c.key==='send_uv' && v===null && p.metrics && p.metrics.length){ return '<td class="num"><span class="na">未群发</span></td>'; }
+          return '<td class="num">'+fmt(v, c.type)+'</td>';
+        }).join('');
+        return '<tr class="post" data-slug="'+p.slug+'"><td class="title">'+fmtDate(p.publish_date)+' '+titleFor(p)+'</td>'+cells+'</tr>';
+      }).join('');
+      html = '<table><thead>'+head+'</thead><tbody>'+rows+'</tbody></table>';
+    } else {
+      var head2 = '<tr><th>日期 · 标题</th><th class="num">小红书观看</th><th class="num">小红书互动率</th><th class="num">公众号阅读</th><th class="num">公众号打开率</th></tr>';
+      var rows2 = list.map(function(p){
+        var x = platformOf(p,'xhs')||{}, w = platformOf(p,'wx')||{};
+        return '<tr class="post" data-slug="'+p.slug+'">'
+          +'<td class="title">'+fmtDate(p.publish_date)+' '+titleFor(p)+'</td>'
+          +'<td class="num">'+fmt(x.views,'num')+'</td>'
+          +'<td class="num">'+fmt(x.engage_rate,'pct')+'</td>'
+          +'<td class="num">'+fmt(w.read_uv,'num')+'</td>'
+          +'<td class="num">'+fmt(w.open_rate,'pct')+'</td>'
+          +'</tr>';
+      }).join('');
+      html = '<table><thead>'+head2+'</thead><tbody>'+rows2+'</tbody></table>';
+    }
+    wrap.innerHTML = html;
+    Array.prototype.forEach.call(wrap.querySelectorAll('tr.post'), function(tr){
+      tr.addEventListener('click', function(){ openDetail(tr.getAttribute('data-slug')); });
+    });
+  }
+
+  /* ---------- 详情 ---------- */
+  function fieldRow(k, v, type, cmp){ 
+    var arrow = '';
+    if(cmp){ if(cmp>0) arrow=' <span class="up-t">↑</span>'; else if(cmp<0) arrow=' <span class="down-t">↓</span>'; else arrow=' <span class="na">—</span>'; }
+    return '<tr><td>'+k+'</td><td class="num">'+fmt(v,type)+arrow+'</td></tr>';
+  }
+
+  function openDetail(slug){
+    var post = null;
+    (DATA.posts||[]).forEach(function(p){ if(p.slug===slug) post=p; });
+    if(!post) return;
+    var list = filtered();
+    var mx=platformOf(post,'xhs')||{}, mw=platformOf(post,'wx')||{};
+
+    // 对比窗口均值
+    var win = { xctr: meanOf(list, function(p){return platformOf(p,'xhs')&&platformOf(p,'xhs').ctr;}),
+                xeng: meanOf(list, function(p){return platformOf(p,'xhs')&&platformOf(p,'xhs').engage_rate;}),
+                wopen: meanOf(list, function(p){return platformOf(p,'wx')&&platformOf(p,'wx').open_rate;}),
+                wfin: meanOf(list, function(p){return platformOf(p,'wx')&&platformOf(p,'wx').finish_rate;}) };
+    function diff(v, base){ if(numVal(v)===null || base===null) return null; return v-base; }
+
+    function diagLine(d){
+      if(!d) return '观看不足 100 或无诊断';
+      var parts=[];
+      if(d.ctr_pct!==null) parts.push('点击率超 '+d.ctr_pct+'%');
+      if(d.watch_pct!==null) parts.push('时长超 '+d.watch_pct+'%');
+      if(d.engage_pct!==null) parts.push('互动超 '+d.engage_pct+'%');
+      if(d.gain_pct!==null) parts.push('涨粉超 '+d.gain_pct+'%');
+      return parts.length? parts.join(' · ') : '观看不足 100 或无诊断';
+    }
+
+    var xrows =
+      fieldRow('曝光', mx.exposure, 'num') +
+      fieldRow('观看', mx.views, 'num') +
+      fieldRow('封面点击率', mx.ctr, 'pct', diff(mx.ctr, win.xctr)) +
+      fieldRow('平均观看时长', mx.avg_watch_s, 'sec') +
+      fieldRow('互动率', mx.engage_rate, 'pct', diff(mx.engage_rate, win.xeng)) +
+      fieldRow('涨粉', mx.followers_gain, 'num') +
+      fieldRow('内容丰富度', mx.richness_pct, 'pct');
+    var wrows =
+      fieldRow('送达', mw.send_uv===null?'未群发':mw.send_uv, 'num') +
+      fieldRow('阅读', mw.read_uv, 'num') +
+      fieldRow('打开率', mw.open_rate, 'pct', diff(mw.open_rate, win.wopen)) +
+      fieldRow('完读率', mw.finish_rate, 'pct', diff(mw.finish_rate, win.wfin)) +
+      fieldRow('平均阅读时长', mw.avg_read_s, 'sec') +
+      fieldRow('分享', mw.share_uv, 'num') +
+      fieldRow('收藏', mw.collect_uv, 'num') +
+      fieldRow('阅读后新增关注', mw.follow_after_read, 'num') +
+      fieldRow('点赞', mw.like_cnt, 'num') +
+      fieldRow('评论', mw.comment_cnt, 'num') +
+      fieldRow('在看', mw.zaikan_cnt, 'num');
+
+    // 增长曲线
+    var snapshots = post.metrics||[];
+    var xviews = snapshots.map(function(m){ return m.xhs? numVal(m.xhs.views) : null; });
+    var wreads = snapshots.map(function(m){ return m.wx? numVal(m.wx.read_uv) : null; });
+    var dates = snapshots.map(function(m){ return m.date; });
+    var svg1 = sparklineSVG(xviews, '#ff2442');
+    var svg2 = sparklineSVG(wreads, '#07c160');
+    var snapnote = '记录次数：' + snapshots.length + (snapshots.length<2 ? '（累积到 2 次以上后显示增长曲线）' : '');
+    var ax1 = dates.length? '<div class="xax"><span>'+dates[0]+'</span><span>'+dates[dates.length-1]+'</span></div>' : '';
+    var ax2 = dates.length? '<div class="xax"><span>'+dates[0]+'</span><span>'+dates[dates.length-1]+'</span></div>' : '';
+
+    document.getElementById('modalBody').innerHTML =
+      '<h3>'+fmtDate(post.publish_date)+' · '+titleFor(post)+'</h3>'
+      +'<div class="dt">slug: '+post.slug+'</div>'
+      +'<div class="ttl"><span class="k">小红书：</span><span class="x">'+ (post.title_xhs||'—') +'</span> ｜ <span class="k">公众号：</span><span class="w">'+ (post.title_wx||'—') +'</span></div>'
+      +'<h4><span class="tag xhs">小红书</span>核心数据（↑↓ 相对当前窗口均值）</h4>'
+      +'<table><thead><tr><th>指标</th><th class="num">数值</th></tr></thead><tbody>'+xrows+'</tbody></table>'
+      +'<div class="foot">笔记诊断：'+diagLine(mx.diag)+'</div>'
+      +'<h4><span class="tag wx">公众号</span>核心数据</h4>'
+      +'<table><thead><tr><th>指标</th><th class="num">数值</th></tr></thead><tbody>'+wrows+'</tbody></table>'
+      +'<h4>增长曲线（随每日快照累积）</h4>'
+      +'<div class="sparkwrap">'
+      +'<div class="s"><div class="sl">小红书 · 观看</div>'+(svg1||'<span class="na">仅 1 次记录</span>')+ax1+'</div>'
+      +'<div class="s"><div class="sl">公众号 · 阅读</div>'+(svg2||'<span class="na">仅 1 次记录</span>')+ax2+'</div>'
+      +'</div>'
+      +'<div class="snapnote">'+snapnote+'</div>';
+
+    document.getElementById('mask').classList.add('show');
+  }
+
+  function sparklineSVG(points, color){
+    var vals = points.map(function(v){ return v; });
+    var valid = vals.filter(function(v){ return v!==null; });
+    if(valid.length < 2) return null;
+    var w=260, h=72, pad=3;
+    var min=Math.min.apply(null,valid), max=Math.max.apply(null,valid);
+    var range=(max-min)||1;
+    var step=(w-2*pad)/(vals.length-1);
+    var pts=vals.map(function(v,i){
+      var x=pad+i*step;
+      var y=(v===null)? null : pad + (h-2*pad) - ((v-min)/range)*(h-2*pad);
+      return [x,y];
+    });
+    var line=pts.map(function(p,i){ return (i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1); }).join(' ');
+    var circles=pts.map(function(p){ return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="2.4" fill="'+color+'"/>'; }).join('');
+    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"><path d="'+line+'" fill="none" stroke="'+color+'" stroke-width="2"/>'+circles+'</svg>';
+  }
+
+  /* ---------- 账户 + 复盘 ---------- */
+  function renderAcct(){
+    var accts = DATA.accounts||[];
+    var a = accts.length? accts[accts.length-1] : null;
+    var el = document.getElementById('acctBar');
+    if(!a){ el.innerHTML=''; return; }
+    function delta(v){ if(v===null||v===undefined) return '<span class="delta flat">—</span>';
+      return '<span class="delta '+(v>0?'up':v<0?'down':'flat')+'">近7天 '+(v>0?'+':'')+v+'</span>'; }
+    el.innerHTML =
+      '<div class="card xhs"><div class="lbl">小红书粉丝</div><div class="val">'+(a.xhs_followers!==null? a.xhs_followers.toLocaleString('zh-CN'):'未报告')+'</div>'
+      + delta(a.xhs_followers_7d) + '</div>'
+      +'<div class="card wx"><div class="lbl">公众号总用户</div><div class="val">'+(a.wx_users!==null? a.wx_users.toLocaleString('zh-CN'):'未报告')+'</div>'
+      +'<span class="delta '+(a.wx_users_1d>0?'up':a.wx_users_1d<0?'down':'flat')+'">昨日 '+(a.wx_users_1d>0?'+':'')+(a.wx_users_1d??'—')+'</span></div>'
+      +'<div class="card"><div class="lbl">数据更新至</div><div class="val" style="font-size:16px;color:var(--ink)">'+fmtDate(a.date)+'</div></div>';
+  }
+
+  function renderMeta(){
+    var m = DATA.meta||{};
+    var latest = m.generated_at || '';
+    var n = (DATA.posts||[]).length;
+    var el = document.getElementById('metaLine');
+    el.innerHTML = '数据最新采集：<b>'+fmtDate(latest)+'</b> ｜ 累计收录 <b>'+n+'</b> 篇内容 ｜ 时间筛选以「今天」为基准';
+    if(m.notes){ el.innerHTML += '<br>'+m.notes; }
+  }
+
+  function renderReview(){
+    var r = (DATA.meta||{}).review;
+    var sec = document.getElementById('reviewSection');
+    if(!r || (!r.good && !r.bad && !r.next)){ sec.style.display='none'; return; }
+    sec.style.display='block';
+    document.getElementById('rvGood').innerHTML = (r.good||[]).map(function(x){return '<li>'+x+'</li>';}).join('') || '<li class="na">暂无</li>';
+    document.getElementById('rvBad').innerHTML = (r.bad||[]).map(function(x){return '<li>'+x+'</li>';}).join('') || '<li class="na">暂无</li>';
+    document.getElementById('rvNext').innerHTML = (r.next||[]).map(function(x){return '<li>'+x+'</li>';}).join('') || '<li class="na">暂无</li>';
+  }
+
+  /* ---------- 标题/脚注刷新 ---------- */
+  var PLAT_LABEL = {xhs:['xhs','小红书'], wx:['wx','公众号'], both:['both','双平台对比']};
+  function renderTitles(){
+    var p = PLAT_LABEL[plat];
+    document.getElementById('ovTitle').innerHTML = '<span class="tag '+p[0]+'">'+p[1]+'</span>概览';
+    document.getElementById('listTitle').innerHTML = '<span class="tag '+p[0]+'">'+p[1]+'</span>文章列表';
+    var fn = document.getElementById('footNote');
+    if(plat==='xhs') fn.textContent = '曝光、观看为绝对值；封面点击率＝观看/曝光；互动率＝(赞+评+藏+享)/观看；涨粉为绝对值。观看不足 100 无诊断。';
+    else if(plat==='wx') fn.textContent = '打开率＝阅读/送达（总口径，含推荐）；未群发文章无送达、打开率标「未群发」；平台未报告完读率/时长的标「未报告」。';
+    else fn.textContent = '双平台并列核心指标；点任意一行看单篇完整详情。';
+  }
+
+  function renderAll(){ renderAcct(); renderMeta(); renderOverview(); renderList(); renderTitles(); renderReview(); }
+
+  /* ---------- 事件绑定 ---------- */
+  document.querySelectorAll('.chip[data-mode]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.chip[data-mode]').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      mode = b.getAttribute('data-mode');
+      renderOverview(); renderList();
+    });
+  });
+  document.querySelectorAll('.chip[data-plat]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.chip[data-plat]').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      plat = b.getAttribute('data-plat');
+      renderTitles(); renderOverview(); renderList();
+    });
+  });
+  document.getElementById('applyRange').addEventListener('click', function(){
+    customFrom = document.getElementById('from').value || '';
+    customTo = document.getElementById('to').value || '';
+    mode='custom';
+    document.querySelectorAll('.chip[data-mode]').forEach(function(x){x.classList.remove('on');});
+    renderOverview(); renderList();
+  });
+  document.getElementById('closeBtn').addEventListener('click', function(){ document.getElementById('mask').classList.remove('show'); });
+  document.getElementById('mask').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('show'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') document.getElementById('mask').classList.remove('show'); });
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
