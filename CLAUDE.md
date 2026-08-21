@@ -40,6 +40,7 @@ dailyBCI/                          ← 项目根(用 Claude Code 打开这个文
 │           └── fonts/             ← CJK 字体(HeitiSC-Subset.ttf,@font-face 引用)
 ├── papers/                        ← 每日运行的 scratch 工作区(已 gitignore):下载的论文图 + 全文 PDF/txt;每期发完可整目录删,成品在 output/
 ├── output/                        ← 生成的卡片 PNG。日报按 <日期>-<slug>/ 分目录;「专题」长文按 series-<slug>/(见 §4)
+├── 脑机接口综述for_涵之/          ← 独立的长期综述项目(不走 dailybci 流程)。动它之前先读该目录下的 项目进度.md + 写作与生产规范.md + 资料/脑机接口外设_核心数值与来源核查日志.md
 └── PRODUCT_BLUEPRINT.md           ← 产品蓝图(背景资料)
 ```
 
