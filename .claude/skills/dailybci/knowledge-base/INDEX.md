@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
 Last updated: 2026-08-17
-Total papers: 400
+Total papers: 403
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -391,7 +391,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
 - [Ismail 2026 (naturalistic word meaning)](papers/ai-neural-modeling/ismail-2026-naturalistic-word-meaning.md) — 首次从**被动录的日常自然语音**(21患者/871h/527万词)估计**人类单神经元**对词义的编码：Behnke-Fried 微丝深部电极，全自动转录+区分说话人+检动作电位，无人工标注/分选；编码全患者显著、10类语义解码20.9%(随机10%)；自己说>环境语音2.42×(注意力)、自动化≈人工精标；把神经→语义从受控刺激推到零控制日常语音+百万词级(Baylor·Hayden/Sheth/Provenza，bioRxiv)
 
-## brain-encoding-models (16 papers)
+## brain-encoding-models (19 papers)
 **预测脑活动本身**这一格——与全库其余子领域方向相反：那些是"从脑活动读出外界"（解码），本线是"给定外界或给定当前状态，预测脑活动会是什么"。建于 2026-08-04。本线分两条互不相同的研究纲领，评估任何新工作前先判定它落在哪一条：
 - **A · 编码模型（刺激 → 脑响应）**：前向映射，问"给定这个刺激，各体素/电极响应多大"。milestone 抽取自 **Naselaris et al. (2011, NeuroImage 56:400–410)**。
 - **B · 全脑动力学模型（当前状态 → 后续演化）**：时间演化，问"给定此刻的脑状态与连接结构，接下来怎么走"。milestone 抽取自 **Breakspear (2017, Nat Neurosci 20:340–352)**。
@@ -414,6 +414,9 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Tuckute 2024](papers/brain-encoding-models/tuckute-2024-driving-suppressing-language-network.md) — 编码模型从"描述"变成"**控制**"(Nat Hum Behav 8:544–561)：先在 **1000 句**上拟合 GPT 类编码模型，再反用它挑出预测会最大化/最小化语言网络响应的新句子，在**新被试**身上实测兑现；**意外性与语言良构性**是响应强度的主要决定因素。**本线与 BCI 最接近的一格**——首次给 BCI 的输入侧（如何设计刺激驱动特定回路）提供可计算的设计工具(人类fMRI)
 - [Shain 2024](papers/brain-encoding-models/shain-2024-distributed-syntax-semantics.md) — **给 A 线语言侧划了一条硬边界**(J Cogn Neurosci 36:1427–1471，三个 fMRI 实验/**75 人**/精确 fMRI 个体化定位)：重做 Pallier-Devauchelle-Dehaene 2011 那项支持「句法与语义分处两区」的里程碑研究，**效应复现、定位推翻**。总词数卡死在 12、只变块长，另设 Jabberwocky(实词换假词、句法框架保留)。假词条件下**所有**语言区均有块长效应(仅角回例外)；**所有**区均有词汇性效应；除左后颞叶(≈0)与左中额回(未达显著)外均有块长×词汇性**交互**——结构加工的强度取决于词有没有意义。实验三用 **86.5% 非成分**材料，效应与前两个实验无显著差异，**连「这是句法效应」这个前提本身都被削弱**。**与 PDD 正面冲突处**：额下回并非纯句法，反倒左后颞叶最像「句法专区」(人类)
 - [Nastase 2026](papers/brain-encoding-models/nastase-2026-language-population-code.md) — **Perspective，全篇无自有新数据**(Neuron 114)：主张语言各层级统一编码在一个高维**神经群体编码**里，六个描述层级是同一空间中的不同方向。把 LLM 的成功抽成两条原理(表征格式 / 语境驱动统计学习)，各配两个人类神经证据案例。承重实证转引 Goldstein 2025(**ECoG**、约 **100 小时**日常对话、Whisper 三层嵌入全面优于音素与词性)、Kumar 2024、Zada 2024。**全文主脊：「能读出来」≠「里面存在」**——音素可从语音嵌入恢复、词性可从语言嵌入恢复，而模型内部并无这两种离散符号；推到大脑即对语音 BCI 的音素层解码目标构成质疑。**边界**：作者自陈编码模型对齐不证明架构或算法相似，只主张**表征格式**收敛；且 Case 2/3/4 的承重实证多为自引，属一个研究组为自身路线所做的系统论证(人类)
+- [Mesgarani 2014](papers/brain-encoding-models/mesgarani-2014-phonetic-feature-stg.md) — 「拿音素当自变量去预测皮层」这条路线最具代表性的成果(Science 343:1006–1010)：ECoG 硬膜下电极，6 名癫痫术前患者/每人 37–102 位点/500 句、400 名说话人/75–150 Hz 高伽马，单电极对不同音位特征有选择性。**同时是这条路线的方法论边界样本**——该设计分不开两种情况(皮层以音素为单位 vs 皮层编码连续声学特征、音位标签与之相关)，两者给出同样观测；能分开它们的判据是**范畴不变性**，本文未回答。作者自身定位词是「声学—音位表征」，且指出音位选择性可关联到谱时调谐、部分为非线性或多线索整合
+- [Kell 2018](papers/brain-encoding-models/kell-2018-task-optimized-auditory.md) — **给本线留下两个此后反复重演的模板**(Neuron 98:630–644)：①「换一组特征，其他不变」的受控对照——只为语音/音乐识别训练、**训练中不出现音素**的网络，其内部层激活预测 fMRI 体素在整个听觉皮层都优于传统谱时滤波器模型；②「顺序对不对得上」——初级听皮层由**中间层**最佳预测、非初级由**晚层**最佳预测。第二条分量更重(事前四种可能结果只有一种符合对应假设)。**强度边界：结论是「不必」先假定手工层级，未证明其不存在；支持表征阶段排序一致，不支持机制相似。** 视觉侧对应工作见 [[yamins-2014-performance-optimized-models]]
+- [Kumar 2024](papers/brain-encoding-models/kumar-2024-headwise-transformations.md) — 把「模型 ↔ 大脑」的对应从表征推进到**电路计算**(Nat Commun 15:5523)：BERT-base **144 个头**逐个当探针，对 **63 名**被试听故事的 fMRI、**1000 个皮层分区**做带状岭回归编码模型；每个头同时打**依存预测分**与**脑预测分**。Transformer 特征优于词性+句法依存(p<0.005，FDR)；各头权重做 PCA 后 **PC1+PC2 解释 92% 方差**，沿**层深**与**回看距离**(PC2 r=0.65)呈连续**梯度**。**结论的正确形状：分工对得上，但对上的方式是梯度而非离散分区。**层内打乱头与未训练模型两个对照下对应均消失。**「能读出来 ≠ 里面存在」的第一个实例**——头里能读出依存语法，但同一批头也受语义合理性影响。**属自引**：Nastase、Hasson 同为 [[nastase-2026-language-population-code]] 作者
 
 ### B · 全脑动力学线
 - [Wilson & Cowan 1972](papers/brain-encoding-models/wilson-cowan-1972-excitatory-inhibitory.md) — 神经质量模型奠基(Biophys J 12:1–24)：把局部皮层抽象成耦合的兴奋/抑制两群体，状态变量取**平均发放率**，群体输入-输出用 sigmoid。给出稳定不动点、迟滞与极限环振荡，为皮层节律提供群体层面解释。**注意术语**：此处"群体"指解剖邻近的局部群体，与 population-dynamics 子领域的"记录到的神经元群体状态空间"是不同概念

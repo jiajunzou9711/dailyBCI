@@ -391,7 +391,7 @@ A good test: if you removed your explanation of this one point, would a reader m
 - **⛔ 每次落稿后立即跑一遍措辞自检，不要等用户来抓（2026-08-12 用户定，写死）。** 起因：卡 9 落稿后由用户点出"花样"属比喻，我复查时才发现同一段还踩了写死的禁用句式「不是……而是」——**事后靠人眼抓，必然漏。** 落稿动作的最后一步固定执行：
 
   ```bash
-  grep -nE "不是.{0,24}而是|并不是.{0,20}而是|不只是.{0,20}而是|花样|活不过|旋钮|拄|戒了|命运|欠账|还债|债务|买到了|付出.{0,4}代价|告诉我们|承认|\\\$.*\\\$|承上|转场|（开头）|（主体）|（结论）|Q[0-9]" output/<日期>-<slug>/draft.md
+  grep -nE "不是.{0,24}而是|并不是.{0,20}而是|不只是.{0,20}而是|而非|并非|花样|活不过|旋钮|拄|戒了|命运|欠账|还债|债务|买到了|付出.{0,4}代价|告诉我们|承认|堵掉|尺子|\\\$.*\\\$|承上|转场|（开头）|（主体）|（结论）|Q[0-9]" output/<日期>-<slug>/draft.md
   ```
 
   命中即改，改完复扫到无命中为止。三类命中各自的处理：
@@ -447,6 +447,12 @@ Practical notes:
 - **X thread** = self-contained in text (no figures to lean on, keep it tight, respect the per-tweet char limit — see Step 7). **小红书** = conclusion→read-figure→transition per card (see Step 7 card rule 4).
 - **Figures here may be rough** — quick PIL crops of the figures already downloaded in Step 3, shown via `Read` (save + Read; never browser `screenshot`). **Do NOT run `card_generator.py` or polish yet** — cleanup and rendering happen at Step 7/8.
 - Label species and sample sizes; keep every number traceable for the fact-check that follows.
+
+#### 张力类型先行(2026-08-23 用户定,出提纲的第一个动作)
+
+**出分卡文字稿之前,先明确本期属于四种张力类型的哪一种,并写进 `draft.md` 抬头。** 四型:① **未知型**(读者不知道某事 → 先建立"你不知道",再快速给答案);② **纠错型**(读者以为对的事站不住 → 先复原既有认知,再拆掉);③ **化繁为简型**(以为复杂,其实有一条简单主线);④ **由简入繁型**(以为简单,背后是一整套机制)。
+
+钩子与落点同源:**开篇的钩子和末卡的落点必须是同一个类型的两端**,选型定了,大逻辑的骨架就定了。完整规则与各型骨架见 `AGENTS.md` → Writing Rules 同名条目。
 
 #### 图纲先行(2026-08-06 定,与分卡文字稿同时出)
 
