@@ -217,7 +217,7 @@ class CardGenerator:
 
     def cover_card(self, title_line1, title_line2, subtitle, output_path, source=None,
                    concept_image=None, concept_height=520, title_size=None,
-                   title_top=None):
+                   title_top=None, concept_bleed=0):
         """Cover card: two-line Chinese title, one-sentence finding, concept image.
 
         Default layout (2026-08-05): title + one-line core sentence + a CONCEPT image.
@@ -238,7 +238,8 @@ class CardGenerator:
         )
         if concept_image:
             body += (
-                f"<div class='conceptwrap' style='max-height:{concept_height}px'>"
+                f"<div class='conceptwrap' style='max-height:{concept_height}px;"
+                f"margin-left:-{concept_bleed}px;margin-right:-{concept_bleed}px'>"
                 f"<img src='file://{os.path.abspath(concept_image)}' "
                 f"style='max-height:{concept_height}px'/></div>"
             )
