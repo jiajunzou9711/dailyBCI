@@ -391,7 +391,7 @@ A good test: if you removed your explanation of this one point, would a reader m
 - **⛔ 每次落稿后立即跑一遍措辞自检，不要等用户来抓（2026-08-12 用户定，写死）。** 起因：卡 9 落稿后由用户点出"花样"属比喻，我复查时才发现同一段还踩了写死的禁用句式「不是……而是」——**事后靠人眼抓，必然漏。** 落稿动作的最后一步固定执行：
 
   ```bash
-  grep -nE "不是.{0,24}而是|并不是.{0,20}而是|不只是.{0,20}而是|而非|并非|花样|活不过|旋钮|拄|戒了|命运|欠账|还债|债务|买到了|付出.{0,4}代价|告诉我们|承认|堵掉|尺子|\\\$.*\\\$|承上|转场|（开头）|（主体）|（结论）|Q[0-9]" output/<日期>-<slug>/draft.md
+  grep -nE "不是.{0,24}而是|并不是.{0,20}而是|不只是.{0,20}而是|而非|并非|花样|活不过|旋钮|拄|戒了|命运|欠账|还债|债务|买到了|付出.{0,4}代价|告诉我们|承认|堵掉|尺子|分不开|出路|压着|算数|链子|\\\$.*\\\$|承上|转场|（开头）|（主体）|（结论）|Q[0-9]" output/<日期>-<slug>/draft.md
   ```
 
   命中即改，改完复扫到无命中为止。三类命中各自的处理：
@@ -447,6 +447,14 @@ Practical notes:
 - **X thread** = self-contained in text (no figures to lean on, keep it tight, respect the per-tweet char limit — see Step 7). **小红书** = conclusion→read-figure→transition per card (see Step 7 card rule 4).
 - **Figures here may be rough** — quick PIL crops of the figures already downloaded in Step 3, shown via `Read` (save + Read; never browser `screenshot`). **Do NOT run `card_generator.py` or polish yet** — cleanup and rendering happen at Step 7/8.
 - Label species and sample sizes; keep every number traceable for the fact-check that follows.
+
+#### ⛔ 第一读者是用户自己(2026-08-25 用户定,写死)
+
+**这份输出的第一目标,是用户日后查阅的笔记;对他人有帮助是第二目标。** 取舍时以用户为准。
+
+- 用户在讨论中反复追问、终于弄懂的推导(数值算例、逐步 walkthrough、易误解处的辨析),**必须完整留在成品里**,不得以「对泛读者偏重」为由砍掉。
+- 与 `dailybci-layperson-register` 不冲突:register 管**怎么说**(术语分级、人话直说),这一条管**留什么**。
+- 起因:第五期出提纲时我建议把「走一遍七步」与「一组权重为什么够」两张卡合并以省版面,用户指出那正是他追问最久、最需要留档的部分。
 
 #### 张力类型先行(2026-08-23 用户定,出提纲的第一个动作)
 

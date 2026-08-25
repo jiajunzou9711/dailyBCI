@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
 Last updated: 2026-08-17
-Total papers: 404
+Total papers: 405
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -391,7 +391,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
 - [Ismail 2026 (naturalistic word meaning)](papers/ai-neural-modeling/ismail-2026-naturalistic-word-meaning.md) — 首次从**被动录的日常自然语音**(21患者/871h/527万词)估计**人类单神经元**对词义的编码：Behnke-Fried 微丝深部电极，全自动转录+区分说话人+检动作电位，无人工标注/分选；编码全患者显著、10类语义解码20.9%(随机10%)；自己说>环境语音2.42×(注意力)、自动化≈人工精标；把神经→语义从受控刺激推到零控制日常语音+百万词级(Baylor·Hayden/Sheth/Provenza，bioRxiv)
 
-## brain-encoding-models (20 papers)
+## brain-encoding-models (21 papers)
 **预测脑活动本身**这一格——与全库其余子领域方向相反：那些是"从脑活动读出外界"（解码），本线是"给定外界或给定当前状态，预测脑活动会是什么"。建于 2026-08-04。本线分两条互不相同的研究纲领，评估任何新工作前先判定它落在哪一条：
 - **A · 编码模型（刺激 → 脑响应）**：前向映射，问"给定这个刺激，各体素/电极响应多大"。milestone 抽取自 **Naselaris et al. (2011, NeuroImage 56:400–410)**。
 - **B · 全脑动力学模型（当前状态 → 后续演化）**：时间演化，问"给定此刻的脑状态与连接结构，接下来怎么走"。milestone 抽取自 **Breakspear (2017, Nat Neurosci 20:340–352)**。
@@ -418,6 +418,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Kell 2018](papers/brain-encoding-models/kell-2018-task-optimized-auditory.md) — **给本线留下两个此后反复重演的模板**(Neuron 98:630–644)：①「换一组特征，其他不变」的受控对照——只为语音/音乐识别训练、**训练中不出现音素**的网络，其内部层激活预测 fMRI 体素在整个听觉皮层都优于传统谱时滤波器模型；②「顺序对不对得上」——初级听皮层由**中间层**最佳预测、非初级由**晚层**最佳预测。第二条分量更重(事前四种可能结果只有一种符合对应假设)。**强度边界：结论是「不必」先假定手工层级，未证明其不存在；支持表征阶段排序一致，不支持机制相似。** 视觉侧对应工作见 [[yamins-2014-performance-optimized-models]]
 - [Kumar 2024](papers/brain-encoding-models/kumar-2024-headwise-transformations.md) — 把「模型 ↔ 大脑」的对应从表征推进到**电路计算**(Nat Commun 15:5523)：BERT-base **144 个头**逐个当探针，对 **63 名**被试听故事的 fMRI、**1000 个皮层分区**做带状岭回归编码模型；每个头同时打**依存预测分**与**脑预测分**。Transformer 特征优于词性+句法依存(p<0.005，FDR)；各头权重做 PCA 后 **PC1+PC2 解释 92% 方差**，沿**层深**与**回看距离**(PC2 r=0.65)呈连续**梯度**。**结论的正确形状：分工对得上，但对上的方式是梯度而非离散分区。**层内打乱头与未训练模型两个对照下对应均消失。**「能读出来 ≠ 里面存在」的第一个实例**——头里能读出依存语法，但同一批头也受语义合理性影响。**属自引**：Nastase、Hasson 同为 [[nastase-2026-language-population-code]] 作者
 - [Goldstein 2025](papers/brain-encoding-models/goldstein-2025-unified-embedding-space.md) — **「能读出来 ≠ 里面存在」的构造已知反例**(Nat Hum Behav 9:1041–1055)：从 Whisper（训练目标仅「音频 → 文本」，无任何音位或句法标注）取三层表征——音频编码器早期层（声学）、音频编码器最后一层（语音）、文本解码器较晚中间层（语言）；脑数据为约 **100 小时**自然对话的 **ECoG**，产生与理解分别评估，编码表现在**留出对话**上计算。三层嵌入全部**大幅超过**手工音素/词性特征；空间上有顺序（声学 → 感觉与发音区 N=64/46，语音 → 最广 N=274/186、理解时最强在 STG，语言 → IFG 与角回 N=154/135，p<0.01 Bonferroni）。**双分离**：音素只在语音嵌入里可恢复、词性只在语言嵌入里可恢复，排除「高维空间里什么都能解出来」。原文强度用词为 **partially recovered / approximate byproducts**——模型内部不存在离散符号单位。**这取消了「从 STG 能解出音素 → 皮层有音素这一层」这一步推论，不是证明皮层没有音素。**正面结论是**软层级**：上下文词嵌入纳入语音嵌入信息后预测更准，逐电极方差分解显示 many electrodes 对中层语音与高层语义**同时**有独有贡献——区域层面有分工，位点层面不干净。是 [[kell-2018-task-optimized-auditory]] 同套论证在语言层级上的延伸（Kell 的对照只到声学一级），与 [[mesgarani-2014-phonetic-feature-stg]] 暴露的方法学边界正面对接。**属自引**：Nastase 为本文作者，本文即 [[nastase-2026-language-population-code]] Figure 2 来源
+- [Goldstein 2022](papers/brain-encoding-models/goldstein-2022-pre-onset-prediction.md) — **把「大脑是否在预测」改造成词出现之前可测的量**(Nat Neurosci 25:369–380)：ECoG，**九名被试/1,339 个电极**，听自然叙述；编码模型自变量为 **50 维**词嵌入，每个时间偏移、每个电极各拟合一次（25 ms 滑窗，onset 记为偏移 0，反应在 200 ms 窗口内平均）。**编码表现在 word onset 之前就开始上升**，词前那段被标为 predictive signal，−100 ms 及更早的偏移只含该词被感知前采集的信号（Fig. 3b）；GloVe 显著电极 **N=160**，GPT-2 **N=208**；上下文嵌入在词前明显优于静态嵌入，去掉局部语境后降到接近静态（Fig. 6b）。**这条路线必须处理的混淆**：上下文嵌入按设计含有先前词的信息，词前相关可能经由前文这个共同来源产生，中间不需要预测。**⛔ 强度边界：存在正面反驳，尚无定论**——Schönmann 2026(eLife 14:RP106543) 主张仅凭刺激依赖关系即可解释词前脑编码；Azizpour 2026(eLife) 主张词前编码并不反映提前激活。**属自引**：Nastase 为本文作者，与 [[goldstein-2025-unified-embedding-space]] 同组同路线
 
 ### B · 全脑动力学线
 - [Wilson & Cowan 1972](papers/brain-encoding-models/wilson-cowan-1972-excitatory-inhibitory.md) — 神经质量模型奠基(Biophys J 12:1–24)：把局部皮层抽象成耦合的兴奋/抑制两群体，状态变量取**平均发放率**，群体输入-输出用 sigmoid。给出稳定不动点、迟滞与极限环振荡，为皮层节律提供群体层面解释。**注意术语**：此处"群体"指解剖邻近的局部群体，与 population-dynamics 子领域的"记录到的神经元群体状态空间"是不同概念
