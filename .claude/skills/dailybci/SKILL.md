@@ -448,6 +448,13 @@ Practical notes:
 - **Figures here may be rough** — quick PIL crops of the figures already downloaded in Step 3, shown via `Read` (save + Read; never browser `screenshot`). **Do NOT run `card_generator.py` or polish yet** — cleanup and rendering happen at Step 7/8.
 - Label species and sample sizes; keep every number traceable for the fact-check that follows.
 
+#### ⛔ 少用否定式断言(2026-08-26 用户定,写死)
+
+**卡片标题与正文默认用肯定句直接陈述结论,不用「不是在 X 这一层」「并非 Y」这类否定式表达。** 否定句只说明了结论不在哪里,读者还要自己反推它在哪里;肯定句一步到位。
+- 反例:「对齐不发生在神经元这一层」→ 改成「对齐发生在表征几何这一层」。
+- 与既有的 ⛔ 禁用句式(`不是X而是Y` / `而非` / `并非`)同向:那一条禁的是特定句式,这一条要求的是**默认取肯定语气**。
+- 例外:确实要划边界、指出某个推论不成立时(如「可读出 ≠ 以该形式存储」),否定是内容本身,保留。
+
 #### ⛔ 第一读者是用户自己(2026-08-25 用户定,写死)
 
 **这份输出的第一目标,是用户日后查阅的笔记;对他人有帮助是第二目标。** 取舍时以用户为准。

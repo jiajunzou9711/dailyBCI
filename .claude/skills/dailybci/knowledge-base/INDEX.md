@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-17
-Total papers: 405
+Last updated: 2026-08-26
+Total papers: 407
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -391,7 +391,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
 - [Ismail 2026 (naturalistic word meaning)](papers/ai-neural-modeling/ismail-2026-naturalistic-word-meaning.md) — 首次从**被动录的日常自然语音**(21患者/871h/527万词)估计**人类单神经元**对词义的编码：Behnke-Fried 微丝深部电极，全自动转录+区分说话人+检动作电位，无人工标注/分选；编码全患者显著、10类语义解码20.9%(随机10%)；自己说>环境语音2.42×(注意力)、自动化≈人工精标；把神经→语义从受控刺激推到零控制日常语音+百万词级(Baylor·Hayden/Sheth/Provenza，bioRxiv)
 
-## brain-encoding-models (21 papers)
+## brain-encoding-models (23 papers)
 **预测脑活动本身**这一格——与全库其余子领域方向相反：那些是"从脑活动读出外界"（解码），本线是"给定外界或给定当前状态，预测脑活动会是什么"。建于 2026-08-04。本线分两条互不相同的研究纲领，评估任何新工作前先判定它落在哪一条：
 - **A · 编码模型（刺激 → 脑响应）**：前向映射，问"给定这个刺激，各体素/电极响应多大"。milestone 抽取自 **Naselaris et al. (2011, NeuroImage 56:400–410)**。
 - **B · 全脑动力学模型（当前状态 → 后续演化）**：时间演化，问"给定此刻的脑状态与连接结构，接下来怎么走"。milestone 抽取自 **Breakspear (2017, Nat Neurosci 20:340–352)**。
@@ -428,6 +428,8 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Deco 2009](papers/brain-encoding-models/deco-2009-coupling-delay-noise.md) — 静息态波动的结构性零假设(PNAS 106:10302–10307)：**38 个**耦合振子、时延取自灵长类通路长度；时延耦合导致涌现两组 40 Hz 振子，网络响应性在传导速度 **1–2 m/s**、耦合接近下限时最优，并存在使网络出现**随机共振**的特征噪声尺度。把传导延迟与噪声正式确立为全脑模型不可省略的参数
 - [Breakspear 2017](papers/brain-encoding-models/breakspear-2017-dynamic-models-review.md) — **B 线 milestone 抽取源**(Nat Neurosci 20:340–352)：梳理平均场/神经场/全脑网络三层与模型反演这一环。已被建模的现象：癫痫、脑病、睡眠、麻醉、静息态网络、人类 alpha 节律、多模态融合。明确本线与 A 线的分工——A 问"给定刺激脑活动是什么"，B 问"给定当前状态接下来怎么演化"
 
+- [Zada 2025](papers/brain-encoding-models/zada-2025-crosslanguage-shared-space.md) — **跨语言共享几何**(arXiv:2506.20489, 预印本)：同一本《小王子》英/汉/法三版给 112 名母语者听(49/35/28)，用一种语言训练的体素级编码模型**把预测出来的 BOLD 序列**拿去对其他语言组的实际活动(按句子降采样到 1,649 点)；跨语言与语言内的全脑成绩图相关 **r=0.974**，显著低的位置集中在早期听觉皮层与颞上回。模型侧：三个单语 BERT 的仅旋转对齐全层平均 r=0.115、中晚层最高 0.154。⛔ 预印本+自引+同一个故事，「几何相似」为间接推出
+- [Zada 2026](papers/brain-encoding-models/zada-2026-dyadic-hyperscanning.md) — **双人 fMRI 超扫描**(Neuron 114:774)：30 对被试(N=60)实时对话，用 A **说话时**训练的编码模型不重训直接预测 B **听时**的活动；显著耦合在右侧 pSTG→TPJ、MFG 与双侧楔前叶/PMC，**右半球强于左半球**，多数区域对峰值在 lag 0±3 s。⛔ 相关性耦合、未单独检验心理化、自引
 ## population-dynamics (15 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature
 - [Gallego 2017](papers/population-dynamics/gallego-2017-neural-manifolds-movement.md) — 定义性框架综述，确立neural manifold/neural modes作为群体运动控制的统一语言，Neuron
