@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-26
-Total papers: 407
+Last updated: 2026-08-27
+Total papers: 408
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -365,7 +365,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Paradromics 2026](papers/clinical-regulatory/paradromics-2026-connect-one-first-implant.md) — Connect-One 早期可行性研究首例长期 Connexus 植入(报道称 FDA IDE、随访最长6年)，高密度皮层内全植入 BCI 进入 speech restoration 临床分支
 - [Przepiorka 2025](papers/clinical-regulatory/przepiorka-2025-dural-tenting-rct.md) — 490 例多中心 RCT：择期幕上开颅**省略预防性硬膜悬吊线非劣**（因血肿再手术 0.8% vs 0.4%）。沿用数十年的标准步骤被首次随机检验
 
-## ai-neural-modeling (22 papers)
+## ai-neural-modeling (23 papers)
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
 - [Ye 2021](papers/ai-neural-modeling/ye-2021-neural-data-transformer.md) — NDT首次将Transformer应用于神经spike数据，推理速度比RNN快6倍
 - [Ye 2023](papers/ai-neural-modeling/ye-2023-ndt2-multi-context.md) — NDT-2跨session预训练，证明预训练+微调范式在神经数据上有效，NeurIPS 2023
@@ -391,6 +391,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Ciferri 2026 (Alignment not Complexity)](papers/ai-neural-modeling/ciferri-2026-alignment-not-complexity.md) — 受控对照证明 fMRI 解码"训练目标>架构深度"：线性+对比(CL)在图像/语言/音乐三模态全面胜过岭回归与非线性MLP；MSE最低(岭回归)反而检索最差，因对比只优化方向/几何对齐；线性化归因 Nozari&Bassett 2024(人类fMRI；与 [[ferrante-2023-brain-captioning]] 同组)
 - [Ismail 2026 (naturalistic word meaning)](papers/ai-neural-modeling/ismail-2026-naturalistic-word-meaning.md) — 首次从**被动录的日常自然语音**(21患者/871h/527万词)估计**人类单神经元**对词义的编码：Behnke-Fried 微丝深部电极，全自动转录+区分说话人+检动作电位，无人工标注/分选；编码全患者显著、10类语义解码20.9%(随机10%)；自己说>环境语音2.42×(注意力)、自动化≈人工精标；把神经→语义从受控刺激推到零控制日常语音+百万词级(Baylor·Hayden/Sheth/Provenza，bioRxiv)
 
+- [Perez-Nieves 2021](papers/ai-neural-modeling/perez-nieves-2021-neural-heterogeneity.md) — **神经元异质性有计算功能**(Nat Commun 12:5791)：给每个神经元各自的膜/突触时间常数，三层脉冲网络在五个数据集上比较；**时间结构最复杂的听觉任务准确率提升约 15–20%，时间结构最弱的 N-MNIST 无改善**，超参数 mistuned 时掉得更少，训练后时间常数分布与实验观测相似。机制：时间常数各异 → 覆盖一批不同长度的积分窗口。⛔ 只涉及时间常数的异质性，未在大规模 Transformer 上验证
 ## brain-encoding-models (23 papers)
 **预测脑活动本身**这一格——与全库其余子领域方向相反：那些是"从脑活动读出外界"（解码），本线是"给定外界或给定当前状态，预测脑活动会是什么"。建于 2026-08-04。本线分两条互不相同的研究纲领，评估任何新工作前先判定它落在哪一条：
 - **A · 编码模型（刺激 → 脑响应）**：前向映射，问"给定这个刺激，各体素/电极响应多大"。milestone 抽取自 **Naselaris et al. (2011, NeuroImage 56:400–410)**。
