@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-27
-Total papers: 408
+Last updated: 2026-08-29
+Total papers: 423
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -111,7 +111,7 @@ Total papers: 408
 - [Metzger 2023](papers/signal-processing/metzger-2023-multimodal-speech-avatar-decoder.md) — 多模态speech/avatar decoder，把神经解码从文本扩展到声音与表情控制
 - [Card 2024](papers/signal-processing/card-2024-rapid-calibration-speech.md) — 快速校准speech decoder + online adaptation，推进临床可用的高准确率通信
 
-## non-invasive (39 papers)
+## non-invasive (53 papers)
 - [Farwell 1988](papers/non-invasive/farwell-1988-p300-speller.md) — P300 speller范式，6×6矩阵，定义非侵入BCI通信范式
 - [Wolpaw 1991](papers/non-invasive/wolpaw-1991-mu-rhythm-cursor.md) — 首个mu节律EEG光标控制，确立SMR-BCI路线
 - [Pfurtscheller 1997](papers/non-invasive/pfurtscheller-1997-motor-imagery-erd.md) — Motor imagery ERD/ERS，建立运动想象BCI神经生理学基础
@@ -166,6 +166,24 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Mora-Cortes 2014](papers/non-invasive/mora-cortes-2014-language-model-bci-spelling-review.md) — 系统综述LM在BCI拼写中的应用分类(预测补全 vs 纠错、静态vs动态界面)，本子线milestone抽取来源
 - [Speier 2012](papers/non-invasive/speier-2012-nlp-dynamic-classification-p300.md) — 首次证明HMM+语言模型动态分类显著提升P300拼写器准确率和比特率，LM纠错路线奠基实证
 - [Kindermans 2012](papers/non-invasive/kindermans-2012-p300-bci-masses-prior.md) — 贝叶斯语言先验让P300拼写器免校准、无监督即可用，把LM角色从事后纠错扩展到替代监督训练
+
+### 弥散光学层析 / fNIRS 硬件与成像线 (fNIRS → DOT → HD-DOT)
+非侵入光学这一格：用近红外光穿过头皮颅骨、读出皮层的血流动力学变化。信号层级与 fMRI 同类(间接的血氧信号)，但设备便携、无电离辐射、**兼容体内植入金属与有源电子器件**，因此占据"床旁与最小约束成像"这个 fMRI/PET 进不去的生态位。milestone 抽取自 **Wheelock, Culver & Eggebrecht (2019, Rev Sci Instrum 90:051101)**，可穿戴一段(UCL/Gowerlabs 线)为综述后补充。建于 2026-08-29。
+判断任何一台光学系统，先按综述的分级归位：单通道 fNIRS → 多通道 fNIRS → 弥散光学**地形**(稀疏、无深度信息) → **层析** DOT(重叠测量、三维) → **HD-DOT**(密集阵列、多间距重叠)。归位之前，"高密度""接近 fMRI"这类说法无法核实。
+- [Jöbsis 1977](papers/non-invasive/jobsis-1977-nir-optical-window.md) — 整条路线的**物理前提**：指出近红外"光学窗口"(约 700–1300 nm)，光子可穿透活体组织 **>1 cm**，连续读出细胞色素氧充足度、组织血容量与 Hb/HbO₂ 平衡。同时框定先天代价——光在组织里是**弥散**传播，后续全部工作都在解一个不适定逆问题
+- [Villringer 1993](papers/non-invasive/villringer-1993-first-human-fnirs-activation.md) — **首次人体功能性 NIRS**：额叶认知任务(n=10)与枕叶视觉刺激(n=6)均见 **HbO₂↑ / HbR↓**，并论证该模式不能由皮肤血流解释。头皮污染这个质疑从此成为本线长期主题
+- [Boas 2004](papers/non-invasive/boas-2004-overlapping-measurements-resolution.md) — **"高密度"想法的方法学起点**：此前多数光学成像只用非重叠源-探测器对，限制来自**仪器动态范围**。证明一种简单几何能在动态范围内拿到重叠测量，分辨率与定位精度提升约 **2 倍**。这解释了为何本线里"动态范围多少 dB"是承重参数
+- [Zeff 2007](papers/non-invasive/zeff-2007-hd-dot-retinotopy.md) — **HD-DOT 奠基论文**(PNAS)：成人视皮层视网膜拓扑映射，可分辨 **1.7 cm** 范围的响应、检出 **<1 cm** 的位移，角度/离心率图与 fMRI/PET 一致。第一次证明弥散光学能重建有已知真值的**空间结构**(Culver 组·WashU)
+- [White 2010](papers/non-invasive/white-2010-hd-dot-vs-fnirs-quantitative.md) — HD-DOT vs 两种稀疏 fNIRS 几何的定量对照(仿真 + 人体)。承重结论是**能力差别而非程度差别**：HD-DOT 能做相位编码视网膜拓扑，稀疏阵列只能做逐个 block 设计。评估"高密度"系统时该问的是它解锁了哪一类范式
+- [Gregg 2010](papers/non-invasive/gregg-2010-superficial-signal-regression.md) — 指认一个易被想当然的假设：**做了三维层析重建 ≠ 浅层污染已解决**。浅层回归(用多个短间距通道的平均)与层析深度分层两者**协同**，缺一不可。浅层回归由此成为 HD-DOT 的常规步骤
+- [Eggebrecht 2012](papers/non-invasive/eggebrecht-2012-hd-dot-vs-fmri-spatial.md) — 与金标准 fMRI 的**逐体素**对照(同一批被试 n=5)：视觉响应平均定位误差 **4.4 ± 1 mm**，显著小于皮层脑回间距。同时确立**被试特异头模型**(该被试 MRI 解剖 + 组织分割 + 光极实测位置)是达到该精度的必要条件
+- [White 2012](papers/non-invasive/white-2012-neonatal-bedside-connectivity.md) — 把功能连接 DOT 搬到**新生儿床旁**：健康足月儿、早产儿，含一例枕叶卒中患儿。价值主张从"fMRI 的便携替代"转向 **"fMRI 做不了的场景"**——呼吸机上的婴儿、需反复复查的病程。边界：样本小、仅覆盖枕叶
+- [Eggebrecht 2014](papers/non-invasive/eggebrecht-2014-whole-head-hd-dot.md) — **本线分量最重的一篇**(Nat Photonics)：视野扩到可覆盖分布式网络，成像四级递进语言任务、背侧注意与默认模式网络；并为**植入 DBS 因而做不了 fMRI 的帕金森病患者**成像。后一步给出的是结构性优势(兼容植入金属与有源器械)，而非便携性上的方便——这条对植入电极的 BCI 患者同样适用
+- [Ferradal 2016](papers/non-invasive/ferradal-2016-developing-brain-bedside.md) — 新生儿床旁成像从单例推到**有同被试 fcMRI 金标准对照**的成组结果(健康足月儿，生后头几天)，连接模式符合已知发育规律
+- [Zhao 2021](papers/non-invasive/zhao-2021-flexible-lightweight-hd-dot.md) — **补充性条目(硬件工程)**：用 **10 层刚柔结合 PCB** 做模块基底，兼顾体积与贴合曲面的柔性；验证靠自制的可电切换解剖精确动态体模。指认可穿戴 HD-DOT 的真实瓶颈是**机械与工效**而非光学(UCL Cooper 组)
+- [Frijia 2021](papers/non-invasive/frijia-2021-wearable-hd-dot-infants.md) — **首次用可穿戴 HD-DOT 研究婴儿脑**：对照基线是常规 fNIRS 通常只有 **约 20–100 个**稀疏通道；在对环境与被试约束都很小的条件下拿到高质量图像(UCL Cooper 组)
+- [Vidal-Rosas 2021](papers/non-invasive/vidal-rosas-2021-wearable-hd-dot-retinotopy.md) — 成人上**"可穿戴"与"高密度"第一次同时守住**：单被试 **15 个 session** 复现经典视网膜拓扑，HbO/HbR 均见局灶激活、跨 session 重复性高；与仿真低密度阵列对照在定位/分辨率/重复性/对比度四项均改善。验证策略值得复用——证仪器可重复性靠**同一被试重复多次**，不靠大样本
+- [Wheelock 2019](papers/non-invasive/wheelock-2019-hd-dot-review.md) — **本子线 milestone 抽取源**(Rev Sci Instrum 90:051101，开放获取)：光子扩散理论、正向建模与重建、系统设计三类挑战(动态范围/光极-头皮耦合/数据质量)、四类验证范式与临床应用
 
 ## invasive-recording (21 papers)
 - [Kennedy 1998](papers/invasive-recording/kennedy-1998-first-human-intracortical-bci.md) — 首次人类慢性intracortical记录用于BCI，Neurotrophic Electrode
@@ -236,15 +254,16 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Cogan 2016](papers/sensory-feedback/cogan-2016-tissue-damage-thresholds.md) — 重审Shannon判据:源于宏电极、未必适用微电极,当代微刺激安全再评估起点
 - [Iliasov 2026](papers/sensory-feedback/iliasov-2026-microbubble-icms-safety.md) — 子簇首篇"在体实时血管成像看ICMS损伤":清醒小鼠双光子,气泡面积随电流~二次方增长、≥60µA急转BBB破裂;把电解微气泡从被动标志重定位为主动致损机制,给柔性电极ICMS机制性安全窗(何飞组·光机所×复旦华山)
 
-## neuromodulation (64 papers)
+## neuromodulation (65 papers)
 - [Benabid 1991](papers/neuromodulation/benabid-1991-dbs-tremor-suppression.md) — 开创现代DBS疗法，高频VIM刺激长期抑制帕金森震颤，可逆可调
 - [Limousin 1998](papers/neuromodulation/limousin-1998-stn-dbs-parkinson.md) — 确立STN-DBS作为晚期帕金森标准治疗，UPDRS运动评分改善~50%
 - [Morrell 2011](papers/neuromodulation/morrell-2011-rns-closed-loop-epilepsy.md) — 首个闭环脑刺激RCT（RNS），191名癫痫患者，2013年FDA批准
 - [Rosin 2011](papers/neuromodulation/rosin-2011-closed-loop-dbs-superior.md) — 首次证明闭环DBS优于开环DBS，用更少刺激获得更大改善
-- [Little 2013](papers/neuromodulation/little-2013-adaptive-dbs-human.md) — 首次人类闭环自适应DBS，用beta振荡作为生物标志物，刺激量减半
+- [Little 2013](papers/neuromodulation/little-2013-adaptive-dbs-human.md) — 首次人类闭环自适应DBS(8 名晚期 PD)，用 STN beta 振荡作生物标志物：UPDRS 运动改善 66%(非盲)/50%(盲评)，**比持续 DBS 好 29%/27%**(p=0.03/0.005)，同时刺激时间减少 56%。"少刺激反而更好"的人体直接证据(Peter Brown 组)
 - [Scangos 2021](papers/neuromodulation/scangos-2021-closed-loop-depression.md) — 首次个性化闭环神经调控治疗难治性抑郁症
 - [Shirvalkar 2023](papers/neuromodulation/shirvalkar-2023-chronic-pain-biomarker.md) — 首次从颅内慢性记录预测慢性疼痛状态，OFC为关键生物标志物
 - [Liu 2026](papers/neuromodulation/liu-2026-device-accelerometry-adbs.md) — 首个在大规模人体慢性数据(11 名 PD，>1900h，Summit RC+S)系统指出 aDBS 经典标志物 STN beta 的两个独立失效：关刺激时"总 beta"混叠周期(↑)/非周期(↓)、开刺激后周期 beta 与症状解耦；提出植入器自带加速度计作抗刺激的行为学标志物(解码 Acc R≈0.49/0.56 > 全神经 0.44/0.47)，推进 little-2013 的 beta-aDBS 范式(bioRxiv)
+- [Lampert 2026](papers/neuromodulation/lampert-2026-cortec-bic-bci2000-platform.md) — **补充性条目(平台/工具论文)**：把 CorTec 全植入双向器件(BIC，32 ch @ 1 kHz，通带 2–325 Hz)接进开源 BCI2000，按台架→盐水→犬长期→犬在体→人体的阶梯逐级表征。三处复用价值：①**一套可照做的表征清单**(延迟分段报、噪声本底、频响、阻抗测量精度、功耗、丢包)，这些数以往厂商与论文都不公布；②**闭环硬件下限约 22 ms**(采集 10.89±1.59 + 刺激最快 11.45±1.19)，但**不含软件缓冲**(50 样本块=50 ms，被排除)**也不含算法观察窗**——本文自己的演示实际慢约 1.5 s；③**5 犬 2,296 植入日(最长>3 年)里通道失效以机械为主**(阻抗渐变+信号劣化+CT 见电极移位)，已促成新一代改用绞合导线，把 [[lacour-2016]] 的力学论证推到大型动物多年在体证据。另：内置阻抗测量主要反映电阻成分(理论 100 Ω 读成 46 Ω)，只能作电极完整性指示。**人体那步未植入 BIC**(benchtop 版接患者临床 sEEG，一维光标控制，作者自称仅为中等)。数据/代码/犬手术流程全部开放。利益相关：CorTec 两名员工为共同作者(Mayo Clinic·Miller/Worrell 组，bioRxiv)
 
 ### 刺激空间选择性 / 电流聚焦 (current steering & field shaping)
 "用电流几何/时空结构而非移动电极来控制激活区"这条母题，服务 SCS / DBS / 外周刺激；为本期 ACM(焦点式深部刺激)的纵向前作与横向对照。milestone 抽取自 Liang et al. 2023 (Neuromodulation) 的 SCS 计算模型系统综述。
