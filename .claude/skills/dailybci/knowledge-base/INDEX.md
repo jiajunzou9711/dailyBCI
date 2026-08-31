@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-08-29
-Total papers: 423
+Last updated: 2026-08-31
+Total papers: 424
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -69,7 +69,7 @@ Total papers: 423
 - [Vansteensel 2016](papers/motor-bci/vansteensel-2016-fully-implanted-ecoG-bci.md) — **首个完全植入式 BCI**(无经皮连接器)且**首个由 locked-in 患者在家独立使用**:晚期 ALS 患者运动皮层表面 ECoG + 全植入放大与无线传输,拼写约 2 字母/分,稳定运行数月(人类 1 名，NEJM)
 - [Vansteensel 2016](papers/motor-bci/vansteensel-2016-fully-implanted-ecoG-bci.md) — **首个完全植入式 BCI**(无经皮连接器)且**首个由 locked-in 患者在家独立使用**:晚期 ALS 患者运动皮层表面 ECoG + 全植入放大与无线传输,拼写约 2 字母/分,稳定运行数月(人类 1 名，NEJM)
 
-## electrode-hardware (27 papers)
+## electrode-hardware (28 papers)
 - [Wise 1970](papers/electrode-hardware/wise-1970-silicon-microprobe.md) — 首次用IC工艺制造多位点神经探针，开启微加工电极时代
 - [Campbell 1991](papers/electrode-hardware/campbell-1991-utah-array.md) — Utah阵列发明，100通道3D硅电极，BCI临床试验的硬件基石
 - [Rousche 1998](papers/electrode-hardware/rousche-1998-chronic-biocompatibility.md) — 首次系统验证Utah阵列慢性植入可行性，揭示胶质瘢痕核心挑战
@@ -89,6 +89,7 @@ Total papers: 423
 - [Chang 2026](papers/electrode-hardware/chang-2026-neuropixels-quad-base.md) — Quad Base：几何与5120电极点全不动，同时通道384→1536(双探针3072)；用同一份记录自我抽子集作对照，证明一次8针脚同时记录检出的跨区Granger连接数超过四次连续2针脚记录的总和(总通道数相同)。推论：少通道会系统性低估脑区间耦合(小鼠)
 - [Jung 2025](papers/electrode-hardware/jung-2025-bisc-wireless-subdural-bci.md) — BISC无线无电池subdural interface：65,536电极、1,024通道，探索超大规模皮层表面接口
 - [Bourhis 2026](papers/electrode-hardware/bourhis-2026-tft-backplane.md) — 显示式有源矩阵TFT背板(a-IGZO直接长在聚酰亚胺)：256通道(16×16)柔性皮层表面阵列，布线O(n)→O(√n)、温升<2°C、封装投影寿命>38年、大鼠30天稳定；确立"柔性有源(非转印硅)"一格(Dayeh组·UCSD)
+- [Zhao 2026](papers/electrode-hardware/zhao-2026-wild-wireless-closed-loop.md) — WILD 头戴无线平台：把**判断**搬进 <1.5 g（含壳电池 4.5 g，小鼠上限约 5 g）——板上 DSP（约 5 µs）先筛候选、再触发 TinyML（CNN+GRU，<10 ms）去噪，SWR 在线检测 AUROC 0.717→0.844 接近离线；与板载光遗传刺激集成（模块 0.6 g，触发亚毫秒），蓝牙只做同步监控不在回路里。补上 [[borton-2013]]/[[simeral-2021]]「把数据搬走」之外的「在设备上判断」一格。小鼠/大鼠，仅演示光遗传，开源
 - [Li 2026](papers/electrode-hardware/li-2026-skull-microhole-hybrid-bci.md) — "颅骨微孔电极"新微创模态:超声自限打 300–800 μm 微孔(不取材料、对软硬膜不切削、终止检测 34ms/16μm)+单点 Pt/Ir 电极皮下植入、远端贴硬膜外(不穿硬膜)、有源电子体外经隔皮欧姆传导耦合;大鼠上 SEP/SSVEP 信噪比与各频段功率抬 2.6–8.9×、刺激侧仅仿真(TI 深部聚焦)。在"头皮 EEG↔硬膜外 ECoG"间插一格:点 vs 片、微孔 vs 骨瓣(对照 [[neo-2024]]);范式提出型,大鼠记录+仿真,企业参与(中山大深圳×深圳BrainXess,bioRxiv)
 - [Poncelet 1992](papers/electrode-hardware/poncelet-1992-human-brain-motion.md) — **人体**相位对比 MRI：心动周期内脑组织相对颅骨峰值位移 0.1–0.5 mm，是 50 µm 单单元区的 2–10 倍。讨论临床植入的机械环境时以此为准(非大鼠数据)
 - [Gilletti 2006](papers/electrode-hardware/gilletti-2006-brain-micromotion.md) — 大鼠开颅后界面处直测微动：呼吸 10–30 µm、心跳 2–4 µm，有硬膜时更小。慢性微创伤的机械源头；与 Poncelet 1992 测的不是同一个量，引用须标条件
