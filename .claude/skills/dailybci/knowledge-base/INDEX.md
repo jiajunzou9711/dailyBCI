@@ -1,6 +1,6 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-09-02
+Last updated: 2026-09-04
 Total papers: 428
 
 ## speech-decoding (19 papers)
@@ -58,7 +58,6 @@ Total papers: 428
 - [Collinger 2013](papers/motor-bci/collinger-2013-7dof-robotic-arm.md) — 7自由度机器人手臂控制，13周训练达到高性能，证明高维解码可行
 - [Aflalo 2015](papers/motor-bci/aflalo-2015-posterior-parietal-motor-imagery.md) — 首个人类后顶叶皮层BCI，从PPC解码运动意图
 - [Bouton 2016](papers/motor-bci/bouton-2016-neural-bypass.md) — 首个neural bypass：BCI+FES恢复瘫痪患者自身手部分级运动
-- [Vansteensel 2016](papers/motor-bci/vansteensel-2016-fully-implanted-ecoG-bci.md) — 首个完全植入式BCI，locked-in ALS患者家庭使用
 - [Ajiboye 2017](papers/motor-bci/ajiboye-2017-reach-grasp-fes.md) — BCI+FES恢复完整上肢reach-and-grasp，患者自主进食饮水
 - [Willett 2021](papers/motor-bci/willett-2021-handwriting-bci.md) — 手写解码BCI，90字符/分钟，开辟精细运动意图解码新范式
 - [Flesher 2021](papers/motor-bci/flesher-2021-bidirectional-bci.md) — 首个双向BCI：运动解码+触觉反馈，抓取任务时间减半
@@ -66,7 +65,6 @@ Total papers: 428
 - [Neuralink 2024](papers/motor-bci/neuralink-2024-prime-n1-first-human.md) — 首个全植入无线1024通道BCI人体试验，患者日常使用>10h
 - [BrainGate 2023](papers/motor-bci/braingate-2023-long-term-safety.md) — 17年14名参与者长期安全数据，信号仅下降7%，支撑临床扩展
 - [Conlan 2026](papers/motor-bci/conlan-2026-ifg-grasp-decoding.md) — 首次在人类额下回(IFG，猕猴F5同源区)皮层内记录中用析因设计拆分抓法/物体/交互三因素：抓法解码显著主导(41.1-41.8% vs 33.3%随机)，物体贡献弱且更早、movement期已不显著；补上"非M1皮层内电极靶点"这条此前空白的线(与Ajiboye 2017对照，同组·bioRxiv)
-- [Vansteensel 2016](papers/motor-bci/vansteensel-2016-fully-implanted-ecoG-bci.md) — **首个完全植入式 BCI**(无经皮连接器)且**首个由 locked-in 患者在家独立使用**:晚期 ALS 患者运动皮层表面 ECoG + 全植入放大与无线传输,拼写约 2 字母/分,稳定运行数月(人类 1 名，NEJM)
 - [Vansteensel 2016](papers/motor-bci/vansteensel-2016-fully-implanted-ecoG-bci.md) — **首个完全植入式 BCI**(无经皮连接器)且**首个由 locked-in 患者在家独立使用**:晚期 ALS 患者运动皮层表面 ECoG + 全植入放大与无线传输,拼写约 2 字母/分,稳定运行数月(人类 1 名，NEJM)
 
 ## electrode-hardware (28 papers)
