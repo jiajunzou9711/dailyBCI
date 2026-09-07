@@ -813,7 +813,7 @@ Present all final cards for last confirmation before posting. **交付完三件�
 
 Trigger: "做一个专题", "深度长文", "把 X 讲透", 或任何脱离单篇日报、要从第一性原理把某个原理/技术/硬件讲穿的常青长文需求。
 
-专题与日报(Mode A)是**两条不同的 pipeline**:日报绑当天单篇论文、走 10 步关卡;专题不绑单篇、可跨多期、原理驱动。成品进 `output/series-<slug>/`,出图复用 `card_generator.py` + 自制 SVG 示意图(见记忆 `dailybci-series-deep-dive-track`)。已出:犹他阵列、电极材料、神经解码方法论、侵入式定位精度、**EEG 工频/阻抗均衡(series-eeg-impedance-01)**、**EEG 电极界面/基线漂移(series-eeg-impedance-02)**、**接地的第一性原理(series-grounding-01,上篇,2026-09-03;series-grounding-02,下篇「生物电记录里的零点」,2026-09-04)**。
+专题与日报(Mode A)是**两条不同的 pipeline**:日报绑当天单篇论文、走 10 步关卡;专题不绑单篇、可跨多期、原理驱动。成品进 `output/series-<slug>/`,出图复用 `card_generator.py` + 自制 SVG 示意图(见记忆 `dailybci-series-deep-dive-track`)。已出:犹他阵列、电极材料、神经解码方法论、侵入式定位精度、**EEG 工频/阻抗均衡(series-eeg-impedance-01)**、**EEG 电极界面/基线漂移(series-eeg-impedance-02)**、**接地的第一性原理(series-grounding-01,上篇,2026-09-03;series-grounding-02,下篇「生物电记录里的零点」,2026-09-04)**、**采集设备的模拟口与数字口(series-daq-io-01-four-ports,上篇,2026-09-07;下篇「单台设备内部的时钟」素材已备,未成期)**。
 
 专题的写作/讲解节奏沿用全局规则:**背景先行 + 一次一小块**(见 Content Standards 同名节)、用户随时可喊停内容生产转纯讲解(记忆 `user-stepwise-tech-tutorials`)、科学平实少修辞。以下是专题**特有**的三道关卡。
 
