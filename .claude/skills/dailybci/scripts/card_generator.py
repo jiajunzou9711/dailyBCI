@@ -260,8 +260,9 @@ class CardGenerator:
         Figures are embedded verbatim via <img> — never AI-generated.
 
         `title` (+ optional `title_num`) renders a navigation heading ABOVE the figure
-        (2026-08-10 加). 措辞应与目录卡逐条对应,让读者在目录里看到的那一条,
-        在正文卡上能原样找到;多张卡讲同一条目录项时,沿用同一标题即可。
+        (2026-08-10 加). 2026-09-08 起规则改为:**每张卡的标题各不相同**,写这一张
+        自己的内容归纳;目录卡只列 5 个左右的章节、写得简洁,与卡片标题不再要求
+        逐字一致。同一章节下的多张卡沿用该章节的圈号,但标题各写各的。
         """
         fig_path = figure_path_or_image
         tmp_fig = None
