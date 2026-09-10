@@ -128,7 +128,7 @@ def fig1():
 # ============================================================ 图 2 必然两点
 def fig2():
     W, H = 960, 480
-    s = [T(W/2, 48, "一根电极读不出数，两根才有读数", 30, INK, weight="700")]
+    s = [T(W/2, 48, "电压只存在于一对位置之间，因此要两片电极", 29, INK, weight="700")]
     # 左
     s.append(box(50, 90, 390, 330, "#FFFFFF", CARD_L))
     s.append(T(245, 132, "只有一根", 26, GRAY, weight="700"))
@@ -173,29 +173,38 @@ def fig3():
     s.append(T(W/2, 492, "V ref 不是 0，也不是常数，是一条完整的时间序列", 25, INK))
     return W, H, "".join(s)
 
-# ============================================================ 图 4 一条信号进了所有通道
+# ============================================================ 图 4 -> 卡②
 def fig4():
-    W, H = 960, 540
-    s = [T(W/2, 48, "同一条 V ref 被减进每一个通道", 30, INK, weight="700")]
-    ys = [130, 250, 370]
+    W, H = 960, 620
+    s = [T(W/2, 46, "同一条 V ref 被减进每一个通道", 30, INK, weight="700")]
+    ys = [118, 216, 314]
     for i, y in enumerate(ys):
-        s.append(elec(110, y, 60, 18))
-        s.append(T(110, y+42, f"V {i+1}", 23, ACCD, weight="700"))
-        s.append(line(150, y, 300, y, ACC, 2.6, marker="ah"))
-        s.append(box(300, y-32, 96, 64, TINT, ACC))
-        s.append(T(348, y+10, "−", 34, ACCD, weight="700"))
-        s.append(line(396, y, 500, y, ACC, 2.6, marker="ah"))
-        s.append(box(500, y-38, 380, 76, "#FFFFFF", CARD_L))
-        s.append(wave(516, y, 348, 20, 3.0, ACC, 2.4, 0.5*i, noise=5))
-        # 共同成分
-        s.append(wave(516, y, 348, 13, 1.0, RED, 2.2, 1.4))
-    # V_ref 汇入
-    s.append(elec(110, 470, 60, 18, GRN))
-    s.append(T(110, 508, "V ref", 23, GRN, weight="700"))
-    s.append(path("M150,470 C 230,470 250,470 250,430 L250,150", GRN, 2.8))
+        s.append(elec(104, y, 56, 16))
+        s.append(T(104, y+38, f"V {i+1}", 22, ACCD, weight="700"))
+        s.append(line(140, y, 292, y, ACC, 2.4, marker="ah"))
+        s.append(box(292, y-26, 84, 52, TINT, ACC))
+        s.append(T(334, y+8, "−", 30, ACCD, weight="700"))
+        s.append(line(376, y, 470, y, ACC, 2.4, marker="ah"))
+        s.append(box(470, y-32, 410, 64, "#FFFFFF", CARD_L))
+        s.append(wave(486, y, 378, 17, 3.0, ACC, 2.2, 0.5*i, noise=4))
+        s.append(wave(486, y, 378, 11, 1.0, RED, 2.0, 1.4))
+    s.append(elec(104, 404, 56, 16, GRN))
+    s.append(T(104, 442, "V ref", 22, GRN, weight="700"))
+    s.append(path("M140,404 C 210,404 226,404 226,368 L226,136", GRN, 2.6))
     for y in ys:
-        s.append(line(250, y, 296, y, GRN, 2.8, marker="ahn"))
-    s.append(T(700, 480, "三个通道里那条一模一样的成分，来自参考点", 25, RED, weight="700"))
+        s.append(line(226, y, 288, y, GRN, 2.6, marker="ahn"))
+    s.append(T(690, 402, "红色那条成分来自参考点", 24, RED, weight="700"))
+    s.append(T(690, 434, "它出现在每一个通道上", 22, BODY))
+    # 两条相反判据
+    s.append(box(46, 470, 420, 118, "#FFFFFF", CARD_L))
+    s.append(T(256, 504, "参考不能带着要记录的信号", 24, ACCD, weight="700"))
+    s.append(T(256, 540, "离源越近，共有成分越多", 22, BODY))
+    s.append(T(256, 570, "幅度越小 → 要求远离源", 22, INK, weight="700"))
+    s.append(box(494, 470, 420, 118, "#FFFFFF", CARD_L))
+    s.append(T(704, 504, "参考不能带着别的电活动", 24, GRN, weight="700"))
+    s.append(T(704, 540, "肌电、心电、眼动进入全部通道", 22, BODY))
+    s.append(T(704, 570, "→ 要求选在电学安静处", 22, INK, weight="700"))
+    s.append(T(W/2, 610, "两条方向相反，位置的选择是多重限制下的妥协", 24, INK, weight="700"))
     return W, H, "".join(s)
 
 # ============================================================ 图 5 1/r 与两种参考
@@ -259,75 +268,75 @@ def fig6():
     s.append(T(700, 456, "任意两电极之差 V i − V j", 23, INK))
     return W, H, "".join(s)
 
-# ============================================================ 图 7 放大器先各自感知
+# ============================================================ 图 7 -> 卡③
 def fig7():
-    W, H = 960, 556
-    s = [T(W/2, 46, "放大器不能直接感知差，它必须先分别感知两端", 30, INK, weight="700")]
-    s.append(box(230, 100, 500, 300, "#FFFFFF", ACC, sw=2.4))
-    s.append(T(480, 136, "放大器芯片", 25, ACCD, weight="700"))
-    # 输入
-    s.append(elec(96, 190, 60, 18)); s.append(T(96, 168, "V +", 23, ACCD, weight="700"))
-    s.append(elec(96, 300, 60, 18, GRN)); s.append(T(96, 340, "V −", 23, GRN, weight="700"))
-    s.append(line(136, 190, 226, 190, ACC, 2.8, marker="ah"))
-    s.append(line(136, 300, 226, 300, GRN, 2.8, marker="ahn"))
-    # 内部两步
-    s.append(box(262, 168, 220, 56, TINT, ACC))
-    s.append(T(372, 204, "a = V + − V amp0", 24, ACCD, weight="700"))
-    s.append(box(262, 276, 220, 56, GRNT, GRN))
-    s.append(T(372, 312, "b = V − − V amp0", 24, GRN, weight="700"))
-    s.append(line(482, 196, 540, 232, INK, 2.4, marker="ahk"))
-    s.append(line(482, 304, 540, 268, INK, 2.4, marker="ahk"))
-    s.append(box(548, 214, 160, 72, PANEL, INK, sw=2))
-    s.append(T(628, 260, "G · (a − b)", 26, INK, weight="700"))
-    s.append(line(708, 250, 800, 250, INK, 2.8, marker="ahk"))
-    s.append(T(830, 258, "输出", 25, INK, weight="700"))
-    # V_amp0 端子
-    s.append(line(700, 400, 700, 424, INK, 3))
-    s.append(gnd(700, 424, 0.9))
-    s.append(T(806, 448, "V amp0", 24, INK, weight="700"))
-    s.append(T(806, 478, "仪器自己的零点", 21, BODY))
-    s.append(T(806, 506, "属于机器不属于身体", 21, BODY))
-    s.append(box(46, 424, 570, 96, REDT, RED))
-    s.append(T(331, 460, "它在结果里消掉了", 25, RED, weight="700"))
-    s.append(T(331, 496, "但 a、b 是芯片内部真实的电压", 24, INK, weight="700"))
+    W, H = 960, 560
+    s = [T(W/2, 46, "放大器先分别感知两端，再相减", 30, INK, weight="700")]
+    s.append(box(214, 92, 540, 300, "#FFFFFF", ACC, sw=2.4))
+    s.append(T(484, 128, "放大器芯片", 25, ACCD, weight="700"))
+    s.append(elec(92, 186, 58, 18)); s.append(T(92, 164, "V +", 23, ACCD, weight="700"))
+    s.append(elec(92, 300, 58, 18, GRN)); s.append(T(92, 340, "V −", 23, GRN, weight="700"))
+    s.append(line(130, 186, 210, 186, ACC, 2.8, marker="ah"))
+    s.append(line(130, 300, 210, 300, GRN, 2.8, marker="ahn"))
+    s.append(box(246, 160, 230, 54, TINT, ACC))
+    s.append(T(361, 194, "a = V + − V amp0", 23, ACCD, weight="700"))
+    s.append(box(246, 274, 230, 54, GRNT, GRN))
+    s.append(T(361, 308, "b = V − − V amp0", 23, GRN, weight="700"))
+    s.append(T(361, 246, "第一步  分别感知", 21, GRAY, weight="700"))
+    s.append(line(476, 188, 528, 222, INK, 2.4, marker="ahk"))
+    s.append(line(476, 302, 528, 268, INK, 2.4, marker="ahk"))
+    s.append(box(536, 206, 190, 78, PANEL, INK, sw=2))
+    s.append(T(631, 240, "a − b = V + − V −", 22, INK, weight="700"))
+    s.append(T(631, 268, "V amp0 在此消去", 20, RED, weight="700"))
+    s.append(T(631, 178, "第二步  相减", 21, GRAY, weight="700"))
+    s.append(line(726, 245, 800, 245, INK, 2.8, marker="ahk"))
+    s.append(T(838, 253, "× G", 25, INK, weight="700"))
+    s.append(T(838, 214, "第三步", 21, GRAY, weight="700"))
+    s.append(line(700, 392, 700, 416, INK, 3))
+    s.append(gnd(700, 416, 0.9))
+    s.append(T(806, 440, "V amp0", 24, INK, weight="700"))
+    s.append(T(806, 470, "仪器自己的零点", 21, BODY))
+    s.append(box(46, 416, 570, 96, REDT, RED))
+    s.append(T(331, 452, "a 和 b 必须落在输入电压范围内", 25, RED, weight="700"))
+    s.append(T(331, 488, "超出范围，前两步就没有结果", 24, INK, weight="700"))
     return W, H, "".join(s)
 
 # ============================================================ 图 8 人体为什么漂 + 越界
 def fig8():
     W, H = 960, 600
-    s = [T(W/2, 44, "身体是浮的，它会被市电抬起来", 30, INK, weight="700")]
+    s = [T(W/2, 44, "人体处在浮空状态，会被市电抬起约 2 V", 29, INK, weight="700")]
     # 左：回路
     s.append(box(46, 78, 470, 420, "#FFFFFF", CARD_L))
     x = 150
     s.append(T(x, 122, "火线 220 V / 50 Hz", 23, RED, weight="700"))
     s.append(line(x, 136, x, 176, RED, 2.8))
-    s.append(cap_v(x, 190, 1.0, GRAY)); s.append(T(x+52, 198, "C₁ = 1 pF", 22, INK, anchor="start"))
+    s.append(cap_v(x, 190, 1.0, GRAY)); s.append(T(x+52, 198, "C₁ = 2 pF", 22, INK, anchor="start"))
     s.append(line(x, 204, x, 250, GRAY, 2.8))
     s.append(box(x-88, 250, 176, 76, TINT, ACC))
     s.append(T(x, 296, "人体", 27, ACCD, weight="700"))
     s.append(line(x, 326, x, 372, GRAY, 2.8))
-    s.append(cap_v(x, 386, 1.0, GRAY)); s.append(T(x+52, 394, "C₂ = 100 pF", 22, INK, anchor="start"))
+    s.append(cap_v(x, 386, 1.0, GRAY)); s.append(T(x+52, 394, "C₂ = 200 pF", 22, INK, anchor="start"))
     s.append(line(x, 400, x, 436, GRAY, 2.8))
     s.append(gnd(x, 436, 1.1))
     s.append(T(280, 470, "两个电容串成分压器", 23, BODY, anchor="start"))
     # 右：结果
     s.append(box(546, 78, 368, 200, PANEL, CARD_L))
     s.append(T(730, 122, "V body = V m × C₁/(C₁+C₂)", 25, INK, weight="700"))
-    s.append(T(730, 166, "= 220 × 1/101", 25, BODY))
+    s.append(T(730, 166, "= 220 × 2/202", 25, BODY))
     s.append(T(730, 224, "≈ 2.2 V", 40, RED, weight="700"))
-    s.append(T(730, 258, "全身一起摆，摆得一样多", 22, BODY))
+    s.append(T(730, 258, "所有电极一起被抬起，幅度相同", 21, BODY))
     # 电源轨
     s.append(box(546, 296, 368, 202, "#FFFFFF", CARD_L))
     ry0, ry1 = 396, 470
     s.append(f'<rect x="590" y="{ry0}" width="280" height="{ry1-ry0}" rx="8" fill="{GRNT}" stroke="{GRN}" stroke-width="2"/>')
-    s.append(T(730, 424, "共模输入范围 0 – 3.3 V", 22, GRN, weight="700"))
+    s.append(T(730, 424, "放大器的输入电压范围", 22, GRN, weight="700"))
     s.append(line(590, ry1, 870, ry1, GRN, 2))
     s.append(f'<circle cx="700" cy="{ry0-24}" r="8" fill="{RED}"/>')
     s.append(f'<circle cx="760" cy="{ry0-24}" r="8" fill="{RED}"/>')
-    s.append(T(730, 334, "身体带着 2.2 V 摆", 22, RED, weight="700"))
+    s.append(T(730, 334, "人体带着 2.2 V 摆", 22, RED, weight="700"))
     s.append(T(730, 362, "a、b 被顶到范围外", 22, RED, weight="700"))
     s.append(box(46, 518, 868, 62, REDT, RED))
-    s.append(T(W/2, 556, "差还是那个差，一点没错。可它算不出来了。", 27, RED, weight="700"))
+    s.append(T(W/2, 556, "电压差是对的，仪器算不出来", 27, RED, weight="700"))
     return W, H, "".join(s)
 
 # ============================================================ 图 9 地电极换掉下臂
@@ -335,8 +344,8 @@ def fig9():
     W, H = 960, 580
     s = [T(W/2, 44, "地电极把分压器的下臂换掉了", 30, INK, weight="700")]
     for i,(title, lower, val, col, tint) in enumerate((
-        ("没有地电极", "C₂  31.8 MΩ", "2.2 V", RED, REDT),
-        ("接上地电极", "R e  10 kΩ", "0.69 mV", GRN, GRNT))):
+        ("没有地电极", "C₂  约 16 MΩ", "2.2 V", RED, REDT),
+        ("接上地电极", "R e  350 kΩ", "降约 45 倍", GRN, GRNT))):
         bx = 46 + i*470
         s.append(box(bx, 80, 420, 380, "#FFFFFF", CARD_L))
         x = bx + 150
@@ -357,10 +366,10 @@ def fig9():
         s.append(T(x+46, 374, lower, 21, col, anchor="start", weight="700"))
         s.append(gnd(x, 408, 0.9))
         s.append(f'<rect x="{bx+250}" y="150" width="150" height="86" rx="10" fill="{tint}" stroke="{col}" stroke-width="2"/>')
-        s.append(T(bx+325, 204, val, 32, col, weight="700"))
+        s.append(T(bx+325, 204, val, 28, col, weight="700"))
     s.append(box(46, 484, 868, 78, PANEL, CARD_L))
-    s.append(T(W/2, 520, "下臂阻抗降 3200 倍，共模就降 3200 倍", 27, INK, weight="700"))
-    s.append(T(W/2, 550, "磨皮、涂导电膏、按紧电极，全是在降 R e", 24, BODY))
+    s.append(T(W/2, 520, "下臂阻抗降多少倍，共模就降多少倍", 27, INK, weight="700"))
+    s.append(T(W/2, 550, "头皮准备、涂导电膏、等阻抗降下来，都在降 R e", 23, BODY))
     return W, H, "".join(s)
 
 # ============================================================ 图 10 五种模态地电极位置
@@ -392,8 +401,8 @@ def fig10():
 # ============================================================ 图 11 接地 vs 浮地
 def fig11():
     W, H = 960, 560
-    s = [T(W/2, 44, "同一根线，既是共模的解药，也是漏电流的通道", 30, INK, weight="700")]
-    for i,(title, col, tint) in enumerate((("仪器零点接大地", RED, REDT), ("浮地 / 隔离", GRN, GRNT))):
+    s = [T(W/2, 44, "地电极的「地」是仪器零点，不是大地", 30, INK, weight="700")]
+    for i,(title, col, tint) in enumerate((("若仪器零点接大地", RED, REDT), ("电池供电或隔离", GRN, GRNT))):
         bx = 46 + i*470
         s.append(box(bx, 82, 420, 344, "#FFFFFF", CARD_L))
         s.append(T(bx+210, 118, title, 26, col, weight="700"))
@@ -414,7 +423,7 @@ def fig11():
             s.append(gnd(bx+310, 288, 1.0))
             s.append(path(f"M{bx+115},220 L{bx+115},330 L{bx+310},330", RED, 3.2, dash="8 6", marker="ahr"))
             s.append(T(bx+210, 366, "回路成立，电流经人体", 23, RED, weight="700"))
-            s.append(T(bx+210, 398, "CF 型限值 10 µA / 50 µA", 22, INK, weight="700"))
+            s.append(T(bx+210, 398, "流过人体的电流会造成伤害", 22, INK, weight="700"))
         else:
             s.append(cap_v(bx+310, 300, 0.9, GRAY))
             s.append(line(bx+310, 314, bx+310, 344, GRAY, 2.8))
@@ -422,8 +431,8 @@ def fig11():
             s.append(T(bx+364, 306, "C₃", 21, INK, anchor="start"))
             s.append(T(bx+210, 400, "只剩几十 MΩ，电流压到 µA 以下", 22, GRN, weight="700"))
     s.append(box(46, 452, 868, 90, PANEL, CARD_L))
-    s.append(T(W/2, 490, "浮地时人和仪器一起相对大地摆", 26, INK, weight="700"))
-    s.append(T(W/2, 522, "这个摆动放大器完全看不见，它只看两者之间的差", 24, BODY))
+    s.append(T(W/2, 490, "人体与仪器零点被 R e 绑在一起，整体相对大地浮动", 24, INK, weight="700"))
+    s.append(T(W/2, 522, "放大器只看两者之差，这个整体浮动不进入读数", 23, BODY))
     return W, H, "".join(s)
 
 # ============================================================ 图 12 DRL 反馈环
@@ -491,37 +500,40 @@ def fig13():
 
 # ============================================================ 封面概念图 + 目录图
 def cover_concept():
-    W, H = 960, 500
+    W, H = 960, 580
     s = []
-    # 两片电极 + 一片被划出来的第三片
-    s.append(box(60, 70, 840, 360, "#FFFFFF", CARD_L))
-    s.append(T(480, 128, "三片金属，只有两片进入波形", 30, INK, weight="700"))
+    s.append(box(24, 20, 912, 536, "#FFFFFF", CARD_L, rx=18))
+    s.append(T(480, 92, "三片金属，只有两片进入波形", 34, INK, weight="700"))
+    s.append(line(120, 122, 840, 122, LINE, 1.6))
     labs = [("测量电极", ACC, "进减法"), ("参考电极", GRN, "进减法"), ("地电极", RED, "不进减法")]
     for i,(lab, col, note) in enumerate(labs):
         x = 200 + i*280
-        s.append(elec(x, 208, 108, 30, col))
-        s.append(T(x, 268, lab, 26, col, weight="700"))
-        s.append(T(x, 306, note, 23, BODY))
-    s.append(line(200, 336, 480, 336, ACC, 2.4, "7 6"))
-    s.append(T(340, 372, "V i − V ref", 26, ACCD, weight="700"))
-    s.append(T(760, 372, "保证减法能发生", 24, RED, weight="700"))
+        s.append(elec(x, 200, 150, 40, col))
+        s.append(T(x, 280, lab, 32, col, weight="700"))
+        s.append(T(x, 326, note, 26, BODY))
+    s.append(line(200, 378, 480, 378, ACC, 2.8, "8 6"))
+    s.append(box(214, 402, 252, 62, TINT, ACC))
+    s.append(T(340, 442, "V i − V ref", 32, ACCD, weight="700"))
+    s.append(box(634, 402, 252, 62, REDT, RED))
+    s.append(T(760, 442, "保证减法能发生", 27, RED, weight="700"))
+    s.append(T(480, 512, "参考电极进减法，地电极不进减法", 26, INK, weight="700"))
     return W, H, "".join(s)
 
 def toc_fig():
     W, H = 960, 620
     s = [T(W/2, 54, "本期路线", 32, INK, weight="700")]
     items = [
-        "① 信号从哪来 —— 电流在组织里造成电位分布",
-        "② 参考电极是什么 —— 一条被减进每个通道的信号",
-        "③ 怎么选参考 —— 两条方向相反的判据",
-        "④ 地电极是什么 —— 它不进减法，它保证减法能发生",
-        "⑤ 它的两面 —— 同一根线，共模的解药与漏电流的通道",
-        "⑥ 把共模压到底 —— DRL 与 CMRR，瓶颈在电极",
+        "① 记录测的是两处的电压差 —— 电流在组织里造成电位分布",
+        "② 参考位置会影响记录结果 —— 它被减进每一个通道",
+        "③ 放大器怎么完成一次测量 —— 先分别感知两端，再相减",
+        "④ 人体处在浮空状态 —— 市电经寄生电容把它抬起约 2 V",
+        "⑤ 地电极把人体拽回可测范围 —— 它不进入任何减法",
+        "⑥ 这个「地」并不通向大地 —— 指的是仪器自己的零点",
     ]
     for i, it in enumerate(items):
         y = 118 + i*82
         s.append(box(56, y, 848, 64, "#FFFFFF", CARD_L))
-        s.append(T(84, y+42, it, 26, INK, anchor="start"))
+        s.append(T(84, y+42, it, 25, INK, anchor="start"))
     return W, H, "".join(s)
 
 FIGS = {
