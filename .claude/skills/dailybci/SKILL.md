@@ -446,6 +446,16 @@ A good test: if you removed your explanation of this one point, would a reader m
 
 ### Step 5: First draft — 小红书 copy with rough figures, in chat
 
+#### ⛔ 正文稿一律先过 `jiajun-writer`（2026-09-10 用户定，写死）
+
+**任何一段要进图卡的正文文字，在交给用户之前必须先调用 `Skill(jiajun-writer)` 并按其规则改写一遍。** 不等用户点名，不因为"规则已在上下文里"而跳过调用。
+
+- 适用范围：Step 5 的初稿、逐卡讨论中的每一次改写、Step 7 落稿前的最终文案。封面标题、目录卡条目、尾卡文字同样算正文。
+- 交付时必须说明这一步跑过了；改动明显时给出改前/改后对照与理由。
+- 用户问"跑过没有"时如实回答，跑没跑过都照实说，不含糊。
+- 出稿前跑一遍该 skill 的「交稿前自检」清单（比喻/拟人为零、「代价」为零、「不是 X 而是 Y」为零、禁用词零命中等）。
+
+
 **默认只出小红书 copy（X thread 默认不出，见 Content Standards → Bilingual Content Workflow 顶部的写死条款）。** 下文凡提到 thread 的部分，仅在用户当期明确要求 thread 时才适用。
 
 Right after the insight is confirmed, produce the **first full version** and present it in chat: the 小红书 card-by-card copy (plus the English X-thread copy **only if the user asked for one this issue**), with **each figure card's figure shown inline (a rough crop is fine)** so the user sees text+figure paired from the very first version. This is the content layer — logic, numbers, comparisons, and the text–figure pairing — produced cheaply so it can be revised and fact-checked **before** the expensive final card rendering. (Rationale: rendering polished cards is the heavy step; if a core number is wrong, that work is wasted. Facts first, polished production later. But rough crops of already-downloaded figures are cheap, so pair them in from the start — don't make the user imagine the layout.)
@@ -813,7 +823,7 @@ Present all final cards for last confirmation before posting. **交付完三件�
 
 Trigger: "做一个专题", "深度长文", "把 X 讲透", 或任何脱离单篇日报、要从第一性原理把某个原理/技术/硬件讲穿的常青长文需求。
 
-专题与日报(Mode A)是**两条不同的 pipeline**:日报绑当天单篇论文、走 10 步关卡;专题不绑单篇、可跨多期、原理驱动。成品进 `output/series-<slug>/`,出图复用 `card_generator.py` + 自制 SVG 示意图(见记忆 `dailybci-series-deep-dive-track`)。已出:犹他阵列、电极材料、神经解码方法论、侵入式定位精度、**EEG 工频/阻抗均衡(series-eeg-impedance-01)**、**EEG 电极界面/基线漂移(series-eeg-impedance-02)**、**接地的第一性原理(series-grounding-01,上篇,2026-09-03;series-grounding-02,下篇「生物电记录里的零点」,2026-09-04)**、**采集设备的模拟/数字接口系列(series-daq-io-01-four-ports「模拟口与数字口辨析」2026-09-07;series-daq-io-02-clock「脑电采集的时刻是如何确认的」2026-09-08)**。
+专题与日报(Mode A)是**两条不同的 pipeline**:日报绑当天单篇论文、走 10 步关卡;专题不绑单篇、可跨多期、原理驱动。成品进 `output/series-<slug>/`,出图复用 `card_generator.py` + 自制 SVG 示意图(见记忆 `dailybci-series-deep-dive-track`)。已出:犹他阵列、电极材料、神经解码方法论、侵入式定位精度、**EEG 工频/阻抗均衡(series-eeg-impedance-01)**、**EEG 电极界面/基线漂移(series-eeg-impedance-02)**、**接地的第一性原理(series-grounding-01,上篇,2026-09-03;series-grounding-02,下篇「生物电记录里的零点」,2026-09-04)**、**采集设备的模拟/数字接口系列(series-daq-io-01-four-ports「模拟口与数字口辨析」2026-09-07;series-daq-io-02-clock「脑电采集的时刻是如何确认的」2026-09-08)**、**series-amp-01「如何采到准确的脑电」(2026-09-10,输入阻抗与电极接触阻抗的两个比值)**。
 
 专题的写作/讲解节奏沿用全局规则:**背景先行 + 一次一小块**(见 Content Standards 同名节)、用户随时可喊停内容生产转纯讲解(记忆 `user-stepwise-tech-tutorials`)、科学平实少修辞。以下是专题**特有**的三道关卡。
 
