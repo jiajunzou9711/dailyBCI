@@ -527,6 +527,14 @@
 - **关键词**：实验问题 / 需求清单 / 系统误差 / 随机误差 / 测量位置 / 时间对应 / 漂移
 - **卡数**：16（13 内容卡 + 封面 + 目录 + 尾卡，含 9 张自制 SVG）｜ **路径**：`output/2026-09-13-electrophysiology-io/ep01-2026-09-13-requirements/`（系列总纲 `../draft.md`）
 
+### 2026-09-14 · 电生理采集的信息通路概览（电生理 IO 系列第 2 期）
+- **主线**：以 Roux 2017 的「检测到尖波涟漪即给光」闭环实验为例，把系统拆成生成、测量、判断、保存四项职责（按信息在物理量与数值之间的转换方向划分；判断限系统自动完成，只有闭环才有）；生成与测量受物理通路约束，判断与保存位置可选，本期固定其余三项只挪判断。判断挪到电脑上，采集设备→电脑这条连接从「保存」进入「控制」，要求从「事后能对齐」变为「及时送达」，延迟大小（对照事件持续时间）与稳定性决定实验能否成立。再比较判断放在采集设备（FPGA/DSP）与电脑上的步骤、实例与差异。C 类原理期。
+- **卡序**：①以闭环实验为例 / 四项职责 ②哪些职责的位置可选 / 只挪判断的 A、B 两方案 / 分配方案改变了哪条连接的用途 ③用途变了要求随之改变 / 两种实现的步骤与延迟构成（总延迟 = 检测延迟 + 系统延迟 + 光源响应，判断位置只改变系统延迟）/ 判断在采集设备上的系统 / 判断在电脑上的系统 / 两种实现各有长短（对比表）/ 怎样选择判断的位置 / 每条连接可以用哪些接口
+- **承重出处（均逐句核原文）**：Roux et al. (2017) Nat Neurosci 20(6):845–853（CA1 硅探针、60 ms 光脉冲、TDT RX6 检测）；Open Ephys Closed-Loop Latency 文档（软件处理、USB 缓冲 10 ms @ 30 kHz、示例 0–27 ms）；Intan Rhythm USB-7310（Xilinx FPGA、on-FPGA 阈值比较器、DAC 直出绕过 USB 与电脑）与 Recording Controller 手册（阈值比较数字输出、模拟输出 <0.2 ms、声音监听）；Müller et al. (2012) Front Neural Circuits 6:121（FPGA 检测与反馈，最小 400 μs、抖动 <50 μs，大鼠 E18 皮层离体培养）；TDT Synapse 文档（gizmo 编译后分配到 DSP）；Dutta et al. (2019) J Neural Eng 16(1):016009（Trodes 电脑端 SWR 检测；USB 7.5–13.8 ms / 以太网 1.35–2.6 ms；以太网、<10 次/分误检时算法延迟 ≈20–66 ms；SWR ≈100 ms；1 只雄性 Long Evans 大鼠）；Ali et al. (2024) J Neural Eng 21(2)（BRAND，PREEMPT_RT Linux，RNN 解码 <8 ms，BrainGate2 T11）
+- **讨论中核过但未采用**：Intan 记录控制器内部是否为 FPGA（控制器手册、产品页、RHX 手册均未写明，故 FPGA 只归 Rhythm USB-7310）；Hogan et al. 2026 arXiv 2602.11632（FPGA vs Python 取舍原句，作者 Cortical Labs 利益相关）；Aleman-Zapata et al. 2022 J Sleep Res（综述未统计各研究所用系统，故「主流方案」无统计依据）；NeuroPace RNS（Bergey 2015 Neurology，植入设备自身检测并刺激，摘录未逐字核，留第八期）
+- **关键词**：闭环 / 职责分配 / 判断位置 / 保存 vs 控制 / 系统延迟 / 检测延迟 / FPGA / DSP / 缓冲 / 接口候选
+- **卡数**：15（12 内容卡 + 封面 + 目录 + 尾卡，含 9 张自制 SVG）｜ **路径**：`output/2026-09-13-electrophysiology-io/ep02-2026-09-14-system-paths/`
+
 # 专题（常青深度篇）
 
 按主题组织，与日期无关。目录名以 `series-` 开头。
