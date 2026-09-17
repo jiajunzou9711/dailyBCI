@@ -40,6 +40,7 @@ import subprocess
 # =============================================================================
 
 W, H = 1080, 1440          # 小红书 standard portrait ratio
+SCALE = int(os.environ.get("CARD_SCALE", "2"))   # 渲染倍率：版面按 1080×1440 写，出图为其 SCALE 倍
 MARGIN = 100               # generous side margins (px)
 BG_COLOR = '#FAFAFA'       # near-white background
 
@@ -91,6 +92,7 @@ def _base_css():
         --caption: {COLOR_CAPTION}; --muted: {COLOR_MUTED}; --brand: {COLOR_BRAND};
         --line: {COLOR_LINE}; --accent: {COLOR_ACCENT};
     }}
+    html {{ zoom: {SCALE}; }}
     body {{ width: {W}px; height: {H}px; overflow: hidden; }}
     .card {{
         position: relative; width: {W}px; height: {H}px; background: {BG_COLOR};
@@ -193,7 +195,7 @@ class CardGenerator:
         )
 
     def _render(self, html_str, output_path):
-        """Write HTML to a temp file and screenshot it to output_path at 1080×1440."""
+        """Write HTML to a temp file and screenshot it at 1080×1440 的 SCALE 倍。"""
         out_dir = os.path.dirname(output_path) or "."
         os.makedirs(out_dir, exist_ok=True)
         tmp = tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8")
@@ -202,7 +204,7 @@ class CardGenerator:
             tmp.close()
             subprocess.run(
                 ["npx", "playwright", "screenshot", _file_url(tmp.name), output_path,
-                 f"--viewport-size={W},{H}", "--wait-for-timeout=700"],
+                 f"--viewport-size={W*SCALE},{H*SCALE}", "--wait-for-timeout=700"],
                 check=True, capture_output=True, text=True,
             )
         except subprocess.CalledProcessError as e:
