@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-09-04
-Total papers: 428
+Last updated: 2026-09-19
+Total papers: 429
 
 ## speech-decoding (19 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -383,7 +383,8 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Paradromics 2026](papers/clinical-regulatory/paradromics-2026-connect-one-first-implant.md) — Connect-One 早期可行性研究首例长期 Connexus 植入(报道称 FDA IDE、随访最长6年)，高密度皮层内全植入 BCI 进入 speech restoration 临床分支
 - [Przepiorka 2025](papers/clinical-regulatory/przepiorka-2025-dural-tenting-rct.md) — 490 例多中心 RCT：择期幕上开颅**省略预防性硬膜悬吊线非劣**（因血肿再手术 0.8% vs 0.4%）。沿用数十年的标准步骤被首次随机检验
 
-## ai-neural-modeling (23 papers)
+## ai-neural-modeling (24 papers)
+- [Shiu 2024](papers/ai-neural-modeling/shiu-2024-drosophila-whole-brain-lif-model.md) — 首个从**全脑连接组+递质预测**直接算出并在活体逐条检验的感觉—运动模型（果蝇，127,400 神经元 LIF，唯一自由参数 0.275 mV 靠拟合）；164 条预测 91% 一致，106 类型筛查 10/11 与 4/95；失败于去抑制类通路
 - [Pandarinath 2018](papers/ai-neural-modeling/pandarinath-2018-lfads.md) — LFADS序列VAE，从spikes中恢复single-trial潜在动力学，Nature Methods
 - [Ye 2021](papers/ai-neural-modeling/ye-2021-neural-data-transformer.md) — NDT首次将Transformer应用于神经spike数据，推理速度比RNN快6倍
 - [Ye 2023](papers/ai-neural-modeling/ye-2023-ndt2-multi-context.md) — NDT-2跨session预训练，证明预训练+微调范式在神经数据上有效，NeurIPS 2023
