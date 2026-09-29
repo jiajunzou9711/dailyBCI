@@ -12,3 +12,6 @@
 # Python build artifacts
 __pycache__/
 *.pyc
+
+# 行业热点站，独立 Git 仓库
+/AIHOT-main/
