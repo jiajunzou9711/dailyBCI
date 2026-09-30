@@ -1,9 +1,9 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-09-22
-Total papers: 431
+Last updated: 2026-09-30
+Total papers: 432
 
-## speech-decoding (19 papers)
+## speech-decoding (20 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
 - [Leuthardt 2011](papers/speech-decoding/leuthardt-2011-ecog-speech-bci.md) — 首个ECoG语音信号BCI控制，开创用说话意图控制BCI的ECoG路线
 - [Bouchard 2013](papers/speech-decoding/bouchard-2013-sensorimotor-speech-organization.md) — 发现语音运动皮层编码发音动作（非声学特征），奠定articulatory decoding基础
@@ -23,6 +23,7 @@ Total papers: 431
 - [Card 2026](papers/speech-decoding/card-2026-longterm-independent-bci.md) — 皮层内语音+光标BCI首次家庭自主长期使用：ALS患者19个月/3801小时/18.3万句、研究员不在场、保住全职工作；transformer达99.2%词准确率，信号18个月余弦相似度>0.6(同一患者T15，Nature Medicine)
 - [Wairagkar 2026](papers/speech-decoding/wairagkar-2026-brain2voice2-voice-synthesis.md) — 脑-语音合成首次跨过可懂度门槛：多模态因果Transformer(四路互补目标:连续声学/离散RVQ token/音素/自监督)+多尺度对抗，听者WER 5.24% vs前作43.75%(8×)、79%句零错；治回归损失抹糊辅音的根本问题(同队Wairagkar 2025续作，人类单被试T15，bioRxiv)
 
+- [Brosler 2026](papers/speech-decoding/brosler-2026-simultaneous-speech-gesture.md) — Chang 组 **ECoG** 同一块 253 触点阵列**同时解码语音与上肢手势**(两个并行分类器 + 静息类)：只用单独做的数据训练，边说边比时漏检 14.5%/34.9%；**混合训练**降到 0.8%–4.5%，**交叉模态静息标签**把对另一种行为的误触发从 30.6%/76.0% 降到 0；实时驱动全身化身。边界：同时解码 2 人、实时 1 人、词表 10×10、需开始信号(人类 3 名，BRAVO，Nat Neurosci)
 - [Fogg 2026](papers/speech-decoding/fogg-2026-generalizable-speech.md) — **首次证明皮层内语音表征跨人共享到「解码器可整个冻结」的程度**：六名 BrainGate2 参与者数据合池训一个 transformer 音素解码器，对**每一位**都优于其单人模型(相对 WER 均降 51.1%；**T17 从 65.6%→23.1%**，把一个不可用的解码器拉回 2023 年 SOTA 水平)；闭环实时降 55.9%。承重设计是 **frozen-decoder 适配**——解码器全冻、新用户只训一个线性映射+tanh(约 0.26M，占全模型约 0.4%)，**T22 90 试次/约 17 分钟→WER 10.2%**，同数据从零训 SU 为 76.9%；左半球模型可适配到右半球。缩放 1→4 人 17.6%→9.5% **未饱和**。已排除深度(SU 加深不受益)与句子重叠(去重后仍胜出)两个混淆。**边界**：T15-Large 仅 14.3%(本人数据极多时收益缩水)、六人小样本、全英语、同一皮层内系统与脑区(人类 6 名，bioRxiv)
 
 ## semantic-decoding (12 papers)
