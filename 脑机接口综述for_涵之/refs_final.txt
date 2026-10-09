@@ -1,0 +1,112 @@
+[1] (EB_OL) FDA. Implanted Brain-Computer Interface Devices for Patients with Paralysis or Amputation: Non-clinical Testing and Clinical Considerations, 2021
+    URL: https://www.fda.gov/regulatory-information/search-fda-guidance-documents/implanted-brain-computer-interface-bci-devices-patients-paralysis-or-amputation-non-clinical-testing
+[2] Card N S, Singer-Clark T, Peracha H, et al. Long-term independent use of an intracortical brain–computer interface for speech and cursor control[J]. Nature Medicine, 2026, 32(7):2504-2510.
+[3] Flesher S N, Downey J E, Weiss J M, et al. A brain-computer interface that evokes tactile sensations improves robotic arm control[J]. Science, 2021, 372(6544):831-836.
+[4] Lorach H, Galvez A, Spagnolo V, et al. Walking naturally after spinal cord injury using a brain–spine interface[J]. Nature, 2023, 618(7963):126-133.
+[5] Chandrasekaran S, Wandelt S K, Jangam A, et al. A neuroprosthesis for restoring hand movement and sensation in a person with complete tetraplegia[J]. Nature Medicine, 2026, 32(7):2591-2601.
+[6] Greenspon C M, Hobbs T G, Verbaarschot C, et al. Long-term safety and efficacy of intracortical microstimulation in humans[J]. Science Translational Medicine, 2026, 18(858):eaec3728.
+[7] Sellers E W, Vaughan T M, Wolpaw J R. A brain-computer interface for long-term independent home use[J]. Amyotrophic Lateral Sclerosis, 2010, 11(5):449-55.
+[8] Wolpaw J R, Bedlack R S, Reda D J, et al. Independent home use of a brain-computer interface by people with amyotrophic lateral sclerosis[J]. Neurology, 2018, 91(3):e258-e267.
+[9] Biasiucci A, Leeb R, Iturrate I, et al. Brain-actuated functional electrical stimulation elicits lasting arm motor recovery after stroke[J]. Nature Communications, 2018, 9(1):2421.
+[10] Frolov A A, Mokienko O, Lyukmanov R, et al. Post-stroke Rehabilitation Training with a Motor-Imagery-Based Brain-Computer Interface (BCI)-Controlled Hand Exoskeleton: A Randomized Controlled Multicenter Trial[J]. Frontiers in Neuroscience, 2017, 11:400.
+[11] Ramos-Murguialday A, Broetz D, Rea M, et al. Brain-machine interface in chronic stroke rehabilitation: a controlled study[J]. Annals of Neurology, 2013, 74(1):100-8.
+[12] Xie Y L, Yang Y X, Jiang H, et al. Brain-machine interface-based training for improving upper extremity function after stroke: A meta-analysis of randomized controlled trials[J]. Frontiers in Neuroscience, 2022, 16:949575.
+[13] Chen H, Yun G. Efficacy of Brain-Computer Interface Therapy for Upper Limb Rehabilitation in Chronic Stroke: Systematic Review and Meta-Analysis of Randomized Controlled Trials[J]. Journal of Medical Internet Research, 2026, 28:e79132.
+[14] Bai Z, Fong K N K, Zhang J J, et al. Immediate and long-term effects of BCI-based rehabilitation of the upper extremity after stroke: a systematic review and meta-analysis[J]. Journal of NeuroEngineering and Rehabilitation, 2020, 17(1):57.
+[15] Westwood S J, Aggensteiner P M, Kaiser A, et al. Neurofeedback for Attention-Deficit/Hyperactivity Disorder: A Systematic Review and Meta-Analysis[J]. JAMA Psychiatry, 2025, 82(2):118-129.
+[16] Beau Q A L, Boardman J M, Mellor A, et al. Dreem headband performance in Insomnia Disorder: An in-lab comparison to polysomnography[J]. Sleep Medicine, 2025, 134:106698.
+[17] Baldassarri A, Bergamo D, Salfi F, et al. The Effect of Closed-Loop Auditory Stimulation on Memory Consolidation and Sleep Physiology in an Ecological Setting[J]. Journal of Sleep Research, 2026, 35(3):e70247.
+[18] Bressler S, Neely R, Yost R M, et al. A randomized controlled trial of alpha phase-locked auditory stimulation to treat symptoms of sleep onset insomnia[J]. Scientific Reports, 2024, 14(1):13039.
+[19] (EB_OL) Neurable MW75 Neuro 官方产品页
+    URL: https://www.neurable.com/products/mw75neuro
+[20] Beauchamp M S, Oswalt D, Sun P, et al. Dynamic Stimulation of Visual Cortex Produces Form Vision in Sighted and Blind Humans[J]. Cell, 2020, 181(4):774-783.e5.
+[21] Holz F G, Le Mer Y, Muqit M M, et al. Subretinal Photovoltaic Implant to Restore Vision in Geographic Atrophy Due to AMD[J]. New England Journal of Medicine, 2026, 394(3):232-242.
+[22] (EB_OL) 国家药监局：首款侵入式脑机接口医疗器械获批上市，2026
+    URL: https://yjj.sh.gov.cn/zjyw/20260313/04985a5fbe284e9c806ff5f370cb00b2.html
+[23] Metzger S L, Littlejohn K T, Silva A B, et al. A high-performance neuroprosthesis for speech decoding and avatar control[J]. Nature, 2023, 620(7976):1037-1046.
+[24] Willett F R, Kunz E M, Fan C, et al. A high-performance speech neuroprosthesis[J]. Nature, 2023, 620(7976):1031-1036.
+[25] Branco M P, Pels E G M, Sars R H, et al. Brain-Computer Interfaces for Communication: Preferences of Individuals With Locked-in Syndrome[J]. Neurorehabilitation and Neural Repair, 2021, 35(3):267-279.
+[26] Peters B, Bieker G, Heckman S M, et al. Brain-computer interface users speak up: the Virtual Users' Forum at the 2013 International Brain-Computer Interface Meeting[J]. Archives of Physical Medicine and Rehabilitation, 2015, 96(3 Suppl):S33-7.
+[27] Brannigan J F M, Liyanage K, Horsfall H L, et al. Brain-computer interfaces patient preferences: a systematic review[J]. Journal of Neural Engineering, 2024, 21(6):061005.
+[28] Willett F R, Avansino D T, Hochberg L R, et al. High-performance brain-to-text communication via handwriting[J]. Nature, 2021, 593(7858):249-254.
+[29] Metzger S L, Liu J R, Moses D A, et al. Generalizable spelling using a speech neuroprosthesis in an individual with severe limb and vocal paralysis[J]. Nature Communications, 2022, 13(1):6510.
+[30] Qian Y, Liu C, Yu P, et al. Real-time decoding of full-spectrum Chinese using brain-computer interface[J]. Science Advances, 2025, 11(45):eadz9968.
+[31] Wairagkar M, Card N S, Singer-Clark T, et al. An instantaneous voice-synthesis neuroprosthesis[J]. Nature, 2025, 644(8075):145-152.
+[32] Littlejohn K T, Cho C J, Liu J R, et al. A streaming brain-to-voice neuroprosthesis to restore naturalistic communication[J]. Nature Neuroscience, 2025, 28(4):902-912.
+[33] Silva A B, Liu J R, Metzger S L, et al. A bilingual speech neuroprosthesis driven by cortical articulatory representations shared between languages[J]. Nature Biomedical Engineering, 2024, 8(8):977-991.
+[34] (EB_OL) Apple 官方支持文档：Use Switch Control to navigate your iPhone, iPad, or iPod touch
+    URL: https://support.apple.com/en-us/119835
+[35] Pandarinath C, Nuyujukian P, Blabe C H, et al. High performance communication by people with paralysis using an intracortical brain-computer interface[J]. eLife, 2017, 6:e18554.
+[36] Vansteensel M J, Pels E G, Bleichner M G, et al. Fully Implanted Brain–Computer Interface in a Locked-In Patient with ALS[J]. New England Journal of Medicine, 2016, 375(21):2060-2066.
+[37] Vansteensel M J, Leinders S, Branco M P, et al. Longevity of a Brain–Computer Interface for Amyotrophic Lateral Sclerosis[J]. New England Journal of Medicine, 2024, 391(7):619-626.
+[38] Mitchell P, Lee S C M, Yoo P E, et al. Assessment of Safety of a Fully Implanted Endovascular Brain-Computer Interface for Severe Paralysis in 4 Patients[J]. JAMA Neurology, 2023, 80(3):270.
+[39] (EB_OL) Synchron Debuts First Thought-Controlled iPad Experience Using Apple's New BCI Human Interface Device Protocol, 2025
+    URL: https://www.businesswire.com/news/home/20250804537175/en/Synchron-Debuts-First-Thought-Controlled-iPad-Experience-Using-Apples-New-BCI-Human-Interface-Device-Protocol
+[40] Nuyujukian P, Albites Sanabria J, Saab J, et al. Cortical control of a tablet computer by people with paralysis[J]. PLOS ONE, 2018, 13(11):e0204566.
+[41] Simeral J D, Hosman T, Saab J, et al. Home Use of a Percutaneous Wireless Intracortical Brain-Computer Interface by Individuals With Tetraplegia[J]. IEEE Transactions on Biomedical Engineering, 2021, 68(7):2313-2325.
+[42] Kunz E M, Abramovich Krasa B, Kamdar F, et al. Inner speech in motor cortex and implications for speech neuroprostheses[J]. Cell, 2025, 188(17):4658-4673.e17.
+[43] Collinger J L, Boninger M L, Bruns T M, et al. Functional priorities, assistive technology, and brain-computer interfaces after spinal cord injury[J]. Journal of Rehabilitation Research and Development, 2013, 50(2):145-60.
+[44] Blabe C H, Gilja V, Chestek C A, et al. Assessment of brain-machine interfaces from the perspective of people with paralysis[J]. Journal of Neural Engineering, 2015, 12(4):043002.
+[45] Hochberg L R, Bacher D, Jarosiewicz B, et al. Reach and grasp by people with tetraplegia using a neurally controlled robotic arm[J]. Nature, 2012, 485(7398):372-375.
+[46] Collinger J L, Wodlinger B, Downey J E, et al. High-performance neuroprosthetic control by an individual with tetraplegia[J]. The Lancet, 2013, 381(9866):557-64.
+[47] Bouton C E, Shaikhouni A, Annetta N V, et al. Restoring cortical control of functional movement in a human with quadriplegia[J]. Nature, 2016, 533(7602):247-250.
+[48] Benabid A L, Costecalde T, Eliseyev A, et al. An exoskeleton controlled by an epidural wireless brain-machine interface in a tetraplegic patient: a proof-of-concept demonstration[J]. The Lancet Neurology, 2019, 18(12):1112-1122.
+[49] Downey J E, Weiss J M, Muelling K, et al. Blending of brain-machine interface and vision-guided autonomous robotics improves neuroprosthetic arm performance during grasping[J]. Journal of NeuroEngineering and Rehabilitation, 2016, 13:28.
+[50] Hochberg L R, Serruya M D, Friehs G M, et al. Neuronal ensemble control of prosthetic devices by a human with tetraplegia[J]. Nature, 2006, 442(7099):164-171.
+[51] Wodlinger B, Downey J E, Tyler-Kabara E C, et al. Ten-dimensional anthropomorphic arm control in a human brain−machine interface: difficulties, solutions, and limitations[J]. Journal of Neural Engineering, 2015, 12(1):016011.
+[52] Handelman D A, Osborn L E, Thomas T M, et al. Shared Control of Bimanual Robotic Limbs With a Brain-Machine Interface for Self-Feeding[J]. Frontiers in Neurorobotics, 2022, 16:918001.
+[53] (DB_OL) ClinicalTrials.gov. CONVOY, NCT06710626
+    URL: https://clinicaltrials.gov/study/NCT06710626
+[54] (EB_OL) Neuralink. CONVOY Study Launch, 2024
+    URL: https://neuralink.com/updates/convoy-study-launch/
+[55] Ajiboye A B, Willett F R, Young D R, et al. Restoration of reaching and grasping movements through brain-controlled muscle stimulation in a person with tetraplegia: a proof-of-concept demonstration[J]. The Lancet, 2017, 389(10081):1821-1830.
+[56] (MISSING) China approves brain chip to overcome paralysis. Nature Biotechnology, 2026
+    URL: https://www.nature.com/articles/s41587-026-03101-8
+[57] (EB_OL) 国家药监局器审中心：植入式脑机接口手部运动功能代偿系统技术审评报告（受理号 CQZ2600324、CQZ2600325）
+    URL: https://www.cmde.org.cn/directory/web/cmde/images/1775031381651060289.pdf
+[58] Capogrosso M, Milekovic T, Borton D, et al. A brain-spine interface alleviating gait deficits after spinal cord injury in primates[J]. Nature, 2016, 539(7628):284-288.
+[59] Cajigas I, Davis K C, Prins N W, et al. Brain-Computer interface control of stepping from invasive electrocorticography upper-limb motor imagery in a patient with quadriplegia[J]. Frontiers in Human Neuroscience, 2023, 16:1077416.
+[60] Bensmaia S J, Miller L E. Restoring sensorimotor function through intracortical interfaces: progress and looming challenges[J]. Nature Reviews Neuroscience, 2014, 15(5):313-325.
+[61] Valle G, Oswalt D, Gaunt R A, et al. Restoring vision and touch with cortical microstimulation[J]. Nature Reviews Bioengineering, 2026, 4(8):713-732.
+[62] Osborn L E, Christie B, McMullen D P, et al. Artificial touch feedback using microstimulation of human somatosensory cortex to convey grip force from a robotic hand[C]//2024 46th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC). 2024: 1-4.
+[63] Verbaarschot C, Karapetyan V, Greenspon C M, et al. Conveying tactile object characteristics through customized intracortical microstimulation of the human somatosensory cortex[J]. Nature Communications, 2025, 16(1):4017.
+[64] Greenspon C M, Valle G, Shelchkova N D, et al. Evoking stable and precise tactile sensations via multi-electrode intracortical microstimulation of the somatosensory cortex[J]. Nature Biomedical Engineering, 2025, 9(6):935-951.
+[65] Levy L, Ebadi H, Peabody Smith A, et al. Disentangling Function from Benefit: Participant Perspectives from an Early Feasibility Trial for a Novel Visual Cortical Prosthesis[J]. AJOB Neuroscience, 2024, 15(3):158-176.
+[66] Stephan K, Troyk P R, Dagnelie G, et al. The Role of Scalp EEG Recordings During Cortical Visual Prosthesis Testing[J]. Artificial Organs, 2025, 49(9):1417-1428.
+[67] Schmidt E M, Bak M J, Hambrecht F T, et al. Feasibility of a visual prosthesis for the blind based on intracortical microstimulation of the visual cortex[J]. Brain, 1996, 119 ( Pt 2):507-22.
+[68] Peters B, Eddy B, Galvin-McLaughlin D, et al. A systematic review of research on augmentative and alternative communication brain-computer interface systems for individuals with disabilities[J]. Frontiers in Human Neuroscience, 2022, 16:952380.
+[69] (EB_OL) FDA De Novo DEN200046（IpsiHand，2021-04-23）
+    URL: https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN200046.pdf
+[70] Miao Y, Yin E, Allison B Z, et al. An ERP-based BCI with peripheral stimuli: validation with ALS patients[J]. Cognitive Neurodynamics, 2020, 14(1):21-33.
+[71] Chen X, Wang Y, Nakanishi M, et al. High-speed spelling with a noninvasive brain-computer interface[J]. Proceedings of the National Academy of Sciences, 2015, 112(44):E6058-67.
+[72] Ravi A, Lu J, Pearce S, et al. Enhanced System Robustness of Asynchronous BCI in Augmented Reality Using Steady-State Motion Visual Evoked Potential[J]. IEEE Transactions on Neural Systems and Rehabilitation Engineering, 2022, 30:85-95.
+[73] Nijboer F, Sellers E W, Mellinger J, et al. A P300-based brain-computer interface for people with amyotrophic lateral sclerosis[J]. Clinical Neurophysiology, 2008, 119(8):1909-1916.
+[74] Cincotti F, Mattia D, Aloise F, et al. Non-invasive brain-computer interface system: towards its application as assistive technology[J]. Brain Research Bulletin, 2008, 75(6):796-803.
+[75] (EB_OL) g.tec BCI product catalog, 2018；FDA 510(k) 数据库按 applicant 检索 g.tec
+    URL: https://gtec.at/wp-content/uploads/2019/10/gtec-Product-Catalog-2018-web.pdf
+[76] Hu X, Li N, Pang M, et al. Brain-Computer Interface-Controlled Exoskeleton Training for Lower-Limb Rehabilitation in Spinal Cord Injury: A Pilot Randomized Clinical Trial[J]. Annals of Neurology, 2026, 99(5):1124-1138.
+[77] Lopez-Larraz E, Trincado-Alonso F, Rajasekaran V, et al. Control of an Ambulatory Exoskeleton with a Brain-Machine Interface for Spinal Cord Injury Gait Rehabilitation[J]. Frontiers in Neuroscience, 2016, 10:359.
+[78] Tonin L, Perdikis S, Kuzu T D, et al. Learning to control a BMI-driven wheelchair for people with severe tetraplegia[J]. iScience, 2022, 25(12):105418.
+[79] King C E, Wang P T, McCrimmon C M, et al. The feasibility of a brain-computer interface functional electrical stimulation system for the restoration of overground walking after paraplegia[J]. Journal of NeuroEngineering and Rehabilitation, 2015, 12:80.
+[80] Alimardani M, Hiraki K. Passive Brain-Computer Interfaces for Enhanced Human-Robot Interaction[J]. Frontiers in Robotics and AI, 2020, 7:125.
+[81] Sitaram R, Ros T, Stoeckel L, et al. Closed-loop brain training: the science of neurofeedback[J]. Nature Reviews Neuroscience, 2017, 18(2):86-100.
+[82] (EB_OL) NextSense Smartbuds 官方产品页
+    URL: https://nextsense.io/products/smartbuds
+[83] Berent J, Saini P, Stewart A X, et al. A novel, wearable, in-ear EEG technology to assess sleep and daytime sleepiness[J]. Bioelectronic Medicine, 2026, 12(1):13.
+[84] Cretot-Richert G, De Vos M, Debener S, et al. Assessing focus through ear-EEG: a comparative study between conventional cap EEG and mobile in- and around-the-ear EEG systems[J]. Frontiers in Neuroscience, 2023, 17:895094.
+[85] Tremmel C, Krusienski D J, Schraefel M. Estimating cognitive workload using a commercial in-ear EEG headset[J]. Journal of Neural Engineering, 2024, 21(6):066022.
+[86] Bradshaw Bernacchi J K, Lopez Valdes A. Electrophysiological Characterisation of Commercial Ear-EEG Devices[C]//2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC). 2025: 1-4.
+[87] (EB_OL) IDUN Guardian 官方产品页
+    URL: https://iduntechnologies.com/idun-guardian
+[88] (EB_OL) EMOTIV MN8 Quick Start Guide
+    URL: https://www.emotiv.com/quick-start-guide-mn8
+[89] Ngo H V V, Martinetz T, Born J, et al. Auditory closed-loop stimulation of the sleep slow oscillation enhances memory[J]. Neuron, 2013, 78(3):545-53.
+[90] Ehrlich S K, Agres K R, Guan C, et al. A closed-loop, music-based brain-computer interface for emotion mediation[J]. PLOS ONE, 2019, 14(3):e0213516.
+[91] Ros T, Enriquez-Geppert S, Zotev V, et al. Consensus on the reporting and experimental design of clinical and cognitive-behavioural neurofeedback studies (CRED-nf checklist)[J]. Brain, 2020, 143(6):1674-1685.
+[92] Aricò P, Borghini G, Di Flumeri G, et al. Adaptive Automation Triggered by EEG-Based Mental Workload Index: A Passive Brain-Computer Interface Application in Realistic Air Traffic Control Environment[J]. Frontiers in Human Neuroscience, 2016, 10:539.
+[93] Di Flumeri G, De Crescenzio F, Berberian B, et al. Brain-Computer Interface-Based Adaptive Automation to Prevent Out-Of-The-Loop Phenomenon in Air Traffic Controllers Dealing With Highly Automated Systems[J]. Frontiers in Human Neuroscience, 2019, 13:296.
+[94] Kaongoen N, Choi J, Woo Choi J, et al. The future of wearable EEG: a review of ear-EEG technology and its applications[J]. Journal of Neural Engineering, 2023, 20(5):051002.
+[95] Lee S, Kim M, Ahn M. Evaluation of consumer-grade wireless EEG systems for brain-computer interface applications[J]. Biomedical Engineering Letters, 2024, 14(6):1433-1443.
+[96] (MISSING) Williams et al. A validation of Emotiv EPOC Flex saline for EEG and ERP research. PeerJ, 2020
+    URL: https://peerj.com/articles/9713/
+[97] Patrick-Krueger K M, Burkhart I, Contreras-Vidal J L. The state of clinical trials of implantable brain–computer interfaces[J]. Nature Reviews Bioengineering, 2025, 3(1):50-67.

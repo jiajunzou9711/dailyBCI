@@ -24,7 +24,7 @@ dailyBCI/
 │   ├── scripts/                      # 卡片生成、裁图与专题脚本
 │   └── fonts/                        # 图卡使用的 CJK 字体
 ├── papers/                           # 每期论文与图的临时工作区
-├── output/                           # 日报、专题与看板成品
+├── output/                           # 日报、专题与看板成品；INDEX.md 是历史成品检索层
 ├── dashboard/                        # 常驻内容数据看板
 ├── research/                         # 独立调研材料
 ├── 脑机接口综述for_涵之/             # 外设综述、证据库与项目进度
@@ -40,6 +40,7 @@ dailyBCI/
 - X thread 默认不产出；当期明确要求时再制作。
 - 最终交付包括图卡、小红书发布标题与话题标签、微信公众号摘要。
 - 每次讨论的实时状态写入 `output/<日期>-<slug>/draft.md`，不得只留在对话中。
+- 要调取以前发过的内容，先读 `output/INDEX.md`（每期一条：主线、论文出处、方法与物种、关键数字、章节、路径），命中后再进该期目录读图卡或 `draft.md`。新一期收尾后往 INDEX.md 追加一条。
 
 知识库以 `.claude/skills/dailybci/knowledge-base/INDEX.md` 为唯一索引权威。新增或删除论文后，核对索引总数与实际 Markdown 文件数一致。
 

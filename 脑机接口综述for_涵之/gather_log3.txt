@@ -1,0 +1,85 @@
+[2] Card N S, Singer-Clark T, Peracha H | Nature Medicine 2026 32(7):2504-2510
+[3] Flesher S N, Downey J E, Weiss J M | Science (New York, N.Y.) 2021 372(6544):831-836
+[4] Lorach H, Galvez A, Spagnolo V | Nature 2023 618(7963):126-133
+[5] Chandrasekaran S, Wandelt S K, Jangam A | Nature Medicine 2026 32(7):2591-2601
+[6] Greenspon C M, Hobbs T G, Verbaarschot C | Science translational medicine 2026 18(858):eaec3728
+[7] Sellers E W, Vaughan T M, Wolpaw J R | Amyotrophic lateral sclerosis : official publication of the World Federation of Neurology Research Group on Motor Neuron Diseases 2010 11(5):449-55
+[8] Wolpaw J R, Bedlack R S, Reda D J | Neurology 2018 91(3):e258-e267
+[9] Biasiucci A, Leeb R, Iturrate I | Nature Communications 2018 9(1):
+[10] Frolov A A, Mokienko O, Lyukmanov R | Frontiers in neuroscience 2017 11():400
+[11] Ramos-Murguialday A, Broetz D, Rea M | Annals of neurology 2013 74(1):100-8
+[12] Xie Y L, Yang Y X, Jiang H | Frontiers in neuroscience 2022 16():949575
+[13] Chen H, Yun G | Journal of medical Internet research 2026 28():e79132
+[14] Bai Z, Fong K N K, Zhang J J | Journal of neuroengineering and rehabilitation 2020 17(1):57
+[15] Westwood S J, Aggensteiner P M, Kaiser A | JAMA psychiatry 2025 82(2):118-129
+[16] Beau Q A L, Boardman J M, Mellor A | Sleep medicine 2025 134():106698
+[17] Baldassarri A, Bergamo D, Salfi F | Journal of sleep research 2026 35(3):e70247
+[18] Bressler S, Neely R, Yost R M | Scientific reports 2024 14(1):13039
+[20] Beauchamp M S, Oswalt D, Sun P | Cell 2020 181(4):774-783.e5
+[21] Holz F G, Le Mer Y, Muqit M M | New England Journal of Medicine 2026 394(3):232-242
+[23] Metzger S L, Littlejohn K T, Silva A B | Nature 2023 620(7976):1037-1046
+[24] Willett F R, Kunz E M, Fan C | Nature 2023 620(7976):1031-1036
+[25] Branco M P, Pels E G M, Sars R H | Neurorehabilitation and neural repair 2021 35(3):267-279
+[26] Peters B, Bieker G, Heckman S M | Archives of physical medicine and rehabilitation 2015 96(3 Suppl):S33-7
+[27] Brannigan J F M, Liyanage K, Horsfall H L | Journal of neural engineering 2024 21(6):
+[28] Willett F R, Avansino D T, Hochberg L R | Nature 2021 593(7858):249-254
+[29] Metzger S L, Liu J R, Moses D A | Nature communications 2022 13(1):6510
+[30] Qian Y, Liu C, Yu P | Science Advances 2025 11(45):
+[31] Wairagkar M, Card N S, Singer-Clark T | Nature 2025 644(8075):145-152
+[32] Littlejohn K T, Cho C J, Liu J R | Nature Neuroscience 2025 28(4):902-912
+[33] Silva A B, Liu J R, Metzger S L | Nature Biomedical Engineering 2024 8(8):977-991
+[35] Pandarinath C, Nuyujukian P, Blabe C H | eLife 2017 6():
+[36] Vansteensel M J, Pels E G, Bleichner M G | New England Journal of Medicine 2016 375(21):2060-2066
+[37] Vansteensel M J, Leinders S, Branco M P | New England Journal of Medicine 2024 391(7):619-626
+[38] Mitchell P, Lee S C M, Yoo P E | JAMA Neurology 2023 80(3):270
+[40] Nuyujukian P, Albites Sanabria J, Saab J | PloS one 2018 13(11):e0204566
+[41] Simeral J D, Hosman T, Saab J | IEEE transactions on bio-medical engineering 2021 68(7):2313-2325
+[42] Kunz E M, Abramovich Krasa B, Kamdar F | Cell 2025 188(17):4658-4673.e17
+[43] Collinger J L, Boninger M L, Bruns T M | Journal of rehabilitation research and development 2013 50(2):145-60
+[44] Blabe C H, Gilja V, Chestek C A | Journal of neural engineering 2015 12(4):043002
+[45] Hochberg L R, Bacher D, Jarosiewicz B | Nature 2012 485(7398):372-375
+[46] Collinger J L, Wodlinger B, Downey J E | Lancet (London, England) 2013 381(9866):557-64
+[47] Bouton C E, Shaikhouni A, Annetta N V | Nature 2016 533(7602):247-250
+[48] Benabid A L, Costecalde T, Eliseyev A | The Lancet. Neurology 2019 18(12):1112-1122
+[49] Downey J E, Weiss J M, Muelling K | Journal of neuroengineering and rehabilitation 2016 13():28
+[50] Hochberg L R, Serruya M D, Friehs G M | Nature 2006 442(7099):164-171
+[51] Wodlinger B, Downey J E, Tyler-Kabara E C | Journal of Neural Engineering 2015 12(1):016011
+[52] Handelman D A, Osborn L E, Thomas T M | Frontiers in Neurorobotics 2022 16():
+[55] Ajiboye A B, Willett F R, Young D R | Lancet (London, England) 2017 389(10081):1821-1830
+[56] 未查到元数据 | China approves brain chip to overcome paralys
+[58] Capogrosso M, Milekovic T, Borton D | Nature 2016 539(7628):284-288
+[59] Cajigas I, Davis K C, Prins N W | Frontiers in human neuroscience 2022 16():1077416
+[60] Bensmaia S J, Miller L E | Nature Reviews Neuroscience 2014 15(5):313-325
+[61] Valle G, Oswalt D, Gaunt R A | Nature Reviews Bioengineering 2026 4(8):713-732
+[62] Osborn L E, Christie B, McMullen D P | Annual International Conference of the IEEE Engineering in Medicine and Biology Society. IEEE Engineering in Medicine and Biology Society. Annual International Conference 2024 2024():1-4
+[63] Verbaarschot C, Karapetyan V, Greenspon C M | Nature communications 2025 16(1):4017
+[64] Greenspon C M, Valle G, Shelchkova N D | Nature Biomedical Engineering 2024 9(6):935-951
+[65] Levy L, Ebadi H, Peabody Smith A | AJOB neuroscience 2024 15(3):158-176
+[66] Stephan K, Troyk P R, Dagnelie G | Artificial organs 2025 49(9):1417-1428
+[67] Schmidt E M, Bak M J, Hambrecht F T | Brain : a journal of neurology 1996 119 ( Pt 2)():507-22
+[68] Peters B, Eddy B, Galvin-McLaughlin D | Frontiers in human neuroscience 2022 16():952380
+[70] Miao Y, Yin E, Allison B Z | Cognitive neurodynamics 2020 14(1):21-33
+[71] Chen X, Wang Y, Nakanishi M | Proceedings of the National Academy of Sciences of the United States of America 2015 112(44):E6058-67
+[72] Ravi A, Lu J, Pearce S | IEEE transactions on neural systems and rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society 2022 30():85-95
+[73] Nijboer F, Sellers E W, Mellinger J | Clinical neurophysiology : official journal of the International Federation of Clinical Neurophysiology 2008 119(8):1909-1916
+[74] Cincotti F, Mattia D, Aloise F | Brain research bulletin 2008 75(6):796-803
+[76] Hu X, Li N, Pang M | Annals of neurology 2026 99(5):1124-1138
+[77] Lopez-Larraz E, Trincado-Alonso F, Rajasekaran V | Frontiers in neuroscience 2016 10():359
+[78] Tonin L, Perdikis S, Kuzu T D | iScience 2022 25(12):105418
+[79] King C E, Wang P T, McCrimmon C M | Journal of neuroengineering and rehabilitation 2015 12():80
+[80] Alimardani M, Hiraki K | Frontiers in robotics and AI 2020 7():125
+[81] Sitaram R, Ros T, Stoeckel L | Nature Reviews Neuroscience 2017 18(2):86-100
+[83] Berent J, Saini P, Stewart A X | Bioelectronic medicine 2026 12(1):
+[84] Cretot-Richert G, De Vos M, Debener S | Frontiers in neuroscience 2023 17():895094
+[85] Tremmel C, Krusienski D J, Schraefel M | Journal of neural engineering 2024 21(6):
+[86] Bradshaw Bernacchi J K, Lopez Valdes A | Annual International Conference of the IEEE Engineering in Medicine and Biology Society. IEEE Engineering in Medicine and Biology Society. Annual International Conference 2025 2025():1-4
+[89] Ngo H V V, Martinetz T, Born J | Neuron 2013 78(3):545-53
+[90] Ehrlich S K, Agres K R, Guan C | PLOS ONE 2019 14(3):e0213516
+[91] Ros T, Enriquez-Geppert S, Zotev V | Brain : a journal of neurology 2020 143(6):1674-1685
+[92] Aricò P, Borghini G, Di Flumeri G | Frontiers in human neuroscience 2016 10():539
+[93] Di Flumeri G, De Crescenzio F, Berberian B | Frontiers in human neuroscience 2019 13():296
+[94] Kaongoen N, Choi J, Woo Choi J | Journal of neural engineering 2023 20(5):
+[95] Lee S, Kim M, Ahn M | Biomedical engineering letters 2024 14(6):1433-1443
+[96] 未查到元数据 | Williams et al. A validation of Emotiv EPOC F
+[97] Patrick-Krueger K M, Burkhart I, Contreras-Vidal J L | Nature Reviews Bioengineering 2024 3(1):50-67
+完成 refs_meta_full.json

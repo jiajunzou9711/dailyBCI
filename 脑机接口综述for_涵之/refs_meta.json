@@ -1,0 +1,875 @@
+[
+  {
+    "num": 1,
+    "title": "FDA. Implanted Brain-Computer Interface Devices for Patients with Paralysis or Amputation: Non-clinical Testing and Clinical Considerations, 2021",
+    "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/implanted-brain-computer-interface-bci-devices-patients-paralysis-or-amputation-non-clinical-testing",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 2,
+    "title": "Card et al. Long-term independent use of an intracortical brain–computer interface for speech and cursor control. Nature Medicine, 2026",
+    "url": "https://www.nature.com/articles/s41591-026-04414-6",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 3,
+    "title": "Flesher et al. A brain-computer interface that evokes tactile sensations improves robotic arm control. Science, 2021",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/34016775/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "34016775",
+    "pmcid": null
+  },
+  {
+    "num": 4,
+    "title": "Lorach et al. Walking naturally after spinal cord injury using a brain-spine interface. Nature, 2023",
+    "url": "https://www.nature.com/articles/s41586-023-06094-5",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 5,
+    "title": "Chandrasekaran et al. A neuroprosthesis for restoring hand movement and sensation in a person with complete tetraplegia. Nature Medicine, 2026",
+    "url": "https://www.nature.com/articles/s41591-026-04498-0",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 6,
+    "title": "Greenspon et al. Long-term safety and efficacy of intracortical microstimulation in humans. Science Translational Medicine, 2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42455900/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "42455900",
+    "pmcid": null
+  },
+  {
+    "num": 7,
+    "title": "Sellers, Vaughan & Wolpaw. A brain-computer interface for long-term independent home use. Amyotrophic Lateral Sclerosis, 2010",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20583947/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "20583947",
+    "pmcid": null
+  },
+  {
+    "num": 8,
+    "title": "Wolpaw et al. Independent home use of a brain-computer interface by people with amyotrophic lateral sclerosis. Neurology, 2018",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6059033/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC6059033"
+  },
+  {
+    "num": 9,
+    "title": "Biasiucci et al. Brain-actuated functional electrical stimulation elicits lasting arm motor recovery after stroke. Nature Communications, 2018",
+    "url": "https://www.nature.com/articles/s41467-018-04673-z",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 10,
+    "title": "Frolov et al. Post-stroke Rehabilitation Training with a Motor-Imagery-Based BCI-Controlled Hand Exoskeleton. Frontiers in Neuroscience, 2017",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5517482/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC5517482"
+  },
+  {
+    "num": 11,
+    "title": "Ramos-Murguialday et al. Brain-machine interface in chronic stroke rehabilitation. Annals of Neurology, 2013；长期随访 Neurorehabilitation and Neural Repair, 2019",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23494615/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "23494615",
+    "pmcid": null
+  },
+  {
+    "num": 12,
+    "title": "Xie et al. Brain-machine interface-based training for improving upper extremity function after stroke: a meta-analysis. Frontiers in Neuroscience, 2022",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/35992923/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "35992923",
+    "pmcid": null
+  },
+  {
+    "num": 13,
+    "title": "Chen & Yun. Efficacy of Brain-Computer Interface Therapy for Upper Limb Rehabilitation in Chronic Stroke. Journal of Medical Internet Research, 2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41605490/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "41605490",
+    "pmcid": null
+  },
+  {
+    "num": 14,
+    "title": "Bai et al. Immediate and long-term effects of BCI-based rehabilitation of the upper extremity after stroke. Journal of NeuroEngineering and Rehabilitation, 2020",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/32334608/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "32334608",
+    "pmcid": null
+  },
+  {
+    "num": 15,
+    "title": "Westwood et al. Neurofeedback for Attention-Deficit/Hyperactivity Disorder: A Systematic Review and Meta-Analysis. JAMA Psychiatry, 2025",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11800020/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC11800020"
+  },
+  {
+    "num": 16,
+    "title": "Beau et al. Dreem headband performance in Insomnia Disorder: an in-lab comparison to polysomnography. Sleep Medicine, 2025",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40712528/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "40712528",
+    "pmcid": null
+  },
+  {
+    "num": 17,
+    "title": "Baldassarri et al. The Effect of Closed-Loop Auditory Stimulation on Memory Consolidation and Sleep Physiology in an Ecological Setting. Journal of Sleep Research, 2026",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13193352/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC13193352"
+  },
+  {
+    "num": 18,
+    "title": "Bressler et al. A randomized controlled trial of alpha phase-locked auditory stimulation to treat symptoms of sleep onset insomnia. Scientific Reports, 2024",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11156862/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC11156862"
+  },
+  {
+    "num": 19,
+    "title": "Neurable MW75 Neuro 官方产品页",
+    "url": "https://www.neurable.com/products/mw75neuro",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 20,
+    "title": "Beauchamp et al. Dynamic Stimulation of Visual Cortex Produces Form Vision in Sighted and Blind Humans. Cell, 2020",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7331799/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC7331799"
+  },
+  {
+    "num": 21,
+    "title": "Holz et al. Subretinal Photovoltaic Implant to Restore Vision in Geographic Atrophy Due to AMD. New England Journal of Medicine, 2026;394:232–242（2025-10-20 在线发表）",
+    "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2501396",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 22,
+    "title": "国家药监局：首款侵入式脑机接口医疗器械获批上市，2026",
+    "url": "https://yjj.sh.gov.cn/zjyw/20260313/04985a5fbe284e9c806ff5f370cb00b2.html",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 23,
+    "title": "Metzger et al. A high-performance neuroprosthesis for speech decoding and avatar control. Nature, 2023",
+    "url": "https://www.nature.com/articles/s41586-023-06443-4",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 24,
+    "title": "Willett et al. A high-performance speech neuroprosthesis. Nature, 2023",
+    "url": "https://www.nature.com/articles/s41586-023-06377-x",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 25,
+    "title": "Branco et al. Brain-Computer Interfaces for Communication: Preferences of Individuals With Locked-in Syndrome. Neurorehabilitation and Neural Repair, 2021",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/33530868/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "33530868",
+    "pmcid": null
+  },
+  {
+    "num": 26,
+    "title": "Peters et al. Brain-computer interface users speak up: the virtual users' forum at the 2013 international brain-computer interface meeting. Archives of Physical Medicine and Rehabilitation, 2015",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25721545/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "25721545",
+    "pmcid": null
+  },
+  {
+    "num": 27,
+    "title": "BCI patient preferences: a systematic review, 2024",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39569894/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "39569894",
+    "pmcid": null
+  },
+  {
+    "num": 28,
+    "title": "Willett et al. High-performance brain-to-text communication via handwriting. Nature, 2021",
+    "url": "https://www.nature.com/articles/s41586-021-03506-2",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 29,
+    "title": "Metzger et al. Generalizable spelling using a speech neuroprosthesis in an individual with severe limb and vocal paralysis. Nature Communications, 2022",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9643551/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC9643551"
+  },
+  {
+    "num": 30,
+    "title": "Qian et al. Real-time decoding of full-spectrum Chinese using brain-computer interface. Science Advances, 2025",
+    "url": "https://doi.org/10.1126/sciadv.adz9968",
+    "cls": "JOURNAL",
+    "doi": "10.1126/sciadv.adz9968",
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 31,
+    "title": "Wairagkar et al. An instantaneous voice-synthesis neuroprosthesis. Nature, 2025",
+    "url": "https://www.nature.com/articles/s41586-025-09127-3",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 32,
+    "title": "Littlejohn et al. A streaming brain-to-voice neuroprosthesis to restore naturalistic communication. Nature Neuroscience, 2025",
+    "url": "https://www.nature.com/articles/s41593-025-01905-6",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 33,
+    "title": "Silva et al. A bilingual speech neuroprosthesis driven by cortical articulatory representations shared between languages. Nature Biomedical Engineering, 2024",
+    "url": "https://www.nature.com/articles/s41551-024-01207-5",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 34,
+    "title": "Apple 官方支持文档：Use Switch Control to navigate your iPhone, iPad, or iPod touch",
+    "url": "https://support.apple.com/en-us/119835",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 35,
+    "title": "Pandarinath et al. High performance communication by people with paralysis using an intracortical brain-computer interface. eLife, 2017",
+    "url": "https://elifesciences.org/articles/18554",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 36,
+    "title": "Vansteensel et al. Fully Implanted Brain–Computer Interface in a Locked-In Patient with ALS. New England Journal of Medicine, 2016",
+    "url": "https://www.nejm.org/doi/10.1056/NEJMoa1608085",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 37,
+    "title": "Vansteensel et al. Longevity of a Brain–Computer Interface for Amyotrophic Lateral Sclerosis. New England Journal of Medicine, 2024",
+    "url": "https://www.nejm.org/doi/10.1056/NEJMoa2314598",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 38,
+    "title": "Mitchell et al. Assessment of Safety of a Fully Implanted Endovascular Brain-Computer Interface for Severe Paralysis in 4 Patients. JAMA Neurology, 2023",
+    "url": "https://jamanetwork.com/journals/jamaneurology/fullarticle/2799839",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 39,
+    "title": "Synchron Debuts First Thought-Controlled iPad Experience Using Apple's New BCI Human Interface Device Protocol, 2025",
+    "url": "https://www.businesswire.com/news/home/20250804537175/en/Synchron-Debuts-First-Thought-Controlled-iPad-Experience-Using-Apples-New-BCI-Human-Interface-Device-Protocol",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 40,
+    "title": "Nuyujukian et al. Cortical control of a tablet computer by people with paralysis. PLOS ONE, 2018",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30462658/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "30462658",
+    "pmcid": null
+  },
+  {
+    "num": 41,
+    "title": "Simeral et al. Home use of a percutaneous wireless intracortical BCI. IEEE Transactions on Biomedical Engineering, 2021",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/33784612/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "33784612",
+    "pmcid": null
+  },
+  {
+    "num": 42,
+    "title": "Kunz et al. Inner speech in motor cortex and implications for speech neuroprostheses. Cell, 2025",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40816265/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "40816265",
+    "pmcid": null
+  },
+  {
+    "num": 43,
+    "title": "Collinger et al. Functional Priorities, Assistive Technology, and Brain-Computer Interfaces after Spinal Cord Injury. JRRD, 2013",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3684986/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC3684986"
+  },
+  {
+    "num": 44,
+    "title": "Blabe et al. Assessment of brain-machine interfaces from the perspective of people with paralysis. Journal of Neural Engineering, 2015",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4761228/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC4761228"
+  },
+  {
+    "num": 45,
+    "title": "Hochberg et al. Reach and grasp by people with tetraplegia using a neurally controlled robotic arm. Nature, 2012",
+    "url": "https://www.nature.com/articles/nature11076",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 46,
+    "title": "Collinger et al. High-performance neuroprosthetic control by an individual with tetraplegia. Lancet, 2013",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3641862/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC3641862"
+  },
+  {
+    "num": 47,
+    "title": "Bouton et al. Restoring cortical control of functional movement in a human with quadriplegia. Nature, 2016",
+    "url": "https://www.nature.com/articles/nature17435",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 48,
+    "title": "Benabid et al. An exoskeleton controlled by an epidural wireless brain-machine interface in a tetraplegic patient. Lancet Neurology, 2019",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31587955/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "31587955",
+    "pmcid": null
+  },
+  {
+    "num": 49,
+    "title": "Downey et al. Blending of brain-machine interface and vision-guided autonomous robotics improves neuroprosthetic arm performance during grasping. Journal of NeuroEngineering and Rehabilitation, 2016",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4797113/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC4797113"
+  },
+  {
+    "num": 50,
+    "title": "Hochberg et al. Neuronal ensemble control of prosthetic devices by a human with tetraplegia. Nature, 2006",
+    "url": "https://www.nature.com/articles/nature04970",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 51,
+    "title": "Wodlinger et al. Ten-dimensional anthropomorphic arm control in a human brain-machine interface. Journal of Neural Engineering, 2015",
+    "url": "https://motorlab.pitt.edu/pub/Ten-dimensional%20anthropomorphic%20arm%20control%20in%20a%20human%20brain-machine%20interface_Wodlinger_2015.pdf",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 52,
+    "title": "Handelman et al. Shared Control of Bimanual Robotic Limbs With a Brain-Machine Interface for Self-Feeding. Frontiers in Neurorobotics, 2022",
+    "url": "https://www.frontiersin.org/journals/neurorobotics/articles/10.3389/fnbot.2022.918001/full",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 53,
+    "title": "ClinicalTrials.gov. CONVOY, NCT06710626",
+    "url": "https://clinicaltrials.gov/study/NCT06710626",
+    "cls": "DB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 54,
+    "title": "Neuralink. CONVOY Study Launch, 2024",
+    "url": "https://neuralink.com/updates/convoy-study-launch/",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 55,
+    "title": "Ajiboye et al. Restoration of reaching and grasping movements through brain-controlled muscle stimulation in a person with tetraplegia. Lancet, 2017",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/28363483/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "28363483",
+    "pmcid": null
+  },
+  {
+    "num": 56,
+    "title": "China approves brain chip to overcome paralysis. Nature Biotechnology, 2026",
+    "url": "https://www.nature.com/articles/s41587-026-03101-8",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 57,
+    "title": "国家药监局器审中心：植入式脑机接口手部运动功能代偿系统技术审评报告（受理号 CQZ2600324、CQZ2600325）",
+    "url": "https://www.cmde.org.cn/directory/web/cmde/images/1775031381651060289.pdf",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 58,
+    "title": "Capogrosso et al. A brain-spine interface alleviating gait deficits after spinal cord injury in primates. Nature, 2016",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27830790/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "27830790",
+    "pmcid": null
+  },
+  {
+    "num": 59,
+    "title": "Cajigas, Davis et al. Brain-Computer interface control of stepping from invasive electrocorticography upper-limb motor imagery in a patient with quadriplegia. Frontiers in Human Neuroscience, 2023",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9912159/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC9912159"
+  },
+  {
+    "num": 60,
+    "title": "Bensmaia & Miller. Restoring sensorimotor function through intracortical interfaces. Nature Reviews Neuroscience, 2014",
+    "url": "https://www.nature.com/articles/nrn3724",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 61,
+    "title": "Valle et al. Restoring vision and touch with cortical microstimulation. Nature Reviews Bioengineering, 2026",
+    "url": "https://www.nature.com/articles/s44222-026-00449-z",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 62,
+    "title": "Osborn et al. Artificial touch feedback using microstimulation of human somatosensory cortex to convey grip force from a robotic hand. IEEE EMBC, 2024",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40039504/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "40039504",
+    "pmcid": null
+  },
+  {
+    "num": 63,
+    "title": "Verbaarschot et al. Conveying tactile object characteristics through customized intracortical microstimulation. Nature Communications, 2025",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40312384/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "40312384",
+    "pmcid": null
+  },
+  {
+    "num": 64,
+    "title": "Greenspon et al. Evoking stable and precise tactile sensations via multi-electrode intracortical microstimulation. Nature Biomedical Engineering, 2025",
+    "url": "https://www.nature.com/articles/s41551-024-01299-z",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 65,
+    "title": "ClinicalTrials.gov NCT03344848（Orion）；Participant perspectives from the Orion trial, 2024",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11001790/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC11001790"
+  },
+  {
+    "num": 66,
+    "title": "Stephan et al. The Role of Scalp EEG Recordings During Cortical Visual Prosthesis Testing. Artificial Organs, 2025",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40421717/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "40421717",
+    "pmcid": null
+  },
+  {
+    "num": 67,
+    "title": "Schmidt et al. Feasibility of a visual prosthesis for the blind based on intracortical microstimulation. Brain, 1996",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/8800945/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "8800945",
+    "pmcid": null
+  },
+  {
+    "num": 68,
+    "title": "Peters et al. A systematic review of AAC-BCI systems for individuals with disabilities. Frontiers in Human Neuroscience, 2022",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9374067/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC9374067"
+  },
+  {
+    "num": 69,
+    "title": "FDA De Novo DEN200046（IpsiHand，2021-04-23）",
+    "url": "https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN200046.pdf",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 70,
+    "title": "Miao et al. An ERP-based BCI with peripheral stimuli: validation with ALS patients. Cognitive Neurodynamics, 2020",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/32015765/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "32015765",
+    "pmcid": null
+  },
+  {
+    "num": 71,
+    "title": "Chen et al. High-speed spelling with a noninvasive brain-computer interface. PNAS, 2015",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4640776/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC4640776"
+  },
+  {
+    "num": 72,
+    "title": "Ravi et al. Enhanced System Robustness of Asynchronous BCI in Augmented Reality Using SSMVEP. IEEE TNSRE, 2022",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/34990366/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "34990366",
+    "pmcid": null
+  },
+  {
+    "num": 73,
+    "title": "Nijboer et al. A P300-based brain-computer interface for people with amyotrophic lateral sclerosis. Clinical Neurophysiology, 2008",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18571984/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "18571984",
+    "pmcid": null
+  },
+  {
+    "num": 74,
+    "title": "Cincotti et al. Non-invasive brain-computer interface system: towards its application as assistive technology. Brain Research Bulletin, 2008",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2896271/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC2896271"
+  },
+  {
+    "num": 75,
+    "title": "g.tec BCI product catalog, 2018；FDA 510(k) 数据库按 applicant 检索 g.tec",
+    "url": "https://gtec.at/wp-content/uploads/2019/10/gtec-Product-Catalog-2018-web.pdf",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 76,
+    "title": "Hu et al. Brain-Computer Interface-Controlled Exoskeleton Training for Lower-Limb Rehabilitation in Spinal Cord Injury. Annals of Neurology, 2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41480666/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "41480666",
+    "pmcid": null
+  },
+  {
+    "num": 77,
+    "title": "López-Larraz et al. Control of an Ambulatory Exoskeleton with a Brain-Machine Interface for Spinal Cord Injury Gait Rehabilitation. Frontiers in Neuroscience, 2016",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27536214/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "27536214",
+    "pmcid": null
+  },
+  {
+    "num": 78,
+    "title": "Tonin et al. Learning to control a BMI-driven wheelchair for people with severe tetraplegia. iScience, 2022",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9801246/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC9801246"
+  },
+  {
+    "num": 79,
+    "title": "King et al. The feasibility of a brain-computer interface functional electrical stimulation system for the restoration of overground walking after paraplegia. Journal of NeuroEngineering and Rehabilitation, 2015",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4581411/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC4581411"
+  },
+  {
+    "num": 80,
+    "title": "Alimardani & Hiraki. Passive Brain-Computer Interfaces for Enhanced Human-Robot Interaction. Frontiers in Robotics and AI, 2020",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7805996/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC7805996"
+  },
+  {
+    "num": 81,
+    "title": "Sitaram et al. Closed-loop brain training: the science of neurofeedback. Nature Reviews Neuroscience, 2017",
+    "url": "https://www.nature.com/articles/nrn.2016.164",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 82,
+    "title": "NextSense Smartbuds 官方产品页",
+    "url": "https://nextsense.io/products/smartbuds",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 83,
+    "title": "Berent et al. A novel, wearable, in-ear EEG technology to assess sleep and daytime sleepiness. Bioelectronic Medicine, 2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42169202/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "42169202",
+    "pmcid": null
+  },
+  {
+    "num": 84,
+    "title": "Crétot-Richert et al. Assessing focus through ear-EEG: a comparative study between conventional cap EEG and mobile in- and around-the-ear EEG systems. Frontiers in Neuroscience, 2023",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37829725/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "37829725",
+    "pmcid": null
+  },
+  {
+    "num": 85,
+    "title": "Tremmel et al. Estimating cognitive workload using a commercial in-ear EEG headset. Journal of Neural Engineering, 2024",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39500044/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "39500044",
+    "pmcid": null
+  },
+  {
+    "num": 86,
+    "title": "Bradshaw Bernacchi & Lopez Valdes. Electrophysiological Characterisation of Commercial Ear-EEG Devices. EMBC, 2025",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41336899/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "41336899",
+    "pmcid": null
+  },
+  {
+    "num": 87,
+    "title": "IDUN Guardian 官方产品页",
+    "url": "https://iduntechnologies.com/idun-guardian",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 88,
+    "title": "EMOTIV MN8 Quick Start Guide",
+    "url": "https://www.emotiv.com/quick-start-guide-mn8",
+    "cls": "EB_OL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 89,
+    "title": "Ngo et al. Auditory closed-loop stimulation of the sleep slow oscillation enhances memory. Neuron, 2013",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23583623/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "23583623",
+    "pmcid": null
+  },
+  {
+    "num": 90,
+    "title": "Ehrlich et al. A closed-loop, music-based brain-computer interface for emotion mediation. PLOS ONE, 2019",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0213516",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 91,
+    "title": "Ros et al. Consensus on the reporting and experimental design of clinical and cognitive-behavioural neurofeedback studies（CRED-nf checklist）. Brain, 2020",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/32176800/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "32176800",
+    "pmcid": null
+  },
+  {
+    "num": 92,
+    "title": "Aricò et al. Adaptive Automation Triggered by EEG-Based Mental Workload Index. Frontiers in Human Neuroscience, 2016",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5080530/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC5080530"
+  },
+  {
+    "num": 93,
+    "title": "Di Flumeri et al. BCI-based adaptive automation to prevent out-of-the-loop phenomena. Frontiers in Human Neuroscience, 2019",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31555113/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "31555113",
+    "pmcid": null
+  },
+  {
+    "num": 94,
+    "title": "Kaongoen et al. The future of wearable EEG: a review of ear-EEG technology and its applications. Journal of Neural Engineering, 2023",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37748474/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": "37748474",
+    "pmcid": null
+  },
+  {
+    "num": 95,
+    "title": "Lee, Kim & Ahn. Evaluation of consumer-grade wireless EEG systems for brain-computer interface applications. Biomedical Engineering Letters, 2024",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11502727/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": "PMC11502727"
+  },
+  {
+    "num": 96,
+    "title": "Williams et al. A validation of Emotiv EPOC Flex saline for EEG and ERP research. PeerJ, 2020",
+    "url": "https://peerj.com/articles/9713/",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  },
+  {
+    "num": 97,
+    "title": "Patrick-Krueger et al. The state of clinical trials of implantable brain–computer interfaces. Nature Reviews Bioengineering, 2025",
+    "url": "https://www.nature.com/articles/s44222-024-00239-5",
+    "cls": "JOURNAL",
+    "doi": null,
+    "pmid": null,
+    "pmcid": null
+  }
+]

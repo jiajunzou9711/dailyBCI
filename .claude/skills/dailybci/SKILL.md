@@ -19,6 +19,10 @@ The author's identity is an **explainer** (解读者) — someone who reads more
 
 ---
 
+## 已定稿全文适配模式
+
+用户要求完整保留已定稿正文并转为多期图卡时，沿用用户确认的字体和版式，通过分页调整密度；导航、分期引用及清理规则以项目根 `AGENTS.md` 的“已定稿长文转图卡”为准。此模式覆盖下文目录圈号、标题逐字对应、压缩内容和按首次引用重新编号的默认要求。用户已确认的版式与当前要求优先，不额外增加标题审批或制作格式。
+
 ## Content Standards
 
 These standards apply to all output — X threads, 小红书 cards, knowledge base entries, and dialogue with the user. They were established through iterative review and reflect the author's quality expectations.

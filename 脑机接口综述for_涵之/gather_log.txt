@@ -1,0 +1,85 @@
+[2] Card N S, Singer-Clark T, Peracha H et al.  2025 ():
+[3] Flesher S N, Downey J E, Weiss J M et al. Science 2021 372(6544):831-836
+[4] Hurley D et al. Neurology Today 2023 23(13):
+[5] Chandrasekaran S, Wandelt S K, Jangam A et al. Nature Medicine 2026 32(7):2591-2601
+[6]  et al.  2017 ():
+[7] Vaughan T M, Sellers E W, Wolpaw J R et al. Brain–Computer InterfacesPrinciples and Practice 2012 ():326-336
+[8] Wolpaw J R, Bedlack R S, Reda D J et al. Neurology 2018 91(3):
+[9] Biasiucci A, Leeb R, Iturrate I et al. Nature Communications 2018 9(1):
+[10] Frolov A A, Mokienko O, Lyukmanov R et al. Frontiers in Neuroscience 2017 11():
+[11] Ramos‐Murguialday A, Broetz D, Rea M et al. Annals of Neurology 2013 74(1):100-108
+[12] Xie Y l, Yang Y x, Jiang H et al. Frontiers in Neuroscience 2022 16():
+[13] Chen H, Yun G et al. Journal of Medical Internet Research 2026 28():e79132
+[14] Bai Z, Fong K N K, Zhang J J et al. Journal of NeuroEngineering and Rehabilitation 2020 17(1):
+[15] Westwood S J, Aggensteiner P M, Kaiser A et al. JAMA Psychiatry 2025 82(2):118
+[16] Beau Q A, Boardman J M, Mellor A et al. Sleep Medicine 2025 134():106698
+[17] Baldassarri A, Bergamo D, Salfi F et al. Journal of Sleep Research 2026 35(3):
+[18] Bressler S, Neely R, Yost R M et al. Scientific Reports 2024 14(1):
+[20] Beauchamp M S, Oswalt D, Sun P et al. Cell 2020 181(4):774-783.e5
+[21] Holz F G, Le Mer Y, Muqit M M et al. New England Journal of Medicine 2026 394(3):232-242
+[23] Metzger S L, Littlejohn K T, Silva A B et al. Nature 2023 620(7976):1037-1046
+[24] Rubin D et al. Neuromodulation: Technology at the Neural Interface 2025 28(1):S26-S27
+[25] Branco M P, Pels E G M, Sars R H et al. Neurorehabilitation and Neural Repair 2021 35(3):267-279
+[26] Peters B, Bieker G, Heckman S M et al. Archives of Physical Medicine and Rehabilitation 2015 96(3):S33-S37
+[27] Al-Ghananeem A et al. Open Access Journal of Toxicology 2024 6(1):
+[28] Willett F R, Avansino D T, Hochberg L R et al. Nature 2021 593(7858):249-254
+[29] Metzger S L, Liu J R, Moses D A et al. Nature Communications 2022 13(1):
+[30] Qian Y, Liu C, Yu P et al. Science Advances 2025 11(45):
+[31] Wairagkar M, Card N S, Singer-Clark T et al. Nature 2025 644(8075):145-152
+[32] Littlejohn K T, Cho C J, Liu J R et al. Nature Neuroscience 2025 28(4):902-912
+[33] Silva A B, Liu J R, Metzger S L et al. Nature Biomedical Engineering 2024 8(8):977-991
+[35] Pandarinath C, Nuyujukian P, Blabe C H et al. eLife 2017 6():
+[36] Vansteensel M J, Pels E G, Bleichner M G et al. New England Journal of Medicine 2016 375(21):2060-2066
+[37] Vansteensel M J, Leinders S, Branco M P et al. New England Journal of Medicine 2024 391(7):619-626
+[38] Oxley T et al. Archives of Physical Medicine and Rehabilitation 2022 103(12):e53
+[40] Nuyujukian P, Albites Sanabria J, Saab J et al. PLOS ONE 2018 13(11):e0204566
+[41] Simeral J D, Hosman T, Saab J et al. IEEE Transactions on Biomedical Engineering 2021 68(7):2313-2325
+[42] Kunz E M, Abramovich Krasa B, Kamdar F et al. Cell 2025 188(17):4658-4673.e17
+[43] Collinger J L, Boninger M L, Bruns T M et al. The Journal of Rehabilitation Research and Development 2013 50(2):145
+[44] Blabe C H, Gilja V, Chestek C A et al. Journal of Neural Engineering 2015 12(4):043002
+[45] Hochberg L R, Bacher D, Jarosiewicz B et al. Nature 2012 485(7398):372-375
+[46] Collinger J L, Wodlinger B, Downey J E et al. The Lancet 2013 381(9866):557-564
+[47] Jackson A et al. Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature 2016 ():
+[48] Cardinale F et al. Robotics in Neurosurgery 2022 ():273-275
+[49] Downey J E, Weiss J M, Muelling K et al. Journal of NeuroEngineering and Rehabilitation 2016 13(1):
+[50] Ruff R et al. Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature 2006 ():
+[51] Wodlinger B, Downey J E, Tyler-Kabara E C et al. Journal of Neural Engineering 2015 12(1):016011
+[52] Handelman D A, Osborn L E, Thomas T M et al. Frontiers in Neurorobotics 2022 16():
+[55] Ajiboye A B, Willett F R, Young D R et al. The Lancet 2017 389(10081):1821-1830
+[56]  et al. Nature Biotechnology 2026 44(4):497-497
+[58] Capogrosso M, Milekovic T, Borton D et al. Nature 2016 539(7628):284-288
+[59] Cajigas I, Davis K C, Prins N W et al. Frontiers in Human Neuroscience 2023 16():
+[60] Bensmaia S J, Miller L E et al. Nature Reviews Neuroscience 2014 15(5):313-325
+[61] Valle G, Oswalt D, Gaunt R A et al. Nature Reviews Bioengineering 2026 4(8):713-732
+[62] Osborn L E, Christie B, McMullen D P et al. 2024 46th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC) 2024 ():1-4
+[63] Verbaarschot C, Karapetyan V, Greenspon C M et al. Nature Communications 2025 16(1):
+[64]  et al. Nature Biomedical Engineering 2025 9(6):799-800
+[65] Levy L, Ebadi H, Peabody Smith A et al. AJOB Neuroscience 2024 15(3):158-176
+[66] Stephan K, Troyk P R, Dagnelie G et al. Artificial Organs 2025 49(9):1417-1428
+[67] Schmidt E, Bak M, Hambrecht F et al. American Journal of Ophthalmology 1996 122(4):609
+[68] Peters B, Eddy B, Galvin-McLaughlin D et al. Frontiers in Human Neuroscience 2022 16():
+[70] Miao Y, Yin E, Allison B Z et al. Cognitive Neurodynamics 2020 14(1):21-33
+[71] Chen X, Wang Y, Nakanishi M et al. Proceedings of the National Academy of Sciences 2015 112(44):
+[72] Ravi A, Lu J, Pearce S et al. 2021 27th International Conference on Mechatronics and Machine Vision in Practice (M2VIP) 2021 ():340-343
+[73] Nijboer F, Sellers E, Mellinger J et al. Clinical Neurophysiology 2008 119(8):1909-1916
+[74] Cincotti F, Mattia D, Aloise F et al. Brain Research Bulletin 2008 75(6):796-803
+[76] Hu X, Li N, Pang M et al. Annals of Neurology 2026 99(5):1124-1138
+[77] López-Larraz E, Trincado-Alonso F, Rajasekaran V et al. Frontiers in Neuroscience 2016 10():
+[78] Tonin L, Perdikis S, Kuzu T D et al. iScience 2022 25(12):105418
+[79] King C E, Wang P T, McCrimmon C M et al. Journal of NeuroEngineering and Rehabilitation 2015 12(1):
+[80] Alimardani M, Hiraki K et al. Frontiers in Robotics and AI 2020 7():
+[81]  et al.  2026 ():
+[83] Berent J, Saini P, Stewart A X et al. Bioelectronic Medicine 2026 12(1):
+[84] Crétot-Richert G, De Vos M, Debener S et al. Frontiers in Neuroscience 2023 17():
+[85] Tremmel C, Krusienski D J, schraefel m et al. Journal of Neural Engineering 2024 21(6):066022
+[86] Bradshaw Bernacchi J K, Lopez Valdes A et al. 2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC) 2025 ():1-4
+[89] Ngo H V V, Martinetz T, Born J et al. Neuron 2013 78(3):545-553
+[90] Ehrlich S K, Agres K R, Guan C et al. PLOS ONE 2019 14(3):e0213516
+[91] Ros T, Enriquez-Geppert S, Zotev V et al. Brain 2020 143(6):1674-1685
+[92] Aricò P, Borghini G, Di Flumeri G et al. Frontiers in Human Neuroscience 2016 10():
+[93] Di Flumeri G, De Crescenzio F, Berberian B et al. Frontiers in Human Neuroscience 2019 13():
+[94] Kaongoen N, Choi J, Woo Choi J et al. Journal of Neural Engineering 2023 20(5):051002
+[95] Lee S, Kim M, Ahn M et al. Biomedical Engineering Letters 2024 14(6):1433-1443
+[96]  et al.  2020 ():
+[97]  et al. Nature Portfolio Webcasts 2024 ():
+完成，保存 refs_meta_full.json
