@@ -282,7 +282,6 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 1. **先问场强量级。** 培养皿里生长锥转向阈值 50–60 mV/mm；活体施加到脊髓的是 40–600 µV/mm，**相差约两个数量级**(此倍数为本项目自算，两份文献均未并列)。
 2. **先问形态学证据是哪一档。** 神经丝染色只能数"此刻有多少根轴突"，分不清再生/幸存/侧支发芽；**只有顺行示踪能判定再生**，而该档最好的结果是「长到断面为止，没有一根穿过」。
 3. **先问是不是直流。** 本线全部机制基于**持续同向直流场**；交流或双相输出的器件不能直接援引它。
-- [Marsh & Beams 1946 / Ingvar 1920](papers/neuromodulation/mccaig-2005-controlling-cell-behavior-electrically.md) — 现象的历史起点(条目并入 McCaig 2005 综述)：1920 年首次尝试，1946 年首个有说服力的 galvanotropic 反应(离体鸡胚神经纤维)
 - [McCaig 2005](papers/neuromodulation/mccaig-2005-controlling-cell-behavior-electrically.md) — **本线标准参考**(Physiol Rev)：内源电场量级(伤口约 140 mV/mm)、生长锥转向阈值 **50–60 mV/mm**、>70 mV/mm 朝阴极快 **3 倍但不转向**；机制为膜受体沿膜平面电泳/电渗至阴极侧。**方向不统一**：感觉突不转、运动突朝阴极、**PC12 朝阳极**
 - [Borgens 1986](papers/neuromodulation/borgens-1986-transected-axons-electric-field.md) — **本线证据天花板**(成年豚鼠，HRP 顺行示踪 + 精确标记切断平面)：多数动物轴突长到切断平面，少数绕到损伤边缘，**从未穿过损伤区**
 - [Borgens 1987](papers/neuromodulation/borgens-1987-behavioral-recovery-electric-fields.md) — 配套行为学(Science，成年豚鼠)：200 µV/mm、阴极在头端，**25% 的动物一个跨节段反射恢复**。恢复的是反射，不是行走
