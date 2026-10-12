@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-10-09
-Total papers: 433
+Last updated: 2026-10-12
+Total papers: 439
 
 ## speech-decoding (20 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -553,8 +553,8 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Krieg 2017](papers/presurgical-mapping/krieg-2017-ntms-mapping-protocol.md) — 赫尔辛基工作组共识协议，标准化 nTMS 运动/语言作图；本子领域标准化基石与 milestone 抽取源
 - [Autti 2026](papers/presurgical-mapping/autti-2026-meg-informed-ntms-timing.md) — 用个人 MEG 语音激活时序个体化 nrTMS 的发放时机(PTI):best PTI 与 MEG 峰值显著正相关(Combined R=0.713，best PTI 平均早于峰值 132 ms)，把 nrTMS 个体化从"只调空间"推进到"空间+时间"，让被动 MEG 配置主动 TMS 的采集参数(非并联出第二张图)；仅额叶/语言产出区成立;概念验证(健康人 N=13、未对照 DCS、特异度收益待证)(赫尔辛基/Aalto·bioRxiv)
 
-## visual-prosthesis (20 papers)
-视觉假体：给失明者用电刺激重建视觉输入。**本子领域含两条相互独立的路线，评估任何新工作前先归位是哪一条**——
+## visual-prosthesis (26 papers)
+视觉假体：给失明者重建视觉输入(电刺激两条路线 + 2026-10-10 补入的光遗传路线，见下方「光遗传路线」小节)。**本子领域的电刺激部分含两条相互独立的路线，评估任何新工作前先归位是哪一条**——
 
 **① 视网膜路线**（8 篇）：给因感光细胞退化(RP/AMD)致盲者，电刺激存活的内层视网膜(神经节细胞/双极细胞)。三条临床分支：视网膜上(epiretinal，刺激神经节细胞)、视网膜下(subretinal，刺激双极细胞)、光伏视网膜下(无线近红外供能)。另有一条 Chichilnisky 组"精准刺激"研究线(MEA 单细胞级刺激→空间电流成形→规避轴突束)。**前提是视网膜内层还在**，故不适用于视神经损伤、青光眼晚期等病因。milestone 抽取自 Retinal Prostheses: Engineering and Clinical Perspectives (2023, PMC10347280) + Expert Rev Ophthalmol (2025) 综述。
 
@@ -576,6 +576,15 @@ BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-
 - [Palanker 2020](papers/visual-prosthesis/palanker-2020-prima-photovoltaic.md) — PRIMA 无线光伏视网膜下假体首次人体(5 例 GA/AMD)，约 20/420、达像素间距；光伏路线里程碑
 - [Holz 2026](papers/visual-prosthesis/holz-2026-prima-nejm-trial.md) — **视网膜线目前最强临床结果**：PRIMA 更大规模试验，38 人植入、32 人满 12 个月，**26 人(81%)达到有临床意义的视力改善(≥0.2 logMAR)**，正推进欧洲上市(NEJM 394:232–242，在线首发 2025-10-20)。把适应症从 RP 挪到**干性 AMD 地图状萎缩**这个大病种；是评价皮层路线时必须并置的标尺
 
+
+### 光遗传路线 (optogenetic line，6 篇，2026-10-10 建)
+不植入电极：用 AAV 把微生物视蛋白递送到存活的视网膜细胞，让它们自己感光；与视网膜电刺激路线同样要求内层视网膜存活。设计维度有二：**靶向哪一级细胞**(感光细胞残体 / ON 双极细胞 / 神经节细胞，越上游保留的视网膜计算越多)与**视蛋白的激活光谱**(蓝光 ChR2 超安全阈值 → 红移 ReaChR/ChrimsonR)。人体端需配主动投光眼镜。来源综述：Sakai, Tomita, Maeda (2022) Int J Mol Sci 23:15041。
+- [Bi 2006](papers/visual-prosthesis/bi-2006-chr2-retinal-degeneration.md) — 光遗传视觉修复起点：AAV-ChR2 在感光细胞退化小鼠内层视网膜长期表达，恢复视网膜光编码并传到视皮层(Pan 组·Wayne State)
+- [Lagali 2008](papers/visual-prosthesis/lagali-2008-on-bipolar-chr2.md) — ChR2 靶向 ON 双极细胞(rd1 小鼠)：只恢复 ON 通路，保留中心-周边组织，动物可完成视动任务；提出"靶向哪一级细胞"维度(Roska 组)
+- [Busskamp 2010](papers/visual-prosthesis/busskamp-2010-halorhodopsin-cones.md) — 卤视紫红质重新激活 RP 中失光敏的残存视锥：恢复全部视锥通路与方向选择性，离体人视网膜验证(Science；Roska/Sahel/Picaud)
+- [Sengupta 2016](papers/visual-prosthesis/sengupta-2016-red-shifted-chr-primate-human-retina.md) — 红移 ReaChR 在低于人视网膜安全阈值的橙光下起效(盲鼠/离体猕猴/死后人视网膜)；确立"红移视蛋白 + 安全光强"的转化约束
+- [McGregor 2020](papers/visual-prosthesis/mcgregor-2020-chrimsonr-living-primate.md) — 自适应光学 + 钙成像在活体猕猴中央凹记录 ChrimsonR 恢复的神经节细胞活动，给药一年以上仍有反应
+- [Sahel 2021](papers/visual-prosthesis/sahel-2021-optogenetic-partial-recovery.md) — **光遗传线目前唯一的人体功能结果**：PIONEER 首例，1 名晚期 RP 盲人(58 岁，入组仅光感，USH2A)，AAV2.7m8-ChrimsonR 靶向中央凹神经节细胞 + 595 nm 投光眼镜。戴镜后笔记本 **36/39(92%)** 感知/定位/触摸，订书钉盒 16/45(36%)；枕区 α 解码有无物体 **78%**(闭眼 39%、不戴镜不显著)。作者称神经退行性疾病光遗传治疗首例部分功能恢复(Nat Med 27:1223–1229)。**边界**：同试验 10 人结果(NEJM 2026)只测安全与光敏度，**物体任务人数仍是 1**；2026 诺奖授予光遗传学但未点名本试验。2026-10-12 解读期
 
 ### 皮层路线 (cortical line)
 - [Brindley & Lewin 1968](papers/visual-prosthesis/brindley-1968-cortical-phosphenes.md) — **整条皮层线的人体起点**：52 岁盲人枕极皮层表面阵列，单电极诱发固定位置的小白点、间距 2.4 mm 即可分辨、多电极可拼出可预期的简单图案；光幻视分布大致符合经典视网膜拓扑图，强刺激下另出现一套关于水平子午线翻转的图

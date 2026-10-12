@@ -113,9 +113,9 @@ def _base_css():
               line-height: 1.45; letter-spacing: 1px; color: var(--title); }}
     .subtitle {{ margin-top: 56px; font-size: {SIZE_SUBTITLE}px; font-weight: 400;
                  line-height: 1.6; color: var(--subtitle); }}
-    .read-label {{ margin-top: 30px; font-size: {SIZE_CAPTION}px; font-weight: 700;
-                   letter-spacing: 2px; color: var(--muted); }}
-    .read-body {{ margin-top: 14px; font-size: {SIZE_CAPTION}px; line-height: 1.55; color: var(--caption); }}
+    /* .read-label(「解读」二字)已于 2026-10-10 停用:冗余且占位置,封面来源小字
+       只写「时间 · 期刊 · 标题」,有名时加作者/团队。样式已删,勿再加回。 */
+    .read-body {{ margin-top: 30px; font-size: {SIZE_CAPTION}px; line-height: 1.55; color: var(--caption); }}
     .cover-sep {{ margin-top: 46px; }}
     /* cover concept image: one abstract visual that pairs with the title.
        Never a flowchart/structure diagram — see SKILL.md Step 7 §封面 + 目录卡. */
@@ -248,7 +248,7 @@ class CardGenerator:
         if source:
             body += (
                 "<div class='sep cover-sep'></div>"
-                "<div class='read-label'>解读</div>"
+                # 2026-10-10 起不再印「解读」标签:来源小字只写 时间 · 期刊 · 标题
                 f"<div class='read-body'>{self._fmt(source)}</div>"
             )
         return self._render(self._page(body), output_path)
