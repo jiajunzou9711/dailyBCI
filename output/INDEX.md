@@ -651,6 +651,17 @@
 - **关键词**：光遗传 / ChrimsonR / AAV2.7m8 / 视网膜色素变性 / 视觉假体 / 事件相机 / 投光眼镜 / 枕区 α 解码 / PIONEER
 - **卡数**：17（5 张自制示意图/表 + 3 张论文表格裁图 + Fig 2b + ED Fig 1a/b）｜ **路径**：`output/2026-10-10-optogenetic-vision/`（含 `draft.md`）
 
+### 2026-10-13 · 头皮上的触觉波，源自颅内岛盖（N140 的颅内来源）
+- **主线**（未知型）：头皮 N140（近年解读为体感觉察负波 SAN）的颅内来源一直靠源定位估计。8 名癫痫患者同步记录 256 通道头皮 EEG 与 sEEG：N140 与岛盖–后岛叶 LFP 同时到达波谷，同触点 BHA 早约 28 ms；触点越深、头皮与颅内越不像。
+- **论文**：2026-10-11 bioRxiv 10.64898/2026.10.03.756393《Simultaneous recordings link intracranial and scalp correlates of somatosensory awareness in humans》｜通讯 Ezequiel Mikulan、Andrea Pigorini（米兰大学）；合作 Avanzini、Sartori、Massimini 等
+- **方法**：人，8 名癫痫术前患者 / 10 session；EGI 256 通道 hdEEG + DIXI sEEG 1306 触点，两台放大器 1000 Hz trigger 对齐；阈上无报告正中神经刺激；重分析 Schröder 2021 近阈值数据（24 人）
+- **卡序**：①开篇（问题+答案+与谁有关）②逆问题示意 / N140→SAN（阈上与近阈值两种测法）/ tonic BHA（图 2c）③同一触点 LFP 与 BHA（图 1d）④方法（图 1a）⑤时间（图 2d）/ 深度（图 2g–h）/ 空间（图 3c）/ 近阈值（图 3d）⑥时间序列闭环（图 2f）⑦局限性（图 3f）/ 对 BCI 的两点推断
+- **承重出处**：Mikulan 2026（96/124/125 ms、28 ms p=0.03、ρ 0.76、−0.27/cm、Dice 0.34 p=0.03、95% vs 74%、27/1306）；Desmedt 1977；Dembski 2021；Avanzini 2016；Del Vecchio 2021；Albertini 2025；Buzsáki 2012；Ray 2011；Allison 1992；Nunez & Srinivasan 2006；Schröder 2021；Flesher 2016（12 条全部 PubMed 核卷页）
+- **本篇的推断 / 读图（已注明）**：LFP 与头皮幅度约 40 倍为按图刻度读；图 3c 左图为内侧面由 morph 方向与图 3b 标注推出；对 BCI 两点为推断；感觉阈值「约一半次数能感到」为通用定义
+- **流程经验**（用户 2026-10-13 定）：大纲确认后**按大纲顺序逐段讨论落稿**，不按论文图序；目录卡后加**开篇卡**（问题+答案+与读者关系），答案不再拖到第三段；卡末转场不卖关子；抽 PDF 内嵌图要合成 smask（否则透明背景变黑）
+- **关键词**：N140 / SAN / 体感觉察 / sEEG / hdEEG / 同步记录 / 岛盖 / 后岛叶 / BHA / LFP / 容积导体 / 脑电溯源
+- **卡数**：17（10 张论文裁图 + 逆问题自制示意 + 目录图）｜ **路径**：`output/2026-10-13-n140-scalp-intracranial/`（含 `draft.md`）
+
 # 专题（常青深度篇）
 
 按主题组织，与日期无关。目录名以 `series-` 开头。

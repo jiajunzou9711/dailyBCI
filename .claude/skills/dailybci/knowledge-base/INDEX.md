@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-10-12
-Total papers: 439
+Last updated: 2026-10-13
+Total papers: 440
 
 ## speech-decoding (20 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -185,13 +185,14 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Vidal-Rosas 2021](papers/non-invasive/vidal-rosas-2021-wearable-hd-dot-retinotopy.md) — 成人上**"可穿戴"与"高密度"第一次同时守住**：单被试 **15 个 session** 复现经典视网膜拓扑，HbO/HbR 均见局灶激活、跨 session 重复性高；与仿真低密度阵列对照在定位/分辨率/重复性/对比度四项均改善。验证策略值得复用——证仪器可重复性靠**同一被试重复多次**，不靠大样本
 - [Wheelock 2019](papers/non-invasive/wheelock-2019-hd-dot-review.md) — **本子线 milestone 抽取源**(Rev Sci Instrum 90:051101，开放获取)：光子扩散理论、正向建模与重建、系统设计三类挑战(动态范围/光极-头皮耦合/数据质量)、四类验证范式与临床应用
 
-## invasive-recording (21 papers)
+## invasive-recording (22 papers)
 - [Kennedy 1998](papers/invasive-recording/kennedy-1998-first-human-intracortical-bci.md) — 首次人类慢性intracortical记录用于BCI，Neurotrophic Electrode
 - [Leuthardt 2004](papers/invasive-recording/leuthardt-2004-first-ecog-bci.md) — 首次证明ECoG可用于BCI控制，确立ECoG作为记录模态的"最优平衡点"
 - [Schalk 2008](papers/invasive-recording/schalk-2008-ecog-2d-control.md) — 首次ECoG 2D控制，发现high-gamma具有cosine方向调谐特性
 - [Ray 2011](papers/invasive-recording/ray-2011-high-gamma-origin.md) — 证明high-gamma反映群体放电率（非节律振荡），ECoG特征选择的理论基础
 - [Chestek 2011](papers/invasive-recording/chestek-2011-long-term-signal-stability.md) — 系统量化intracortical信号慢性退化，证明threshold crossing优于sorted单元
 - [Buzsáki 2012](papers/invasive-recording/buzsaki-2012-extracellular-fields-origin.md) — 定义性理论框架：所有胞外信号（EEG/ECoG/LFP/spikes）的生物物理起源
+- [Mikulan 2026](papers/invasive-recording/mikulan-2026-simultaneous-seeg-hdeeg-n140.md) — **头皮 ERP 与颅内信号同被试同步对照**：8 名癫痫患者 256 通道 hdEEG + sEEG 同步，头皮 N140/SAN 与岛盖–后岛叶 LFP 同时到达波谷（差约 1 ms），同触点 BHA 早约 28 ms；触点每深 1 cm 头皮–颅内相关降 0.27；源定位与 99 人 BHA 图 Dice 0.34。边界：8 人、单触点、相关性证据、阈上无报告（人类，bioRxiv）
 - [Flint 2013](papers/invasive-recording/flint-2013-lfp-long-term-bmi.md) — LFP-based BMI性能可比spikes，11个月稳定无需重训练
 - [NEO 2024](papers/invasive-recording/neo-2024-epidural-minimally-invasive-bci.md) — 首个无线无电池硬膜外人体BCI，eECoG作"第四类模态"，C4完全SCI患者9个月家用信号不降反升，驱动脑-脊髓康复（清华×博睿康）
 - [NEO 2025](papers/invasive-recording/neo-2025-fine-grained-2d-cursor.md) — 硬膜外微创BCI实现精细二维光标控制，发现双侧/多效应器表征，ITR 36.7 bpm、记录稳定>18个月
