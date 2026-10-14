@@ -662,6 +662,17 @@
 - **关键词**：N140 / SAN / 体感觉察 / sEEG / hdEEG / 同步记录 / 岛盖 / 后岛叶 / BHA / LFP / 容积导体 / 脑电溯源
 - **卡数**：17（10 张论文裁图 + 逆问题自制示意 + 目录图）｜ **路径**：`output/2026-10-13-n140-scalp-intracranial/`（含 `draft.md`）
 
+### 2026-10-14 · 小鼠没用的策略，M2 也在计算（上下两篇）
+- **主线**（纠错型）：领域通常假定大脑只计算当前策略所用的那一个决策变量（DV）。小鼠觅食时行为上主要依赖一种 DV，次级运动皮层（M2）却同时编码多种，读出好坏与是否被采用无关；可读出的限于 INTEGRATE-AND-RESET 一族。
+- **论文**：Cazettes F, et al. (2023). A reservoir of foraging decision variables in the mouse brain. Nat Neurosci 26:840–849｜共同通讯 Alfonso Renart、Zachary F. Mainen（Champalimaud 基金会）
+- **方法**：小鼠，头部固定隐状态觅食任务（21 只 42 session 行为）；Neuropixels 1.0 急性记录 M2/OFC/OLF（10 只 11 session）；VGAT-ChR2 抑制 M2（6 只 43 session）
+- **卡序**：上篇 ①旧认知 ②任务（bout 与最后一次舔）/ 两种 DV / 行为异质 ③三脑区解码 / 离开≠起跑 / 光遗传两卡；下篇 回顾 ④两 DV 均可读出 / 读出与使用无关（Fig5g）/ 残差 / 去相关子序列 / HMM 排除切换 ⑤INTEGRATE-AND-RESET / ED Fig8 边界 ⑥闭环两卡 ⑦局限两卡
+- **承重出处**：Cazettes 2023（0.9/0.3、23/19、−0.04 P=0.021 vs 对照 0.054、0.74/0.41、r²<10⁻³ P=0.9、r=0.79、残差 P=0.00098、r²=0.02）；Pashler 1984；Sigman & Dehaene 2005；Kang 2021；Scott 2017；Bernacchia 2011；Vertechi 2020
+- **本篇的推断（已注明）**：局限 2 中「抑制无法区分计算 DV 与转成动作」为我们的分析；论文正文与 Fig8a 对推断型 DV 的 c(奖励) 取值不一致，卡内不写具体参数
+- **流程经验**：逐卡落稿时没按版面预算控字，首轮 18 卡 11 张溢出 → 拆两篇；以后**落稿时就用 `measure` 脚本量溢出**（HTML 渲染后量正文底边到页脚的距离）；用户点名补「bout」定义与图注横纵轴说明
+- **关键词**：决策变量 / 多路复用 / 觅食 / M2 / 次级运动皮层 / Neuropixels / 群体编码 / reservoir computing / 光遗传
+- **卡数**：上篇 13 + 下篇 15｜ **路径**：`output/2026-10-14-foraging-dv-reservoir/`（`cards-上/`、`cards-下/`、`draft.md`）
+
 # 专题（常青深度篇）
 
 按主题组织，与日期无关。目录名以 `series-` 开头。
