@@ -673,6 +673,17 @@
 - **关键词**：决策变量 / 多路复用 / 觅食 / M2 / 次级运动皮层 / Neuropixels / 群体编码 / reservoir computing / 光遗传
 - **卡数**：上篇 13 + 下篇 15｜ **路径**：`output/2026-10-14-foraging-dv-reservoir/`（`cards-上/`、`cards-下/`、`draft.md`）
 
+### 2026-10-17 · 海马建新地图：先就位与后加入
+- **主线**（未知型）：海马空间地图几分钟成形、Hebb 可塑性无法解释；答案是一小群预先组织好的骨干细胞首圈即有位置野，其余细胞随经验加入，休息时的离线活动提前组织两类细胞。
+- **论文**：Ren M, et al. (2026). Dual-mode dynamics in hippocampal populations enable rapid and precise spatial coding. Current Biology 36:1–10｜林龙年实验室（华东师范大学），共同通讯林龙年、徐佳敏（lead contact）
+- **方法**：大鼠 4 只，背侧 CA1 16 根四电极（有线）；陌生 U 形轨道，9 段×30 min 休息/跑动交替；BLT（Maboudi 2024）推断离线调谐曲线
+- **卡序**：①问题与答案（位置细胞定义）/ Fig 1C 读图 ②假说 ③两个问题 ④实验时间线 / BLT 三步 ⑤两类位置野 Fig1F / 三类细胞 Fig2A / 解码贡献 Fig2F / 离线参与 Fig3D–E / H0 对应 Fig4B–C / 出现前约 1 min Fig4G–H ⑥闭环 ⑦作者五点局限
+- **承重出处**：Ren 2026（151/242、149 vs 309、45/44/80、27%、0.23/−0.04/−0.01、0.73、约 1 min、180 s）；Maboudi 2024；Bittner 2017；Dragoi & Tonegawa 2011
+- **已更正/注明**：Fig 2F 星号显示 B vs E 仅 RUN4 显著（正文表述更宽，卡按图写）；Discussion 写 "several minutes"、Results 与图注为约 1 min，统一用 1 min；致谢只有 Lin laboratory，不写「两个组」
+- **流程经验**：封面本期单独用论文首页作者区截图（不写进规则）；目录卡来源区改为摘要、不写团队履历；讲解中逐条标【论文】/【补充】；封面标题经 6 轮，最后用户自拟
+- **关键词**：海马 / CA1 / 位置细胞 / 位置野 / 认知地图 / 骨干细胞 / 离线活动 / 尖波涟漪 / preplay / BLT / 空间记忆
+- **卡数**：17（7 张论文裁图 + 首页截图 + 时间线/BLT/目录 3 张自制图）｜ **路径**：`output/2026-10-17-hippocampus-dual-mode/`（含 `draft.md`）
+
 # 专题（常青深度篇）
 
 按主题组织，与日期无关。目录名以 `series-` 开头。

@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
-Last updated: 2026-10-14
-Total papers: 441
+Last updated: 2026-10-20
+Total papers: 442
 
 ## speech-decoding (20 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -460,7 +460,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Conwell 2024](papers/brain-encoding-models/conwell-2024-inductive-biases-brain-predictivity.md) — **受控对照把架构/训练目标/训练数据三者分开**(Nat Commun 15:9383)：人类 **NSD 7T fMRI**(4 名被试、1000 张共享 COCO 图)，**224 个模型**、>18 亿次回归 + 5.03 万次 RSA。架构(CNN vs ViT)与训练目标(分类/对比自监督/CLIP)换掉后脑预测力**近乎相同**，效应最大的是**训练用的图**；分类准确率与脑预测力原文为 **"little to no relationship"**。**训练本身**是全篇最大最稳的效应(随机初始化对照 N=64；cRSA β=0.30、veRSA β=0.56)。作者指出表征明显不同的模型能拿同样高的分，标准连接方法**可能太宽松**(人类)。⛔ **与 Linsley 强度不同：本篇是无相关、Linsley 是负相关，引用不得合并**
 - [Loke 2026](papers/brain-encoding-models/loke-2026-texture-alignment.md) — **把对齐从程度问题改造成成分归属问题并给出答案**(Curr Biol 36:1–8)：非侵入式 **EEG**(17 个后部电极)、**52 名**人类被试看 **200 张图**(THINGS-EEG2 留出测试集)的三个版本——原图 / **纹理合成**(白噪声匹配 VGG-19 conv1_1 的 Gram 矩阵，保留局部统计、破坏全局形状) / 只留物体；5 架构 21 初始化、weighted RSA + 岭回归、按噪声天花板**上界**归一化。**纹理合成约 85%** 可解释方差 vs 原图 **约 44%**、只留物体 **约 55%**；对齐峰值在 **100–200 ms**；物体类别可从单试次 EEG 解出(200 类，随机 0.5%)，但**物体信息最多的两个条件对齐最弱**。结论：对齐由纹理类统计撑着。**边界：削弱的是"对齐＝共享物体识别"这个解释，未证伪两边存在共同之处**(人类)
 - [Hermann 2020](papers/brain-encoding-models/hermann-2020-origins-of-texture-bias.md) — **CNN 纹理偏向的归因**(NeurIPS 33:19000–19015)：cue-conflict 刺激下系统比较架构/目标函数/数据增广，主因落在**数据增广与预处理**一侧；同时给出人类在该范式下的形状偏好基准，是 [[loke-2026-texture-alignment]] 引「人类形状偏好」的出处。⚠ cue-conflict 范式本身已被 Burgert 2025 质疑存在混淆，引用时须标明范式(模型 + 人类行为)
-## population-dynamics (17 papers)
+## population-dynamics (18 papers)
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature
 - [Gallego 2017](papers/population-dynamics/gallego-2017-neural-manifolds-movement.md) — 定义性框架综述，确立neural manifold/neural modes作为群体运动控制的统一语言，Neuron
 - [Golub 2018](papers/population-dynamics/golub-2018-learning-neural-reassociation.md) — 流形内学习机制=neural reassociation（重配已有模式而非生成新模式），Nat Neurosci
@@ -471,6 +471,7 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [de Vicente 2026](papers/population-dynamics/devicente-2026-circuit-specific-volitional-learning.md) — 首次把流形-BCI学习搬出运动皮层、进海马CA3并与M1对比：两区学得一样好(p=0.453 n.s.)但动力学分叉(M1流过/CA3折返)，RNN证差异源于环路架构→principled degeneracy，bioRxiv
 - [Micou 2026](papers/population-dynamics/micou-2026-hippocampal-bmi-navigation.md) — 海马 CA1 闭环 BMI 导航:250-500 个 CA1 神经元实时解码推动 400 cm VR 轨道;旧跑轮地图直接接入 BMI 失效,重新训练后恢复;superposed 细胞 3.1%(586/18,902) 指向新旧位置地图并行叠加,bioRxiv
 - [Rigotti 2013](papers/population-dynamics/rigotti-2013-mixed-selectivity.md) — 猕猴前额叶非线性混合选择性：消除单细胞对某变量的选择性后，该变量仍可从群体解出。「信息住在群体、不锁在单个神经元」的关键实证，也解释复杂认知为何高维
+- [Ren 2026](papers/population-dynamics/ren-2026-hippocampal-dual-mode-backbone.md) — 大鼠 CA1 四电极：位置野 IE 38%/GE 62%，细胞分骨干 B/混合 H/经验依赖 E；B 仅 27% 却主导解码（来自更高发放率）；BLT 显示 B 在首次上轨道前休息中已对上日后位置野（中位数 0.23），E 的离线对应先于位置野约 1 min，Curr Biol
 - [Ziv 2013](papers/population-dynamics/ziv-2013-hippocampal-place-code-drift.md) — 表征漂移硬实证(小鼠 CA1，长期钙成像)：同一熟悉环境每天换一批位置细胞，任意两天仅约 15–25% 重叠；但这一小撮稳定核心已足够维持数周空间表征
 - [Stringer 2019](papers/population-dynamics/stringer-2019-high-dimensional-visual-cortex.md) — 小鼠 V1 对自然图像的群体响应高维，特征谱呈幂律(第 n 主成分方差 ∝ 1/n)，且是「保持编码平滑前提下维度尽可能高」的结果。高维是被优化到极限的设计
 - [Degenhart 2020](papers/population-dynamics/degenhart-2020-bci-stabilization-alignment.md) — 无监督对齐稳定 BCI：把当天活动对齐回参考日的低维空间，**不需新标签**即维持性能。划清「漂移可救 / 物理包裹不可救」的界线
