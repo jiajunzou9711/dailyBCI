@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
 Last updated: 2026-10-20
-Total papers: 442
+Total papers: 448
 
 ## speech-decoding (20 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -460,7 +460,9 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Conwell 2024](papers/brain-encoding-models/conwell-2024-inductive-biases-brain-predictivity.md) — **受控对照把架构/训练目标/训练数据三者分开**(Nat Commun 15:9383)：人类 **NSD 7T fMRI**(4 名被试、1000 张共享 COCO 图)，**224 个模型**、>18 亿次回归 + 5.03 万次 RSA。架构(CNN vs ViT)与训练目标(分类/对比自监督/CLIP)换掉后脑预测力**近乎相同**，效应最大的是**训练用的图**；分类准确率与脑预测力原文为 **"little to no relationship"**。**训练本身**是全篇最大最稳的效应(随机初始化对照 N=64；cRSA β=0.30、veRSA β=0.56)。作者指出表征明显不同的模型能拿同样高的分，标准连接方法**可能太宽松**(人类)。⛔ **与 Linsley 强度不同：本篇是无相关、Linsley 是负相关，引用不得合并**
 - [Loke 2026](papers/brain-encoding-models/loke-2026-texture-alignment.md) — **把对齐从程度问题改造成成分归属问题并给出答案**(Curr Biol 36:1–8)：非侵入式 **EEG**(17 个后部电极)、**52 名**人类被试看 **200 张图**(THINGS-EEG2 留出测试集)的三个版本——原图 / **纹理合成**(白噪声匹配 VGG-19 conv1_1 的 Gram 矩阵，保留局部统计、破坏全局形状) / 只留物体；5 架构 21 初始化、weighted RSA + 岭回归、按噪声天花板**上界**归一化。**纹理合成约 85%** 可解释方差 vs 原图 **约 44%**、只留物体 **约 55%**；对齐峰值在 **100–200 ms**；物体类别可从单试次 EEG 解出(200 类，随机 0.5%)，但**物体信息最多的两个条件对齐最弱**。结论：对齐由纹理类统计撑着。**边界：削弱的是"对齐＝共享物体识别"这个解释，未证伪两边存在共同之处**(人类)
 - [Hermann 2020](papers/brain-encoding-models/hermann-2020-origins-of-texture-bias.md) — **CNN 纹理偏向的归因**(NeurIPS 33:19000–19015)：cue-conflict 刺激下系统比较架构/目标函数/数据增广，主因落在**数据增广与预处理**一侧；同时给出人类在该范式下的形状偏好基准，是 [[loke-2026-texture-alignment]] 引「人类形状偏好」的出处。⚠ cue-conflict 范式本身已被 Burgert 2025 质疑存在混淆，引用时须标明范式(模型 + 人类行为)
-## population-dynamics (18 papers)
+## population-dynamics (24 papers)
+- [Hopfield 1982](papers/population-dynamics/hopfield-1982-attractor-memory-network.md) — 记忆=能量极小点：对称连接+异步更新使能量只降不升，网络与 Ising 模型同构；容量约 0.15N。Ising 进入神经科学的第一条线（J 由人设定，正问题），纯理论，PNAS
+- [Schneidman 2006](papers/population-dynamics/schneidman-2006-weak-pairwise-ising.md) — 弱两两相关推出强集体状态：二阶最大熵模型（≡Ising，逆问题）捕获约 90% multi-information，独立模型对 10 细胞同步放电低估约 10⁵ 倍（蝾螈视网膜 40 个神经节细胞，N=10 子群），Nature
 - [Sadtler 2014](papers/population-dynamics/sadtler-2014-neural-constraints-learning.md) — 流形内模式易学、流形外学不会，奠定"神经流形约束学习"范式（猴，皮层内BCI），Nature
 - [Gallego 2017](papers/population-dynamics/gallego-2017-neural-manifolds-movement.md) — 定义性框架综述，确立neural manifold/neural modes作为群体运动控制的统一语言，Neuron
 - [Golub 2018](papers/population-dynamics/golub-2018-learning-neural-reassociation.md) — 流形内学习机制=neural reassociation（重配已有模式而非生成新模式），Nat Neurosci
@@ -479,6 +481,10 @@ BCI连续控制中"用户能否自主起停、系统能否识别非控制态"这
 - [Manley 2024](papers/population-dynamics/manley-2024-unbounded-dimensionality-scaling.md) — 至多约 100 万神经元的皮层范围记录：**维度随神经元数持续增长、未见饱和**。给「低维」结论加上记录尺度这一限定条件
 - [Shen 2026](papers/population-dynamics/shen-2026-flexible-electrode-drift-realignment.md) — Nat Biomed Eng：柔性网状电极在小鼠 V1 追踪同一批 214 个神经元 5 个月，电生理层面分开记录不稳定与表征漂移；漂移主要随观看次数累积，群体轨迹变化大部分为平移+旋转，两步正交 Procrustes 对齐后单一解码器跨月 0.55→0.80（第二步需刺激时间对齐）
 - [Cazettes 2023](papers/population-dynamics/cazettes-2023-foraging-dv-reservoir.md) — 小鼠 M2 同时编码被采用与未被采用的觅食决策变量（Neuropixels），读出强度与行为使用无关（r²<10⁻³）；可读出的限于 INTEGRATE-AND-RESET 一族，任意同统计序列读不出，Nat Neurosci
+- [Dragoi 2011](papers/population-dynamics/dragoi-2011-preplay-place-cell-sequences.md) — preplay 命名与首个系统证据(小鼠 CA1，4 只)：首次跑新轨道前的静息放电事件中 14.2%（de novo 睡眠箱 16.1%）已按日后位置细胞顺序排列，与熟悉轨道 replay 互相分离，Nature
+- [Grosmark 2016](papers/population-dynamics/grosmark-2016-rigid-plastic-hippocampal-sequences.md) — 大鼠 CA1(4 只，491 位置细胞)：新环境序列 = 快发放、低空间特异性的 rigid 骨架 + 慢发放、经验中获得高特异性的 plastic 细胞；剔除 ΔPCC 最高 10–20% 细胞即消除睡眠 replay 增量，Science
+- [Bittner 2017](papers/population-dynamics/bittner-2017-btsp-place-fields.md) — BTSP(小鼠在体全细胞，n=27)：树突平台电位单次即可形成位置野，可塑性核不对称、跨约 3 s/2 s，增强的输入与突触后放电无因果关系，不符合 Hebb；依赖 NMDAR 与 L 型 Ca²⁺ 通道，Science
+- [Maboudi 2024](papers/population-dynamics/maboudi-2024-retuning-representations-sleep.md) — 贝叶斯学习调谐(BLT)逐细胞读出离线空间调谐(大鼠 CA1，三套数据 660 单元)：POST 早期涟漪 LT 对齐并提前出现日后位置野改变，PRE 的 LT 整体不对齐日后位置野，Nature
 
 ## performance-variability (8 papers)
 BCI 性能变异性：认知状态/注意/信号状态。横跨非侵入(心理-注意因素)与皮层内(信号非平稳-神经状态)两支。

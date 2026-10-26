@@ -178,6 +178,7 @@ class CardGenerator:
         """HTML-escape a string, then turn **emphasis** into accent <b>, \\n into <br>."""
         s = html.escape(str(text))
         s = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', s)
+        s = re.sub(r'_\{(.+?)\}', r'<sub>\1</sub>', s)  # σ_{i} → 下标
         s = s.replace('\n', '<br>')
         return s
 
@@ -219,7 +220,8 @@ class CardGenerator:
 
     def cover_card(self, title_line1, title_line2, subtitle, output_path, source=None,
                    concept_image=None, concept_height=520, title_size=None,
-                   title_top=None, concept_bleed=0):
+                   title_top=None, concept_bleed=0, subtitle_size=None,
+                   image_caption=None):
         """Cover card: two-line Chinese title, one-sentence finding, concept image.
 
         Default layout (2026-08-05): title + one-line core sentence + a CONCEPT image.
@@ -236,15 +238,21 @@ class CardGenerator:
         body = (
             body_prefix
             + f"<div class='title'{tstyle}>{self._fmt(title_line1)}<br>{self._fmt(title_line2)}</div>"
-            f"<div class='subtitle'>{self._fmt(subtitle)}</div>"
+            + (f"<div class='subtitle' style='font-size:{subtitle_size}px'>" if subtitle_size
+               else "<div class='subtitle'>") + f"{self._fmt(subtitle)}</div>"
         )
         if concept_image:
             body += (
                 f"<div class='conceptwrap' style='max-height:{concept_height}px;"
-                f"margin-left:-{concept_bleed}px;margin-right:-{concept_bleed}px'>"
+                + ("margin-top:36px;" if image_caption else "")
+                + f"margin-left:-{concept_bleed}px;margin-right:-{concept_bleed}px'>"
                 f"<img src='file://{os.path.abspath(concept_image)}' "
                 f"style='max-height:{concept_height}px'/></div>"
             )
+            if image_caption:
+                # 图片出处作图下小字（2026-10-25 加）
+                body += (f"<div style='margin-top:12px;text-align:center;font-size:21px;"
+                         f"line-height:1.5;color:var(--caption)'>{self._fmt(image_caption)}</div>")
         if source:
             body += (
                 "<div class='sep cover-sep'></div>"
