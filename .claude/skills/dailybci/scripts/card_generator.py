@@ -179,6 +179,7 @@ class CardGenerator:
         s = html.escape(str(text))
         s = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', s)
         s = re.sub(r'_\{(.+?)\}', r'<sub>\1</sub>', s)  # σ_{i} → 下标
+        s = re.sub(r'\^\{(.+?)\}', r'<sup>\1</sup>', s)  # ξ^{μ} → 上标（2026-10-31 加）
         s = s.replace('\n', '<br>')
         return s
 
@@ -263,7 +264,7 @@ class CardGenerator:
 
     def figure_card(self, figure_path_or_image, caption_label, annotation_paragraphs,
                     output_path, figure_height=560, title=None, title_num=None,
-                    annot_size=None):
+                    annot_size=None, annot_lh=None):
         """Figure card: a REAL paper figure (image) on top, caption label, annotations.
 
         figure_path_or_image may be a path str or a PIL.Image (saved to a temp PNG).
@@ -289,7 +290,8 @@ class CardGenerator:
         try:
             # annot_size: 收小注文字号(默认走 CSS 的 SIZE_ANNOTATION)。
             # 用途:溯源信息较长的目录卡等,内容多到默认字号放不下时。
-            astyle = f" style='font-size:{annot_size}px'" if annot_size else ""
+            astyle = (f" style='font-size:{annot_size}px"
+                      + (f";line-height:{annot_lh}" if annot_lh else "") + "'") if annot_size else ""
             annots = "".join(
                 f"<div class='annot'{astyle}>{self._fmt(p)}</div>"
                 for p in annotation_paragraphs
@@ -313,14 +315,25 @@ class CardGenerator:
             if tmp_fig is not None:
                 os.unlink(tmp_fig.name)
 
-    def text_card(self, heading, paragraphs, output_path, heading_lines=None):
-        """Pure-text card: a heading (single or multi-line) + body paragraphs."""
+    def text_card(self, heading, paragraphs, output_path, heading_lines=None,
+                  title_num=None, para_size=None, para_lh=None):
+        """Pure-text card: a heading (single or multi-line) + body paragraphs.
+
+        title_num（2026-10-31 加）：给了圈号时，标题改用与 figure_card 相同的
+        cardtitle 样式（46px + 强调色圈号），无图的内容卡与有图卡标题一致。
+        """
         if heading_lines:
             head_html = "<br>".join(self._fmt(line) for line in heading_lines)
         else:
             head_html = self._fmt(heading)
-        paras = "".join(f"<div class='para'>{self._fmt(p)}</div>" for p in paragraphs)
-        body = f"<div class='heading'>{head_html}</div>{paras}"
+        pstyle = (f" style='font-size:{para_size}px"
+                  + (f";line-height:{para_lh}" if para_lh else "") + "'") if para_size else ""
+        paras = "".join(f"<div class='para'{pstyle}>{self._fmt(p)}</div>" for p in paragraphs)
+        if title_num is not None:
+            body = (f"<div class='cardtitle'><span class='num'>{html.escape(str(title_num))}</span>"
+                    f"{head_html}</div>{paras}")
+        else:
+            body = f"<div class='heading'>{head_html}</div>{paras}"
         return self._render(self._page(body), output_path)
 
     def tail_card(self, references, output_path, lead_paragraphs=None):
