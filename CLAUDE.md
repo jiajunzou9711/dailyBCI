@@ -24,6 +24,7 @@ dailyBCI/
 │   ├── scripts/                      # 卡片生成、裁图与专题脚本
 │   └── fonts/                        # 图卡使用的 CJK 字体
 ├── papers/                           # 每期论文与图的临时工作区
+├── fulltext/                         # 原文文本永久留档（带页码，gitignored，不推送）
 ├── output/                           # 日报、专题与看板成品；INDEX.md 是历史成品检索层
 ├── dashboard/                        # 常驻内容数据看板
 ├── research/                         # 独立调研材料

@@ -142,6 +142,7 @@ This skill runs as a Claude Code project. Anchor all paths to these locations (w
 - **Skill + resources:** `.claude/skills/dailybci/` — contains `SKILL.md`, `scripts/card_generator.py`, `fonts/`, and `knowledge-base/`.
 - **Knowledge base:** `.claude/skills/dailybci/knowledge-base/` (`INDEX.md` + `papers/<subfield>/`). Wherever the text below writes `knowledge-base/...`, read it as `.claude/skills/dailybci/knowledge-base/...`.
 - **Working data (per-run):** `papers/` at project root — downloaded full-text PDF/`<slug>-fulltext.txt`, figure images, and PIL crops. **Gitignored scratch:** not version-controlled (figures are baked into the committed `output/` cards), so it's regenerable and deleted at Step 9.
+- **原文文本留档(永久):** `fulltext/<slug>.txt` at project root — 每篇用过的论文的全文文本,带页码标记,PDF 删掉后仍可逐字回查。`<slug>` 与知识库笔记文件名相同(未入库的论文也照此命名)。**Gitignored:** 仓库是公开的,论文全文不推到 GitHub,只留本机。查证顺序:先 grep 知识库笔记找到论文,再 grep `fulltext/` 定位到页。
 - **Output:** `output/<date>-<slug>/` at project root — generated card PNGs.
 
 To import the card generator from project root:
@@ -346,7 +347,10 @@ Then extract text + figures with PyMuPDF (fitz):
 ```python
 import fitz
 doc = fitz.open("papers/[slug].pdf")
-text = "\n".join(p.get_text() for p in doc)
+# 每页前插页码标记(PDF 物理页,从 1 起),grep 命中即可定位到页
+text = "".join(f"\n=== p.{i} ===\n" + p.get_text() for i, p in enumerate(doc, 1))
+open("papers/[slug]-fulltext.txt", "w").write(text)
+# 文字层为空(扫描件)→ 当场 OCR,不跳过;OCR 不了就在 fulltext 文件首行注明「扫描件,无文本」
 for pno, page in enumerate(doc):
     for i, img in enumerate(page.get_images(full=True)):
         pix = fitz.Pixmap(doc, img[0])
@@ -823,7 +827,9 @@ Present all final cards for last confirmation before posting. **交付完三件�
 **b. 清理本地 scratch** — `papers/` 里这一期的工作文件(下载原图、裁图、全文PDF/txt)已经用不上了,图已烤进 `output/<date>-<slug>/` 的成品卡。给用户一个带清单+大小的提示:
 > 今天这期发完了。`papers/` 下这期的工作文件(下载原图 N 张、裁图 M 张、PDF/全文 ≈ X MB)已经用不上了——成品卡在 `output/<slug>/`、图已烤进卡。要我清掉吗?
 
-用户同意 → `rm` 掉这一期的 `papers/<slug>*`。**绝不碰 `output/`(成品)、`.claude/`(技能/知识库)、或别期的工作文件**,删前再扫一眼清单确认范围。删除不可逆,必须用户明确同意才删。
+**删之前先留档原文文本(2026-11-08 定,不需征询):** 把这一期用过的每篇论文的 `papers/<slug>-fulltext.txt` 复制到 `fulltext/<slug>.txt`(`<slug>` 与知识库笔记文件名一致;未入库的论文同样留档)。若 txt 缺页码标记,先按 Step 3 的写法从 PDF 重抽再存。`fulltext/` 已有同名文件就不覆盖。确认文件存在、非空后,再做下面的删除。
+
+用户同意 → `rm` 掉这一期的 `papers/<slug>*`。**绝不碰 `output/`(成品)、`fulltext/`(原文留档)、`.claude/`(技能/知识库)、或别期的工作文件**,删前再扫一眼清单确认范围。删除不可逆,必须用户明确同意才删。
 
 **c. 跑 `/neat-freak`** — 审查这期会话有没有让 `CLAUDE.md`、本 `SKILL.md`、知识库 `INDEX.md`、记忆系统之间出现漂移(常见的:知识库加了条目但 `INDEX.md` 的子领域/总篇数计数没跟着改;某篇论文改名/改年份后,`CLAUDE.md` 里旧的引用没同步)。发现漂移就地修正。
 
@@ -949,6 +955,7 @@ authors: Last, Last, Last et al.
 year: 2023
 venue: Nature / Nature Electronics / NEJM / arXiv / etc.
 url: https://doi.org/...  # or preprint link
+fulltext: fulltext/willett-2023-speech-neuroprosthesis.txt  # 本机原文留档(带页码,未入 git);没有全文就省略此行
 subfield: speech-decoding
 tags: [speech-BCI, RNN, phoneme, high-density-array]
 ---

@@ -9,6 +9,9 @@
 # the tracked knowledge-base/papers/ milestone library.
 /papers/
 
+# 原文文本永久留档(见 SKILL.md「原文文本留档」)。仓库公开,论文全文不推到 GitHub。
+/fulltext/
+
 # Python build artifacts
 __pycache__/
 *.pyc
