@@ -1,7 +1,7 @@
 # DailyBCI Knowledge Base
 
 Last updated: 2026-10-20
-Total papers: 450
+Total papers: 451
 
 ## speech-decoding (20 papers)
 - [Guenther 2009](papers/speech-decoding/guenther-2009-wireless-bmi-speech.md) — 首个无线BMI实时语音合成，单电极元音合成，概念验证
@@ -68,7 +68,7 @@ Total papers: 450
 - [Conlan 2026](papers/motor-bci/conlan-2026-ifg-grasp-decoding.md) — 首次在人类额下回(IFG，猕猴F5同源区)皮层内记录中用析因设计拆分抓法/物体/交互三因素：抓法解码显著主导(41.1-41.8% vs 33.3%随机)，物体贡献弱且更早、movement期已不显著；补上"非M1皮层内电极靶点"这条此前空白的线(与Ajiboye 2017对照，同组·bioRxiv)
 - [Vansteensel 2016](papers/motor-bci/vansteensel-2016-fully-implanted-ecoG-bci.md) — **首个完全植入式 BCI**(无经皮连接器)且**首个由 locked-in 患者在家独立使用**:晚期 ALS 患者运动皮层表面 ECoG + 全植入放大与无线传输,拼写约 2 字母/分,稳定运行数月(人类 1 名，NEJM)
 
-## electrode-hardware (28 papers)
+## electrode-hardware (29 papers)
 - [Wise 1970](papers/electrode-hardware/wise-1970-silicon-microprobe.md) — 首次用IC工艺制造多位点神经探针，开启微加工电极时代
 - [Campbell 1991](papers/electrode-hardware/campbell-1991-utah-array.md) — Utah阵列发明，100通道3D硅电极，BCI临床试验的硬件基石
 - [Rousche 1998](papers/electrode-hardware/rousche-1998-chronic-biocompatibility.md) — 首次系统验证Utah阵列慢性植入可行性，揭示胶质瘢痕核心挑战
@@ -97,6 +97,7 @@ Total papers: 450
 - [Savya 2022](papers/electrode-hardware/savya-2022-astrocyte-reactivity-dynamics.md) — 星胶反应时空动力学(大鼠)：第 1 周激活达峰、约 500 µm，第 3 周约 700 µm，第 6 周致密包裹趋稳。给出慢性相的时间与空间刻度
 - [Ludwig 2006](papers/electrode-hardware/ludwig-2006-pedot-coating-chronic.md) — PEDOT 涂层慢性记录：信噪比与可用单单元数均优于对照。**几何足印与有效表面积可分离**的实证落地——涂层只涨后者，故不必一味把电极做小
 - [Kinaci 2020](papers/electrode-hardware/kinaci-2020-dura-cross-species.md) — 10 物种同法比较硬脑膜厚度：人 564 µm vs 大鼠 49 µm（差 11.5 倍），猪 304 µm 最接近；大鼠/绵羊/山羊/马仅单一纤维血管层。**动物硬膜无法代表人**的定量依据
+- [Harrison 2003](papers/electrode-hardware/harrison-2003-low-noise-neural-amplifier.md) — 80 µW、0.16 mm² 的 CMOS 神经前置放大器：输入参考噪声 2.2 µVrms（0.025 Hz–7.2 kHz），伪电阻隔直流偏置、大栅面积 pMOS 把 1/f 角频率压到约 100 Hz；读懂规格表噪声值的标准实例(芯片实测)
 
 ## signal-processing (11 papers)
 - [Wu 2006](papers/signal-processing/wu-2006-kalman-filter.md) — Kalman filter贝叶斯连续解码，奠定motor BCI实时状态估计基线

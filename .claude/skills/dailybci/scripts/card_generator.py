@@ -55,7 +55,7 @@ COLOR_LINE = '#E0E0E0'      # separator lines
 COLOR_ACCENT = '#2F6DB5'    # single accent — used only for **highlighted** terms
 
 # Font sizes (px) — mirror the previous Pillow hierarchy
-SIZE_TITLE_LG = 64
+SIZE_TITLE_LG = 80  # 2026-11-28 用户要求封面标题加大（原 64）
 SIZE_TITLE_MD = 52
 SIZE_SUBTITLE = 34
 SIZE_BODY = 32

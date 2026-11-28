@@ -54,6 +54,12 @@ These standards apply to all output — X threads, 小红书 cards, knowledge ba
 
 6. **Fact verification step.** After completing a draft, run the three-layer verification defined in Step 6 (trace back to source → cross-source check → assertion audit with knowledge base + web search). Present the verification table to the user before any discussion of wording. Facts must be confirmed before polish begins. See Step 6 for the full procedure.
 
+7. **⛔ 关键文献没读到原文，就停下来请用户下载，不许凭标题或摘要当作「查过了」（2026-11-28 用户定，写死）。** 起因：输入参考噪声一期里，我把 Friis 1944 的级联噪声公式挂成出处、把 McWhorter 模型写成 1/f 噪声的成因，两篇原文都没读到，只凭记忆和二手转述就往下讲。
+   - **判据**：某篇文献要承担一个论断（公式、数值、机制、「某文报告了 X」）时，必须读到原文里支持这个论断的那一段。只读到标题、摘要、检索摘要或别人的转述，都不算查过。
+   - **读不到原文时的做法**：当场告诉用户文献名、DOI 或链接，以及要核对哪一句，请用户下载后放进 `papers/`。不许自己判定「这篇就是这么说的」然后继续往下讲。
+   - **用户也拿不到时**：换一篇能读到原文的文献，或者删掉这一段。不保留无原文支撑的引用。
+   - **讲解中途也适用**：教学对话里提到的出处同样要遵守，不限于成稿。暂时无法核对的，在原句旁标「原文未读」。
+
 ### 背景先行 + 一次一小块（2026-07-17 用户定，写死；管全流程与全部对话）
 
 两条硬规则，适用范围是**我对用户的全部叙述**，不限于成品文案，也不限于 Step 4：
